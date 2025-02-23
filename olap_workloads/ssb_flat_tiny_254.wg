@@ -1,0 +1,15 @@
+SELECT s_nation, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shippriority = '0' GROUP BY s_nation;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT c_region, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY c_region;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT p_brand, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_suppkey IN ('9571', '6733', '5510') GROUP BY p_brand;
+SELECT c_mktsegment, COUNT(*) AS num_customers FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT s_city, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE s_nation = 'JAPAN' GROUP BY s_city;
+SELECT p_mfgr, COUNT(*) AS num_products FROM lineorder_flat GROUP BY p_mfgr;
+SELECT lo_orderdate, SUM(lo_ordtotalprice) AS daily_total_price FROM lineorder_flat GROUP BY lo_orderdate ORDER BY lo_orderdate;
+SELECT c_name, SUM(lo_extendedprice * (1 - lo_discount)) AS total_revenue FROM lineorder_flat GROUP BY c_name ORDER BY total_revenue DESC;
+SELECT p_name, SUM(lo_quantity) AS total_quantity_sold FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY p_name;
+SELECT s_name, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_commitdate < lo_orderdate GROUP BY s_name;
+SELECT c_city, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE c_nation = 'UNITED STATES' GROUP BY c_city;
+SELECT p_type, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY p_type;
+SELECT s_nation, COUNT(*) AS num_orders FROM (SELECT DISTINCT lo_orderkey, s_nation FROM lineorder_flat WHERE lo_shippriority = '0' AND s_phone IN ('10-105-988-6276', '10-490-106-2401', '18-329-236-5475')) AS subquery GROUP BY s_nation;

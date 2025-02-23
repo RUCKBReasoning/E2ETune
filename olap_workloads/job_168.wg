@@ -1,0 +1,18 @@
+SELECT t.title, COUNT(*) AS num_movies FROM aka_title AS at JOIN title AS t ON at.movie_id = t.id GROUP BY t.title ORDER BY num_movies DESC LIMIT 10;
+SELECT c.name, COUNT(*) AS num_roles FROM cast_info AS ci JOIN char_name AS c ON ci.person_role_id = c.id GROUP BY c.name ORDER BY num_roles DESC LIMIT 10;
+SELECT k.keyword, COUNT(*) AS num_movies FROM movie_keyword AS mk JOIN keyword AS k ON mk.keyword_id = k.id GROUP BY k.keyword ORDER BY num_movies DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS num_movies FROM cast_info AS ci JOIN name AS n ON ci.person_id = n.id WHERE ci.role_id = 1 GROUP BY n.name ORDER BY num_movies DESC LIMIT 10;
+SELECT t.title, AVG(mi.info::numeric) AS avg_rating FROM movie_info AS mi JOIN title AS t ON mi.movie_id = t.id WHERE mi.info_type_id = 101 GROUP BY t.title ORDER BY avg_rating DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_episodes FROM title AS t WHERE t.kind_id = 7 AND t.episode_of_id IS NOT NULL GROUP BY t.title ORDER BY num_episodes DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_links FROM movie_link AS ml JOIN title AS t ON ml.movie_id = t.id WHERE ml.link_type_id = 17 GROUP BY t.title ORDER BY num_links DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS num_directed_movies FROM cast_info AS ci JOIN name AS n ON ci.person_id = n.id WHERE ci.role_id = 8 GROUP BY n.name ORDER BY num_directed_movies DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_companies FROM movie_companies AS mc JOIN title AS t ON mc.movie_id = t.id GROUP BY t.title ORDER BY num_companies DESC LIMIT 10;
+SELECT ct.kind, COUNT(*) AS num_companies FROM movie_companies AS mc JOIN company_type AS ct ON mc.company_type_id = ct.id GROUP BY ct.kind ORDER BY num_companies DESC;
+SELECT t.title, COUNT(*) AS num_keywords FROM movie_keyword AS mk JOIN title AS t ON mk.movie_id = t.id GROUP BY t.title ORDER BY num_keywords DESC LIMIT 10;
+SELECT it.info, COUNT(*) AS num_movies FROM movie_info_idx AS mi JOIN info_type AS it ON mi.info_type_id = it.id WHERE mi.info_type_id IN (99, 100, 101) GROUP BY it.info ORDER BY num_movies DESC;
+SELECT t.title, COUNT(*) AS num_actors FROM cast_info AS ci JOIN title AS t ON ci.movie_id = t.id WHERE ci.role_id = 1 GROUP BY t.title HAVING COUNT(*) > 10 ORDER BY num_actors DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_writers FROM cast_info AS ci JOIN title AS t ON ci.movie_id = t.id WHERE ci.role_id = 2 GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_writers DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS num_movies FROM cast_info AS ci JOIN name AS n ON ci.person_id = n.id WHERE ci.role_id = 3 GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY num_movies DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_episodes FROM title AS t WHERE t.kind_id = 7 AND t.season_nr = 14 GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_episodes DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_episodes FROM title AS t WHERE t.kind_id = 7 AND t.episode_nr = 22 GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_episodes DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS num_movies FROM cast_info AS ci JOIN name AS n ON ci.person_id = n.id WHERE ci.role_id = 4 AND n.gender = 'M' GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY num_movies DESC LIMIT 10;

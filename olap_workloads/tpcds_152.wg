@@ -1,0 +1,18 @@
+SELECT w_state, SUM(inv_quantity_on_hand) as total_inventory FROM warehouse, inventory WHERE w_warehouse_sk = inv_warehouse_sk AND w_country = 'United States' GROUP BY w_state ORDER BY total_inventory DESC;
+SELECT w_city, AVG(w_warehouse_sq_ft) as avg_warehouse_sq_ft FROM warehouse WHERE w_country = 'United States' AND w_state = 'TN' GROUP BY w_city;
+SELECT cs_bill_hdemo_sk, COUNT(*) as num_orders FROM catalog_sales WHERE cs_order_number IN (135001, 2049, 20435) GROUP BY cs_bill_hdemo_sk;
+SELECT i_category, SUM(cs_net_paid) as total_paid FROM item, catalog_sales WHERE i_item_sk = cs_item_sk AND cs_ship_date_sk BETWEEN 2450927 AND 2450962 GROUP BY i_category ORDER BY total_paid DESC;
+SELECT ib_lower_bound, ib_upper_bound, COUNT(*) as num_customers FROM income_band, customer_demographics, customer WHERE ib_income_band_sk = cd_demo_sk AND cd_demo_sk = c_current_cdemo_sk AND ib_lower_bound >= 90001 AND ib_upper_bound <= 190000 GROUP BY ib_lower_bound, ib_upper_bound ORDER BY num_customers DESC;
+SELECT web_city, COUNT(*) as num_websites FROM web_site WHERE web_open_date_sk BETWEEN 2450603 AND 2450807 GROUP BY web_city;
+SELECT web_mkt_class, web_market_manager, COUNT(*) as num_websites FROM web_site WHERE web_market_manager IN ('Gilbert Chapman', 'Keith Williams', 'Donald Mckinney') GROUP BY web_mkt_class, web_market_manager;
+SELECT i_category, COUNT(DISTINCT i_brand) as num_brands FROM item GROUP BY i_category;
+SELECT w_state, COUNT(*) as num_warehouses FROM warehouse WHERE w_city = 'Fairview' GROUP BY w_state;
+SELECT d_year, d_month_seq, SUM(ss_net_profit) as monthly_profit FROM date_dim, store_sales WHERE d_date_sk = ss_sold_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT d_year, d_week_seq, SUM(ws_net_profit) as weekly_profit FROM date_dim, web_sales WHERE d_date_sk = ws_sold_date_sk GROUP BY d_year, d_week_seq ORDER BY d_year, d_week_seq;
+SELECT i_category, AVG(cs_quantity) as avg_quantity_sold FROM item, catalog_sales WHERE i_item_sk = cs_item_sk GROUP BY i_category ORDER BY avg_quantity_sold DESC;
+SELECT p_promo_name, COUNT(*) as num_sales FROM promotion, store_sales WHERE p_promo_sk = ss_promo_sk GROUP BY p_promo_name HAVING COUNT(*) > 1000 ORDER BY num_sales DESC;
+SELECT d_year, COUNT(DISTINCT ss_ticket_number) as num_tickets FROM date_dim, store_sales WHERE d_date_sk = ss_sold_date_sk GROUP BY d_year ORDER BY d_year;
+SELECT r_reason_desc, COUNT(*) as num_returns FROM reason, store_returns WHERE r_reason_sk = sr_reason_sk GROUP BY r_reason_desc HAVING COUNT(*) > 500 ORDER BY num_returns DESC;
+SELECT sm_type, COUNT(*) as num_shipments FROM ship_mode, catalog_sales WHERE sm_ship_mode_sk = cs_ship_mode_sk GROUP BY sm_type;
+SELECT hd_buy_potential, COUNT(*) as num_customers FROM household_demographics, customer WHERE hd_demo_sk = c_current_hdemo_sk GROUP BY hd_buy_potential HAVING COUNT(*) > 1000 ORDER BY num_customers DESC;
+SELECT w_state, w_city, COUNT(*) as num_stores FROM warehouse, store WHERE w_warehouse_sk = s_store_sk GROUP BY w_state, w_city HAVING COUNT(*) > 1 ORDER BY num_stores DESC;

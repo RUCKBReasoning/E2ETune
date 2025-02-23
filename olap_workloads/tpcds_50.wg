@@ -1,0 +1,15 @@
+SELECT d_year, COUNT(*) AS total_orders FROM date_dim JOIN store_sales ON d_date_sk = ss_sold_date_sk WHERE d_year >= 2000 AND d_year <= 2005 GROUP BY d_year ORDER BY d_year;
+SELECT c_first_name, c_last_name, SUM(ss_sales_price) AS total_sales FROM customer JOIN store_sales ON c_customer_sk = ss_customer_sk WHERE c_preferred_cust_flag = 'Y' GROUP BY c_first_name, c_last_name ORDER BY total_sales DESC LIMIT 10;
+SELECT w_state, AVG(inv_quantity_on_hand) AS avg_inventory FROM warehouse JOIN inventory ON w_warehouse_sk = inv_warehouse_sk GROUP BY w_state ORDER BY avg_inventory DESC;
+SELECT i_category, COUNT(*) AS total_items FROM item GROUP BY i_category HAVING COUNT(*) > 1000 ORDER BY total_items DESC;
+SELECT t_am_pm, AVG(ws_sales_price) AS avg_sales_price FROM time_dim JOIN web_sales ON t_time_sk = ws_sold_time_sk WHERE t_am_pm = 'AM' GROUP BY t_am_pm;
+SELECT d_year, d_month_seq, COUNT(*) AS total_returns FROM date_dim JOIN catalog_returns ON d_date_sk = cr_returned_date_sk WHERE d_year = 2003 GROUP BY d_year, d_month_seq ORDER BY d_month_seq;
+SELECT s_state, COUNT(*) AS total_stores FROM store GROUP BY s_state HAVING COUNT(*) > 5 ORDER BY total_stores DESC;
+SELECT i_brand, SUM(ws_sales_price) AS total_sales FROM web_sales JOIN item ON ws_item_sk = i_item_sk WHERE i_brand IN ('Brand#1', 'Brand#2', 'Brand#3') GROUP BY i_brand ORDER BY total_sales DESC;
+SELECT r_reason_desc, COUNT(*) AS total_returns FROM reason JOIN store_returns ON r_reason_sk = sr_reason_sk GROUP BY r_reason_desc HAVING COUNT(*) > 50 ORDER BY total_returns DESC;
+SELECT d_day_name, COUNT(*) AS total_sales FROM date_dim JOIN catalog_sales ON d_date_sk = cs_sold_date_sk WHERE d_year = 2004 GROUP BY d_day_name ORDER BY total_sales DESC;
+SELECT c_first_name, c_last_name, COUNT(*) AS total_orders FROM customer JOIN web_sales ON c_customer_sk = ws_bill_customer_sk WHERE c_first_name = 'Angel' OR c_first_name = 'Benton' OR c_first_name = 'Barry' GROUP BY c_first_name, c_last_name ORDER BY total_orders DESC;
+SELECT w_city, w_state, COUNT(*) AS total_warehouses FROM warehouse GROUP BY w_city, w_state HAVING COUNT(*) > 1 ORDER BY total_warehouses DESC;
+SELECT i_item_id, i_category, SUM(cs_sales_price) AS total_sales FROM item JOIN catalog_sales ON i_item_sk = cs_item_sk WHERE i_category IN ('Category#1', 'Category#2', 'Category#3') GROUP BY i_item_id, i_category ORDER BY total_sales DESC LIMIT 10;
+SELECT d_year, d_month_seq, SUM(sr_return_amt) AS total_returns FROM date_dim JOIN store_returns ON d_date_sk = sr_returned_date_sk WHERE d_year >= 2001 AND d_year <= 2004 GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT p_promo_name, COUNT(*) AS total_promotions FROM promotion JOIN store_sales ON p_promo_sk = ss_promo_sk WHERE p_discount_active = 'Y' GROUP BY p_promo_name HAVING COUNT(*) > 100 ORDER BY total_promotions DESC;

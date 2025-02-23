@@ -1,0 +1,16 @@
+SELECT COUNT(*) FROM movie_info WHERE info_type_id = 99 AND CAST(info AS INTEGER) > 1000;
+SELECT AVG(production_year) FROM title WHERE kind_id = 1;
+SELECT COUNT(*) FROM movie_companies WHERE company_type_id = 1 AND note LIKE '%(USA)%';
+SELECT name.name, COUNT(cast_info.person_id) AS roles_count FROM name JOIN cast_info ON name.id = cast_info.person_id GROUP BY name.name HAVING COUNT(cast_info.person_id) > 10 ORDER BY roles_count DESC;
+SELECT title.title, COUNT(movie_keyword.keyword_id) AS keyword_count FROM title JOIN movie_keyword ON title.id = movie_keyword.movie_id GROUP BY title.title HAVING COUNT(movie_keyword.keyword_id) > 5 ORDER BY keyword_count DESC;
+SELECT movie_info.info, COUNT(*) AS movie_count FROM movie_info WHERE info_type_id = 100 AND CAST(info AS INTEGER) > 1000 GROUP BY movie_info.info ORDER BY movie_count DESC;
+SELECT company_name.name, COUNT(movie_companies.movie_id) AS movie_count FROM company_name JOIN movie_companies ON company_name.id = movie_companies.company_id WHERE movie_companies.company_type_id = 1 GROUP BY company_name.name HAVING COUNT(movie_companies.movie_id) > 5 ORDER BY movie_count DESC;
+SELECT role_type.role, COUNT(cast_info.role_id) AS role_count FROM role_type JOIN cast_info ON role_type.id = cast_info.role_id GROUP BY role_type.role HAVING COUNT(cast_info.role_id) > 10 ORDER BY role_count DESC;
+SELECT title.title, COUNT(movie_link.linked_movie_id) AS linked_movie_count FROM title JOIN movie_link ON title.id = movie_link.movie_id GROUP BY title.title HAVING COUNT(movie_link.linked_movie_id) > 5 ORDER BY linked_movie_count DESC;
+SELECT title.title, COUNT(movie_info.info) AS info_count FROM title JOIN movie_info ON title.id = movie_info.movie_id WHERE movie_info.info_type_id = 101 GROUP BY title.title HAVING COUNT(movie_info.info) > 5 ORDER BY info_count DESC;
+SELECT name.name, COUNT(aka_name.name) AS aka_name_count FROM name JOIN aka_name ON name.id = aka_name.person_id GROUP BY name.name HAVING COUNT(aka_name.name) > 5 ORDER BY aka_name_count DESC;
+SELECT title.title, COUNT(aka_title.title) AS aka_title_count FROM title JOIN aka_title ON title.id = aka_title.movie_id GROUP BY title.title HAVING COUNT(aka_title.title) > 5 ORDER BY aka_title_count DESC;
+SELECT name.name, COUNT(person_info.info) AS person_info_count FROM name JOIN person_info ON name.id = person_info.person_id WHERE person_info.info_type_id = 1 GROUP BY name.name HAVING COUNT(person_info.info) > 5 ORDER BY person_info_count DESC;
+SELECT title.title, COUNT(movie_companies.company_id) AS company_count FROM title JOIN movie_companies ON title.id = movie_companies.movie_id GROUP BY title.title HAVING COUNT(movie_companies.company_id) > 5 ORDER BY company_count DESC;
+SELECT title.title, COUNT(movie_keyword.keyword_id) AS keyword_count FROM title JOIN movie_keyword ON title.id = movie_keyword.movie_id WHERE title.production_year > 2000 GROUP BY title.title HAVING COUNT(movie_keyword.keyword_id) > 5 ORDER BY keyword_count DESC;
+SELECT name.name, COUNT(cast_info.person_id) AS roles_count FROM name JOIN cast_info ON name.id = cast_info.person_id WHERE name.gender = 'F' GROUP BY name.name HAVING COUNT(cast_info.person_id) > 10 ORDER BY roles_count DESC;

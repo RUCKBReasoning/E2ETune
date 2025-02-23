@@ -1,0 +1,17 @@
+SELECT w_state, AVG(inv_quantity_on_hand) as avg_inventory FROM warehouse JOIN inventory ON w_warehouse_sk = inv_warehouse_sk GROUP BY w_state;
+SELECT w_city, COUNT(DISTINCT w_warehouse_sk) as warehouse_count FROM warehouse WHERE w_street_name = '6th' GROUP BY w_city;
+SELECT r_reason_desc, COUNT(sr_reason_sk) as returned_reason_count FROM reason JOIN store_returns ON r_reason_sk = sr_reason_sk WHERE r_reason_sk IN (15, 33, 32) GROUP BY r_reason_desc;
+SELECT i_category, SUM(cs_sales_price) as total_sales FROM item JOIN catalog_sales ON i_item_sk = cs_item_sk GROUP BY i_category HAVING SUM(cs_sales_price) > 1000000;
+SELECT c_birth_country, COUNT(c_customer_sk) as customer_count FROM customer WHERE c_birth_year > 1980 GROUP BY c_birth_country;
+SELECT d_year, COUNT(ss_sold_date_sk) as total_sales FROM date_dim JOIN store_sales ON d_date_sk = ss_sold_date_sk WHERE d_month_seq BETWEEN 120 AND 130 GROUP BY d_year;
+SELECT s_state, COUNT(DISTINCT s_store_sk) as store_count FROM store WHERE s_street_number = '651' GROUP BY s_state;
+SELECT cs_ship_mode_sk, COUNT(cs_order_number) as order_count FROM catalog_sales WHERE cs_ship_date_sk BETWEEN 1000 AND 2000 GROUP BY cs_ship_mode_sk;
+SELECT w_warehouse_name, SUM(inv_quantity_on_hand) as total_inventory FROM warehouse JOIN inventory ON w_warehouse_sk = inv_warehouse_sk WHERE w_street_name = 'Wilson Elm' GROUP BY w_warehouse_name;
+SELECT d_day_name, COUNT(ss_sold_date_sk) as sales_count FROM date_dim JOIN store_sales ON d_date_sk = ss_sold_date_sk WHERE d_weekend = 'Y' GROUP BY d_day_name;
+SELECT i_category, COUNT(DISTINCT i_item_sk) as item_count FROM item WHERE i_current_price BETWEEN 50 AND 100 GROUP BY i_category;
+SELECT ws_web_site_sk, COUNT(ws_order_number) as order_count FROM web_sales WHERE ws_sales_price > 1000 GROUP BY ws_web_site_sk;
+SELECT r_reason_desc, COUNT(cr_reason_sk) as return_reason_count FROM reason JOIN catalog_returns ON r_reason_sk = cr_reason_sk WHERE r_reason_sk IN (15, 33, 32) GROUP BY r_reason_desc;
+SELECT s_state, AVG(s_floor_space) as avg_floor_space FROM store WHERE s_street_number = '534' GROUP BY s_state;
+SELECT c_birth_country, COUNT(c_customer_sk) as customer_count FROM customer WHERE c_birth_year < 1980 AND c_preferred_cust_flag = 'Y' GROUP BY c_birth_country;
+SELECT w_state, COUNT(DISTINCT w_warehouse_sk) as warehouse_count FROM warehouse WHERE w_street_number = '600' GROUP BY w_state;
+SELECT i_category, SUM(ws_sales_price) as total_sales FROM item JOIN web_sales ON i_item_sk = ws_item_sk GROUP BY i_category HAVING SUM(ws_sales_price) > 2000000;

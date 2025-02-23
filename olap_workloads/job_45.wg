@@ -1,0 +1,12 @@
+SELECT t.title, COUNT(*) AS num_movies FROM title t JOIN movie_link ml ON t.id = ml.movie_id WHERE ml.link_type_id = 7 GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_movies DESC;
+SELECT n.name, COUNT(*) AS num_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id IN (10, 2) GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY num_roles DESC;
+SELECT kt.kind, COUNT(*) AS num_movies FROM kind_type kt JOIN title t ON kt.id = t.kind_id GROUP BY kt.kind HAVING COUNT(*) > 1000 ORDER BY num_movies DESC;
+SELECT cn.name, COUNT(*) AS num_characters FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id WHERE cn.surname_pcode = 'P4353' GROUP BY cn.name HAVING COUNT(*) > 1 ORDER BY num_characters DESC;
+SELECT t.title, COUNT(*) AS num_keywords FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_keywords DESC;
+SELECT n.name, COUNT(*) AS num_writers FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 3 GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY num_writers DESC;
+SELECT cn.name, COUNT(*) AS num_movies FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id JOIN title t ON ci.movie_id = t.id WHERE cn.md5sum = '15e24ba1740a396752eb27b5f8a60548' GROUP BY cn.name HAVING COUNT(*) > 1 ORDER BY num_movies DESC;
+SELECT lt.link, COUNT(*) AS num_links FROM link_type lt JOIN movie_link ml ON lt.id = ml.link_type_id WHERE lt.id IN (18, 2) GROUP BY lt.link HAVING COUNT(*) > 100 ORDER BY num_links DESC;
+SELECT cn.name, COUNT(*) AS num_movies FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id JOIN title t ON ci.movie_id = t.id WHERE cn.surname_pcode = 'O6364' GROUP BY cn.name HAVING COUNT(*) > 1 ORDER BY num_movies DESC;
+SELECT n.name, COUNT(*) AS num_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id IN (10, 2) AND n.gender = 'F' GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY num_roles DESC;
+SELECT t.title, COUNT(*) AS num_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id GROUP BY t.title HAVING COUNT(*) > 3 ORDER BY num_companies DESC;
+SELECT rt.role, COUNT(*) AS num_roles FROM role_type rt JOIN cast_info ci ON rt.id = ci.role_id GROUP BY rt.role HAVING COUNT(*) > 1000 ORDER BY num_roles DESC;

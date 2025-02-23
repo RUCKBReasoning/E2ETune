@@ -1,0 +1,12 @@
+SELECT c_city, COUNT(*) AS order_count FROM lineorder_flat WHERE c_city IN ('ETHIOPIA 8', 'JORDAN   0', 'INDONESIA5') GROUP BY c_city;
+SELECT p_size, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE p_size IN (41, 18, 25) GROUP BY p_size;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE s_nation IN ('CANADA', 'CHINA', 'UNITED KINGDOM') GROUP BY s_nation;
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY order_count DESC;
+SELECT p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY p_category ORDER BY total_quantity DESC;
+SELECT c_mktsegment, COUNT(*) AS customer_count FROM lineorder_flat GROUP BY c_mktsegment ORDER BY customer_count DESC;
+SELECT s_region, COUNT(*) AS supplier_count FROM lineorder_flat GROUP BY s_region ORDER BY supplier_count DESC;
+SELECT p_brand, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY p_brand ORDER BY total_revenue DESC;
+SELECT lo_shipmode, COUNT(*) AS order_count FROM lineorder_flat GROUP BY lo_shipmode ORDER BY order_count DESC;
+SELECT EXTRACT(YEAR FROM to_timestamp(lo_orderdate)) AS order_year, COUNT(*) AS order_count FROM lineorder_flat GROUP BY order_year ORDER BY order_year;
+SELECT c_nation, p_category, SUM(lo_extendedprice) AS total_sales FROM lineorder_flat GROUP BY c_nation, p_category ORDER BY c_nation, total_sales DESC;
+SELECT s_name, p_name, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY s_name, p_name ORDER BY total_quantity DESC;

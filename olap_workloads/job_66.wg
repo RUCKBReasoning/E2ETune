@@ -1,0 +1,13 @@
+SELECT t.title, COUNT(*) AS num_movies FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id WHERE mk.keyword_id IN (7861, 5552, 3811) GROUP BY t.title ORDER BY num_movies DESC LIMIT 10;
+SELECT k.keyword, AVG(mi.production_year) AS avg_production_year FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id JOIN title mi ON mk.movie_id = mi.id WHERE k.phonetic_code IN ('N6351', 'S4152', 'R1652') GROUP BY k.keyword;
+SELECT n.name, COUNT(*) AS num_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id IN (SELECT rt.id FROM role_type rt WHERE rt.role LIKE 'actor' OR rt.role LIKE 'actress') GROUP BY n.name ORDER BY num_roles DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_links FROM title t JOIN movie_link ml ON t.id = ml.movie_id WHERE ml.link_type_id IN (2, 12, 17) GROUP BY t.title ORDER BY num_links DESC LIMIT 10;
+SELECT cn.name, COUNT(*) AS num_characters FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id GROUP BY cn.name ORDER BY num_characters DESC LIMIT 10;
+SELECT kt.kind, COUNT(*) AS num_movies FROM kind_type kt JOIN title t ON kt.id = t.kind_id GROUP BY kt.kind ORDER BY num_movies DESC;
+SELECT it.info, COUNT(*) AS num_movies FROM info_type it JOIN movie_info mi ON it.id = mi.info_type_id GROUP BY it.info ORDER BY num_movies DESC;
+SELECT ct.kind, COUNT(*) AS num_companies FROM company_type ct JOIN movie_companies mc ON ct.id = mc.company_type_id GROUP BY ct.kind ORDER BY num_companies DESC;
+SELECT t.title, COUNT(*) AS num_cast_members FROM title t JOIN cast_info ci ON t.id = ci.movie_id GROUP BY t.title ORDER BY num_cast_members DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS num_movies FROM name n JOIN movie_companies mc ON n.id = mc.company_id GROUP BY n.name ORDER BY num_movies DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_keywords FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id GROUP BY t.title ORDER BY num_keywords DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS num_movie_links FROM name n JOIN movie_link ml ON n.id = ml.linked_movie_id GROUP BY n.name ORDER BY num_movie_links DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_movie_info FROM title t JOIN movie_info mi ON t.id = mi.movie_id GROUP BY t.title ORDER BY num_movie_info DESC LIMIT 10;

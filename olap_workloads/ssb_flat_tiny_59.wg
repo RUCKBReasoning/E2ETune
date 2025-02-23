@@ -1,0 +1,16 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT c_region, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY c_region;
+SELECT c_region, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY c_region;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT p_category, COUNT(*) AS num_products FROM lineorder_flat GROUP BY p_category;
+SELECT s_region, COUNT(*) AS num_suppliers FROM lineorder_flat GROUP BY s_region;
+SELECT c_mktsegment, COUNT(*) AS num_customers FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT p_brand, COUNT(*) AS num_products FROM lineorder_flat GROUP BY p_brand;
+SELECT lo_orderdate, SUM(lo_revenue) AS daily_revenue FROM lineorder_flat WHERE lo_revenue > 2493560 GROUP BY lo_orderdate;
+SELECT lo_orderdate, SUM(lo_revenue) AS daily_revenue FROM lineorder_flat WHERE lo_revenue > 4934624 GROUP BY lo_orderdate;
+SELECT lo_orderdate, SUM(lo_revenue) AS daily_revenue FROM lineorder_flat WHERE lo_revenue > 4617089 GROUP BY lo_orderdate;
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_region = 'MIDDLE EAST' GROUP BY c_city;
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_region = 'ASIA' GROUP BY c_city;
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_region = 'AFRICA' GROUP BY c_city;
+SELECT p_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE p_size > 30 GROUP BY p_name;
+SELECT s_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY s_name;

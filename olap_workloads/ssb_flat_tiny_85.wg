@@ -1,0 +1,2 @@
+SELECT lo_orderpriority, COUNT(*) AS order_count, AVG(lo_extendedprice) AS avg_price, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_orderkey IN (6599236, 26832006, 9078311) GROUP BY lo_orderpriority;
+SELECT p_mfgr, p_category, SUM(lo_quantity) AS total_quantity, AVG(lo_supplycost) AS avg_supplycost FROM lineorder_flat WHERE lo_partkey IN (4646, 4648, 4636) GROUP BY p_mfgr, p_category;

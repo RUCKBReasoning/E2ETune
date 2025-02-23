@@ -1,0 +1,15 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '2-HIGH' GROUP BY c_region ORDER BY num_orders DESC;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_orderpriority = '5-LOW' GROUP BY p_category ORDER BY avg_price DESC;
+SELECT s_nation, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_tax = 4 GROUP BY s_nation ORDER BY total_quantity DESC;
+SELECT p_brand, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderkey IN (9253926, 19251425, 7298434) GROUP BY p_brand ORDER BY num_orders DESC;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE p_container = 'MED CAN' GROUP BY c_city ORDER BY total_revenue DESC;
+SELECT lo_orderdate, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND lo_orderpriority = '2-HIGH' GROUP BY lo_orderdate ORDER BY num_orders DESC;
+SELECT p_mfgr, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_orderpriority = '4-NOT SPECIFIED' GROUP BY p_mfgr ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE lo_orderkey IN (9253926, 19251425, 7298434) GROUP BY c_mktsegment ORDER BY avg_discount DESC;
+SELECT s_region, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'RAIL' AND lo_orderpriority = '5-LOW' GROUP BY s_region ORDER BY num_orders DESC;
+SELECT p_type, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_orderpriority = '2-HIGH' AND p_container = 'JUMBO PACK' GROUP BY p_type ORDER BY total_price DESC;
+SELECT c_nation, AVG(lo_ordtotalprice) AS avg_total_price FROM lineorder_flat WHERE lo_tax = 7 GROUP BY c_nation ORDER BY avg_total_price DESC;
+SELECT p_color, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderkey IN (9253926, 19251425, 7298434) AND p_container = 'WRAP CAN' GROUP BY p_color ORDER BY num_orders DESC;
+SELECT s_city, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_shipmode = 'SHIP' AND lo_orderpriority = '4-NOT SPECIFIED' GROUP BY s_city ORDER BY total_quantity DESC;
+SELECT c_name, AVG(lo_revenue) AS avg_revenue FROM lineorder_flat WHERE lo_orderpriority = '5-LOW' AND lo_tax = 3 GROUP BY c_name ORDER BY avg_revenue DESC;
+SELECT p_size, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderkey IN (9253926, 19251425, 7298434) AND lo_orderpriority = '2-HIGH' GROUP BY p_size ORDER BY num_orders DESC;

@@ -1,0 +1,11 @@
+SELECT c_region, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' GROUP BY c_region ORDER BY total_price DESC;
+SELECT p_mfgr, AVG(lo_supplycost) AS avg_supply_cost FROM lineorder_flat WHERE p_type = 'MEDIUM PLATED STEEL' GROUP BY p_mfgr ORDER BY avg_supply_cost DESC;
+SELECT s_nation, COUNT(lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND lo_commitdate > lo_orderdate GROUP BY s_nation ORDER BY total_revenue DESC;
+SELECT c_mktsegment, p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_brand = 'MFGR#2' AND lo_discount BETWEEN 5 AND 10 GROUP BY c_mktsegment, p_category ORDER BY total_quantity DESC;
+SELECT c_city, s_city, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE c_nation = s_nation AND lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY c_city, s_city ORDER BY num_orders DESC;
+SELECT p_name, p_size, SUM(lo_extendedprice * lo_discount) AS total_discounted_price FROM lineorder_flat WHERE p_type = 'ECONOMY BURNISHED NICKEL' AND lo_revenue > 1000000 GROUP BY p_name, p_size ORDER BY total_discounted_price DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE lo_shippriority = 'Y' GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT c_name, SUM(lo_ordtotalprice) AS total_order_price FROM lineorder_flat WHERE lo_orderdate >= 20220101 AND lo_orderdate <= 20221231 GROUP BY c_name HAVING SUM(lo_ordtotalprice) > 5000000 ORDER BY total_order_price DESC;
+SELECT s_name, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'RAIL' AND lo_orderdate >= 20210101 AND lo_orderdate <= 20211231 GROUP BY s_name ORDER BY num_orders DESC;
+SELECT p_category, COUNT(lo_orderkey) AS num_orders, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_mfgr = 'MFGR#5' AND lo_discount > 10 GROUP BY p_category ORDER BY total_quantity DESC;
+SELECT c_nation, s_nation, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 AND lo_revenue > 500000 GROUP BY c_nation, s_nation ORDER BY num_orders DESC;

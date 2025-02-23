@@ -1,0 +1,11 @@
+SELECT c_region, COUNT(lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY c_region ORDER BY total_revenue DESC;
+SELECT p_category, p_brand, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category, p_brand HAVING AVG(lo_extendedprice) > 1000 ORDER BY avg_price DESC;
+SELECT s_city, s_nation, COUNT(lo_orderkey) AS num_orders, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY s_city, s_nation ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderpriority = 'HIGH' GROUP BY c_mktsegment ORDER BY total_revenue DESC;
+SELECT p_container, COUNT(lo_orderkey) AS num_orders, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_container IN ('WRAP CAN', 'SM CAN', 'LG JAR') GROUP BY p_container ORDER BY total_quantity DESC;
+SELECT c_city, c_nation, COUNT(lo_orderkey) AS num_orders, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE s_address = 'Qu1 Oot' GROUP BY c_city, c_nation ORDER BY total_tax DESC;
+SELECT lo_orderdate, COUNT(lo_orderkey) AS num_orders, SUM(lo_discount) AS total_discount FROM lineorder_flat WHERE lo_commitdate > lo_orderdate GROUP BY lo_orderdate ORDER BY total_discount DESC;
+SELECT p_mfgr, COUNT(lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE p_size > 10 GROUP BY p_mfgr ORDER BY total_revenue DESC;
+SELECT c_name, c_address, COUNT(lo_orderkey) AS num_orders, SUM(lo_ordtotalprice) AS total_order_price FROM lineorder_flat WHERE c_phone LIKE '1%' GROUP BY c_name, c_address ORDER BY total_order_price DESC;
+SELECT s_name, s_address, COUNT(lo_orderkey) AS num_orders, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE s_phone LIKE '2%' AND s_region = 'AMERICA' GROUP BY s_name, s_address ORDER BY total_supply_cost DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_shippriority = '1' GROUP BY lo_orderpriority ORDER BY total_revenue DESC;

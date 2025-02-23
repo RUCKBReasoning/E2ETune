@@ -1,0 +1,15 @@
+SELECT o.o_orderpriority, COUNT(*) AS order_count FROM orders o WHERE o.o_orderstatus = 'F' GROUP BY o.o_orderpriority;
+SELECT c.c_name, SUM(o.o_totalprice) AS total_spent FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey WHERE o.o_orderstatus = 'F' GROUP BY c.c_name ORDER BY total_spent DESC;
+SELECT p.p_type, AVG(ps.ps_supplycost) AS avg_supply_cost FROM part p JOIN partsupp ps ON p.p_partkey = ps.ps_partkey GROUP BY p.p_type;
+SELECT r.r_name, COUNT(n.n_nationkey) AS nation_count FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey GROUP BY r.r_name;
+SELECT s.s_name, SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_revenue FROM supplier s JOIN lineitem l ON s.s_suppkey = l.l_suppkey WHERE l.l_shipdate >= '1995-01-01' AND l.l_shipdate <= '1995-12-31' GROUP BY s.s_name ORDER BY total_revenue DESC;
+SELECT c.c_mktsegment, COUNT(o.o_orderkey) AS order_count FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey WHERE o.o_orderdate >= '1995-01-01' AND o.o_orderdate <= '1995-12-31' GROUP BY c.c_mktsegment;
+SELECT p.p_brand, SUM(ps.ps_availqty) AS total_avail_qty FROM part p JOIN partsupp ps ON p.p_partkey = ps.ps_partkey WHERE ps.ps_supplycost > 500 GROUP BY p.p_brand;
+SELECT n.n_name, COUNT(s.s_suppkey) AS supplier_count FROM nation n JOIN supplier s ON n.n_nationkey = s.s_nationkey GROUP BY n.n_name;
+SELECT o.o_orderpriority, AVG(o.o_totalprice) AS avg_order_price FROM orders o WHERE o.o_orderstatus = 'O' GROUP BY o.o_orderpriority;
+SELECT p.p_container, COUNT(l.l_partkey) AS part_count FROM part p JOIN lineitem l ON p.p_partkey = l.l_partkey WHERE l.l_shipmode = 'TRUCK' GROUP BY p.p_container;
+SELECT r.r_name, AVG(s.s_acctbal) AS avg_acct_bal FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey JOIN supplier s ON n.n_nationkey = s.s_nationkey GROUP BY r.r_name;
+SELECT c.c_name, COUNT(DISTINCT l.l_orderkey) AS unique_orders FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey WHERE l.l_returnflag = 'R' GROUP BY c.c_name;
+SELECT p.p_type, COUNT(l.l_partkey) AS part_count FROM part p JOIN lineitem l ON p.p_partkey = l.l_partkey WHERE l.l_receiptdate >= '1995-01-01' AND l.l_receiptdate <= '1995-12-31' GROUP BY p.p_type;
+SELECT n.n_name, SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_revenue FROM nation n JOIN customer c ON n.n_nationkey = c.c_nationkey JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey WHERE l.l_shipdate >= '1995-01-01' AND l.l_shipdate <= '1995-12-31' GROUP BY n.n_name;
+SELECT s.s_name, COUNT(l.l_partkey) AS part_count FROM supplier s JOIN lineitem l ON s.s_suppkey = l.l_suppkey WHERE l.l_commitdate >= '1995-01-01' AND l.l_commitdate <= '1995-12-31' GROUP BY s.s_name;

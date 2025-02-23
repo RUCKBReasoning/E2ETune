@@ -1,0 +1,9 @@
+SELECT COUNT(*) FROM movie_info WHERE info_type_id = 4;
+SELECT t.title, t.production_year, COUNT(*) FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 4 GROUP BY t.title, t.production_year HAVING COUNT(*) > 1 ORDER BY COUNT(*) DESC;
+SELECT n.name, COUNT(*) FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY COUNT(*) DESC;
+SELECT kt.kind, COUNT(*) FROM kind_type kt JOIN title t ON kt.id = t.kind_id WHERE t.production_year BETWEEN 2000 AND 2020 GROUP BY kt.kind ORDER BY COUNT(*) DESC;
+SELECT t.title, COUNT(*) FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id WHERE t.kind_id IN (3, 4, 1) GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY COUNT(*) DESC;
+SELECT n.name, COUNT(*) FROM name n JOIN cast_info ci ON n.id = ci.person_id JOIN title t ON ci.movie_id = t.id WHERE t.production_year BETWEEN 2010 AND 2020 AND ci.role_id = 1 GROUP BY n.name HAVING COUNT(*) > 5 ORDER BY COUNT(*) DESC;
+SELECT n.name, COUNT(*) FROM name n JOIN person_info pi ON n.id = pi.person_id WHERE pi.info_type_id = 4 AND pi.person_id IN (733, 544, 4147864) GROUP BY n.name;
+SELECT t.title, COUNT(*) FROM title t JOIN movie_link ml ON t.id = ml.movie_id WHERE ml.link_type_id IN (1, 2, 3) GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY COUNT(*) DESC;
+SELECT t.title, COUNT(*) FROM title t JOIN movie_companies mc ON t.id = mc.movie_id JOIN company_name cn ON mc.company_id = cn.id WHERE cn.country_code = 'US' AND t.production_year BETWEEN 2000 AND 2020 GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY COUNT(*) DESC;

@@ -1,0 +1,11 @@
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderkey IN (10657380, 22562946, 13631655) GROUP BY c_city;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE s_name IN ('Supplier#000000016', 'Supplier#000002798', 'Supplier#000000899') GROUP BY s_name;
+SELECT p_type, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat WHERE p_type IN ('MEDIUM BRUSHED BRASS', 'SMALL PLATED BRASS', 'LARGE POLISHED NICKEL') GROUP BY p_type;
+SELECT p_brand, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE p_brand IN ('MFGR#5521', 'MFGR#5325', 'MFGR#1538') GROUP BY p_brand;
+SELECT c_region, COUNT(DISTINCT lo_custkey) AS num_customers FROM lineorder_flat GROUP BY c_region;
+SELECT s_region, COUNT(DISTINCT lo_suppkey) AS num_suppliers FROM lineorder_flat GROUP BY s_region;
+SELECT p_category, COUNT(DISTINCT lo_partkey) AS num_parts FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, COUNT(*) AS num_orders, AVG(lo_ordtotalprice) AS avg_order_price FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT c_mktsegment, SUM(lo_extendedprice) AS total_extended_price, SUM(lo_discount) AS total_discount FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT lo_shipmode, COUNT(*) AS num_orders, AVG(lo_tax) AS avg_tax FROM lineorder_flat GROUP BY lo_shipmode;
+SELECT c_nation, s_nation, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_nation = s_nation GROUP BY c_nation, s_nation;

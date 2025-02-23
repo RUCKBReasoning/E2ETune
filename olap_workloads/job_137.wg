@@ -1,0 +1,13 @@
+SELECT AVG(nr_order) FROM cast_info WHERE person_id IN (SELECT person_id FROM aka_name WHERE name_pcode_cf = 'A1521');
+SELECT movie_id, COUNT(keyword_id) AS keyword_count FROM movie_keyword GROUP BY movie_id ORDER BY keyword_count DESC LIMIT 10;
+SELECT t.title, COUNT(c.id) AS cast_count FROM title AS t INNER JOIN cast_info AS c ON t.id = c.movie_id WHERE t.kind_id = 1 GROUP BY t.title HAVING COUNT(c.id) > 5 ORDER BY cast_count DESC;
+SELECT n.name, COUNT(ci.id) AS role_count FROM name AS n INNER JOIN cast_info AS ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name HAVING COUNT(ci.id) > 10 ORDER BY role_count DESC;
+SELECT k.keyword, COUNT(mk.movie_id) AS movie_count FROM keyword AS k INNER JOIN movie_keyword AS mk ON k.id = mk.keyword_id GROUP BY k.keyword HAVING COUNT(mk.movie_id) > 100 ORDER BY movie_count DESC;
+SELECT c.name, COUNT(mc.movie_id) AS movie_count FROM company_name AS c INNER JOIN movie_companies AS mc ON c.id = mc.company_id WHERE mc.company_type_id = 1 GROUP BY c.name HAVING COUNT(mc.movie_id) > 50 ORDER BY movie_count DESC;
+SELECT p.name, COUNT(pi.person_id) AS info_count FROM name AS p INNER JOIN person_info AS pi ON p.id = pi.person_id WHERE pi.info_type_id = 10 GROUP BY p.name HAVING COUNT(pi.person_id) > 5 ORDER BY info_count DESC;
+SELECT t.title, COUNT(ml.linked_movie_id) AS link_count FROM title AS t INNER JOIN movie_link AS ml ON t.id = ml.movie_id WHERE ml.link_type_id = 1 GROUP BY t.title HAVING COUNT(ml.linked_movie_id) > 3 ORDER BY link_count DESC;
+SELECT kt.kind, COUNT(t.id) AS title_count FROM kind_type AS kt INNER JOIN title AS t ON kt.id = t.kind_id GROUP BY kt.kind HAVING COUNT(t.id) > 1000 ORDER BY title_count DESC;
+SELECT it.info, COUNT(mi.movie_id) AS movie_count FROM info_type AS it INNER JOIN movie_info AS mi ON it.id = mi.info_type_id WHERE mi.note IS NOT NULL GROUP BY it.info HAVING COUNT(mi.movie_id) > 100 ORDER BY movie_count DESC;
+SELECT rt.role, COUNT(ci.id) AS cast_count FROM role_type AS rt INNER JOIN cast_info AS ci ON rt.id = ci.role_id WHERE ci.note IS NOT NULL GROUP BY rt.role HAVING COUNT(ci.id) > 50 ORDER BY cast_count DESC;
+SELECT t1.title, t2.title FROM title AS t1 INNER JOIN title AS t2 ON t1.episode_of_id = t2.episode_of_id WHERE t1.season_nr = 1 AND t2.season_nr = 2 AND t1.episode_nr = t2.episode_nr;
+SELECT n.name, COUNT(ci.id) AS cast_count FROM name AS n INNER JOIN cast_info AS ci ON n.id = ci.person_id WHERE ci.movie_id IN (SELECT movie_id FROM complete_cast WHERE subject_id = 1) GROUP BY n.name HAVING COUNT(ci.id) > 10 ORDER BY cast_count DESC;

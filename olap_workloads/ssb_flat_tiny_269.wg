@@ -1,0 +1,8 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE p_name = 'light seashell' GROUP BY p_category;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE p_category = 'MFGR#34' GROUP BY s_nation;
+SELECT c_mktsegment, COUNT(*) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY c_mktsegment;
+SELECT p_brand, COUNT(*) AS num_products FROM lineorder_flat WHERE p_color = 'floral orchid' GROUP BY p_brand;
+SELECT c_city, SUM(lo_extendedprice) AS total_sales FROM lineorder_flat WHERE lo_discount >= 0.1 AND lo_discount <= 0.3 GROUP BY c_city;
+SELECT p_type, AVG(p_size) AS avg_size FROM lineorder_flat WHERE p_category = 'MFGR#44' GROUP BY p_type;
+SELECT c_nation, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_extendedprice >= 496128 AND lo_extendedprice <= 2995992 GROUP BY c_nation;

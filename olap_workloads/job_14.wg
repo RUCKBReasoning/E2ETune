@@ -1,0 +1,12 @@
+SELECT COUNT(*) FROM movie_companies WHERE company_type_id = 1;
+SELECT company_name.name, COUNT(movie_companies.movie_id) AS num_movies FROM company_name JOIN movie_companies ON company_name.id = movie_companies.company_id WHERE movie_companies.company_type_id = 1 GROUP BY company_name.name ORDER BY num_movies DESC;
+SELECT title.title, COUNT(movie_keyword.keyword_id) AS num_keywords FROM title JOIN movie_keyword ON title.id = movie_keyword.movie_id GROUP BY title.title ORDER BY num_keywords DESC;
+SELECT role_type.role, COUNT(cast_info.person_id) AS num_people FROM role_type JOIN cast_info ON role_type.id = cast_info.role_id WHERE role_type.id IN (2, 7, 12) GROUP BY role_type.role;
+SELECT title.title, COUNT(cast_info.person_id) AS num_cast_members FROM title JOIN cast_info ON title.id = cast_info.movie_id WHERE cast_info.role_id = 2 GROUP BY title.title ORDER BY num_cast_members DESC;
+SELECT name.name, COUNT(cast_info.movie_id) AS num_movies FROM name JOIN cast_info ON name.id = cast_info.person_id WHERE cast_info.role_id = 7 GROUP BY name.name ORDER BY num_movies DESC;
+SELECT company_name.name, COUNT(movie_companies.movie_id) AS num_movies FROM company_name JOIN movie_companies ON company_name.id = movie_companies.company_id WHERE movie_companies.movie_id IN (1551, 695, 82) GROUP BY company_name.name;
+SELECT name.name, COUNT(cast_info.movie_id) AS num_movies FROM name JOIN cast_info ON name.id = cast_info.person_id WHERE cast_info.role_id = 12 AND name.gender = 'F' GROUP BY name.name ORDER BY num_movies DESC;
+SELECT title.title, COUNT(movie_keyword.keyword_id) AS num_keywords FROM title JOIN movie_keyword ON title.id = movie_keyword.movie_id WHERE title.production_year BETWEEN 2000 AND 2010 GROUP BY title.title ORDER BY num_keywords DESC;
+SELECT company_name.name, COUNT(movie_companies.movie_id) AS num_movies FROM company_name JOIN movie_companies ON company_name.id = movie_companies.company_id WHERE company_name.name_pcode_nf IN ('N1534', 'C6562', 'U5364') GROUP BY company_name.name;
+SELECT title.title, COUNT(movie_link.linked_movie_id) AS num_linked_movies FROM title JOIN movie_link ON title.id = movie_link.movie_id GROUP BY title.title HAVING COUNT(movie_link.linked_movie_id) > 5;
+SELECT name.name, COUNT(cast_info.movie_id) AS num_movies FROM name JOIN cast_info ON name.id = cast_info.person_id WHERE cast_info.role_id = 2 AND name.surname_pcode IN ('J5126', 'U5214', 'C6235') GROUP BY name.name ORDER BY num_movies DESC;

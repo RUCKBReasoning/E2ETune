@@ -1,0 +1,15 @@
+SELECT COUNT(*) FROM movie_keyword WHERE keyword_id IN (SELECT id FROM keyword WHERE phonetic_code = 'T1214');
+SELECT COUNT(*) FROM cast_info WHERE role_id IN (SELECT id FROM role_type WHERE role = 'cinematographer');
+SELECT COUNT(*) FROM title WHERE kind_id IN (SELECT id FROM kind_type WHERE kind = 'tv mini series');
+SELECT AVG(production_year) FROM title WHERE kind_id IN (SELECT id FROM kind_type WHERE kind = 'tv series');
+SELECT COUNT(*) FROM movie_info WHERE info_type_id IN (SELECT id FROM info_type WHERE info = 'runtime');
+SELECT COUNT(*) FROM movie_companies WHERE company_id IN (SELECT id FROM company_name WHERE country_code = 'US');
+SELECT COUNT(*) FROM cast_info WHERE person_id IN (SELECT id FROM name WHERE gender = 'M') AND role_id IN (SELECT id FROM role_type WHERE role = 'actor');
+SELECT COUNT(*) FROM movie_link WHERE link_type_id IN (SELECT id FROM link_type WHERE link = 'followed by');
+SELECT COUNT(*) FROM title WHERE id IN (SELECT movie_id FROM movie_companies WHERE company_id IN (SELECT id FROM company_name WHERE name_pcode_nf = 'F6136'));
+SELECT COUNT(*) FROM cast_info WHERE person_role_id IN (SELECT id FROM char_name WHERE name = 'Dr. Panos');
+SELECT COUNT(*) FROM aka_title WHERE id IN (SELECT movie_id FROM movie_keyword WHERE keyword_id IN (SELECT id FROM keyword WHERE phonetic_code = 'A1342'));
+SELECT COUNT(*) FROM movie_info_idx WHERE movie_id IN (SELECT id FROM title WHERE kind_id IN (SELECT id FROM kind_type WHERE kind = 'episode'));
+SELECT COUNT(*) FROM movie_companies WHERE company_id IN (SELECT id FROM company_name WHERE name_pcode_sf = 'T1214');
+SELECT COUNT(*) FROM cast_info WHERE person_id IN (SELECT id FROM name WHERE name_pcode_cf = 'A1342') AND role_id IN (SELECT id FROM role_type WHERE role = 'producer');
+SELECT COUNT(*) FROM title WHERE id IN (SELECT movie_id FROM movie_keyword WHERE keyword_id IN (SELECT id FROM keyword WHERE phonetic_code = 'F6136')) AND kind_id IN (SELECT id FROM kind_type WHERE kind = 'tv mini series');

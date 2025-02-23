@@ -1,0 +1,11 @@
+SELECT n_name, COUNT(*) AS num_customers FROM nation JOIN customer ON n_nationkey = c_nationkey GROUP BY n_name ORDER BY num_customers DESC;
+SELECT r_name, AVG(c_acctbal) AS avg_acctbal FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey GROUP BY r_name;
+SELECT s_name, SUM(ps_availqty) AS total_inventory FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey WHERE s_address = 'IUZ 7G x212nzZY5aQS' GROUP BY s_name;
+SELECT p_type, COUNT(*) AS num_parts FROM part WHERE p_size BETWEEN 10 AND 20 GROUP BY p_type HAVING COUNT(*) > 100 ORDER BY num_parts DESC;
+SELECT o_orderpriority, COUNT(*) AS num_orders FROM orders WHERE o_orderdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY o_orderpriority;
+SELECT c_mktsegment, SUM(l_extendedprice * (1 - l_discount)) AS revenue FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY c_mktsegment;
+SELECT s_name, p_name, ps_supplycost FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey JOIN part ON p_partkey = ps_partkey WHERE s_name = 'Supplier#000000245' AND p_name LIKE 'red%' ORDER BY ps_supplycost DESC;
+SELECT n_name, AVG(l_extendedprice) AS avg_price FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE n_name = 'RUSSIA' AND l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY n_name;
+SELECT n_name, COUNT(*) AS num_orders FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey WHERE o_orderdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY n_name HAVING COUNT(*) > 1000 ORDER BY num_orders DESC;
+SELECT p_type, AVG(l_quantity) AS avg_quantity FROM part JOIN lineitem ON p_partkey = l_partkey WHERE l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY p_type ORDER BY avg_quantity DESC;
+SELECT s_name, COUNT(DISTINCT l_orderkey) AS num_orders FROM supplier JOIN lineitem ON s_suppkey = l_suppkey WHERE l_commitdate < l_receiptdate GROUP BY s_name HAVING COUNT(DISTINCT l_orderkey) > 10 ORDER BY num_orders DESC;

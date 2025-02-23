@@ -1,0 +1,12 @@
+SELECT c_region, COUNT(*) AS num_customers FROM customer GROUP BY c_region;
+SELECT p_category, AVG(p_size) AS avg_size FROM part GROUP BY p_category;
+SELECT d_year, SUM(lo_revenue) AS total_revenue FROM lineorder JOIN date_dim ON lineorder.lo_orderdate = date_dim.d_datekey WHERE d_year IN (1992, 1993, 1994) GROUP BY d_year;
+SELECT s_nation, COUNT(*) AS num_suppliers FROM supplier GROUP BY s_nation;
+SELECT c_nation, SUM(lo_extendedprice * lo_discount) AS total_discounted_price FROM lineorder JOIN customer ON lineorder.lo_custkey = customer.c_custkey WHERE c_nation IN ('UNITED STATES', 'ARGENTINA', 'GERMANY') GROUP BY c_nation;
+SELECT d_yearmonth, COUNT(*) AS num_orders FROM lineorder JOIN date_dim ON lineorder.lo_orderdate = date_dim.d_datekey WHERE d_yearmonthnum IN (199401, 199205, 199210) GROUP BY d_yearmonth;
+SELECT p_brand, SUM(lo_quantity) AS total_quantity FROM lineorder JOIN part ON lineorder.lo_partkey = part.p_partkey WHERE lo_partkey IN (219498, 472530, 201120) GROUP BY p_brand;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder JOIN supplier ON lineorder.lo_suppkey = supplier.s_suppkey WHERE lo_suppkey IN (24707, 6494, 31972) GROUP BY s_name;
+SELECT d_dayofweek, COUNT(*) AS num_orders FROM lineorder JOIN date_dim ON lineorder.lo_orderdate = date_dim.d_datekey WHERE d_daynuminweek IN (5, 3, 4) GROUP BY d_dayofweek;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder WHERE lo_orderdate IN (SELECT d_datekey FROM date_dim WHERE d_daynuminyear IN (362, 264, 359)) GROUP BY lo_orderpriority;
+SELECT c_name, SUM(lo_extendedprice) AS total_spent FROM lineorder JOIN customer ON lineorder.lo_custkey = customer.c_custkey WHERE c_custkey IN (233434, 233551, 234225) GROUP BY c_name;
+SELECT p_type, COUNT(*) AS num_parts FROM part WHERE p_size IN (SELECT p_size FROM part WHERE p_partkey IN (219498, 472530, 201120)) GROUP BY p_type;

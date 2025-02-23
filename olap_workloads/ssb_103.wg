@@ -1,0 +1,16 @@
+SELECT c.c_region, COUNT(lo.lo_orderkey) AS total_orders FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_region = 'ASIA' GROUP BY c.c_region;
+SELECT d.d_year, SUM(lo.lo_revenue) AS total_revenue FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_year = 1993 GROUP BY d.d_year;
+SELECT p.p_category, AVG(lo.lo_supplycost) AS avg_supplycost FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey GROUP BY p.p_category;
+SELECT s.s_nation, COUNT(lo.lo_orderkey) AS total_orders FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_nation = 'MIDDLE EAST' GROUP BY s.s_nation;
+SELECT c.c_city, SUM(lo.lo_extendedprice) AS total_extendedprice FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_city = 'BRAZIL   8' GROUP BY c.c_city;
+SELECT d.d_month, COUNT(lo.lo_orderkey) AS total_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_month = 'March' GROUP BY d.d_month;
+SELECT p.p_brand, SUM(lo.lo_quantity) AS total_quantity FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey GROUP BY p.p_brand;
+SELECT s.s_region, AVG(lo.lo_tax) AS avg_tax FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_region = 'EUROPE' GROUP BY s.s_region;
+SELECT c.c_mktsegment, COUNT(lo.lo_orderkey) AS total_orders FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey GROUP BY c.c_mktsegment;
+SELECT d.d_dayofweek, SUM(lo.lo_revenue) AS total_revenue FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_dayofweek = 'Monday' GROUP BY d.d_dayofweek;
+SELECT p.p_type, AVG(lo.lo_discount) AS avg_discount FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey GROUP BY p.p_type;
+SELECT s.s_city, COUNT(lo.lo_orderkey) AS total_orders FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_city = 'ETHIOPIA 6' GROUP BY s.s_city;
+SELECT c.c_phone, SUM(lo.lo_ordtotalprice) AS total_ordtotalprice FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_phone = '19-150-698-9916' GROUP BY c.c_phone;
+SELECT d.d_yearmonth, COUNT(lo.lo_orderkey) AS total_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_yearmonth = '1993-03' GROUP BY d.d_yearmonth;
+SELECT p.p_container, AVG(lo.lo_supplycost) AS avg_supplycost FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey GROUP BY p.p_container;
+SELECT s.s_name, COUNT(lo.lo_orderkey) AS total_orders FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey GROUP BY s.s_name;

@@ -1,0 +1,10 @@
+SELECT c.c_name, c.c_city, SUM(lo.lo_revenue) AS total_revenue FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_city = 'ARGENTINA4' GROUP BY c.c_name, c.c_city ORDER BY total_revenue DESC;
+SELECT s.s_name, s.s_nation, COUNT(*) AS num_orders FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_nation = 'CANADA' GROUP BY s.s_name, s.s_nation ORDER BY num_orders DESC;
+SELECT d.d_year, d.d_month, SUM(lo.lo_quantity) AS total_quantity FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_year = 2020 GROUP BY d.d_year, d.d_month ORDER BY d.d_month ASC;
+SELECT p.p_category, p.p_brand, AVG(lo.lo_extendedprice) AS avg_price FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_category = 'ELECTRONICS' GROUP BY p.p_category, p.p_brand;
+SELECT c.c_mktsegment, COUNT(*) AS num_orders FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_mktsegment = 'AUTOMOBILE' GROUP BY c.c_mktsegment;
+SELECT d.d_dayofweek, COUNT(*) AS num_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_year = 2021 AND d.d_month = 'January' GROUP BY d.d_dayofweek;
+SELECT s.s_city, AVG(lo.lo_supplycost) AS avg_supply_cost FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_city = 'GERMANY  8' GROUP BY s.s_city;
+SELECT p.p_type, COUNT(*) AS num_parts FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_size BETWEEN 10 AND 20 GROUP BY p.p_type ORDER BY num_parts DESC;
+SELECT c.c_name, c.c_phone, SUM(lo.lo_discount) AS total_discount FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_phone = '29-553-348-3907' GROUP BY c.c_name, c.c_phone;
+SELECT d.d_sellingseason, COUNT(*) AS num_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_year = 2021 AND d.d_sellingseason = 'Summer' GROUP BY d.d_sellingseason;

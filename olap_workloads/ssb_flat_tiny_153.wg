@@ -1,0 +1,4 @@
+SELECT c_region, p_category, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE p_mfgr = 'MFGR#1' GROUP BY c_region, p_category ORDER BY c_region, p_category;
+SELECT s_nation, p_brand, AVG(lo_supplycost) AS avg_supplycost FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' AND p_type = 'STANDARD BRUSHED BRASS' GROUP BY s_nation, p_brand ORDER BY s_nation, p_brand;
+SELECT c_city, p_mfgr, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND lo_discount BETWEEN 5 AND 10 GROUP BY c_city, p_mfgr ORDER BY c_city, p_mfgr;
+SELECT c_nation, p_category, AVG(lo_extendedprice) AS avg_extendedprice FROM (SELECT * FROM lineorder_flat WHERE p_type = 'PROMO ANODIZED COPPER' OR p_type = 'PROMO BRUSHED NICKEL') AS promo_orders GROUP BY c_nation, p_category ORDER BY c_nation, p_category;

@@ -1,0 +1,12 @@
+SELECT s_state, COUNT(*) AS store_count FROM store WHERE s_number_employees BETWEEN 218 AND 278 GROUP BY s_state HAVING COUNT(*) > 1 ORDER BY store_count DESC;
+SELECT s.s_state, AVG(ss.ss_sales_price) AS avg_sales_price FROM store_sales ss JOIN store s ON ss.ss_store_sk = s.s_store_sk WHERE s.s_state = 'TN' GROUP BY s.s_state;
+SELECT s.s_suite_number, COUNT(*) AS sales_count FROM store_sales ss JOIN store s ON ss.ss_store_sk = s.s_store_sk WHERE s.s_suite_number IN ('Suite 80', 'Suite D', 'Suite 100') GROUP BY s.s_suite_number ORDER BY sales_count DESC;
+SELECT t.t_am_pm, SUM(ss.ss_quantity) AS total_quantity FROM store_sales ss JOIN time_dim t ON ss.ss_sold_time_sk = t.t_time_sk WHERE t.t_am_pm = 'AM' GROUP BY t.t_am_pm;
+SELECT t.t_minute, COUNT(*) AS sales_count FROM store_sales ss JOIN time_dim t ON ss.ss_sold_time_sk = t.t_time_sk WHERE t.t_minute IN (1, 14, 11) GROUP BY t.t_minute ORDER BY sales_count DESC;
+SELECT t.t_time_id, AVG(ws.ws_ext_sales_price) AS avg_ext_sales_price FROM web_sales ws JOIN time_dim t ON ws.ws_sold_time_sk = t.t_time_sk WHERE t.t_time_id IN ('AAAAAAAADHCAAAAA', 'AAAAAAAANMDAAAAA', 'AAAAAAAABECAAAAA') GROUP BY t.t_time_id ORDER BY avg_ext_sales_price DESC;
+SELECT cp.cp_catalog_page_sk, SUM(cs.cs_quantity) AS total_quantity FROM catalog_sales cs JOIN catalog_page cp ON cs.cs_catalog_page_sk = cp.cp_catalog_page_sk WHERE cp.cp_catalog_page_sk IN (17, 95, 26) GROUP BY cp.cp_catalog_page_sk ORDER BY total_quantity DESC;
+SELECT ws.ws_sold_time_sk, COUNT(*) AS order_count FROM web_sales ws WHERE ws.ws_sold_time_sk IN (38105, 68115, 35956) GROUP BY ws.ws_sold_time_sk ORDER BY order_count DESC;
+SELECT ws.ws_ext_sales_price, COUNT(*) AS order_count FROM web_sales ws WHERE ws.ws_ext_sales_price IN (500.80, 3478.52, 1342.36) GROUP BY ws.ws_ext_sales_price ORDER BY order_count DESC;
+SELECT w.w_warehouse_name, SUM(inv.inv_quantity_on_hand) AS total_inventory FROM inventory inv JOIN warehouse w ON inv.inv_warehouse_sk = w.w_warehouse_sk GROUP BY w.w_warehouse_name ORDER BY total_inventory DESC;
+SELECT p.p_promo_name, COUNT(*) AS order_count FROM catalog_sales cs JOIN promotion p ON cs.cs_promo_sk = p.p_promo_sk WHERE p.p_discount_active = 'Y' GROUP BY p.p_promo_name ORDER BY order_count DESC;
+SELECT i.i_category, COUNT(*) AS order_count FROM store_sales ss JOIN item i ON ss.ss_item_sk = i.i_item_sk GROUP BY i.i_category ORDER BY order_count DESC;

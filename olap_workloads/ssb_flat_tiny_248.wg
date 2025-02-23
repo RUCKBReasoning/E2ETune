@@ -1,0 +1,4 @@
+SELECT c_city, COUNT(lo_orderkey) AS total_orders, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_partkey IN (13151, 13155, 13154) AND lo_suppkey IN (7394, 7852, 9787) GROUP BY c_city;
+SELECT p_brand, p_category, AVG(lo_quantity) AS avg_quantity, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 AND s_city IN ('BRAZIL   6', 'IRAQ     6', 'KENYA    9') GROUP BY p_brand, p_category;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS total_orders, SUM(lo_revenue) AS total_revenue, AVG(lo_supplycost) AS avg_supplycost FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND c_region = 'AMERICA' GROUP BY lo_orderpriority;
+SELECT s_nation, p_mfgr, COUNT(lo_orderkey) AS total_orders, SUM(lo_extendedprice * (1 - lo_discount)) AS total_discounted_price FROM lineorder_flat WHERE p_brand IN ('MFGR#4421', 'MFGR#5511', 'MFGR#4424') AND lo_commitdate BETWEEN 20210101 AND 20211231 GROUP BY s_nation, p_mfgr;

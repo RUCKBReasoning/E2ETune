@@ -1,0 +1,13 @@
+SELECT w_state, SUM(inv_quantity_on_hand) as total_inventory FROM inventory JOIN warehouse ON inv_warehouse_sk = w_warehouse_sk GROUP BY w_state ORDER BY total_inventory DESC;
+SELECT c_birth_country, COUNT(*) as num_customers FROM customer GROUP BY c_birth_country ORDER BY num_customers DESC;
+SELECT i_category, AVG(i_current_price) as avg_price FROM item GROUP BY i_category ORDER BY avg_price DESC;
+SELECT s_state, SUM(ss_sales_price) as total_sales FROM store_sales JOIN store ON ss_store_sk = s_store_sk GROUP BY s_state ORDER BY total_sales DESC;
+SELECT d_year, d_month_seq, SUM(ws_sales_price) as total_web_sales FROM web_sales JOIN date_dim ON ws_sold_date_sk = d_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT d_year, d_month_seq, SUM(cs_sales_price) as total_catalog_sales FROM catalog_sales JOIN date_dim ON cs_sold_date_sk = d_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT d_year, d_month_seq, SUM(ss_sales_price) as total_store_sales FROM store_sales JOIN date_dim ON ss_sold_date_sk = d_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT i_category, COUNT(*) as num_items FROM item WHERE i_manufact_id IN (SELECT i_manufact_id FROM item GROUP BY i_manufact_id HAVING COUNT(*) > 10) GROUP BY i_category ORDER BY num_items DESC;
+SELECT p_promo_name, SUM(cs_sales_price) as total_sales FROM catalog_sales JOIN promotion ON cs_promo_sk = p_promo_sk WHERE p_channel_tv = 'Y' GROUP BY p_promo_name ORDER BY total_sales DESC;
+SELECT hd_buy_potential, COUNT(*) as num_households FROM household_demographics WHERE hd_income_band_sk IN (SELECT ib_income_band_sk FROM income_band WHERE ib_upper_bound <= 50000) GROUP BY hd_buy_potential ORDER BY num_households DESC;
+SELECT ca_state, COUNT(*) as num_addresses FROM customer_address WHERE ca_county IN ('Williamson County') GROUP BY ca_state ORDER BY num_addresses DESC;
+SELECT i_category, SUM(cr_return_amount) as total_returns FROM catalog_returns JOIN item ON cr_item_sk = i_item_sk GROUP BY i_category ORDER BY total_returns DESC;
+SELECT r_reason_desc, COUNT(*) as num_returns FROM store_returns JOIN reason ON sr_reason_sk = r_reason_sk GROUP BY r_reason_desc ORDER BY num_returns DESC;

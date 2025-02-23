@@ -1,0 +1,17 @@
+SELECT c.c_nation, COUNT(lo.lo_orderkey) as total_orders FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_mktsegment = 'BUILDING' GROUP BY c.c_nation ORDER BY total_orders DESC;
+SELECT s.s_nation, SUM(lo.lo_revenue) as total_revenue FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_city = 'JORDAN   1' GROUP BY s.s_nation ORDER BY total_revenue DESC;
+SELECT d.d_year, COUNT(lo.lo_orderkey) as total_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_month = 'December' GROUP BY d.d_year ORDER BY total_orders DESC;
+SELECT p.p_category, AVG(lo.lo_quantity) as avg_quantity FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey GROUP BY p.p_category ORDER BY avg_quantity DESC;
+SELECT c.c_region, SUM(lo.lo_extendedprice * lo.lo_discount) as total_discounted_price FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey GROUP BY c.c_region ORDER BY total_discounted_price DESC;
+SELECT d.d_year, COUNT(lo.lo_orderkey) as total_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_holidayfl = '1' GROUP BY d.d_year ORDER BY total_orders DESC;
+SELECT s.s_name, SUM(lo.lo_supplycost) as total_supply_cost FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_nation = 'CHINA' GROUP BY s.s_name ORDER BY total_supply_cost DESC;
+SELECT p.p_brand, COUNT(lo.lo_orderkey) as total_orders FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_size BETWEEN 10 AND 20 GROUP BY p.p_brand ORDER BY total_orders DESC;
+SELECT c.c_name, SUM(lo.lo_revenue) as total_revenue FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_nation = 'ALGERIA' GROUP BY c.c_name ORDER BY total_revenue DESC;
+SELECT d.d_year, SUM(lo.lo_extendedprice) as total_extended_price FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_weekdayfl = '1' GROUP BY d.d_year ORDER BY total_extended_price DESC;
+SELECT s.s_region, COUNT(lo.lo_orderkey) as total_orders FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_nation = 'CANADA' GROUP BY s.s_region ORDER BY total_orders DESC;
+SELECT p.p_type, AVG(lo.lo_quantity) as avg_quantity FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_color = 'red' GROUP BY p.p_type ORDER BY avg_quantity DESC;
+SELECT c.c_city, SUM(lo.lo_revenue) as total_revenue FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_mktsegment = 'MACHINERY' GROUP BY c.c_city ORDER BY total_revenue DESC;
+SELECT d.d_yearmonth, COUNT(lo.lo_orderkey) as total_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_sellingseason = 'Summer' GROUP BY d.d_yearmonth ORDER BY total_orders DESC;
+SELECT s.s_name, SUM(lo.lo_extendedprice * lo.lo_discount) as total_discounted_price FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_nation = 'JORDAN' GROUP BY s.s_name ORDER BY total_discounted_price DESC;
+SELECT p.p_mfgr, COUNT(lo.lo_orderkey) as total_orders FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_container = 'SM CASE' GROUP BY p.p_mfgr ORDER BY total_orders DESC;
+SELECT c.c_name, SUM(lo.lo_extendedprice) as total_extended_price FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_mktsegment = 'FURNITURE' GROUP BY c.c_name ORDER BY total_extended_price DESC;

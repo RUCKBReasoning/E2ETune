@@ -1,0 +1,7 @@
+SELECT ca_state, COUNT(*) as num_customers FROM customer_address GROUP BY ca_state ORDER BY num_customers DESC;
+SELECT i_category, AVG(ws_sales_price) as avg_sales_price FROM web_sales INNER JOIN item ON ws_item_sk = i_item_sk GROUP BY i_category HAVING AVG(ws_sales_price) > 50 ORDER BY avg_sales_price DESC;
+SELECT s_store_name, SUM(ss_net_profit) as total_profit FROM store_sales INNER JOIN store ON ss_store_sk = s_store_sk WHERE ss_sold_date_sk BETWEEN 2451911 AND 2451941 GROUP BY s_store_name ORDER BY total_profit DESC LIMIT 10;
+SELECT r_reason_desc, COUNT(*) as num_returns FROM store_returns INNER JOIN reason ON sr_reason_sk = r_reason_sk GROUP BY r_reason_desc ORDER BY num_returns DESC;
+SELECT ib_lower_bound, ib_upper_bound, COUNT(*) as num_customers FROM customer_demographics INNER JOIN income_band ON cd_demo_sk = ib_income_band_sk WHERE cd_purchase_estimate > 1000 GROUP BY ib_lower_bound, ib_upper_bound ORDER BY num_customers DESC;
+SELECT w_warehouse_name, SUM(inv_quantity_on_hand) as total_inventory FROM inventory INNER JOIN warehouse ON inv_warehouse_sk = w_warehouse_sk GROUP BY w_warehouse_name HAVING SUM(inv_quantity_on_hand) > 100000 ORDER BY total_inventory DESC;
+SELECT p_promo_name, COUNT(*) as num_orders FROM catalog_sales INNER JOIN promotion ON cs_promo_sk = p_promo_sk WHERE cs_sold_date_sk BETWEEN 2451911 AND 2451941 AND p_channel_tv = 'Y' GROUP BY p_promo_name ORDER BY num_orders DESC;

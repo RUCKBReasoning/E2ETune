@@ -1,0 +1,15 @@
+SELECT s.s_store_name, COUNT(ss.ss_ticket_number) AS total_sales FROM store_sales ss JOIN store s ON ss.ss_store_sk = s.s_store_sk WHERE s.s_county = 'Williamson County' GROUP BY s.s_store_name ORDER BY total_sales DESC;
+SELECT s.s_company_name, AVG(s.s_floor_space) AS average_floor_space FROM store s WHERE s.s_gmt_offset = '-5.00' GROUP BY s.s_company_name;
+SELECT cc.cc_call_center_sk, cc.cc_manager, COUNT(cs.cs_order_number) AS total_orders FROM catalog_sales cs JOIN call_center cc ON cs.cs_call_center_sk = cc.cc_call_center_sk WHERE cc.cc_call_center_sk IN ('6', '2', '4') GROUP BY cc.cc_call_center_sk, cc.cc_manager;
+SELECT cc.cc_company_name, SUM(cs.cs_net_paid_inc_tax) AS total_revenue FROM catalog_sales cs JOIN call_center cc ON cs.cs_call_center_sk = cc.cc_call_center_sk WHERE cc.cc_gmt_offset = '-5.00' GROUP BY cc.cc_company_name;
+SELECT cc.cc_manager, COUNT(cr.cr_order_number) AS total_returns FROM catalog_returns cr JOIN call_center cc ON cr.cr_call_center_sk = cc.cc_call_center_sk WHERE cc.cc_manager IN ('Felipe Perkins', 'Bob Belcher', 'Larry Mccray') GROUP BY cc.cc_manager;
+SELECT ws.ws_web_site_sk, COUNT(ws.ws_order_number) AS total_sales FROM web_sales ws WHERE ws.ws_web_site_sk IN (SELECT web_site_sk FROM web_site WHERE web_gmt_offset = '-5.00') GROUP BY ws.ws_web_site_sk;
+SELECT wr.wr_web_page_sk, COUNT(wr.wr_order_number) AS total_returns FROM web_returns wr WHERE wr.wr_web_page_sk IN ('35', '6', '8') GROUP BY wr.wr_web_page_sk;
+SELECT wr.wr_refunded_hdemo_sk, AVG(wr.wr_return_amt) AS average_return_amount FROM web_returns wr WHERE wr.wr_refunded_hdemo_sk IN ('3161', '6708', '2107') GROUP BY wr.wr_refunded_hdemo_sk;
+SELECT wr.wr_returning_hdemo_sk, SUM(wr.wr_account_credit) AS total_account_credit FROM web_returns wr WHERE wr.wr_returning_hdemo_sk IN ('5709', '581', '2720') GROUP BY wr.wr_returning_hdemo_sk;
+SELECT i.i_item_id, COUNT(ss.ss_ticket_number) AS total_sales FROM store_sales ss JOIN item i ON ss.ss_item_sk = i.i_item_sk GROUP BY i.i_item_id HAVING COUNT(ss.ss_ticket_number) > 1000 ORDER BY total_sales DESC;
+SELECT i.i_item_id, SUM(inv.inv_quantity_on_hand) AS total_inventory FROM inventory inv JOIN item i ON inv.inv_item_sk = i.i_item_sk GROUP BY i.i_item_id HAVING SUM(inv.inv_quantity_on_hand) < 100 ORDER BY total_inventory ASC;
+SELECT p.p_promo_name, COUNT(cs.cs_order_number) AS total_orders FROM catalog_sales cs JOIN promotion p ON cs.cs_promo_sk = p.p_promo_sk GROUP BY p.p_promo_name ORDER BY total_orders DESC;
+SELECT d.d_year, d.d_month_seq, SUM(ss.ss_net_profit) AS monthly_profit FROM store_sales ss JOIN date_dim d ON ss.ss_sold_date_sk = d.d_date_sk GROUP BY d.d_year, d.d_month_seq ORDER BY d.d_year, d.d_month_seq;
+SELECT d.d_year, d.d_week_seq, SUM(ws.ws_net_profit) AS weekly_profit FROM web_sales ws JOIN date_dim d ON ws.ws_sold_date_sk = d.d_date_sk GROUP BY d.d_year, d.d_week_seq ORDER BY d.d_year, d.d_week_seq;
+SELECT d.d_year, d.d_quarter_seq, SUM(cs.cs_net_profit) AS quarterly_profit FROM catalog_sales cs JOIN date_dim d ON cs.cs_sold_date_sk = d.d_date_sk GROUP BY d.d_year, d.d_quarter_seq ORDER BY d.d_year, d.d_quarter_seq;

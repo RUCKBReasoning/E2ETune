@@ -1,0 +1,8 @@
+SELECT c_city, c_nation, c_region, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_commitdate = '19930430' GROUP BY c_city, c_nation, c_region ORDER BY num_orders DESC;
+SELECT p_category, p_brand, p_color, SUM(lo_quantity) AS total_quantity, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_commitdate = '19970227' AND p_color IN ('red', 'peru', 'honeydew') GROUP BY p_category, p_brand, p_color ORDER BY total_quantity DESC;
+SELECT s_city, s_nation, s_region, COUNT(*) AS num_orders, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_commitdate = '19980212' AND s_city IN ('SAUDI ARA2', 'ARGENTINA6', 'EGYPT    3') GROUP BY s_city, s_nation, s_region ORDER BY num_orders DESC;
+SELECT c_name, c_city, c_nation, c_region, COUNT(*) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE c_name IN ('Customer#000132547', 'Customer#000073834', 'Customer#000096967') GROUP BY c_name, c_city, c_nation, c_region ORDER BY total_revenue DESC;
+SELECT lo_orderpriority, COUNT(*) AS num_orders, SUM(lo_ordtotalprice) AS total_order_price, AVG(lo_discount) AS avg_discount FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT p_mfgr, p_category, COUNT(*) AS num_products, SUM(p_size) AS total_size FROM lineorder_flat GROUP BY p_mfgr, p_category ORDER BY num_products DESC;
+SELECT s_name, s_city, s_nation, s_region, COUNT(*) AS num_orders, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY s_name, s_city, s_nation, s_region ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(*) AS num_orders, SUM(lo_revenue) AS total_revenue, AVG(lo_tax) AS avg_tax FROM lineorder_flat GROUP BY c_mktsegment ORDER BY total_revenue DESC;

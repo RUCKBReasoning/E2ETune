@@ -1,0 +1,2 @@
+SELECT lo_orderpriority, COUNT(*) AS order_count, AVG(lo_ordtotalprice) AS avg_order_price, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_linenumber = 3 AND p_container = 'LG JAR' GROUP BY lo_orderpriority ORDER BY order_count DESC;
+SELECT c_region, s_region, p_category, SUM(lo_revenue) AS total_revenue, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_linenumber IN (4, 7) AND p_container IN ('WRAP PACK', 'SM PKG') AND lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY c_region, s_region, p_category ORDER BY total_revenue DESC;

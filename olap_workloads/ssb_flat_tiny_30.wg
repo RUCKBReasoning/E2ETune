@@ -1,0 +1,7 @@
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shippriority = '0' GROUP BY c_city ORDER BY num_orders DESC;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category ORDER BY avg_price DESC;
+SELECT s_city, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY s_city ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(DISTINCT lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_commitdate >= 20220101 GROUP BY c_mktsegment ORDER BY total_revenue DESC;
+SELECT p_brand, p_color, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE s_city IN ('ALGERIA  0', 'VIETNAM  3', 'PERU     4') GROUP BY p_brand, p_color ORDER BY total_quantity DESC;
+SELECT c_nation, COUNT(*) AS num_orders, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' OR lo_orderpriority = '2-HIGH' GROUP BY c_nation ORDER BY num_orders DESC, avg_discount ASC;
+SELECT p_mfgr, p_type, COUNT(*) AS num_products, AVG(p_size) AS avg_size FROM lineorder_flat WHERE lo_extendedprice > (SELECT AVG(lo_extendedprice) FROM lineorder_flat) GROUP BY p_mfgr, p_type ORDER BY num_products DESC, avg_size ASC;

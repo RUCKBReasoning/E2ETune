@@ -1,0 +1,13 @@
+SELECT t.title, COUNT(c.id) AS cast_count FROM title t JOIN cast_info c ON t.id = c.movie_id WHERE t.production_year = 2000 GROUP BY t.title HAVING COUNT(c.id) > 10 ORDER BY COUNT(c.id) DESC;
+SELECT k.keyword, COUNT(mk.movie_id) AS movie_count FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword ORDER BY movie_count DESC LIMIT 10;
+SELECT n.name, COUNT(ci.id) AS roles_count FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE n.gender = 'M' GROUP BY n.name ORDER BY roles_count DESC LIMIT 10;
+SELECT t.title, AVG(mi.info::integer) AS average_rating FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 101 GROUP BY t.title HAVING AVG(mi.info::integer) > 8.0 ORDER BY average_rating DESC;
+SELECT t.title, COUNT(DISTINCT ci.person_id) AS unique_actors FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE t.kind_id = 1 GROUP BY t.title HAVING COUNT(DISTINCT ci.person_id) > 50 ORDER BY unique_actors DESC;
+SELECT t.title, COUNT(mk.keyword_id) AS keyword_count FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id WHERE t.production_year BETWEEN 2010 AND 2020 GROUP BY t.title ORDER BY keyword_count DESC LIMIT 10;
+SELECT n.name, COUNT(pi.id) AS info_count FROM name n JOIN person_info pi ON n.id = pi.person_id WHERE n.gender = 'F' GROUP BY n.name HAVING COUNT(pi.id) > 5 ORDER BY info_count DESC;
+SELECT t1.title AS movie1, t2.title AS movie2, lt.link FROM movie_link ml JOIN title t1 ON ml.movie_id = t1.id JOIN title t2 ON ml.linked_movie_id = t2.id JOIN link_type lt ON ml.link_type_id = lt.id WHERE ml.link_type_id IN (10, 9, 5) AND ml.movie_id IN (426, 6605, 4859) AND ml.linked_movie_id IN (1638721, 2275466, 2012989);
+SELECT t.title, COUNT(mc.id) AS company_count FROM title t JOIN movie_companies mc ON t.id = mc.movie_id WHERE t.production_year BETWEEN 1990 AND 2000 GROUP BY t.title HAVING COUNT(mc.id) > 3 ORDER BY company_count DESC;
+SELECT cn.name, COUNT(ci.id) AS character_count FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id GROUP BY cn.name HAVING COUNT(ci.id) > 10 ORDER BY character_count DESC;
+SELECT kt.kind, COUNT(t.id) AS title_count FROM kind_type kt JOIN title t ON kt.id = t.kind_id GROUP BY kt.kind ORDER BY title_count DESC;
+SELECT it.info, COUNT(mi.id) AS info_count FROM info_type it JOIN movie_info mi ON it.id = mi.info_type_id GROUP BY it.info HAVING COUNT(mi.id) > 1000 ORDER BY info_count DESC;
+SELECT t.title, COUNT(DISTINCT mk.keyword_id) AS unique_keywords FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id WHERE t.production_year BETWEEN 2000 AND 2010 GROUP BY t.title HAVING COUNT(DISTINCT mk.keyword_id) > 20 ORDER BY unique_keywords DESC;

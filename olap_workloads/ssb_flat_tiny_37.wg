@@ -1,0 +1,11 @@
+SELECT c_nation, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE c_nation IN ('UNITED STATES', 'FRANCE', 'GERMANY') GROUP BY c_nation ORDER BY total_revenue DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY p_category ORDER BY total_quantity DESC;
+SELECT s_name, COUNT(lo_orderkey) AS num_orders, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_name ORDER BY total_supply_cost DESC;
+SELECT c_city, COUNT(lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE c_phone IN ('23-633-911-8606', '34-164-829-2871', '34-337-495-1493') GROUP BY c_city ORDER BY total_revenue DESC;
+SELECT p_brand, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE p_size BETWEEN 10 AND 20 GROUP BY p_brand ORDER BY total_revenue DESC;
+SELECT lo_orderdate, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY lo_orderdate ORDER BY total_revenue DESC;
+SELECT c_mktsegment, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat GROUP BY c_mktsegment ORDER BY total_revenue DESC;
+SELECT s_region, COUNT(lo_orderkey) AS num_orders, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_region ORDER BY total_supply_cost DESC;
+SELECT p_type, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE p_color = 'RED' GROUP BY p_type ORDER BY total_revenue DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders, SUM(lo_tax) AS total_tax FROM lineorder_flat GROUP BY lo_orderpriority HAVING SUM(lo_tax) > 1000 ORDER BY total_tax DESC;

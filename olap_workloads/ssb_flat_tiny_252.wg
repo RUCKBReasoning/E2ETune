@@ -1,0 +1,15 @@
+SELECT c_region, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = 'HIGH' GROUP BY c_region ORDER BY num_orders DESC;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_quantity BETWEEN 30 AND 35 GROUP BY s_nation ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(DISTINCT lo_custkey) AS num_customers FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT p_brand, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE p_category = 'MFGR#41' GROUP BY p_brand ORDER BY total_revenue DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders, AVG(lo_ordtotalprice) AS avg_order_price FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT c_city, SUM(lo_extendedprice * lo_discount) AS total_discounted_price FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY c_city ORDER BY total_discounted_price DESC;
+SELECT s_name, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY s_name ORDER BY num_orders DESC;
+SELECT p_type, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_category = 'MFGR#33' GROUP BY p_type ORDER BY total_quantity DESC;
+SELECT c_nation, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_commitdate BETWEEN 20210101 AND 20211231 GROUP BY c_nation ORDER BY total_tax DESC;
+SELECT s_region, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shippriority = '1' GROUP BY s_region ORDER BY num_orders DESC;
+SELECT p_mfgr, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE p_category = 'MFGR#22' GROUP BY p_mfgr ORDER BY total_revenue DESC;
+SELECT c_city, COUNT(lo_orderkey) AS num_orders, AVG(lo_extendedprice) AS avg_order_price FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY c_city ORDER BY num_orders DESC;
+SELECT p_container, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_shipmode = 'RAIL' GROUP BY p_container ORDER BY total_quantity DESC;
+SELECT c_name, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = 'LOW' AND lo_shipmode = 'TRUCK' GROUP BY c_name ORDER BY num_orders DESC;

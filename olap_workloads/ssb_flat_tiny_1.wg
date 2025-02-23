@@ -1,0 +1,8 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = 'HIGH' GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_discount > 0 AND lo_orderdate >= 20210101 AND lo_orderdate <= 20211231 GROUP BY p_category;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND lo_commitdate >= 20210101 AND lo_commitdate <= 20211231 GROUP BY s_name ORDER BY total_supply_cost DESC;
+SELECT c_nation, COUNT(*) AS num_customers FROM (SELECT DISTINCT lo_custkey, c_nation FROM lineorder_flat WHERE c_phone LIKE '16-622-%') AS subquery GROUP BY c_nation;
+SELECT p_brand, COUNT(*) AS num_orders, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_suppkey IN (6423, 3863, 6318) AND c_region = 'AMERICA' GROUP BY p_brand;
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = 'LOW' AND lo_shippriority = 'Y' GROUP BY c_city HAVING COUNT(*) > 10 ORDER BY num_orders DESC;
+SELECT p_mfgr, p_type, AVG(p_size) AS avg_size FROM lineorder_flat WHERE lo_orderdate >= 20210101 AND lo_orderdate <= 20211231 GROUP BY p_mfgr, p_type;
+SELECT c_mktsegment, COUNT(*) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE c_region = 'EUROPE' AND lo_orderdate >= 20210101 AND lo_orderdate <= 20211231 GROUP BY c_mktsegment ORDER BY total_revenue DESC;

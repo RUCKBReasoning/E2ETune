@@ -1,0 +1,702 @@
+{
+    "smallbank/sample_smallbank_config0.xml": [
+        10,
+        32,
+        10,
+        34,
+        2
+    ],
+    "smallbank/sample_smallbank_config1.xml": [
+        0,
+        2,
+        71,
+        4,
+        10
+    ],
+    "smallbank/sample_smallbank_config2.xml": [
+        14,
+        7,
+        7,
+        2,
+        40
+    ],
+    "smallbank/sample_smallbank_config3.xml": [
+        19,
+        1,
+        2,
+        0,
+        1
+    ],
+    "smallbank/sample_smallbank_config4.xml": [
+        4,
+        5,
+        3,
+        2,
+        12
+    ],
+    "smallbank/sample_smallbank_config5.xml": [
+        3,
+        1,
+        82,
+        0,
+        1
+    ],
+    "smallbank/sample_smallbank_config6.xml": [
+        3,
+        77,
+        15,
+        0,
+        5
+    ],
+    "smallbank/sample_smallbank_config7.xml": [
+        7,
+        0,
+        0,
+        17,
+        5
+    ],
+    "smallbank/sample_smallbank_config8.xml": [
+        10,
+        1,
+        3,
+        0,
+        81
+    ],
+    "smallbank/sample_smallbank_config9.xml": [
+        0,
+        2,
+        6,
+        8,
+        24
+    ],
+    "smallbank/sample_smallbank_config10.xml": [
+        5,
+        17,
+        21,
+        24,
+        0
+    ],
+    "smallbank/sample_smallbank_config11.xml": [
+        52,
+        13,
+        4,
+        4,
+        22
+    ],
+    "smallbank/sample_smallbank_config12.xml": [
+        5,
+        14,
+        20,
+        6,
+        37
+    ],
+    "smallbank/sample_smallbank_config13.xml": [
+        44,
+        27,
+        4,
+        0,
+        20
+    ],
+    "smallbank/sample_smallbank_config14.xml": [
+        5,
+        89,
+        1,
+        3,
+        1
+    ],
+    "smallbank/sample_smallbank_config15.xml": [
+        23,
+        6,
+        44,
+        25,
+        2
+    ],
+    "smallbank/sample_smallbank_config16.xml": [
+        3,
+        30,
+        20,
+        5,
+        4
+    ],
+    "smallbank/sample_smallbank_config17.xml": [
+        12,
+        20,
+        3,
+        38,
+        26
+    ],
+    "smallbank/sample_smallbank_config18.xml": [
+        21,
+        1,
+        22,
+        35,
+        20
+    ],
+    "smallbank/sample_smallbank_config19.xml": [
+        1,
+        2,
+        85,
+        12,
+        0
+    ],
+    "smallbank/sample_smallbank_config20.xml": [
+        23,
+        23,
+        8,
+        0,
+        20
+    ],
+    "smallbank/sample_smallbank_config21.xml": [
+        8,
+        44,
+        27,
+        5,
+        10
+    ],
+    "smallbank/sample_smallbank_config22.xml": [
+        0,
+        7,
+        8,
+        26,
+        28
+    ],
+    "smallbank/sample_smallbank_config23.xml": [
+        9,
+        20,
+        0,
+        26,
+        42
+    ],
+    "smallbank/sample_smallbank_config24.xml": [
+        1,
+        10,
+        13,
+        7,
+        66
+    ],
+    "smallbank/sample_smallbank_config25.xml": [
+        1,
+        2,
+        26,
+        0,
+        33
+    ],
+    "smallbank/sample_smallbank_config26.xml": [
+        82,
+        0,
+        4,
+        6,
+        8
+    ],
+    "smallbank/sample_smallbank_config27.xml": [
+        1,
+        10,
+        15,
+        28,
+        33
+    ],
+    "smallbank/sample_smallbank_config28.xml": [
+        29,
+        2,
+        3,
+        26,
+        1
+    ],
+    "smallbank/sample_smallbank_config29.xml": [
+        11,
+        10,
+        0,
+        69,
+        9
+    ],
+    "smallbank/sample_smallbank_config30.xml": [
+        6,
+        1,
+        88,
+        4,
+        0
+    ],
+    "smallbank/sample_smallbank_config31.xml": [
+        49,
+        6,
+        10,
+        4,
+        2
+    ],
+    "smallbank/sample_smallbank_config32.xml": [
+        0,
+        13,
+        12,
+        34,
+        35
+    ],
+    "smallbank/sample_smallbank_config33.xml": [
+        2,
+        1,
+        24,
+        17,
+        3
+    ],
+    "smallbank/sample_smallbank_config34.xml": [
+        1,
+        48,
+        6,
+        45,
+        0
+    ],
+    "smallbank/sample_smallbank_config35.xml": [
+        0,
+        4,
+        85,
+        1,
+        3
+    ],
+    "smallbank/sample_smallbank_config36.xml": [
+        1,
+        3,
+        12,
+        6,
+        35
+    ],
+    "smallbank/sample_smallbank_config37.xml": [
+        0,
+        3,
+        73,
+        2,
+        19
+    ],
+    "smallbank/sample_smallbank_config38.xml": [
+        5,
+        0,
+        89,
+        3,
+        3
+    ],
+    "smallbank/sample_smallbank_config39.xml": [
+        0,
+        1,
+        80,
+        15,
+        0
+    ],
+    "smallbank/sample_smallbank_config40.xml": [
+        85,
+        3,
+        8,
+        3,
+        1
+    ],
+    "smallbank/sample_smallbank_config41.xml": [
+        2,
+        57,
+        1,
+        6,
+        33
+    ],
+    "smallbank/sample_smallbank_config42.xml": [
+        2,
+        88,
+        0,
+        5,
+        3
+    ],
+    "smallbank/sample_smallbank_config43.xml": [
+        8,
+        1,
+        49,
+        7,
+        33
+    ],
+    "smallbank/sample_smallbank_config44.xml": [
+        5,
+        6,
+        81,
+        3,
+        3
+    ],
+    "smallbank/sample_smallbank_config45.xml": [
+        1,
+        10,
+        30,
+        54,
+        0
+    ],
+    "smallbank/sample_smallbank_config46.xml": [
+        71,
+        2,
+        1,
+        25,
+        0
+    ],
+    "smallbank/sample_smallbank_config47.xml": [
+        2,
+        13,
+        30,
+        0,
+        52
+    ],
+    "smallbank/sample_smallbank_config48.xml": [
+        15,
+        0,
+        1,
+        1,
+        81
+    ],
+    "smallbank/sample_smallbank_config49.xml": [
+        8,
+        0,
+        22,
+        0,
+        5
+    ],
+    "smallbank/sample_smallbank_config50.xml": [
+        19,
+        0,
+        14,
+        2,
+        63
+    ],
+    "smallbank/sample_smallbank_config51.xml": [
+        12,
+        14,
+        30,
+        12,
+        25
+    ],
+    "smallbank/sample_smallbank_config52.xml": [
+        2,
+        44,
+        5,
+        9,
+        40
+    ],
+    "smallbank/sample_smallbank_config53.xml": [
+        14,
+        65,
+        18,
+        0,
+        3
+    ],
+    "smallbank/sample_smallbank_config54.xml": [
+        1,
+        3,
+        48,
+        38,
+        3
+    ],
+    "smallbank/sample_smallbank_config55.xml": [
+        21,
+        20,
+        27,
+        0,
+        11
+    ],
+    "smallbank/sample_smallbank_config56.xml": [
+        54,
+        23,
+        4,
+        15,
+        3
+    ],
+    "smallbank/sample_smallbank_config57.xml": [
+        14,
+        19,
+        32,
+        12,
+        7
+    ],
+    "smallbank/sample_smallbank_config58.xml": [
+        1,
+        9,
+        3,
+        1,
+        85
+    ],
+    "smallbank/sample_smallbank_config59.xml": [
+        2,
+        0,
+        76,
+        4,
+        4
+    ],
+    "smallbank/sample_smallbank_config60.xml": [
+        22,
+        12,
+        20,
+        22,
+        21
+    ],
+    "smallbank/sample_smallbank_config61.xml": [
+        15,
+        0,
+        6,
+        1,
+        2
+    ],
+    "smallbank/sample_smallbank_config62.xml": [
+        1,
+        2,
+        6,
+        5,
+        82
+    ],
+    "smallbank/sample_smallbank_config63.xml": [
+        1,
+        85,
+        12,
+        1,
+        1
+    ],
+    "smallbank/sample_smallbank_config64.xml": [
+        1,
+        35,
+        0,
+        8,
+        12
+    ],
+    "smallbank/sample_smallbank_config65.xml": [
+        6,
+        47,
+        0,
+        1,
+        46
+    ],
+    "smallbank/sample_smallbank_config66.xml": [
+        9,
+        15,
+        7,
+        51,
+        1
+    ],
+    "smallbank/sample_smallbank_config67.xml": [
+        49,
+        47,
+        1,
+        1,
+        2
+    ],
+    "smallbank/sample_smallbank_config68.xml": [
+        67,
+        6,
+        6,
+        1,
+        6
+    ],
+    "smallbank/sample_smallbank_config69.xml": [
+        1,
+        17,
+        38,
+        2,
+        23
+    ],
+    "smallbank/sample_smallbank_config70.xml": [
+        12,
+        36,
+        1,
+        1,
+        24
+    ],
+    "smallbank/sample_smallbank_config71.xml": [
+        52,
+        34,
+        0,
+        9,
+        1
+    ],
+    "smallbank/sample_smallbank_config72.xml": [
+        21,
+        5,
+        28,
+        21,
+        24
+    ],
+    "smallbank/sample_smallbank_config73.xml": [
+        3,
+        0,
+        0,
+        31,
+        2
+    ],
+    "smallbank/sample_smallbank_config74.xml": [
+        40,
+        1,
+        6,
+        1,
+        12
+    ],
+    "smallbank/sample_smallbank_config75.xml": [
+        23,
+        20,
+        3,
+        33,
+        5
+    ],
+    "smallbank/sample_smallbank_config76.xml": [
+        74,
+        3,
+        13,
+        2,
+        7
+    ],
+    "smallbank/sample_smallbank_config77.xml": [
+        6,
+        2,
+        22,
+        4,
+        25
+    ],
+    "smallbank/sample_smallbank_config78.xml": [
+        13,
+        2,
+        0,
+        84,
+        0
+    ],
+    "smallbank/sample_smallbank_config79.xml": [
+        0,
+        73,
+        16,
+        10,
+        0
+    ],
+    "smallbank/sample_smallbank_config80.xml": [
+        0,
+        19,
+        4,
+        2,
+        75
+    ],
+    "smallbank/sample_smallbank_config81.xml": [
+        30,
+        28,
+        13,
+        17,
+        7
+    ],
+    "smallbank/sample_smallbank_config82.xml": [
+        20,
+        16,
+        4,
+        15,
+        36
+    ],
+    "smallbank/sample_smallbank_config83.xml": [
+        0,
+        77,
+        0,
+        18,
+        1
+    ],
+    "smallbank/sample_smallbank_config84.xml": [
+        55,
+        10,
+        5,
+        15,
+        13
+    ],
+    "smallbank/sample_smallbank_config85.xml": [
+        13,
+        5,
+        65,
+        7,
+        1
+    ],
+    "smallbank/sample_smallbank_config86.xml": [
+        0,
+        1,
+        1,
+        0,
+        25
+    ],
+    "smallbank/sample_smallbank_config87.xml": [
+        43,
+        6,
+        30,
+        11,
+        6
+    ],
+    "smallbank/sample_smallbank_config88.xml": [
+        22,
+        17,
+        0,
+        1,
+        55
+    ],
+    "smallbank/sample_smallbank_config89.xml": [
+        0,
+        55,
+        0,
+        1,
+        40
+    ],
+    "smallbank/sample_smallbank_config90.xml": [
+        2,
+        42,
+        23,
+        1,
+        0
+    ],
+    "smallbank/sample_smallbank_config91.xml": [
+        5,
+        59,
+        2,
+        17,
+        2
+    ],
+    "smallbank/sample_smallbank_config92.xml": [
+        2,
+        96,
+        1,
+        0,
+        1
+    ],
+    "smallbank/sample_smallbank_config93.xml": [
+        21,
+        31,
+        1,
+        0,
+        0
+    ],
+    "smallbank/sample_smallbank_config94.xml": [
+        7,
+        43,
+        0,
+        12,
+        4
+    ],
+    "smallbank/sample_smallbank_config95.xml": [
+        15,
+        12,
+        17,
+        31,
+        4
+    ],
+    "smallbank/sample_smallbank_config96.xml": [
+        1,
+        1,
+        10,
+        70,
+        18
+    ],
+    "smallbank/sample_smallbank_config97.xml": [
+        3,
+        32,
+        11,
+        6,
+        45
+    ],
+    "smallbank/sample_smallbank_config98.xml": [
+        8,
+        6,
+        5,
+        2,
+        74
+    ],
+    "smallbank/sample_smallbank_config99.xml": [
+        1,
+        18,
+        2,
+        0,
+        27
+    ]
+}

@@ -1,0 +1,13 @@
+SELECT n_name, COUNT(*) as num_customers FROM nation JOIN customer ON n_nationkey = c_nationkey GROUP BY n_name ORDER BY num_customers DESC;
+SELECT r_name, AVG(c_acctbal) as avg_balance FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey GROUP BY r_name ORDER BY avg_balance DESC;
+SELECT p_type, SUM(ps_availqty) as total_avail_qty FROM part JOIN partsupp ON p_partkey = ps_partkey GROUP BY p_type ORDER BY total_avail_qty DESC;
+SELECT s_name, SUM(l_extendedprice * (1 - l_discount)) as total_revenue FROM supplier JOIN lineitem ON s_suppkey = l_suppkey JOIN orders ON l_orderkey = o_orderkey WHERE o_orderstatus = 'F' GROUP BY s_name ORDER BY total_revenue DESC;
+SELECT o_orderpriority, COUNT(*) as num_orders FROM orders WHERE o_orderstatus = 'P' GROUP BY o_orderpriority ORDER BY num_orders DESC;
+SELECT n_name, r_name, COUNT(*) as num_suppliers FROM nation JOIN region ON n_regionkey = r_regionkey JOIN supplier ON n_nationkey = s_nationkey GROUP BY n_name, r_name ORDER BY num_suppliers DESC;
+SELECT p_brand, p_type, COUNT(*) as num_parts FROM part WHERE p_size BETWEEN 1 AND 50 GROUP BY p_brand, p_type ORDER BY num_parts DESC;
+SELECT c_mktsegment, AVG(o_totalprice) as avg_order_price FROM customer JOIN orders ON c_custkey = o_custkey GROUP BY c_mktsegment ORDER BY avg_order_price DESC;
+SELECT s_name, COUNT(*) as num_orders FROM supplier JOIN lineitem ON s_suppkey = l_suppkey JOIN orders ON l_orderkey = o_orderkey WHERE o_orderstatus = 'A' GROUP BY s_name ORDER BY num_orders DESC;
+SELECT n_name, COUNT(*) as num_orders FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey WHERE o_orderstatus = 'F' GROUP BY n_name ORDER BY num_orders DESC;
+SELECT p_type, SUM(l_extendedprice * (1 - l_discount)) as total_revenue FROM part JOIN lineitem ON p_partkey = l_partkey JOIN orders ON l_orderkey = o_orderkey WHERE o_orderstatus = 'F' GROUP BY p_type ORDER BY total_revenue DESC;
+SELECT r_name, SUM(l_extendedprice * (1 - l_discount)) as total_revenue FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE o_orderstatus = 'F' GROUP BY r_name ORDER BY total_revenue DESC;
+SELECT c_name, SUM(l_extendedprice * (1 - l_discount)) as total_revenue FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE o_orderstatus = 'F' GROUP BY c_name HAVING SUM(l_extendedprice * (1 - l_discount)) > 1000000 ORDER BY total_revenue DESC;

@@ -1,0 +1,12 @@
+SELECT COUNT(*) FROM store_sales WHERE ss_sales_price > (SELECT AVG(ss_sales_price) FROM store_sales);
+SELECT s_state, SUM(ss_net_profit) FROM store_sales INNER JOIN store ON store_sales.ss_store_sk = store.s_store_sk GROUP BY s_state ORDER BY SUM(ss_net_profit) DESC;
+SELECT t_hour, COUNT(*) FROM store_sales INNER JOIN time_dim ON store_sales.ss_sold_time_sk = time_dim.t_time_sk WHERE t_hour >= 9 AND t_hour <= 17 GROUP BY t_hour ORDER BY t_hour;
+SELECT i_category, SUM(cs_sales_price) FROM catalog_sales INNER JOIN item ON catalog_sales.cs_item_sk = item.i_item_sk WHERE cs_sales_price > (SELECT AVG(cs_sales_price) FROM catalog_sales) GROUP BY i_category;
+SELECT wp_url, COUNT(wr_order_number) FROM web_returns INNER JOIN web_page ON web_returns.wr_web_page_sk = web_page.wp_web_page_sk WHERE wp_url = 'http://www.foo.com' GROUP BY wp_url;
+SELECT w_state, SUM(inv_quantity_on_hand) FROM inventory INNER JOIN warehouse ON inventory.inv_warehouse_sk = warehouse.w_warehouse_sk GROUP BY w_state;
+SELECT cc_call_center_id, COUNT(cs_order_number) FROM catalog_sales INNER JOIN call_center ON catalog_sales.cs_call_center_sk = call_center.cc_call_center_sk GROUP BY cc_call_center_id HAVING COUNT(cs_order_number) > 10;
+SELECT i_brand, i_category, SUM(ss_sales_price) FROM store_sales INNER JOIN item ON store_sales.ss_item_sk = item.i_item_sk WHERE ss_sales_price > (SELECT AVG(ss_sales_price) FROM store_sales) GROUP BY i_brand, i_category;
+SELECT w_warehouse_name, SUM(inv_quantity_on_hand) FROM inventory INNER JOIN warehouse ON inventory.inv_warehouse_sk = warehouse.w_warehouse_sk GROUP BY w_warehouse_name HAVING SUM(inv_quantity_on_hand) > 1000;
+SELECT r_reason_desc, COUNT(sr_ticket_number) FROM store_returns INNER JOIN reason ON store_returns.sr_reason_sk = reason.r_reason_sk GROUP BY r_reason_desc HAVING COUNT(sr_ticket_number) > 5;
+SELECT p_promo_name, COUNT(cs_order_number) FROM catalog_sales INNER JOIN promotion ON catalog_sales.cs_promo_sk = promotion.p_promo_sk WHERE cs_sales_price > (SELECT AVG(cs_sales_price) FROM catalog_sales) GROUP BY p_promo_name;
+SELECT d_day_name, COUNT(ss_ticket_number) FROM store_sales INNER JOIN date_dim ON store_sales.ss_sold_date_sk = date_dim.d_date_sk WHERE d_day_name IN ('Saturday', 'Sunday') GROUP BY d_day_name;

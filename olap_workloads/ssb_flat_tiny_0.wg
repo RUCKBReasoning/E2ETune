@@ -1,0 +1,7 @@
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder_flat WHERE lo_commitdate = '19970702' GROUP BY lo_orderpriority ORDER BY order_count DESC;
+SELECT s_city, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_commitdate = '19950922' AND p_container = 'LG CAN' GROUP BY s_city ORDER BY total_supply_cost DESC;
+SELECT p_category, AVG(lo_extendedprice) AS avg_extended_price FROM lineorder_flat WHERE lo_ordtotalprice = '21493112' AND s_city = 'ALGERIA  3' GROUP BY p_category ORDER BY avg_extended_price DESC;
+SELECT c_region, COUNT(DISTINCT lo_custkey) AS unique_customer_count FROM lineorder_flat WHERE lo_commitdate = '19951129' AND p_container = 'WRAP BOX' GROUP BY c_region ORDER BY unique_customer_count DESC;
+SELECT p_brand, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_ordtotalprice = '24729669' AND s_city = 'CHINA    5' GROUP BY p_brand ORDER BY total_quantity DESC;
+SELECT c_mktsegment, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_commitdate = '19970702' AND p_container = 'LG CASE' GROUP BY c_mktsegment ORDER BY total_revenue DESC;
+SELECT lo_shipmode, COUNT(*) AS order_count FROM (SELECT DISTINCT lo_orderkey, lo_shipmode FROM lineorder_flat WHERE lo_ordtotalprice = '22887560' AND s_city = 'UNITED ST7') AS subquery GROUP BY lo_shipmode ORDER BY order_count DESC;

@@ -1,0 +1,10 @@
+SELECT r.r_name, COUNT(DISTINCT c.c_custkey) AS num_customers FROM customer c JOIN nation n ON c.c_nationkey = n.n_nationkey JOIN region r ON n.n_regionkey = r.r_regionkey GROUP BY r.r_name;
+SELECT c.c_mktsegment, AVG(c.c_acctbal) AS avg_acctbal FROM customer c GROUP BY c.c_mktsegment;
+SELECT p.p_type, SUM(ps.ps_availqty) AS total_avail_qty FROM part p JOIN partsupp ps ON p.p_partkey = ps.ps_partkey GROUP BY p.p_type;
+SELECT o.o_orderpriority, COUNT(*) AS num_orders FROM orders o WHERE o.o_orderdate BETWEEN '2021-01-01' AND '2021-12-31' GROUP BY o.o_orderpriority;
+SELECT s.s_name, SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_revenue FROM lineitem l JOIN orders o ON l.l_orderkey = o.o_orderkey JOIN supplier s ON l.l_suppkey = s.s_suppkey WHERE o.o_orderdate >= '2021-01-01' AND o.o_orderdate <= '2021-12-31' GROUP BY s.s_name ORDER BY total_revenue DESC LIMIT 10;
+SELECT p.p_brand, COUNT(DISTINCT l.l_orderkey) AS num_orders FROM lineitem l JOIN part p ON l.l_partkey = p.p_partkey WHERE l.l_shipdate >= '2021-01-01' AND l.l_shipdate <= '2021-12-31' GROUP BY p.p_brand;
+SELECT c.c_name, SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_revenue FROM lineitem l JOIN orders o ON l.l_orderkey = o.o_orderkey JOIN customer c ON o.o_custkey = c.c_custkey WHERE o.o_orderdate >= '2021-01-01' AND o.o_orderdate <= '2021-12-31' GROUP BY c.c_name ORDER BY total_revenue DESC LIMIT 10;
+SELECT r.r_name, SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_revenue FROM lineitem l JOIN orders o ON l.l_orderkey = o.o_orderkey JOIN customer c ON o.o_custkey = c.c_custkey JOIN nation n ON c.c_nationkey = n.n_nationkey JOIN region r ON n.n_regionkey = r.r_regionkey WHERE o.o_orderdate >= '2021-01-01' AND o.o_orderdate <= '2021-12-31' GROUP BY r.r_name;
+SELECT n.n_name, COUNT(DISTINCT s.s_suppkey) AS num_suppliers FROM supplier s JOIN nation n ON s.s_nationkey = n.n_nationkey GROUP BY n.n_name;
+SELECT p.p_container, AVG(l.l_quantity) AS avg_quantity FROM lineitem l JOIN part p ON l.l_partkey = p.p_partkey GROUP BY p.p_container;

@@ -1,0 +1,13 @@
+SELECT c.c_nation, COUNT(lo.lo_orderkey) AS num_orders FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_nation IN ('UNITED KINGDOM', 'VIETNAM', 'FRANCE') GROUP BY c.c_nation;
+SELECT p.p_color, AVG(lo.lo_quantity) AS avg_quantity FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_color IN ('floral', 'peru', 'slate') GROUP BY p.p_color;
+SELECT s.s_nation, SUM(lo.lo_revenue) AS total_revenue FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_nation IN ('CHINA', 'FRANCE', 'MOROCCO') GROUP BY s.s_nation;
+SELECT d.d_yearmonth, COUNT(lo.lo_orderkey) AS num_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_yearmonth IN ('Jan1993', 'Sep1992', 'Sep1993') GROUP BY d.d_yearmonth;
+SELECT c.c_city, SUM(lo.lo_extendedprice * lo.lo_discount) AS total_discounted_price FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_city IN ('BRAZIL   2', 'UNITED ST1', 'FRANCE   1') GROUP BY c.c_city;
+SELECT p.p_name, COUNT(lo.lo_orderkey) AS num_orders FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_name IN ('white indian', 'frosted lime', 'dark goldenrod') GROUP BY p.p_name;
+SELECT s.s_name, SUM(lo.lo_supplycost) AS total_supplycost FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_name IN ('Supplier#000000309', 'Supplier#000000505', 'Supplier#000000993') GROUP BY s.s_name;
+SELECT d.d_monthnuminyear, COUNT(lo.lo_orderkey) AS num_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_monthnuminyear IN (11, 9, 12) GROUP BY d.d_monthnuminyear;
+SELECT c.c_name, SUM(lo.lo_extendedprice * lo.lo_discount) AS total_discounted_price FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_custkey IN (35575, 35257, 35036) GROUP BY c.c_name;
+SELECT d.d_lastdayinweekfl, COUNT(lo.lo_orderkey) AS num_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_lastdayinweekfl IN ('1', '0') GROUP BY d.d_lastdayinweekfl;
+SELECT lo.lo_orderpriority, COUNT(lo.lo_orderkey) AS num_orders FROM lineorder lo GROUP BY lo.lo_orderpriority;
+SELECT c.c_mktsegment, SUM(lo.lo_revenue) AS total_revenue FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey GROUP BY c.c_mktsegment;
+SELECT p.p_category, COUNT(lo.lo_orderkey) AS num_orders FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey GROUP BY p.p_category;

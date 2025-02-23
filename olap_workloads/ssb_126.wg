@@ -1,0 +1,11 @@
+SELECT d_year, c_mktsegment, SUM(lo_revenue) AS revenue FROM lineorder, date_dim, customer WHERE lo_orderdate = d_datekey AND lo_custkey = c_custkey AND c_mktsegment IN ('AUTOMOBILE', 'BUILDING', 'MACHINERY') AND d_year >= 1995 AND d_year <= 1998 GROUP BY d_year, c_mktsegment ORDER BY d_year, c_mktsegment;
+SELECT s_nation, p_category, SUM(lo_revenue) AS revenue FROM lineorder, supplier, part WHERE lo_suppkey = s_suppkey AND lo_partkey = p_partkey AND s_nation IN ('GERMANY', 'UNITED STATES', 'IRAN') AND p_category IN ('MFGR#1', 'MFGR#2', 'MFGR#3') GROUP BY s_nation, p_category ORDER BY s_nation, p_category;
+SELECT s_city, SUM(lo_revenue) AS revenue FROM lineorder, supplier WHERE lo_suppkey = s_suppkey AND s_city IN ('GERMANY 4', 'PERU 0', 'ROMANIA 3') GROUP BY s_city ORDER BY s_city;
+SELECT p_color, COUNT(*) FROM part WHERE p_color IN ('mint', 'smoke', 'lawn') GROUP BY p_color ORDER BY p_color;
+SELECT c_region, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder, customer WHERE lo_custkey = c_custkey AND c_region IN ('AFRICA', 'AMERICA', 'ASIA') GROUP BY c_region ORDER BY c_region;
+SELECT d_month, SUM(lo_revenue) AS revenue FROM lineorder, date_dim WHERE lo_orderdate = d_datekey AND d_year = 1998 GROUP BY d_month ORDER BY d_month;
+SELECT p_brand, AVG(lo_supplycost) AS avg_supplycost FROM lineorder, part WHERE lo_partkey = p_partkey GROUP BY p_brand HAVING AVG(lo_supplycost) > 1000 ORDER BY p_brand;
+SELECT s_suppkey, SUM(lo_revenue) AS total_revenue FROM lineorder, supplier WHERE lo_suppkey = s_suppkey AND s_suppkey IN ('213', '664', '938') GROUP BY s_suppkey ORDER BY s_suppkey;
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder WHERE lo_orderpriority IN ('1-URGENT', '2-HIGH', '3-MEDIUM', '4-LOW', '5-NOT SPECIFIED') GROUP BY lo_orderpriority ORDER BY lo_orderpriority;
+SELECT d_year, p_type, SUM(lo_quantity) AS total_quantity FROM lineorder, date_dim, part WHERE lo_orderdate = d_datekey AND lo_partkey = p_partkey AND d_year >= 1995 AND d_year <= 1998 GROUP BY d_year, p_type ORDER BY d_year, p_type;
+SELECT c_nation, SUM(lo_tax) AS total_tax FROM lineorder, customer WHERE lo_custkey = c_custkey AND c_nation IN ('GERMANY', 'UNITED STATES', 'IRAN') GROUP BY c_nation ORDER BY c_nation;

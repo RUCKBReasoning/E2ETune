@@ -1,0 +1,602 @@
+{
+    "wikipedia/sample_wikipedia_config0.xml": [
+        18,
+        2,
+        11,
+        33
+    ],
+    "wikipedia/sample_wikipedia_config1.xml": [
+        15,
+        49,
+        5,
+        16
+    ],
+    "wikipedia/sample_wikipedia_config2.xml": [
+        33,
+        9,
+        39,
+        8
+    ],
+    "wikipedia/sample_wikipedia_config3.xml": [
+        2,
+        44,
+        39,
+        1
+    ],
+    "wikipedia/sample_wikipedia_config4.xml": [
+        9,
+        7,
+        18,
+        14
+    ],
+    "wikipedia/sample_wikipedia_config5.xml": [
+        3,
+        1,
+        0,
+        91
+    ],
+    "wikipedia/sample_wikipedia_config6.xml": [
+        0,
+        0,
+        4,
+        93
+    ],
+    "wikipedia/sample_wikipedia_config7.xml": [
+        0,
+        1,
+        90,
+        0
+    ],
+    "wikipedia/sample_wikipedia_config8.xml": [
+        70,
+        4,
+        0,
+        4
+    ],
+    "wikipedia/sample_wikipedia_config9.xml": [
+        18,
+        46,
+        18,
+        12
+    ],
+    "wikipedia/sample_wikipedia_config10.xml": [
+        2,
+        23,
+        21,
+        46
+    ],
+    "wikipedia/sample_wikipedia_config11.xml": [
+        2,
+        38,
+        45,
+        0
+    ],
+    "wikipedia/sample_wikipedia_config12.xml": [
+        71,
+        3,
+        12,
+        2
+    ],
+    "wikipedia/sample_wikipedia_config13.xml": [
+        3,
+        0,
+        6,
+        13
+    ],
+    "wikipedia/sample_wikipedia_config14.xml": [
+        93,
+        5,
+        1,
+        1
+    ],
+    "wikipedia/sample_wikipedia_config15.xml": [
+        8,
+        21,
+        17,
+        15
+    ],
+    "wikipedia/sample_wikipedia_config16.xml": [
+        16,
+        30,
+        28,
+        22
+    ],
+    "wikipedia/sample_wikipedia_config17.xml": [
+        5,
+        5,
+        13,
+        67
+    ],
+    "wikipedia/sample_wikipedia_config18.xml": [
+        1,
+        95,
+        2,
+        0
+    ],
+    "wikipedia/sample_wikipedia_config19.xml": [
+        37,
+        2,
+        9,
+        34
+    ],
+    "wikipedia/sample_wikipedia_config20.xml": [
+        1,
+        23,
+        23,
+        21
+    ],
+    "wikipedia/sample_wikipedia_config21.xml": [
+        47,
+        6,
+        1,
+        6
+    ],
+    "wikipedia/sample_wikipedia_config22.xml": [
+        11,
+        4,
+        25,
+        54
+    ],
+    "wikipedia/sample_wikipedia_config23.xml": [
+        27,
+        10,
+        24,
+        30
+    ],
+    "wikipedia/sample_wikipedia_config24.xml": [
+        2,
+        43,
+        30,
+        16
+    ],
+    "wikipedia/sample_wikipedia_config25.xml": [
+        30,
+        0,
+        65,
+        2
+    ],
+    "wikipedia/sample_wikipedia_config26.xml": [
+        13,
+        34,
+        9,
+        1
+    ],
+    "wikipedia/sample_wikipedia_config27.xml": [
+        6,
+        3,
+        60,
+        5
+    ],
+    "wikipedia/sample_wikipedia_config28.xml": [
+        8,
+        0,
+        68,
+        13
+    ],
+    "wikipedia/sample_wikipedia_config29.xml": [
+        94,
+        5,
+        0,
+        1
+    ],
+    "wikipedia/sample_wikipedia_config30.xml": [
+        14,
+        2,
+        53,
+        30
+    ],
+    "wikipedia/sample_wikipedia_config31.xml": [
+        1,
+        11,
+        60,
+        28
+    ],
+    "wikipedia/sample_wikipedia_config32.xml": [
+        1,
+        31,
+        8,
+        5
+    ],
+    "wikipedia/sample_wikipedia_config33.xml": [
+        1,
+        13,
+        61,
+        17
+    ],
+    "wikipedia/sample_wikipedia_config34.xml": [
+        14,
+        44,
+        5,
+        2
+    ],
+    "wikipedia/sample_wikipedia_config35.xml": [
+        32,
+        10,
+        13,
+        44
+    ],
+    "wikipedia/sample_wikipedia_config36.xml": [
+        63,
+        1,
+        30,
+        6
+    ],
+    "wikipedia/sample_wikipedia_config37.xml": [
+        33,
+        14,
+        30,
+        13
+    ],
+    "wikipedia/sample_wikipedia_config38.xml": [
+        48,
+        0,
+        32,
+        19
+    ],
+    "wikipedia/sample_wikipedia_config39.xml": [
+        61,
+        0,
+        1,
+        36
+    ],
+    "wikipedia/sample_wikipedia_config40.xml": [
+        10,
+        14,
+        7,
+        50
+    ],
+    "wikipedia/sample_wikipedia_config41.xml": [
+        32,
+        60,
+        1,
+        2
+    ],
+    "wikipedia/sample_wikipedia_config42.xml": [
+        12,
+        4,
+        44,
+        5
+    ],
+    "wikipedia/sample_wikipedia_config43.xml": [
+        1,
+        11,
+        0,
+        83
+    ],
+    "wikipedia/sample_wikipedia_config44.xml": [
+        9,
+        72,
+        0,
+        9
+    ],
+    "wikipedia/sample_wikipedia_config45.xml": [
+        3,
+        28,
+        15,
+        43
+    ],
+    "wikipedia/sample_wikipedia_config46.xml": [
+        92,
+        1,
+        0,
+        6
+    ],
+    "wikipedia/sample_wikipedia_config47.xml": [
+        0,
+        4,
+        1,
+        95
+    ],
+    "wikipedia/sample_wikipedia_config48.xml": [
+        19,
+        25,
+        38,
+        18
+    ],
+    "wikipedia/sample_wikipedia_config49.xml": [
+        58,
+        31,
+        6,
+        4
+    ],
+    "wikipedia/sample_wikipedia_config50.xml": [
+        18,
+        42,
+        32,
+        0
+    ],
+    "wikipedia/sample_wikipedia_config51.xml": [
+        47,
+        0,
+        2,
+        51
+    ],
+    "wikipedia/sample_wikipedia_config52.xml": [
+        89,
+        2,
+        0,
+        6
+    ],
+    "wikipedia/sample_wikipedia_config53.xml": [
+        6,
+        7,
+        4,
+        41
+    ],
+    "wikipedia/sample_wikipedia_config54.xml": [
+        19,
+        22,
+        39,
+        12
+    ],
+    "wikipedia/sample_wikipedia_config55.xml": [
+        1,
+        3,
+        0,
+        95
+    ],
+    "wikipedia/sample_wikipedia_config56.xml": [
+        37,
+        7,
+        8,
+        25
+    ],
+    "wikipedia/sample_wikipedia_config57.xml": [
+        87,
+        1,
+        0,
+        10
+    ],
+    "wikipedia/sample_wikipedia_config58.xml": [
+        64,
+        3,
+        2,
+        22
+    ],
+    "wikipedia/sample_wikipedia_config59.xml": [
+        31,
+        14,
+        13,
+        35
+    ],
+    "wikipedia/sample_wikipedia_config60.xml": [
+        2,
+        18,
+        2,
+        78
+    ],
+    "wikipedia/sample_wikipedia_config61.xml": [
+        1,
+        54,
+        2,
+        25
+    ],
+    "wikipedia/sample_wikipedia_config62.xml": [
+        37,
+        45,
+        9,
+        0
+    ],
+    "wikipedia/sample_wikipedia_config63.xml": [
+        3,
+        2,
+        61,
+        34
+    ],
+    "wikipedia/sample_wikipedia_config64.xml": [
+        2,
+        4,
+        87,
+        5
+    ],
+    "wikipedia/sample_wikipedia_config65.xml": [
+        1,
+        20,
+        44,
+        30
+    ],
+    "wikipedia/sample_wikipedia_config66.xml": [
+        31,
+        6,
+        55,
+        1
+    ],
+    "wikipedia/sample_wikipedia_config67.xml": [
+        5,
+        10,
+        21,
+        21
+    ],
+    "wikipedia/sample_wikipedia_config68.xml": [
+        3,
+        0,
+        13,
+        31
+    ],
+    "wikipedia/sample_wikipedia_config69.xml": [
+        1,
+        1,
+        0,
+        1
+    ],
+    "wikipedia/sample_wikipedia_config70.xml": [
+        19,
+        12,
+        42,
+        17
+    ],
+    "wikipedia/sample_wikipedia_config71.xml": [
+        0,
+        1,
+        19,
+        4
+    ],
+    "wikipedia/sample_wikipedia_config72.xml": [
+        1,
+        39,
+        55,
+        4
+    ],
+    "wikipedia/sample_wikipedia_config73.xml": [
+        0,
+        5,
+        5,
+        4
+    ],
+    "wikipedia/sample_wikipedia_config74.xml": [
+        1,
+        0,
+        90,
+        8
+    ],
+    "wikipedia/sample_wikipedia_config75.xml": [
+        75,
+        7,
+        3,
+        13
+    ],
+    "wikipedia/sample_wikipedia_config76.xml": [
+        0,
+        4,
+        95,
+        0
+    ],
+    "wikipedia/sample_wikipedia_config77.xml": [
+        4,
+        83,
+        3,
+        8
+    ],
+    "wikipedia/sample_wikipedia_config78.xml": [
+        14,
+        30,
+        11,
+        7
+    ],
+    "wikipedia/sample_wikipedia_config79.xml": [
+        13,
+        25,
+        26,
+        29
+    ],
+    "wikipedia/sample_wikipedia_config80.xml": [
+        3,
+        52,
+        1,
+        33
+    ],
+    "wikipedia/sample_wikipedia_config81.xml": [
+        33,
+        0,
+        17,
+        14
+    ],
+    "wikipedia/sample_wikipedia_config82.xml": [
+        18,
+        2,
+        2,
+        75
+    ],
+    "wikipedia/sample_wikipedia_config83.xml": [
+        4,
+        69,
+        24,
+        2
+    ],
+    "wikipedia/sample_wikipedia_config84.xml": [
+        17,
+        12,
+        6,
+        3
+    ],
+    "wikipedia/sample_wikipedia_config85.xml": [
+        26,
+        9,
+        1,
+        4
+    ],
+    "wikipedia/sample_wikipedia_config86.xml": [
+        66,
+        9,
+        12,
+        11
+    ],
+    "wikipedia/sample_wikipedia_config87.xml": [
+        84,
+        2,
+        9,
+        0
+    ],
+    "wikipedia/sample_wikipedia_config88.xml": [
+        1,
+        65,
+        11,
+        21
+    ],
+    "wikipedia/sample_wikipedia_config89.xml": [
+        1,
+        75,
+        6,
+        0
+    ],
+    "wikipedia/sample_wikipedia_config90.xml": [
+        3,
+        22,
+        12,
+        43
+    ],
+    "wikipedia/sample_wikipedia_config91.xml": [
+        14,
+        5,
+        2,
+        78
+    ],
+    "wikipedia/sample_wikipedia_config92.xml": [
+        10,
+        10,
+        14,
+        58
+    ],
+    "wikipedia/sample_wikipedia_config93.xml": [
+        0,
+        15,
+        1,
+        84
+    ],
+    "wikipedia/sample_wikipedia_config94.xml": [
+        13,
+        37,
+        27,
+        3
+    ],
+    "wikipedia/sample_wikipedia_config95.xml": [
+        5,
+        11,
+        2,
+        39
+    ],
+    "wikipedia/sample_wikipedia_config96.xml": [
+        26,
+        26,
+        30,
+        18
+    ],
+    "wikipedia/sample_wikipedia_config97.xml": [
+        0,
+        3,
+        91,
+        2
+    ],
+    "wikipedia/sample_wikipedia_config98.xml": [
+        11,
+        63,
+        5,
+        21
+    ],
+    "wikipedia/sample_wikipedia_config99.xml": [
+        4,
+        90,
+        4,
+        2
+    ]
+}

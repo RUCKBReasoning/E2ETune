@@ -1,0 +1,10 @@
+SELECT c.c_city, COUNT(lo.lo_orderkey) AS num_orders FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE c.c_city IN ('BRAZIL   7', 'FRANCE   3', 'INDIA    9') GROUP BY c.c_city ORDER BY num_orders DESC;
+SELECT p.p_category, AVG(lo.lo_quantity) AS avg_quantity FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_category IN ('MFGR#51', 'MFGR#44', 'MFGR#14') GROUP BY p.p_category ORDER BY avg_quantity DESC;
+SELECT s.s_region, SUM(lo.lo_revenue) AS total_revenue FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_region IN ('MIDDLE EAST', 'ASIA', 'AMERICA') GROUP BY s.s_region ORDER BY total_revenue DESC;
+SELECT p.p_brand, COUNT(lo.lo_orderkey) AS num_orders FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_brand IN ('MFGR#5239', 'MFGR#2437', 'MFGR#3215') GROUP BY p.p_brand ORDER BY num_orders DESC;
+SELECT d.d_year, SUM(lo.lo_extendedprice) AS total_extended_price FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_year >= 2000 AND d.d_year <= 2010 GROUP BY d.d_year ORDER BY d.d_year;
+SELECT c.c_mktsegment, COUNT(lo.lo_orderkey) AS num_orders FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey GROUP BY c.c_mktsegment ORDER BY num_orders DESC;
+SELECT p.p_container, SUM(lo.lo_supplycost) AS total_supply_cost FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_container IN ('SM CAN', 'MED PACK', 'JUMBO BOX') GROUP BY p.p_container ORDER BY total_supply_cost DESC;
+SELECT s.s_nation, COUNT(lo.lo_orderkey) AS num_orders FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE s.s_nation IN ('UNITED STATES', 'ETHIOPIA', 'BRAZIL') GROUP BY s.s_nation ORDER BY num_orders DESC;
+SELECT p.p_name, COUNT(lo.lo_orderkey) AS num_orders FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE p.p_name IN ('goldenrod violet', 'dodger turquoise', 'midnight chocolate') GROUP BY p.p_name ORDER BY num_orders DESC;
+SELECT lo.lo_orderpriority, COUNT(lo.lo_orderkey) AS num_orders FROM lineorder lo GROUP BY lo.lo_orderpriority ORDER BY num_orders DESC;

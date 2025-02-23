@@ -1,0 +1,18 @@
+SELECT c_region, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_ordtotalprice > 10531444 GROUP BY lo_orderpriority;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_nation;
+SELECT c_mktsegment, COUNT(lo_custkey) AS num_customers FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT p_brand, COUNT(lo_partkey) AS num_parts FROM lineorder_flat WHERE p_category = 'MFGR#35' GROUP BY p_brand;
+SELECT lo_orderdate, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_ordtotalprice > 22857511 GROUP BY lo_orderdate;
+SELECT c_city, COUNT(lo_custkey) AS num_customers FROM lineorder_flat WHERE c_nation = 'UNITED STATES' GROUP BY c_city;
+SELECT p_type, AVG(p_size) AS avg_size FROM lineorder_flat WHERE p_category = 'MFGR#53' GROUP BY p_type;
+SELECT s_region, COUNT(lo_suppkey) AS num_suppliers FROM lineorder_flat WHERE lo_ordtotalprice < 27741986 GROUP BY s_region;
+SELECT lo_shipmode, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' GROUP BY lo_shipmode;
+SELECT c_name, SUM(lo_extendedprice) AS total_spent FROM lineorder_flat WHERE c_mktsegment = 'AUTOMOBILE' GROUP BY c_name;
+SELECT p_mfgr, COUNT(lo_partkey) AS num_parts FROM lineorder_flat WHERE p_category = 'MFGR#44' GROUP BY p_mfgr;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE s_nation = 'JAPAN' GROUP BY s_name;
+SELECT lo_orderpriority, AVG(lo_discount) AS avg_discount FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT c_nation, COUNT(lo_custkey) AS num_customers FROM lineorder_flat WHERE c_region = 'AMERICA' GROUP BY c_nation;
+SELECT p_color, COUNT(lo_partkey) AS num_parts FROM lineorder_flat WHERE p_category = 'MFGR#35' AND p_size > 10 GROUP BY p_color;
+SELECT lo_commitdate, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_ordtotalprice > 10531444 GROUP BY lo_commitdate;

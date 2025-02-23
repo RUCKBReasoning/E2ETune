@@ -1,0 +1,13 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT lo_orderpriority, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY p_category;
+SELECT c_city, COUNT(DISTINCT lo_custkey) AS num_customers FROM lineorder_flat GROUP BY c_city;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_nation;
+SELECT lo_orderdate, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY lo_orderdate;
+SELECT p_brand, COUNT(*) AS num_products FROM lineorder_flat WHERE p_category = 'MFGR#14' GROUP BY p_brand;
+SELECT c_region, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderkey IN (15768704, 27268130, 13231687) GROUP BY c_region;
+SELECT s_city, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_extendedprice BETWEEN 2138288 AND 4027290 GROUP BY s_city;
+SELECT p_mfgr, COUNT(*) AS num_products FROM lineorder_flat WHERE p_size BETWEEN 1 AND 50 GROUP BY p_mfgr;
+SELECT lo_shipmode, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_commitdate BETWEEN 19950101 AND 19951231 GROUP BY lo_shipmode;
+SELECT c_mktsegment, SUM(lo_discount) AS total_discount FROM lineorder_flat WHERE c_region = 'ASIA' GROUP BY c_mktsegment;
+SELECT s_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE s_city IN ('VIETNAM  5', 'EGYPT    7', 'INDIA    5') GROUP BY s_name;

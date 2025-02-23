@@ -1,0 +1,14 @@
+SELECT t.title, COUNT(c.id) AS cast_count FROM title t JOIN cast_info c ON t.id = c.movie_id WHERE t.episode_of_id = 1852 GROUP BY t.title ORDER BY cast_count DESC;
+SELECT t.title, COUNT(mk.keyword_id) AS keyword_count FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id WHERE t.season_nr = 12 GROUP BY t.title ORDER BY keyword_count DESC;
+SELECT kt.kind, COUNT(t.id) AS title_count FROM title t JOIN kind_type kt ON t.kind_id = kt.id WHERE t.kind_id IN (2, 7) GROUP BY kt.kind;
+SELECT it.info, COUNT(mi.id) AS movie_info_count FROM movie_info_idx mi JOIN info_type it ON mi.info_type_id = it.id WHERE mi.movie_id IN (297, 1579, 59) AND mi.info_type_id IN (99, 101, 100) GROUP BY it.info;
+SELECT rt.role, COUNT(c.id) AS cast_count FROM cast_info c JOIN role_type rt ON c.role_id = rt.id WHERE rt.id IN (8, 3, 4) GROUP BY rt.role;
+SELECT t.title, COUNT(DISTINCT c.person_id) AS unique_actors FROM title t JOIN cast_info c ON t.id = c.movie_id WHERE t.episode_of_id = 76786 GROUP BY t.title ORDER BY unique_actors DESC;
+SELECT t.title, SUM(CASE WHEN rt.role = 'writer' THEN 1 ELSE 0 END) AS writer_count, SUM(CASE WHEN rt.role = 'costume designer' THEN 1 ELSE 0 END) AS costume_designer_count, SUM(CASE WHEN rt.role = 'director' THEN 1 ELSE 0 END) AS director_count FROM title t JOIN cast_info c ON t.id = c.movie_id JOIN role_type rt ON c.role_id = rt.id WHERE t.episode_of_id = 71730 GROUP BY t.title;
+SELECT t.title, COUNT(DISTINCT mi.info_type_id) AS unique_info_types FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE t.season_nr = 15 GROUP BY t.title ORDER BY unique_info_types DESC;
+SELECT t.title, COUNT(DISTINCT mc.company_id) AS unique_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id WHERE t.kind_id = 2 GROUP BY t.title ORDER BY unique_companies DESC;
+SELECT t.title, COUNT(DISTINCT mk.keyword_id) AS unique_keywords FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id WHERE t.kind_id = 7 GROUP BY t.title ORDER BY unique_keywords DESC;
+SELECT t.title, COUNT(DISTINCT ml.linked_movie_id) AS unique_linked_movies FROM title t JOIN movie_link ml ON t.id = ml.movie_id WHERE t.production_year BETWEEN 2000 AND 2010 GROUP BY t.title ORDER BY unique_linked_movies DESC;
+SELECT t.title, COUNT(DISTINCT pi.person_id) AS unique_person_info FROM title t JOIN cast_info c ON t.id = c.movie_id JOIN person_info pi ON c.person_id = pi.person_id WHERE t.production_year BETWEEN 1990 AND 2000 GROUP BY t.title ORDER BY unique_person_info DESC;
+SELECT t.title, COUNT(DISTINCT cn.id) AS unique_char_names FROM title t JOIN cast_info c ON t.id = c.movie_id JOIN char_name cn ON c.person_role_id = cn.id WHERE t.production_year BETWEEN 1980 AND 1990 GROUP BY t.title ORDER BY unique_char_names DESC;
+SELECT t.title, COUNT(DISTINCT cc.id) AS unique_complete_cast FROM title t JOIN complete_cast cc ON t.id = cc.movie_id WHERE t.production_year BETWEEN 1970 AND 1980 GROUP BY t.title ORDER BY unique_complete_cast DESC;

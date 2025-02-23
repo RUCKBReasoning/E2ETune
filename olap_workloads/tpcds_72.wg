@@ -1,0 +1,11 @@
+SELECT s_state, COUNT(*) AS store_count FROM store GROUP BY s_state ORDER BY store_count DESC;
+SELECT i_category, SUM(ss_sales_price) AS total_sales FROM store_sales JOIN item ON ss_item_sk = i_item_sk GROUP BY i_category ORDER BY total_sales DESC;
+SELECT w_state, COUNT(*) AS warehouse_count FROM warehouse GROUP BY w_state ORDER BY warehouse_count DESC;
+SELECT c_birth_country, COUNT(*) AS customer_count FROM customer GROUP BY c_birth_country ORDER BY customer_count DESC;
+SELECT sm_type, COUNT(*) AS ship_mode_count FROM ship_mode GROUP BY sm_type ORDER BY ship_mode_count DESC;
+SELECT d_year, SUM(ws_sales_price) AS total_web_sales FROM web_sales JOIN date_dim ON ws_sold_date_sk = d_date_sk GROUP BY d_year ORDER BY d_year;
+SELECT d_year, SUM(cs_sales_price) AS total_catalog_sales FROM catalog_sales JOIN date_dim ON cs_sold_date_sk = d_date_sk GROUP BY d_year ORDER BY d_year;
+SELECT d_year, SUM(ss_sales_price) AS total_store_sales FROM store_sales JOIN date_dim ON ss_sold_date_sk = d_date_sk GROUP BY d_year ORDER BY d_year;
+SELECT i_category, AVG(inv_quantity_on_hand) AS avg_inventory FROM inventory JOIN item ON inv_item_sk = i_item_sk GROUP BY i_category ORDER BY avg_inventory DESC;
+SELECT hd_income_band_sk, COUNT(*) AS household_count FROM household_demographics GROUP BY hd_income_band_sk ORDER BY household_count DESC;
+SELECT p_promo_name, SUM(cs_sales_price) AS total_sales FROM catalog_sales JOIN promotion ON cs_promo_sk = p_promo_sk GROUP BY p_promo_name ORDER BY total_sales DESC;

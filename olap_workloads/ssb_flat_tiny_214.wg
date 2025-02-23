@@ -1,0 +1,2 @@
+SELECT c_region, s_region, COUNT(lo_orderkey) AS total_orders, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_orderkey IN (11405441, 4582467, 23420834) GROUP BY c_region, s_region ORDER BY total_revenue DESC;
+SELECT p_category, p_brand, SUM(lo_quantity) AS total_quantity, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE s_nation IN ('ALGERIA', 'JAPAN', 'INDONESIA') GROUP BY p_category, p_brand HAVING SUM(lo_quantity) > 1000 ORDER BY total_quantity DESC;

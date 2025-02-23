@@ -1,0 +1,13 @@
+SELECT COUNT(*) FROM movie_keyword WHERE keyword_id IN (SELECT id FROM keyword WHERE phonetic_code LIKE 'A%');
+SELECT AVG(production_year) FROM title WHERE kind_id = (SELECT id FROM kind_type WHERE kind = 'episode') AND production_year IS NOT NULL;
+SELECT t.title, COUNT(c.id) AS cast_count FROM title t JOIN cast_info c ON t.id = c.movie_id WHERE t.kind_id = (SELECT id FROM kind_type WHERE kind = 'video game') GROUP BY t.title ORDER BY cast_count DESC LIMIT 10;
+SELECT t.title, COUNT(mc.id) AS company_count FROM title t JOIN movie_companies mc ON t.id = mc.movie_id WHERE t.kind_id = (SELECT id FROM kind_type WHERE kind = 'tv mini series') GROUP BY t.title ORDER BY company_count DESC LIMIT 10;
+SELECT t1.title, t2.title, lt.link FROM movie_link ml JOIN link_type lt ON ml.link_type_id = lt.id JOIN title t1 ON ml.movie_id = t1.id JOIN title t2 ON ml.linked_movie_id = t2.id WHERE ml.link_type_id = 5;
+SELECT n.name, COUNT(ci.id) AS appearance_count FROM name n JOIN cast_info ci ON n.id = ci.person_id GROUP BY n.name ORDER BY appearance_count DESC LIMIT 10;
+SELECT k.keyword, COUNT(mk.id) AS keyword_count FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword ORDER BY keyword_count DESC LIMIT 10;
+SELECT t.title, COUNT(mi.id) AS info_count FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE t.production_year > 2000 GROUP BY t.title ORDER BY info_count DESC LIMIT 10;
+SELECT cn.name, COUNT(ci.id) AS char_count FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id GROUP BY cn.name ORDER BY char_count DESC LIMIT 10;
+SELECT ct.kind, COUNT(cc.id) AS cast_type_count FROM comp_cast_type ct JOIN complete_cast cc ON ct.id = cc.subject_id GROUP BY ct.kind ORDER BY cast_type_count DESC;
+SELECT t.title, COUNT(DISTINCT ci.person_id) AS actor_count FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE t.kind_id = (SELECT id FROM kind_type WHERE kind = 'episode') GROUP BY t.title HAVING COUNT(DISTINCT ci.person_id) > 10 ORDER BY actor_count DESC;
+SELECT t.title, COUNT(DISTINCT ci.person_id) AS actor_count FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE t.kind_id = (SELECT id FROM kind_type WHERE kind = 'video game') GROUP BY t.title HAVING COUNT(DISTINCT ci.person_id) > 5 ORDER BY actor_count DESC;
+SELECT t.title, COUNT(DISTINCT ci.person_id) AS actor_count FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE t.kind_id = (SELECT id FROM kind_type WHERE kind = 'tv mini series') GROUP BY t.title HAVING COUNT(DISTINCT ci.person_id) > 10 ORDER BY actor_count DESC;

@@ -1,0 +1,17 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate >= 20200101 AND lo_orderdate <= 20201231 GROUP BY lo_orderpriority;
+SELECT c_city, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderdate >= 20200101 AND lo_orderdate <= 20201231 GROUP BY c_city;
+SELECT s_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY s_name;
+SELECT p_mfgr, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY p_mfgr;
+SELECT c_nation, AVG(lo_discount) AS avg_discount FROM lineorder_flat GROUP BY c_nation;
+SELECT p_brand, COUNT(*) AS num_orders FROM lineorder_flat WHERE p_name = 'tomato floral' GROUP BY p_brand;
+SELECT c_mktsegment, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_ordtotalprice >= 10000000 GROUP BY c_mktsegment;
+SELECT p_type, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE p_mfgr = 'MFGR#3' GROUP BY p_type;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_commitdate >= 20200101 AND lo_commitdate <= 20201231 GROUP BY lo_orderpriority;
+SELECT s_region, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_shippriority = '1' GROUP BY s_region;
+SELECT c_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_phone = '18-603-610-8624' GROUP BY c_name;
+SELECT p_color, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat WHERE p_name = 'white floral' GROUP BY p_color;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_ordtotalprice <= 5000000 GROUP BY c_city;
+SELECT s_nation, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'RAIL' AND lo_orderdate >= 20200101 AND lo_orderdate <= 20201231 GROUP BY s_nation;
+SELECT p_size, AVG(lo_supplycost) AS avg_supply_cost FROM lineorder_flat WHERE p_category = 'FURNITURE' GROUP BY p_size;

@@ -1,0 +1,17 @@
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY order_count DESC;
+SELECT c_city, AVG(lo_revenue) AS avg_revenue FROM lineorder_flat GROUP BY c_city ORDER BY avg_revenue DESC LIMIT 10;
+SELECT lo_shipmode, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY lo_shipmode ORDER BY total_supply_cost DESC;
+SELECT p_category, COUNT(*) AS product_count FROM lineorder_flat GROUP BY p_category ORDER BY product_count DESC;
+SELECT s_nation, SUM(lo_extendedprice) AS total_extended_price FROM lineorder_flat GROUP BY s_nation ORDER BY total_extended_price DESC;
+SELECT c_mktsegment, AVG(lo_ordtotalprice) AS avg_order_total_price FROM lineorder_flat GROUP BY c_mktsegment ORDER BY avg_order_total_price DESC;
+SELECT p_brand, COUNT(*) AS brand_count FROM lineorder_flat WHERE lo_revenue BETWEEN 247664 AND 4200626 GROUP BY p_brand ORDER BY brand_count DESC;
+SELECT c_region, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_shipmode = 'RAIL' GROUP BY c_region ORDER BY total_tax DESC;
+SELECT s_city, COUNT(*) AS supplier_count FROM lineorder_flat WHERE c_city = 'RUSSIA   0' GROUP BY s_city ORDER BY supplier_count DESC;
+SELECT p_type, AVG(p_size) AS avg_size FROM lineorder_flat GROUP BY p_type ORDER BY avg_size DESC;
+SELECT lo_orderdate, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_shipmode = 'FOB' GROUP BY lo_orderdate ORDER BY total_quantity DESC;
+SELECT c_nation, COUNT(*) AS customer_count FROM lineorder_flat WHERE s_address = 'n4QM4PYbCUTonSx' GROUP BY c_nation ORDER BY customer_count DESC;
+SELECT p_mfgr, SUM(lo_discount) AS total_discount FROM lineorder_flat WHERE lo_revenue BETWEEN 4200626 AND 5714718 GROUP BY p_mfgr ORDER BY total_discount DESC;
+SELECT lo_commitdate, COUNT(*) AS order_count FROM lineorder_flat WHERE lo_shipmode = 'REG AIR' GROUP BY lo_commitdate ORDER BY order_count DESC;
+SELECT c_city, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE c_city = 'KENYA    8' GROUP BY c_city ORDER BY total_supply_cost DESC;
+SELECT s_nation, COUNT(*) AS supplier_count FROM lineorder_flat WHERE c_city = 'UNITED KI2' GROUP BY s_nation ORDER BY supplier_count DESC;
+SELECT p_container, AVG(lo_extendedprice) AS avg_extended_price FROM lineorder_flat WHERE s_address = 'fVOqhbw4RnWs' GROUP BY p_container ORDER BY avg_extended_price DESC;

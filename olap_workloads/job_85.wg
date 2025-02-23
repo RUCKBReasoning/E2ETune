@@ -1,0 +1,18 @@
+SELECT COUNT(*) as total_movies FROM title;
+SELECT COUNT(*) as total_actors FROM name WHERE gender = 'M';
+SELECT COUNT(*) as total_actresses FROM name WHERE gender = 'F';
+SELECT t.title, COUNT(c.movie_id) as total_cast FROM title t JOIN cast_info c ON t.id = c.movie_id GROUP BY t.title ORDER BY total_cast DESC;
+SELECT n.name, COUNT(c.person_id) as total_movies FROM name n JOIN cast_info c ON n.id = c.person_id GROUP BY n.name ORDER BY total_movies DESC;
+SELECT k.keyword, COUNT(mk.keyword_id) as total_movies FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword ORDER BY total_movies DESC;
+SELECT it.info, COUNT(mi.info_type_id) as total_movies FROM info_type it JOIN movie_info mi ON it.id = mi.info_type_id GROUP BY it.info ORDER BY total_movies DESC;
+SELECT t.title, AVG(c.nr_order) as average_order FROM title t JOIN cast_info c ON t.id = c.movie_id GROUP BY t.title ORDER BY average_order DESC;
+SELECT kt.kind, COUNT(t.kind_id) as total_movies FROM kind_type kt JOIN title t ON kt.id = t.kind_id GROUP BY kt.kind ORDER BY total_movies DESC;
+SELECT t.title, COUNT(mc.movie_id) as total_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id GROUP BY t.title ORDER BY total_companies DESC;
+SELECT t.title, COUNT(ml.movie_id) as total_links FROM title t JOIN movie_link ml ON t.id = ml.movie_id GROUP BY t.title ORDER BY total_links DESC;
+SELECT n.name, COUNT(pi.person_id) as total_person_info FROM name n JOIN person_info pi ON n.id = pi.person_id GROUP BY n.name ORDER BY total_person_info DESC;
+SELECT t.title, COUNT(mi.movie_id) as total_movie_info FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = (SELECT id FROM info_type WHERE info = 'countries') GROUP BY t.title ORDER BY total_movie_info DESC;
+SELECT t.title, COUNT(mi.movie_id) as total_movie_info FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = (SELECT id FROM info_type WHERE info = 'soundtrack') GROUP BY t.title ORDER BY total_movie_info DESC;
+SELECT t.title, COUNT(mi.movie_id) as total_movie_info FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = (SELECT id FROM info_type WHERE info = 'LD disc size') GROUP BY t.title ORDER BY total_movie_info DESC;
+SELECT n.name, COUNT(c.person_id) as total_movies FROM name n JOIN cast_info c ON n.id = c.person_id WHERE c.role_id = (SELECT id FROM role_type WHERE role = 'actor') GROUP BY n.name ORDER BY total_movies DESC;
+SELECT n.name, COUNT(c.person_id) as total_movies FROM name n JOIN cast_info c ON n.id = c.person_id WHERE c.role_id = (SELECT id FROM role_type WHERE role = 'actress') GROUP BY n.name ORDER BY total_movies DESC;
+SELECT t.title, COUNT(c.movie_id) as total_cast, AVG(c.nr_order) as average_order FROM title t JOIN cast_info c ON t.id = c.movie_id GROUP BY t.title HAVING COUNT(c.movie_id) > 10 ORDER BY average_order DESC;

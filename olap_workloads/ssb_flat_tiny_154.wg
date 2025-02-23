@@ -1,0 +1,17 @@
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_city ORDER BY num_orders DESC LIMIT 10;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category ORDER BY avg_price DESC;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_name ORDER BY total_supply_cost DESC LIMIT 10;
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_mktsegment ORDER BY num_orders DESC;
+SELECT p_brand, COUNT(*) AS num_products FROM lineorder_flat WHERE lo_extendedprice > 3000000 GROUP BY p_brand ORDER BY num_products DESC;
+SELECT c_region, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY c_region ORDER BY total_revenue DESC;
+SELECT lo_orderdate, SUM(lo_extendedprice) AS daily_revenue FROM lineorder_flat GROUP BY lo_orderdate ORDER BY daily_revenue DESC LIMIT 10;
+SELECT p_type, COUNT(*) AS num_products FROM lineorder_flat WHERE lo_tax >= 4 GROUP BY p_type ORDER BY num_products DESC;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_linenumber = 5 GROUP BY s_nation ORDER BY total_supply_cost DESC;
+SELECT lo_shipmode, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_discount > 10 GROUP BY lo_shipmode ORDER BY num_orders DESC;
+SELECT c_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_commitdate > lo_orderdate GROUP BY c_name ORDER BY num_orders DESC LIMIT 10;
+SELECT p_mfgr, COUNT(*) AS num_products FROM lineorder_flat WHERE lo_extendedprice < 2000000 GROUP BY p_mfgr ORDER BY num_products DESC;
+SELECT c_nation, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY c_nation ORDER BY avg_quantity DESC;
+SELECT s_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_shippriority = '1' GROUP BY s_city ORDER BY total_revenue DESC LIMIT 10;
+SELECT p_color, COUNT(*) AS num_products FROM lineorder_flat WHERE lo_extendedprice BETWEEN 2000000 AND 4000000 GROUP BY p_color ORDER BY num_products DESC;
+SELECT lo_orderpriority, AVG(lo_ordtotalprice) AS avg_total_price FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY avg_total_price DESC;

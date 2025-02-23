@@ -1,0 +1,17 @@
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate = '19950404' GROUP BY c_mktsegment;
+SELECT p_brand, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_orderdate = '19980325' GROUP BY p_brand;
+SELECT c_region, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderdate = '19930713' GROUP BY c_region;
+SELECT c_city, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE c_mktsegment = 'HOUSEHOLD' GROUP BY c_city;
+SELECT s_nation, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE c_mktsegment = 'AUTOMOBILE' GROUP BY s_nation;
+SELECT p_category, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE c_mktsegment = 'MACHINERY' GROUP BY p_category;
+SELECT c_nation, p_brand, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_orderdate BETWEEN '19980101' AND '19981231' GROUP BY c_nation, p_brand;
+SELECT c_region, p_category, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' GROUP BY c_region, p_category;
+SELECT s_city, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY s_city;
+SELECT c_nation, p_mfgr, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_orderdate BETWEEN '19950101' AND '19951231' GROUP BY c_nation, p_mfgr;
+SELECT c_region, p_type, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '5-LOW' GROUP BY c_region, p_type;
+SELECT c_city, p_brand, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_orderdate BETWEEN '19960101' AND '19961231' GROUP BY c_city, p_brand;
+SELECT s_nation, p_category, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'RAIL' GROUP BY s_nation, p_category;
+SELECT c_region, p_size, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat WHERE lo_orderpriority = '2-HIGH' GROUP BY c_region, p_size;
+SELECT s_city, p_mfgr, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'TRUCK' GROUP BY s_city, p_mfgr;
+SELECT c_nation, p_type, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_orderdate BETWEEN '19970101' AND '19971231' GROUP BY c_nation, p_type;
+SELECT c_region, p_container, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '3-MEDIUM' GROUP BY c_region, p_container;

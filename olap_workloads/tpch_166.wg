@@ -1,0 +1,18 @@
+SELECT n_name, SUM(o_totalprice) AS total_sales FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey WHERE n_regionkey = 1 GROUP BY n_name ORDER BY total_sales DESC;
+SELECT r_name, COUNT(*) AS num_customers FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey GROUP BY r_name;
+SELECT p_type, AVG(p_size) AS average_size FROM part GROUP BY p_type;
+SELECT s_name, SUM(ps_availqty) AS total_inventory FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey GROUP BY s_name ORDER BY total_inventory DESC;
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM customer JOIN orders ON c_custkey = o_custkey GROUP BY c_mktsegment;
+SELECT p_brand, COUNT(*) AS num_parts FROM part WHERE p_retailprice BETWEEN 1000 AND 2000 GROUP BY p_brand;
+SELECT s_name, COUNT(*) AS num_parts FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey WHERE ps_supplycost < 100 GROUP BY s_name;
+SELECT o_orderpriority, AVG(o_totalprice) AS average_price FROM orders GROUP BY o_orderpriority;
+SELECT n_name, COUNT(*) AS num_suppliers FROM nation JOIN supplier ON n_nationkey = s_nationkey WHERE n_regionkey = 3 GROUP BY n_name;
+SELECT p_mfgr, SUM(l_quantity) AS total_quantity FROM part JOIN lineitem ON p_partkey = l_partkey GROUP BY p_mfgr;
+SELECT r_name, SUM(l_extendedprice) AS total_sales FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey GROUP BY r_name;
+SELECT p_type, COUNT(*) AS num_parts FROM part WHERE p_comment LIKE '%hins p%' GROUP BY p_type;
+SELECT c_name, SUM(o_totalprice) AS total_spent FROM customer JOIN orders ON c_custkey = o_custkey WHERE c_acctbal > 5000 GROUP BY c_name ORDER BY total_spent DESC;
+SELECT n_name, COUNT(*) AS num_customers FROM nation JOIN customer ON n_nationkey = c_nationkey WHERE n_comment LIKE '%refully final requests%' GROUP BY n_name;
+SELECT p_name, SUM(l_quantity) AS total_quantity FROM part JOIN lineitem ON p_partkey = l_partkey WHERE p_name LIKE '%yellow tomato%' GROUP BY p_name;
+SELECT s_name, AVG(s_acctbal) AS average_balance FROM supplier WHERE s_comment LIKE '%express gifts%' GROUP BY s_name;
+SELECT r_name, COUNT(*) AS num_parts FROM region JOIN nation ON r_regionkey = n_regionkey JOIN supplier ON n_nationkey = s_nationkey JOIN partsupp ON s_suppkey = ps_suppkey JOIN part ON ps_partkey = p_partkey WHERE p_size > 50 GROUP BY r_name;
+SELECT c_name, COUNT(*) AS num_orders FROM customer JOIN orders ON c_custkey = o_custkey WHERE o_orderstatus = 'F' GROUP BY c_name ORDER BY num_orders DESC;

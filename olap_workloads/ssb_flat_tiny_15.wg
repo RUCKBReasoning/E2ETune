@@ -1,0 +1,9 @@
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY order_count DESC;
+SELECT c_city, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY c_city ORDER BY avg_price DESC LIMIT 10;
+SELECT p_brand, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_partkey IN (852, 855, 853) GROUP BY p_brand ORDER BY total_quantity DESC;
+SELECT s_name, COUNT(*) AS order_count FROM lineorder_flat WHERE s_address IN ('M6lZ1VMzonkB7', '1wJYgJcsZ', 'JCLRSWmiqdMZ') GROUP BY s_name ORDER BY order_count DESC;
+SELECT p_category, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY p_category ORDER BY total_supply_cost DESC;
+SELECT c_region, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY c_region ORDER BY total_revenue DESC;
+SELECT lo_orderdate, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY lo_orderdate ORDER BY total_tax DESC;
+SELECT p_mfgr, AVG(p_size) AS avg_size FROM lineorder_flat WHERE p_brand IN ('MFGR#2528', 'MFGR#211', 'MFGR#4126') GROUP BY p_mfgr ORDER BY avg_size DESC;
+SELECT c_mktsegment, COUNT(DISTINCT lo_custkey) AS unique_customer_count FROM lineorder_flat GROUP BY c_mktsegment ORDER BY unique_customer_count DESC;

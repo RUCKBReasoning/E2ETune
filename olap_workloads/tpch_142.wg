@@ -1,0 +1,18 @@
+SELECT n_name, COUNT(*) AS num_customers FROM nation JOIN customer ON n_nationkey = c_nationkey GROUP BY n_name ORDER BY num_customers DESC;
+SELECT r_name, AVG(c_acctbal) AS avg_acctbal FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey GROUP BY r_name;
+SELECT c_mktsegment, SUM(l_extendedprice * (1 - l_discount)) AS revenue FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE l_shipdate >= '1995-01-01' AND l_shipdate < '1996-01-01' GROUP BY c_mktsegment;
+SELECT s_name, SUM(ps_availqty * ps_supplycost) AS total_value FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey GROUP BY s_name ORDER BY total_value DESC LIMIT 10;
+SELECT p_type, p_size, COUNT(*) AS num_parts FROM part WHERE p_size BETWEEN 10 AND 20 GROUP BY p_type, p_size ORDER BY num_parts DESC;
+SELECT o_orderpriority, COUNT(*) AS num_orders FROM orders WHERE o_orderdate >= '1995-01-01' AND o_orderdate < '1996-01-01' GROUP BY o_orderpriority ORDER BY num_orders DESC;
+SELECT n_name, SUM(l_extendedprice * (1 - l_discount)) AS revenue FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE l_returnflag = 'R' GROUP BY n_name ORDER BY revenue DESC;
+SELECT p_brand, p_container, COUNT(*) AS num_parts FROM part WHERE p_retailprice BETWEEN 100 AND 200 GROUP BY p_brand, p_container ORDER BY num_parts DESC;
+SELECT s_name, COUNT(*) AS num_orders FROM supplier JOIN lineitem ON s_suppkey = l_suppkey JOIN orders ON l_orderkey = o_orderkey WHERE o_orderstatus = 'F' GROUP BY s_name ORDER BY num_orders DESC;
+SELECT c_name, SUM(l_extendedprice * (1 - l_discount)) AS total_spent FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE l_shipmode = 'AIR' GROUP BY c_name ORDER BY total_spent DESC LIMIT 10;
+SELECT p_name, SUM(l_quantity) AS total_quantity FROM part JOIN lineitem ON p_partkey = l_partkey GROUP BY p_name ORDER BY total_quantity DESC;
+SELECT r_name, COUNT(*) AS num_suppliers FROM region JOIN nation ON r_regionkey = n_regionkey JOIN supplier ON n_nationkey = s_nationkey GROUP BY r_name;
+SELECT c_name, COUNT(DISTINCT l_partkey) AS num_parts FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey GROUP BY c_name ORDER BY num_parts DESC;
+SELECT n_name, AVG(s_acctbal) AS avg_acctbal FROM nation JOIN supplier ON n_nationkey = s_nationkey GROUP BY n_name ORDER BY avg_acctbal DESC;
+SELECT p_type, AVG(p_retailprice) AS avg_retailprice FROM part GROUP BY p_type ORDER BY avg_retailprice DESC;
+SELECT o_orderpriority, AVG(o_totalprice) AS avg_totalprice FROM orders GROUP BY o_orderpriority ORDER BY avg_totalprice DESC;
+SELECT n_name, SUM(l_quantity) AS total_quantity FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE l_receiptdate >= '1995-01-01' AND l_receiptdate < '1996-01-01' GROUP BY n_name ORDER BY total_quantity DESC;
+SELECT c_mktsegment, COUNT(DISTINCT l_suppkey) AS num_suppliers FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey GROUP BY c_mktsegment ORDER BY num_suppliers DESC;

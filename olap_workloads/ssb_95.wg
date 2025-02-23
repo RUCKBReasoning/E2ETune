@@ -1,0 +1,18 @@
+SELECT s.s_region, COUNT(lo.lo_orderkey) AS total_orders FROM lineorder lo JOIN supplier s ON lo.lo_suppkey = s.s_suppkey WHERE s.s_region IN ('AMERICA', 'MIDDLE EAST', 'AFRICA') GROUP BY s.s_region ORDER BY total_orders DESC;
+SELECT p.p_category, AVG(lo.lo_quantity) AS avg_quantity FROM lineorder lo JOIN part p ON lo.lo_partkey = p.p_partkey GROUP BY p.p_category;
+SELECT c.c_mktsegment, SUM(lo.lo_revenue) AS total_revenue FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey WHERE lo.lo_tax IN (0, 7, 3) GROUP BY c.c_mktsegment;
+SELECT d.d_year, COUNT(lo.lo_orderkey) AS total_orders FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey WHERE d.d_yearmonth BETWEEN '2010-01' AND '2010-12' GROUP BY d.d_year;
+SELECT s.s_name, SUM(lo.lo_supplycost) AS total_supply_cost FROM lineorder lo JOIN supplier s ON lo.lo_suppkey = s.s_suppkey WHERE s.s_suppkey IN (296, 67, 755) GROUP BY s.s_name;
+SELECT p.p_brand, COUNT(lo.lo_orderkey) AS total_orders FROM lineorder lo JOIN part p ON lo.lo_partkey = p.p_partkey WHERE lo.lo_quantity IN (43, 46, 24) GROUP BY p.p_brand;
+SELECT d.d_month, SUM(lo.lo_revenue) AS total_revenue FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey WHERE d.d_year = 2010 GROUP BY d.d_month;
+SELECT s.s_nation, COUNT(lo.lo_orderkey) AS total_orders FROM lineorder lo JOIN supplier s ON lo.lo_suppkey = s.s_suppkey GROUP BY s.s_nation HAVING COUNT(lo.lo_orderkey) > 1000;
+SELECT c.c_city, SUM(lo.lo_extendedprice) AS total_extended_price FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey GROUP BY c.c_city ORDER BY total_extended_price DESC;
+SELECT p.p_type, AVG(lo.lo_discount) AS avg_discount FROM lineorder lo JOIN part p ON lo.lo_partkey = p.p_partkey GROUP BY p.p_type;
+SELECT d.d_dayofweek, COUNT(lo.lo_orderkey) AS total_orders FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey WHERE d.d_holidayfl = 'Y' GROUP BY d.d_dayofweek;
+SELECT s.s_region, SUM(lo.lo_ordtotalprice) AS total_order_price FROM lineorder lo JOIN supplier s ON lo.lo_suppkey = s.s_suppkey WHERE lo.lo_orderpriority = '1-URGENT' GROUP BY s.s_region;
+SELECT c.c_nation, AVG(lo.lo_quantity) AS avg_quantity FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey WHERE lo.lo_shipmode = 'AIR' GROUP BY c.c_nation;
+SELECT p.p_category, COUNT(lo.lo_orderkey) AS total_orders FROM lineorder lo JOIN part p ON lo.lo_partkey = p.p_partkey WHERE lo.lo_shippriority = '0' GROUP BY p.p_category;
+SELECT d.d_year, SUM(lo.lo_revenue) AS total_revenue FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey WHERE d.d_weekdayfl = 'Y' GROUP BY d.d_year;
+SELECT s.s_name, COUNT(lo.lo_orderkey) AS total_orders FROM lineorder lo JOIN supplier s ON lo.lo_suppkey = s.s_suppkey WHERE lo.lo_commitdate BETWEEN 20100101 AND 20101231 GROUP BY s.s_name;
+SELECT c.c_mktsegment, SUM(lo.lo_extendedprice) AS total_extended_price FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey WHERE lo.lo_discount BETWEEN 5 AND 10 GROUP BY c.c_mktsegment;
+SELECT p.p_brand, AVG(lo.lo_supplycost) AS avg_supply_cost FROM lineorder lo JOIN part p ON lo.lo_partkey = p.p_partkey WHERE lo.lo_tax IN (0, 7, 3) GROUP BY p.p_brand;

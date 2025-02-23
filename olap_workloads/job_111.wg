@@ -1,0 +1,15 @@
+SELECT COUNT(*) FROM movie_info WHERE info_type_id = 99;
+SELECT AVG(production_year) FROM title WHERE kind_id = 1;
+SELECT COUNT(DISTINCT(movie_id)) FROM movie_keyword WHERE keyword_id IN (SELECT id FROM keyword WHERE phonetic_code = 'C5132');
+SELECT role, COUNT(*) FROM role_type rt JOIN cast_info ci ON rt.id = ci.role_id WHERE rt.role IN ('guest', 'writer', 'costume designer') GROUP BY role;
+SELECT cn.name, COUNT(*) FROM company_name cn JOIN movie_companies mc ON cn.id = mc.company_id WHERE cn.name_pcode_sf = 'U1236' GROUP BY cn.name;
+SELECT it.info, COUNT(*) FROM info_type it JOIN movie_info mi ON it.id = mi.info_type_id WHERE it.info IN ('LD video artifacts', 'rentals', 'LD production country') GROUP BY it.info;
+SELECT t.title, COUNT(*) FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 101 GROUP BY t.title;
+SELECT COUNT(*) FROM movie_companies WHERE company_id IN (SELECT id FROM company_name WHERE name = 'Les Films de la Boétie') AND company_type_id = 4;
+SELECT COUNT(*) FROM cast_info WHERE person_role_id IN (SELECT id FROM char_name WHERE name_pcode_nf = 'O5214');
+SELECT k.keyword, COUNT(*) FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword HAVING COUNT(*) > 10;
+SELECT n.name, COUNT(*) FROM name n JOIN aka_name an ON n.id = an.person_id WHERE n.gender = 'M' GROUP BY n.name HAVING COUNT(*) > 5;
+SELECT t.title, COUNT(*) FROM title t JOIN movie_link ml ON t.id = ml.movie_id WHERE ml.link_type_id = 1 GROUP BY t.title;
+SELECT n.name, SUM(ci.nr_order) FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE n.name_pcode_cf = 'U1236' GROUP BY n.name;
+SELECT t.title, COUNT(*) FROM title t JOIN movie_info_idx mi ON t.id = mi.movie_id WHERE mi.info_type_id = 100 AND mi.id IN (392, 29, 633) GROUP BY t.title;
+SELECT cn.name, COUNT(*) FROM company_name cn JOIN movie_companies mc ON cn.id = mc.company_id WHERE cn.md5sum = 'e50632abca2f6e5cb0fa940799fe7b73' GROUP BY cn.name;

@@ -1,0 +1,14 @@
+SELECT n_name, COUNT(*) AS num_customers FROM nation JOIN customer ON n_nationkey = c_nationkey GROUP BY n_name ORDER BY num_customers DESC;
+SELECT r_name, AVG(c_acctbal) AS avg_acctbal FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey GROUP BY r_name;
+SELECT s_name, SUM(ps_availqty) AS total_avail_qty FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey GROUP BY s_name ORDER BY total_avail_qty DESC;
+SELECT o_orderpriority, COUNT(*) AS num_orders FROM orders WHERE o_orderstatus = 'P' GROUP BY o_orderpriority ORDER BY num_orders DESC;
+SELECT c_mktsegment, AVG(o_totalprice) AS avg_order_price FROM customer JOIN orders ON c_custkey = o_custkey GROUP BY c_mktsegment;
+SELECT p_type, COUNT(*) AS num_parts FROM part GROUP BY p_type ORDER BY num_parts DESC;
+SELECT s_name, COUNT(*) AS num_orders FROM supplier JOIN lineitem ON s_suppkey = l_suppkey JOIN orders ON l_orderkey = o_orderkey WHERE o_orderstatus = 'F' GROUP BY s_name ORDER BY num_orders DESC;
+SELECT r_name, SUM(l_extendedprice) AS total_revenue FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE l_returnflag = 'R' GROUP BY r_name;
+SELECT p_brand, COUNT(*) AS num_parts, AVG(p_retailprice) AS avg_retail_price FROM part GROUP BY p_brand HAVING COUNT(*) > 10 ORDER BY avg_retail_price DESC;
+SELECT c_name, COUNT(*) AS num_orders FROM customer JOIN orders ON c_custkey = o_custkey WHERE o_orderstatus = 'O' GROUP BY c_name ORDER BY num_orders DESC;
+SELECT s_name, SUM(l_quantity) AS total_quantity FROM supplier JOIN lineitem ON s_suppkey = l_suppkey WHERE l_shipmode = 'AIR' GROUP BY s_name ORDER BY total_quantity DESC;
+SELECT p_container, AVG(ps_supplycost) AS avg_supply_cost FROM part JOIN partsupp ON p_partkey = ps_partkey GROUP BY p_container;
+SELECT n_name, COUNT(*) AS num_suppliers FROM nation JOIN supplier ON n_nationkey = s_nationkey GROUP BY n_name ORDER BY num_suppliers DESC;
+SELECT o_orderpriority, SUM(l_extendedprice * (1 - l_discount)) AS total_revenue FROM orders JOIN lineitem ON o_orderkey = l_orderkey WHERE o_orderstatus = 'F' GROUP BY o_orderpriority ORDER BY total_revenue DESC;

@@ -1,0 +1,13 @@
+SELECT n_name, COUNT(*) AS num_customers FROM nation JOIN customer ON n_nationkey = c_nationkey GROUP BY n_name ORDER BY num_customers DESC;
+SELECT r_name, AVG(c_acctbal) AS avg_acctbal FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey GROUP BY r_name;
+SELECT p_type, SUM(ps_availqty) AS total_avail_qty FROM part JOIN partsupp ON p_partkey = ps_partkey WHERE p_size IN (30, 13, 4) GROUP BY p_type;
+SELECT p_name, ps_supplycost, s_name FROM part JOIN partsupp ON p_partkey = ps_partkey JOIN supplier ON ps_suppkey = s_suppkey WHERE p_name IN ('lawn cornflower puff rosy saddle', 'navajo lavender dim puff bisque', 'khaki turquoise violet maroon misty') AND ps_supplycost BETWEEN 100 AND 500;
+SELECT c_mktsegment, COUNT(o_orderkey) AS num_orders FROM customer JOIN orders ON c_custkey = o_custkey GROUP BY c_mktsegment;
+SELECT l_returnflag, l_linestatus, COUNT(*) AS num_lineitems FROM lineitem WHERE l_shipdate >= '1994-01-01' AND l_shipdate < '1995-01-01' GROUP BY l_returnflag, l_linestatus;
+SELECT s_name, SUM(l_extendedprice * (1 - l_discount)) AS revenue FROM supplier JOIN lineitem ON s_suppkey = l_suppkey WHERE l_shipdate >= '1994-01-01' AND l_shipdate < '1995-01-01' GROUP BY s_name ORDER BY revenue DESC;
+SELECT o_orderpriority, COUNT(*) AS num_orders FROM orders WHERE o_orderdate >= '1994-01-01' AND o_orderdate < '1995-01-01' GROUP BY o_orderpriority;
+SELECT c_name, SUM(l_extendedprice * (1 - l_discount)) AS revenue FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE o_orderdate >= '1994-01-01' AND o_orderdate < '1995-01-01' GROUP BY c_name ORDER BY revenue DESC;
+SELECT p_brand, COUNT(*) AS num_parts FROM part WHERE p_size IN (30, 13, 4) GROUP BY p_brand;
+SELECT n_name, SUM(l_extendedprice * (1 - l_discount)) AS revenue FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE o_orderdate >= '1994-01-01' AND o_orderdate < '1995-01-01' GROUP BY n_name ORDER BY revenue DESC;
+SELECT s_name, COUNT(l_orderkey) AS num_orders FROM supplier JOIN lineitem ON s_suppkey = l_suppkey WHERE l_shipdate >= '1994-01-01' AND l_shipdate < '1995-01-01' GROUP BY s_name;
+SELECT r_name, COUNT(ps_partkey) AS num_parts FROM region JOIN nation ON r_regionkey = n_regionkey JOIN supplier ON n_nationkey = s_nationkey JOIN partsupp ON s_suppkey = ps_suppkey WHERE ps_availqty IN (7171, 4029, 1295) GROUP BY r_name;

@@ -1,0 +1,9 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' GROUP BY c_region ORDER BY num_orders DESC;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY s_nation ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(DISTINCT lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY c_mktsegment;
+SELECT p_brand, p_size, COUNT(*) AS num_products FROM lineorder_flat WHERE p_color = 'RED' GROUP BY p_brand, p_size ORDER BY num_products DESC;
+SELECT s_name, s_city, SUM(lo_extendedprice * lo_discount) AS total_discounted_price FROM lineorder_flat WHERE lo_orderpriority = '5-LOW' AND s_phone = '23-364-386-8197' GROUP BY s_name, s_city;
+SELECT c_name, c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_commitdate >= 20220101 AND c_phone = '21-313-585-9420' GROUP BY c_name, c_city ORDER BY total_revenue DESC;
+SELECT p_mfgr, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate < 20210101 AND lo_shippriority = 'Y' GROUP BY p_mfgr HAVING COUNT(*) > 10 ORDER BY num_orders DESC;
+SELECT s_region, p_type, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '2-HIGH' AND s_phone = '12-121-406-2823' GROUP BY s_region, p_type ORDER BY num_orders DESC;

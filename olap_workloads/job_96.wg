@@ -1,0 +1,13 @@
+SELECT t.id, t.title, COUNT(*) as total_movies FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 4 GROUP BY t.id, t.title ORDER BY total_movies DESC LIMIT 10;
+SELECT n.name, COUNT(*) as total_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 1 AND n.gender = 'M' GROUP BY n.name ORDER BY total_roles DESC LIMIT 5;
+SELECT k.keyword, COUNT(*) as total_movies FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword ORDER BY total_movies DESC LIMIT 10;
+SELECT t.production_year, COUNT(*) as total_movies FROM title t WHERE t.kind_id = 1 AND t.production_year BETWEEN 2000 AND 2020 GROUP BY t.production_year ORDER BY total_movies DESC;
+SELECT lt.link, COUNT(*) as total_links FROM link_type lt JOIN movie_link ml ON lt.id = ml.link_type_id WHERE lt.link IN ('referenced in', 'spin off', 'spoofs') GROUP BY lt.link ORDER BY total_links DESC;
+SELECT t.title, AVG(ci.nr_order) as avg_order FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE t.kind_id = 1 AND ci.role_id = 1 GROUP BY t.title HAVING AVG(ci.nr_order) > 5 ORDER BY avg_order DESC LIMIT 10;
+SELECT n.name, COUNT(*) as total_movies FROM name n JOIN cast_info ci ON n.id = ci.person_id JOIN title t ON ci.movie_id = t.id WHERE t.production_year >= 2000 AND ci.role_id = 1 GROUP BY n.name ORDER BY total_movies DESC LIMIT 5;
+SELECT t.title, COUNT(*) as total_episodes FROM title t WHERE t.kind_id = 2 AND t.episode_nr IN (27, 58, 13) GROUP BY t.title ORDER BY total_episodes DESC LIMIT 10;
+SELECT n.name, COUNT(*) as total_movies FROM name n JOIN cast_info ci ON n.id = ci.person_id JOIN movie_info mi ON ci.movie_id = mi.movie_id WHERE mi.info_type_id = 4 AND n.surname_pcode IN ('H53', 'M52', 'T61') GROUP BY n.name ORDER BY total_movies DESC;
+SELECT cn.name, COUNT(*) as total_characters FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id GROUP BY cn.name HAVING COUNT(*) > 1 ORDER BY total_characters DESC LIMIT 10;
+SELECT t.title, COUNT(*) as total_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id JOIN company_name cn ON mc.company_id = cn.id WHERE cn.country_code = 'US' GROUP BY t.title ORDER BY total_companies DESC LIMIT 10;
+SELECT n.name, COUNT(*) as total_directors FROM name n JOIN cast_info ci ON n.id = ci.person_id JOIN role_type rt ON ci.role_id = rt.id WHERE rt.role = 'director' GROUP BY n.name ORDER BY total_directors DESC LIMIT 5;
+SELECT t.title, COUNT(DISTINCT ci.person_id) as total_actors FROM title t JOIN cast_info ci ON t.id = ci.movie_id JOIN role_type rt ON ci.role_id = rt.id WHERE rt.role = 'actor' AND t.production_year >= 2010 GROUP BY t.title ORDER BY total_actors DESC LIMIT 10;

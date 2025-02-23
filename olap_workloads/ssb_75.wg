@@ -1,0 +1,12 @@
+SELECT c.c_name, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) AS revenue FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey WHERE lo.lo_orderdate >= 19930101 AND lo.lo_orderdate <= 19931231 GROUP BY c.c_name ORDER BY revenue DESC LIMIT 10;
+SELECT p.p_category, COUNT(*) AS num_products FROM part p WHERE p.p_container IN ('LG BOX', 'LG JAR', 'JUMBO PACK') GROUP BY p.p_category ORDER BY num_products DESC;
+SELECT s.s_nation, s.s_city, SUM(lo.lo_revenue) AS total_revenue FROM lineorder lo JOIN supplier s ON lo.lo_suppkey = s.s_suppkey WHERE lo.lo_commitdate BETWEEN 19920411 AND 19940423 GROUP BY s.s_nation, s.s_city ORDER BY total_revenue DESC;
+SELECT d.d_year, d.d_month, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) AS monthly_revenue FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey WHERE lo.lo_orderpriority = '1-URGENT' OR lo.lo_orderpriority = '2-HIGH' GROUP BY d.d_year, d.d_month ORDER BY d.d_year, d.d_month;
+SELECT c.c_mktsegment, COUNT(*) AS num_orders FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey WHERE lo.lo_orderkey IN (320, 992, 869) GROUP BY c.c_mktsegment;
+SELECT p.p_mfgr, AVG(p.p_size) AS avg_size FROM part p WHERE p.p_category IN ('MFGR#42', 'MFGR#23', 'MFGR#33') GROUP BY p.p_mfgr;
+SELECT s.s_region, COUNT(*) AS num_suppliers FROM supplier s WHERE s.s_nation IN ('INDONESIA', 'JAPAN', 'FRANCE') GROUP BY s.s_region;
+SELECT d.d_year, COUNT(DISTINCT lo.lo_orderkey) AS num_orders FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey WHERE d.d_holidayfl = 'Y' GROUP BY d.d_year ORDER BY d.d_year;
+SELECT p.p_name, COUNT(*) AS num_orders FROM lineorder lo JOIN part p ON lo.lo_partkey = p.p_partkey WHERE p.p_name IN ('metallic puff', 'steel almond', 'gainsboro turquoise') GROUP BY p.p_name;
+SELECT s.s_name, SUM(lo.lo_supplycost) AS total_supply_cost FROM lineorder lo JOIN supplier s ON lo.lo_suppkey = s.s_suppkey WHERE s.s_address IN ('vXDWBL0AYSnOG2c1UZXkUzMC', 'cmR0YvBZ,E3IIgwkPji', 'JxRNUVL') GROUP BY s.s_name;
+SELECT d.d_year, d.d_month, SUM(lo.lo_tax) AS total_tax FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey WHERE d.d_weekdayfl = 'Y' GROUP BY d.d_year, d.d_month ORDER BY d.d_year, d.d_month;
+SELECT c.c_name, COUNT(*) AS num_orders FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey WHERE lo.lo_custkey IN (10000, 126989, 410474) GROUP BY c.c_name;

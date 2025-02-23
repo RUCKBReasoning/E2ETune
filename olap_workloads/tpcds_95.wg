@@ -1,0 +1,8 @@
+SELECT i_category, SUM(ss_net_profit) as total_profit FROM store_sales ss JOIN item i ON ss.ss_item_sk = i.i_item_sk GROUP BY i_category ORDER BY total_profit DESC LIMIT 5;
+SELECT c_birth_year, AVG(cs_net_paid) as avg_paid FROM catalog_sales cs JOIN customer c ON cs.cs_bill_customer_sk = c.c_customer_sk GROUP BY c_birth_year ORDER BY avg_paid DESC LIMIT 10;
+SELECT i_brand, SUM(cr_return_amount) as total_return_amount FROM catalog_returns cr JOIN item i ON cr.cr_item_sk = i.i_item_sk GROUP BY i_brand ORDER BY total_return_amount DESC LIMIT 5;
+SELECT w_warehouse_name, SUM(inv_quantity_on_hand) as total_inventory FROM inventory inv JOIN warehouse w ON inv.inv_warehouse_sk = w.w_warehouse_sk GROUP BY w_warehouse_name ORDER BY total_inventory DESC;
+SELECT p_promo_name, COUNT(*) as num_sales FROM store_sales ss JOIN promotion p ON ss.ss_promo_sk = p.p_promo_sk WHERE p.p_discount_active = 'Y' GROUP BY p_promo_name ORDER BY num_sales DESC LIMIT 10;
+SELECT d_week_seq, COUNT(*) as num_web_sales FROM web_sales ws JOIN date_dim d ON ws.ws_sold_date_sk = d.d_date_sk WHERE d_current_week = 'Y' GROUP BY d_week_seq ORDER BY num_web_sales DESC;
+SELECT wp_type, COUNT(*) as num_page_views FROM web_sales ws JOIN web_page wp ON ws.ws_web_page_sk = wp.wp_web_page_sk GROUP BY wp_type ORDER BY num_page_views DESC LIMIT 5;
+SELECT s_store_name, SUM(ss_quantity) as total_items_sold FROM store_sales ss JOIN store s ON ss.ss_store_sk = s.s_store_sk GROUP BY s_store_name ORDER BY total_items_sold DESC LIMIT 10;

@@ -1,0 +1,8 @@
+SELECT c_region, COUNT(lo_orderkey) as order_count, SUM(lo_extendedprice) as total_sales FROM lineorder_flat WHERE lo_orderpriority = 'High' GROUP BY c_region ORDER BY total_sales DESC;
+SELECT p_category, AVG(lo_quantity) as avg_quantity, AVG(lo_extendedprice) as avg_price FROM lineorder_flat WHERE lo_partkey IN (13481, 13483, 13474) GROUP BY p_category;
+SELECT s_name, s_city, SUM(lo_supplycost) as total_supply_cost FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY s_name, s_city ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(DISTINCT lo_custkey) as customer_count FROM lineorder_flat WHERE lo_orderdate >= 20210101 GROUP BY c_mktsegment;
+SELECT p_brand, p_color, SUM(lo_quantity) as total_quantity FROM lineorder_flat WHERE lo_discount BETWEEN 5 AND 15 AND lo_orderpriority = 'Medium' GROUP BY p_brand, p_color HAVING SUM(lo_quantity) > 1000 ORDER BY total_quantity DESC;
+SELECT c_nation, COUNT(lo_orderkey) as order_count, SUM(lo_revenue) as total_revenue FROM lineorder_flat WHERE lo_orderpriority = 'Low' AND lo_shippriority = '0' GROUP BY c_nation ORDER BY total_revenue DESC;
+SELECT s_nation, p_type, COUNT(lo_orderkey) as order_count FROM lineorder_flat WHERE lo_commitdate < lo_orderdate AND lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY s_nation, p_type ORDER BY order_count DESC;
+SELECT c_city, p_name, SUM(lo_extendedprice * (1 - lo_discount)) as net_sales FROM lineorder_flat WHERE lo_quantity IN (12, 10, 4) AND lo_orderdate >= 20210101 GROUP BY c_city, p_name HAVING SUM(lo_extendedprice * (1 - lo_discount)) > 100000 ORDER BY net_sales DESC;

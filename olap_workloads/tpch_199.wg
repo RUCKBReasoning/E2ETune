@@ -1,0 +1,18 @@
+SELECT r_name, COUNT(*) AS nation_count FROM nation JOIN region ON n_regionkey = r_regionkey GROUP BY r_name;
+SELECT n_name, AVG(c_acctbal) AS avg_account_balance FROM customer JOIN nation ON c_nationkey = n_nationkey GROUP BY n_name;
+SELECT c_mktsegment, SUM(o_totalprice) AS total_sales FROM customer JOIN orders ON c_custkey = o_custkey GROUP BY c_mktsegment;
+SELECT p_brand, COUNT(*) AS part_count FROM part WHERE p_size BETWEEN 10 AND 20 GROUP BY p_brand;
+SELECT s_name, SUM(ps_availqty) AS total_avail_qty FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey GROUP BY s_name;
+SELECT o_orderpriority, COUNT(*) AS order_count FROM orders WHERE o_orderdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY o_orderpriority;
+SELECT l_returnflag, l_linestatus, COUNT(*) AS lineitem_count FROM lineitem WHERE l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY l_returnflag, l_linestatus;
+SELECT s_name, COUNT(*) AS total_orders FROM supplier JOIN lineitem ON s_suppkey = l_suppkey JOIN orders ON l_orderkey = o_orderkey GROUP BY s_name;
+SELECT c_name, COUNT(*) AS total_orders FROM customer JOIN orders ON c_custkey = o_custkey WHERE o_orderstatus = 'F' GROUP BY c_name;
+SELECT n_name, SUM(l_extendedprice * (1 - l_discount)) AS revenue FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY n_name;
+SELECT p_type, AVG(p_retailprice) AS avg_retail_price FROM part WHERE p_size BETWEEN 10 AND 20 GROUP BY p_type;
+SELECT n_name, SUM(ps_supplycost * ps_availqty) AS total_supply_cost FROM nation JOIN supplier ON n_nationkey = s_nationkey JOIN partsupp ON s_suppkey = ps_suppkey GROUP BY n_name;
+SELECT o_orderpriority, AVG(o_totalprice) AS avg_order_price FROM orders WHERE o_orderdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY o_orderpriority;
+SELECT n_name, COUNT(*) AS customer_count FROM nation JOIN customer ON n_nationkey = c_nationkey WHERE c_acctbal > 1000 GROUP BY n_name;
+SELECT s_name, COUNT(*) AS total_parts FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey JOIN part ON ps_partkey = p_partkey WHERE p_size BETWEEN 10 AND 20 GROUP BY s_name;
+SELECT c_name, SUM(l_extendedprice * (1 - l_discount)) AS total_revenue FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY c_name;
+SELECT p_brand, AVG(ps_supplycost) AS avg_supply_cost FROM part JOIN partsupp ON p_partkey = ps_partkey WHERE p_size BETWEEN 10 AND 20 GROUP BY p_brand;
+SELECT n_name, AVG(l_extendedprice * (1 - l_discount)) AS avg_revenue FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY n_name;

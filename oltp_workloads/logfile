@@ -1,0 +1,16 @@
+2024-03-22 23:38:47.262 CST [16596] LOG:  starting PostgreSQL 12.2 on x86_64-pc-linux-gnu, compiled by gcc (Spack GCC) 13.1.0, 64-bit
+2024-03-22 23:38:47.263 CST [16596] LOG:  listening on IPv6 address "::1", port 5432
+2024-03-22 23:38:47.263 CST [16596] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2024-03-22 23:38:47.289 CST [16596] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2024-03-22 23:38:47.929 CST [16597] LOG:  database system was interrupted; last known up at 2024-02-27 09:44:18 CST
+2024-03-22 23:38:51.408 CST [16597] LOG:  database system was not properly shut down; automatic recovery in progress
+2024-03-22 23:38:51.415 CST [16597] LOG:  redo starts at D/3AC38AB0
+2024-03-22 23:38:51.415 CST [16597] LOG:  invalid record length at D/3AC38B98: wanted 24, got 0
+2024-03-22 23:38:51.415 CST [16597] LOG:  redo done at D/3AC38B60
+2024-03-22 23:38:51.538 CST [16596] LOG:  database system is ready to accept connections
+2024-03-23 00:48:54.280 CST [16596] LOG:  received fast shutdown request
+2024-03-23 00:48:54.296 CST [16596] LOG:  aborting any active transactions
+2024-03-23 00:48:54.296 CST [23423] FATAL:  terminating connection due to administrator command
+2024-03-23 00:48:54.297 CST [16596] LOG:  background worker "logical replication launcher" (PID 16606) exited with exit code 1
+2024-03-23 00:48:54.315 CST [16601] LOG:  shutting down
+2024-03-23 00:48:54.540 CST [16596] LOG:  database system is shut down

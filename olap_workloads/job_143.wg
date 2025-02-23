@@ -1,0 +1,10 @@
+SELECT t.title, COUNT(c.id) AS cast_count FROM title t JOIN cast_info c ON t.id = c.movie_id GROUP BY t.title ORDER BY cast_count DESC LIMIT 10;
+SELECT k.keyword, COUNT(mk.movie_id) AS movie_count FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword ORDER BY movie_count DESC LIMIT 10;
+SELECT t.production_year, COUNT(t.id) AS movie_count FROM title t WHERE t.production_year IS NOT NULL GROUP BY t.production_year ORDER BY movie_count DESC;
+SELECT n.name, COUNT(ci.person_id) AS role_count FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name ORDER BY role_count DESC LIMIT 10;
+SELECT t.title, COUNT(ml.linked_movie_id) AS linked_movie_count FROM title t JOIN movie_link ml ON t.id = ml.movie_id GROUP BY t.title ORDER BY linked_movie_count DESC LIMIT 10;
+SELECT t.title, COUNT(mc.company_id) AS company_count FROM title t JOIN movie_companies mc ON t.id = mc.movie_id GROUP BY t.title ORDER BY company_count DESC LIMIT 10;
+SELECT it.info, COUNT(mi.id) AS info_count FROM info_type it JOIN movie_info mi ON it.id = mi.info_type_id WHERE it.id IN (63, 79, 428) GROUP BY it.info ORDER BY info_count DESC;
+SELECT t.title, COUNT(DISTINCT ci.person_id) AS actor_count FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE ci.role_id = 1 AND t.production_year BETWEEN 2000 AND 2020 GROUP BY t.title ORDER BY actor_count DESC;
+SELECT n.name, COUNT(pi.person_id) AS person_info_count FROM name n JOIN person_info pi ON n.id = pi.person_id WHERE pi.info_type_id = 4 GROUP BY n.name ORDER BY person_info_count DESC;
+SELECT t.title, COUNT(mk.keyword_id) AS keyword_count FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id WHERE mk.keyword_id IN (9622, 8189, 2068) GROUP BY t.title ORDER BY keyword_count DESC;

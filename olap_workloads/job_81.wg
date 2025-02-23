@@ -1,0 +1,7 @@
+SELECT COUNT(*) FROM movie_keyword WHERE keyword_id IN (6752, 22039, 10495);
+SELECT t.title, COUNT(*) FROM title AS t JOIN movie_keyword AS mk ON t.id = mk.movie_id WHERE mk.keyword_id IN (6752, 22039, 10495) GROUP BY t.title;
+SELECT t.title, AVG(cast_info.nr_order) FROM title AS t JOIN cast_info ON t.id = cast_info.movie_id WHERE t.production_year BETWEEN 2000 AND 2020 GROUP BY t.title;
+SELECT n.name, COUNT(*) FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY COUNT(*) DESC;
+SELECT t.title, COUNT(*) FROM title AS t JOIN movie_companies AS mc ON t.id = mc.movie_id JOIN company_name AS cn ON mc.company_id = cn.id WHERE cn.country_code = 'US' GROUP BY t.title HAVING COUNT(*) > 1;
+SELECT t.title, COUNT(*) FROM title AS t JOIN movie_info AS mi ON t.id = mi.movie_id WHERE mi.info_type_id = 3 AND mi.info = 'Color' GROUP BY t.title HAVING COUNT(*) > 1;
+SELECT t.title, COUNT(*) FROM title AS t JOIN movie_info AS mi ON t.id = mi.movie_id WHERE mi.info_type_id = 3 AND mi.info = 'Black and White' GROUP BY t.title HAVING COUNT(*) > 1;

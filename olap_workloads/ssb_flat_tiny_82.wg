@@ -1,0 +1,14 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY p_category;
+SELECT c_city, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_orderpriority = 'HIGH' GROUP BY c_city;
+SELECT s_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND lo_commitdate > lo_orderdate GROUP BY s_name;
+SELECT p_brand, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY p_brand HAVING SUM(lo_supplycost) > 1000000;
+SELECT c_nation, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE lo_orderpriority = 'LOW' GROUP BY c_nation;
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY c_mktsegment;
+SELECT s_region, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_shippriority = '0' GROUP BY s_region;
+SELECT p_type, COUNT(*) AS num_parts FROM lineorder_flat WHERE p_size BETWEEN 1 AND 50 GROUP BY p_type;
+SELECT c_name, SUM(lo_ordtotalprice) AS total_order_price FROM lineorder_flat WHERE c_phone = '23-736-789-8988' GROUP BY c_name;
+SELECT s_nation, COUNT(*) AS num_orders FROM lineorder_flat WHERE s_name = 'Supplier#000006440' GROUP BY s_nation;
+SELECT p_mfgr, SUM(lo_extendedprice * (1 - lo_discount)) AS total_revenue FROM lineorder_flat GROUP BY p_mfgr;
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = 'MEDIUM' AND c_address LIKE '%Main%' GROUP BY c_city;
+SELECT p_container, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat WHERE lo_shipmode = 'RAIL' AND lo_commitdate < lo_orderdate GROUP BY p_container;

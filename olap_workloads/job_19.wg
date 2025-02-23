@@ -1,0 +1,11 @@
+SELECT t.title, COUNT(c.id) as cast_count FROM title t JOIN cast_info c ON t.id = c.movie_id WHERE t.production_year = 2000 GROUP BY t.title HAVING COUNT(c.id) > 10 ORDER BY COUNT(c.id) DESC;
+SELECT n.name, COUNT(ci.id) as movie_count FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 9 GROUP BY n.name HAVING COUNT(ci.id) > 5 ORDER BY COUNT(ci.id) DESC;
+SELECT k.keyword, COUNT(mk.id) as movie_count FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword HAVING COUNT(mk.id) > 100 ORDER BY COUNT(mk.id) DESC;
+SELECT t.title, AVG(mi.info::integer) as average_rating FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 101 GROUP BY t.title HAVING AVG(mi.info::integer) > 8.0 ORDER BY AVG(mi.info::integer) DESC;
+SELECT n.name, COUNT(ci.id) as guest_appearances FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 12 GROUP BY n.name HAVING COUNT(ci.id) > 10 ORDER BY COUNT(ci.id) DESC;
+SELECT cn.name, COUNT(ci.id) as character_count FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id GROUP BY cn.name HAVING COUNT(ci.id) > 50 ORDER BY COUNT(ci.id) DESC;
+SELECT t.title, COUNT(mc.id) as company_count FROM title t JOIN movie_companies mc ON t.id = mc.movie_id WHERE mc.company_type_id = 1 GROUP BY t.title HAVING COUNT(mc.id) > 5 ORDER BY COUNT(mc.id) DESC;
+SELECT n.name, COUNT(pi.id) as info_count FROM name n JOIN person_info pi ON n.id = pi.person_id WHERE pi.info_type_id = 21 GROUP BY n.name HAVING COUNT(pi.id) > 10 ORDER BY COUNT(pi.id) DESC;
+SELECT t.title, COUNT(ml.id) as linked_movies FROM title t JOIN movie_link ml ON t.id = ml.movie_id GROUP BY t.title HAVING COUNT(ml.id) > 5 ORDER BY COUNT(ml.id) DESC;
+SELECT t.title, COUNT(mi.id) as trivia_count FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 16 GROUP BY t.title HAVING COUNT(mi.id) > 10 ORDER BY COUNT(mi.id) DESC;
+SELECT n.name, COUNT(ci.id) as crew_count FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 7 GROUP BY n.name HAVING COUNT(ci.id) > 20 ORDER BY COUNT(ci.id) DESC;

@@ -1,0 +1,10 @@
+SELECT title.title, COUNT(movie_keyword.keyword_id) as keyword_count FROM title JOIN movie_keyword ON title.id = movie_keyword.movie_id GROUP BY title.title ORDER BY keyword_count DESC;
+SELECT name.name, COUNT(cast_info.person_id) as cast_count FROM name JOIN cast_info ON name.id = cast_info.person_id WHERE cast_info.role_id = 1 GROUP BY name.name ORDER BY cast_count DESC;
+SELECT company_name.name, COUNT(movie_companies.company_id) as movie_count FROM company_name JOIN movie_companies ON company_name.id = movie_companies.company_id WHERE movie_companies.company_type_id = 1 GROUP BY company_name.name ORDER BY movie_count DESC;
+SELECT kind_type.kind, COUNT(title.kind_id) as kind_count FROM kind_type JOIN title ON kind_type.id = title.kind_id GROUP BY kind_type.kind ORDER BY kind_count DESC;
+SELECT title.title, AVG(CAST(movie_info.info AS INTEGER)) as average_rating FROM title JOIN movie_info ON title.id = movie_info.movie_id WHERE movie_info.info_type_id = 101 GROUP BY title.title HAVING AVG(CAST(movie_info.info AS INTEGER)) >= 7 ORDER BY average_rating DESC;
+SELECT name.name, COUNT(cast_info.person_id) as director_count FROM name JOIN cast_info ON name.id = cast_info.person_id WHERE cast_info.role_id = 8 GROUP BY name.name ORDER BY director_count DESC;
+SELECT title.title, COUNT(movie_link.linked_movie_id) as linked_movies_count FROM title JOIN movie_link ON title.id = movie_link.movie_id GROUP BY title.title ORDER BY linked_movies_count DESC;
+SELECT title.title, COUNT(movie_companies.company_id) as company_count FROM title JOIN movie_companies ON title.id = movie_companies.movie_id GROUP BY title.title ORDER BY company_count DESC;
+SELECT keyword.keyword, COUNT(movie_keyword.keyword_id) as keyword_count FROM keyword JOIN movie_keyword ON keyword.id = movie_keyword.keyword_id GROUP BY keyword.keyword ORDER BY keyword_count DESC;
+SELECT title.title, COUNT(cast_info.movie_id) as cast_count FROM title JOIN cast_info ON title.id = cast_info.movie_id WHERE cast_info.role_id = 1 GROUP BY title.title ORDER BY cast_count DESC;

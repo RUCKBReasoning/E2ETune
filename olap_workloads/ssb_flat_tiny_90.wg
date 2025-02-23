@@ -1,0 +1,12 @@
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY lo_orderpriority;
+SELECT s_name, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_orderkey IN (4531170, 25041383, 4718791) GROUP BY s_name;
+SELECT c_region, AVG(lo_extendedprice) AS avg_extendedprice FROM lineorder_flat GROUP BY c_region ORDER BY c_region;
+SELECT p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY p_category ORDER BY p_category;
+SELECT s_nation, COUNT(DISTINCT lo_custkey) AS unique_customer_count FROM lineorder_flat GROUP BY s_nation ORDER BY s_nation;
+SELECT c_mktsegment, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY c_mktsegment ORDER BY c_mktsegment;
+SELECT lo_orderpriority, AVG(lo_revenue) AS avg_revenue, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE lo_orderkey IN (4531170, 25041383, 4718791) GROUP BY lo_orderpriority;
+SELECT p_brand, COUNT(*) AS order_count FROM lineorder_flat WHERE lo_orderpriority = '2-HIGH' GROUP BY p_brand ORDER BY order_count DESC;
+SELECT c_city, SUM(lo_extendedprice * lo_discount) AS discounted_revenue FROM lineorder_flat GROUP BY c_city ORDER BY discounted_revenue DESC;
+SELECT s_name, p_name, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderpriority = '5-LOW' AND s_name IN ('Supplier#000009184', 'Supplier#000001115', 'Supplier#000009328') GROUP BY s_name, p_name ORDER BY s_name, total_quantity DESC;
+SELECT lo_shipmode, COUNT(*) AS order_count FROM lineorder_flat WHERE lo_commitdate >= lo_orderdate AND lo_commitdate <= lo_orderdate + 30 GROUP BY lo_shipmode ORDER BY order_count DESC;
+SELECT c_nation, p_type, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_orderpriority = '3-MEDIUM' GROUP BY c_nation, p_type ORDER BY c_nation, total_revenue DESC;

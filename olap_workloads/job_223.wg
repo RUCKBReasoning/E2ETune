@@ -1,0 +1,15 @@
+SELECT AVG(production_year) FROM title WHERE kind_id = 1;
+SELECT title.title, COUNT(movie_keyword.keyword_id) AS keyword_count FROM title JOIN movie_keyword ON title.id = movie_keyword.movie_id GROUP BY title.title ORDER BY keyword_count DESC;
+SELECT company_name.name, COUNT(movie_companies.movie_id) AS movie_count FROM company_name JOIN movie_companies ON company_name.id = movie_companies.company_id WHERE movie_companies.company_type_id = 1 GROUP BY company_name.name ORDER BY movie_count DESC;
+SELECT COUNT(*) FROM movie_link WHERE id IN (131, 35, 484) AND link_type_id IN (3, 13, 7);
+SELECT name.name, COUNT(cast_info.person_id) AS cast_count FROM name JOIN cast_info ON name.id = cast_info.person_id GROUP BY name.name HAVING COUNT(cast_info.person_id) > 10 ORDER BY cast_count DESC;
+SELECT keyword.keyword, COUNT(movie_keyword.movie_id) AS movie_count FROM keyword JOIN movie_keyword ON keyword.id = movie_keyword.keyword_id GROUP BY keyword.keyword ORDER BY movie_count DESC;
+SELECT title.title, COUNT(movie_link.linked_movie_id) AS linked_movie_count FROM title JOIN movie_link ON title.id = movie_link.movie_id GROUP BY title.title HAVING COUNT(movie_link.linked_movie_id) > 5 ORDER BY linked_movie_count DESC;
+SELECT COUNT(*) FROM aka_name WHERE id IN (282, 270, 203) AND name_pcode_nf IN ('J5162', 'G1213', 'A6413');
+SELECT COUNT(DISTINCT movie_id) FROM movie_companies WHERE note IN ('(2002) (Greece) (TV)', '(2009) (worldwide) (TV)', '(2012) (USA) (all media)') AND movie_id IN (597, 65, 196) AND company_type_id = 1;
+SELECT title.title, COUNT(movie_companies.company_id) AS company_count FROM title JOIN movie_companies ON title.id = movie_companies.movie_id WHERE movie_companies.company_type_id = 1 GROUP BY title.title HAVING COUNT(movie_companies.company_id) > 5 ORDER BY company_count DESC;
+SELECT title.title, COUNT(movie_link.linked_movie_id) AS linked_movie_count FROM title JOIN movie_link ON title.id = movie_link.movie_id WHERE movie_link.link_type_id IN (3, 13, 7) GROUP BY title.title HAVING COUNT(movie_link.linked_movie_id) > 5 ORDER BY linked_movie_count DESC;
+SELECT title.title, COUNT(movie_keyword.keyword_id) AS keyword_count FROM title JOIN movie_keyword ON title.id = movie_keyword.movie_id WHERE title.kind_id = 1 GROUP BY title.title HAVING COUNT(movie_keyword.keyword_id) > 5 ORDER BY keyword_count DESC;
+SELECT name.name, COUNT(cast_info.person_id) AS cast_count FROM name JOIN cast_info ON name.id = cast_info.person_id WHERE cast_info.role_id IN (SELECT role_type.id FROM role_type WHERE role_type.role = 'actor' OR role_type.role = 'actress') GROUP BY name.name HAVING COUNT(cast_info.person_id) > 10 ORDER BY cast_count DESC;
+SELECT COUNT(*) FROM title WHERE kind_id = 1 AND production_year BETWEEN 2000 AND 2020 AND title.id IN (SELECT movie_id FROM movie_companies WHERE company_type_id = 1);
+SELECT title.title, COUNT(movie_companies.company_id) AS company_count FROM title JOIN movie_companies ON title.id = movie_companies.movie_id WHERE title.kind_id = 1 AND movie_companies.company_type_id = 1 GROUP BY title.title HAVING COUNT(movie_companies.company_id) > 5 ORDER BY company_count DESC;

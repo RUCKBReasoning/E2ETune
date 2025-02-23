@@ -1,0 +1,10 @@
+SELECT c_nation, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE c_nation IN ('RUSSIA', 'EGYPT', 'IRAN') GROUP BY c_nation ORDER BY total_price DESC;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category ORDER BY avg_price DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT s_name, s_city, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_orderdate >= 20200101 AND lo_orderdate <= 20201231 GROUP BY s_name, s_city ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY c_mktsegment ORDER BY total_revenue DESC;
+SELECT p_brand, p_type, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE p_size BETWEEN 10 AND 20 GROUP BY p_brand, p_type ORDER BY total_price DESC;
+SELECT c_name, c_city, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND lo_discount >= 5 AND lo_discount <= 15 GROUP BY c_name, c_city ORDER BY total_price DESC;
+SELECT p_mfgr, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_commitdate >= 20200101 AND lo_commitdate <= 20201231 GROUP BY p_mfgr ORDER BY total_price DESC;
+SELECT c_region, s_region, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE c_phone = '24-436-163-3174' OR c_phone = '30-930-933-4076' OR c_phone = '34-671-397-9506' GROUP BY c_region, s_region ORDER BY total_price DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_orderdate >= 20200101 AND lo_orderdate <= 20201231 GROUP BY lo_orderpriority ORDER BY total_tax DESC;

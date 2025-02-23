@@ -1,0 +1,8 @@
+SELECT COUNT(*) AS total_movies, EXTRACT(YEAR FROM CURRENT_DATE) - AVG(production_year) AS avg_movie_age FROM title;
+SELECT k.keyword, COUNT(mk.movie_id) AS movie_count FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id WHERE k.phonetic_code IN ('L1253', 'B4316', 'F6235') GROUP BY k.keyword ORDER BY movie_count DESC;
+SELECT c.name, COUNT(mc.movie_id) AS num_movies FROM company_name c JOIN movie_companies mc ON c.id = mc.company_id WHERE c.country_code IN ('[ph]', '[be]', '[au]') AND c.name_pcode_nf IN ('A3163', 'P1426', 'K5121') GROUP BY c.name ORDER BY num_movies DESC;
+SELECT t.title, COUNT(ci.person_id) AS cast_count FROM title t JOIN cast_info ci ON t.id = ci.movie_id GROUP BY t.title HAVING COUNT(ci.person_id) > 5 ORDER BY cast_count DESC;
+SELECT it.info, COUNT(mi.movie_id) AS movie_count FROM info_type it JOIN movie_info mi ON it.id = mi.info_type_id WHERE mi.movie_id IN (294, 635, 345) AND mi.info IN ('646', '..1.1.2003', '00.0.03.02') AND mi.info_type_id IN (99, 101, 100) GROUP BY it.info ORDER BY movie_count DESC;
+SELECT t1.title, t2.title AS linked_title, lt.link FROM movie_link ml JOIN title t1 ON ml.movie_id = t1.id JOIN title t2 ON ml.linked_movie_id = t2.id JOIN link_type lt ON ml.link_type_id = lt.id;
+SELECT n.name, COUNT(ci.person_id) AS total_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id JOIN role_type rt ON ci.role_id = rt.id GROUP BY n.name HAVING COUNT(ci.person_id) > 10 ORDER BY total_roles DESC;
+SELECT k.keyword, COUNT(*) AS keyword_count FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id WHERE mk.movie_id IN (SELECT movie_id FROM movie_info_idx WHERE info_type_id = 100) GROUP BY k.keyword ORDER BY keyword_count DESC;

@@ -1,0 +1,13 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT s_region, AVG(lo_extendedprice) AS avg_extendedprice FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' GROUP BY s_region;
+SELECT p_type, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY p_type;
+SELECT c_mktsegment, COUNT(DISTINCT lo_orderkey) AS num_distinct_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY c_mktsegment;
+SELECT s_nation, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_discount > 0 AND lo_orderpriority = '2-HIGH' GROUP BY s_nation;
+SELECT p_category, SUM(lo_supplycost) AS total_supplycost FROM lineorder_flat WHERE s_region = 'EUROPE' GROUP BY p_category;
+SELECT c_city, AVG(lo_revenue) AS avg_revenue FROM lineorder_flat WHERE lo_commitdate BETWEEN 20210101 AND 20211231 GROUP BY c_city;
+SELECT p_brand, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 AND lo_shippriority = 'Y' GROUP BY p_brand;
+SELECT p_mfgr, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_orderpriority = '3-MEDIUM' AND s_region = 'ASIA' GROUP BY p_mfgr;
+SELECT c_nation, COUNT(DISTINCT lo_custkey) AS num_distinct_customers FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY c_nation;
+SELECT p_size, AVG(lo_extendedprice) AS avg_extendedprice FROM lineorder_flat WHERE p_type = 'ECONOMY PLATED TIN' AND lo_orderpriority = '4-LOW' GROUP BY p_size;
+SELECT s_city, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 AND lo_shipmode = 'RAIL' GROUP BY s_city;
+SELECT c_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 AND lo_discount > 0 AND lo_shippriority = 'Y' GROUP BY c_name;

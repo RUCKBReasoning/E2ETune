@@ -1,0 +1,15 @@
+SELECT COUNT(*) FROM movie_info WHERE info_type_id = 32 AND info = 'LD spaciality';
+SELECT AVG(production_year) FROM title WHERE kind_id = 1 AND production_year IS NOT NULL;
+SELECT company_name.name, COUNT(movie_companies.movie_id) AS movie_count FROM company_name JOIN movie_companies ON company_name.id = movie_companies.company_id WHERE company_name.md5sum IN ('15df09ad098d26101c633f05df4bab5c', '16bd0e7102b436be31533dda2d207e5c', '09963783c6185a9ddac7b530584181b7') GROUP BY company_name.name;
+SELECT t.title, COUNT(mc.movie_id) AS movie_count FROM title AS t JOIN movie_companies AS mc ON t.id = mc.movie_id WHERE mc.company_id IN (SELECT id FROM company_name WHERE name = 'Arra Productions') GROUP BY t.title;
+SELECT t.title, COUNT(mk.keyword_id) AS keyword_count FROM title AS t JOIN movie_keyword AS mk ON t.id = mk.movie_id WHERE t.production_year = 2020 GROUP BY t.title;
+SELECT k.keyword, COUNT(*) AS movie_count FROM keyword AS k JOIN movie_keyword AS mk ON k.id = mk.keyword_id GROUP BY k.keyword ORDER BY movie_count DESC LIMIT 10;
+SELECT it.info, COUNT(mi.movie_id) AS movie_count FROM info_type AS it JOIN movie_info AS mi ON it.id = mi.info_type_id WHERE it.id = 62 GROUP BY it.info;
+SELECT t.title, COUNT(cast_info.person_id) AS cast_count FROM title AS t JOIN cast_info ON t.id = cast_info.movie_id WHERE t.production_year = 2021 GROUP BY t.title;
+SELECT n.name, COUNT(ci.movie_id) AS movie_count FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name ORDER BY movie_count DESC LIMIT 10;
+SELECT t.title, COUNT(mc.company_id) AS company_count FROM title AS t JOIN movie_companies AS mc ON t.id = mc.movie_id WHERE t.production_year = 2021 GROUP BY t.title;
+SELECT t.title, AVG(ci.nr_order) AS average_order FROM title AS t JOIN cast_info AS ci ON t.id = ci.movie_id WHERE t.production_year = 2021 GROUP BY t.title;
+SELECT t.title, COUNT(ml.linked_movie_id) AS linked_movie_count FROM title AS t JOIN movie_link AS ml ON t.id = ml.movie_id WHERE ml.link_type_id = 1 GROUP BY t.title;
+SELECT n.name, COUNT(pi.person_id) AS person_info_count FROM name AS n JOIN person_info AS pi ON n.id = pi.person_id WHERE pi.info_type_id = 9 GROUP BY n.name;
+SELECT t.title, COUNT(mk.keyword_id) AS keyword_count FROM title AS t JOIN movie_keyword AS mk ON t.id = mk.movie_id WHERE t.production_year BETWEEN 2010 AND 2020 GROUP BY t.title HAVING COUNT(mk.keyword_id) > 5;
+SELECT t.title, COUNT(ci.person_id) AS cast_count FROM title AS t JOIN cast_info AS ci ON t.id = ci.movie_id WHERE t.kind_id = 7 GROUP BY t.title HAVING COUNT(ci.person_id) > 10;

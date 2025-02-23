@@ -1,0 +1,14 @@
+SELECT s_state, AVG(ss_sales_price) as avg_sales_price FROM store_sales JOIN store ON store_sales.ss_store_sk = store.s_store_sk GROUP BY s_state;
+SELECT i_category, SUM(ss_quantity) as total_quantity FROM store_sales JOIN item ON store_sales.ss_item_sk = item.i_item_sk GROUP BY i_category;
+SELECT d_year, d_moy, SUM(ws_net_paid) as total_revenue FROM web_sales JOIN date_dim ON web_sales.ws_sold_date_sk = date_dim.d_date_sk GROUP BY d_year, d_moy ORDER BY d_year, d_moy;
+SELECT cc_call_center_id, SUM(cs_net_profit) as total_profit FROM catalog_sales JOIN call_center ON catalog_sales.cs_call_center_sk = call_center.cc_call_center_sk WHERE cs_sold_date_sk BETWEEN 2450939 AND 2450929 GROUP BY cc_call_center_id;
+SELECT w_state, SUM(inv_quantity_on_hand) as total_inventory FROM inventory JOIN warehouse ON inventory.inv_warehouse_sk = warehouse.w_warehouse_sk GROUP BY w_state;
+SELECT p_promo_name, COUNT(DISTINCT ss_ticket_number) as total_tickets FROM store_sales JOIN promotion ON store_sales.ss_promo_sk = promotion.p_promo_sk WHERE ss_coupon_amt > 57.86 GROUP BY p_promo_name;
+SELECT d_year, d_qoy, SUM(sr_net_loss) as total_net_loss FROM store_returns JOIN date_dim ON store_returns.sr_returned_date_sk = date_dim.d_date_sk GROUP BY d_year, d_qoy ORDER BY d_year, d_qoy;
+SELECT wp_type, COUNT(wp_web_page_sk) as page_count FROM web_page WHERE wp_creation_date_sk <= (SELECT d_date_sk FROM date_dim WHERE d_date = '2023-11-20') GROUP BY wp_type;
+SELECT cp_type, SUM(cr_net_loss) as total_net_loss FROM catalog_returns JOIN catalog_page ON catalog_returns.cr_catalog_page_sk = catalog_page.cp_catalog_page_sk GROUP BY cp_type;
+SELECT hd_buy_potential, AVG(cs_net_profit) as avg_net_profit FROM catalog_sales JOIN household_demographics ON catalog_sales.cs_bill_hdemo_sk = household_demographics.hd_demo_sk GROUP BY hd_buy_potential;
+SELECT i_brand, SUM(ws_net_paid_inc_tax) as total_revenue FROM web_sales JOIN item ON web_sales.ws_item_sk = item.i_item_sk GROUP BY i_brand;
+SELECT s_market_id, SUM(ss_ext_tax) as total_tax FROM store_sales JOIN store ON store_sales.ss_store_sk = store.s_store_sk WHERE ss_ext_tax > 36.42 GROUP BY s_market_id;
+SELECT d_year, d_moy, COUNT(DISTINCT wr_order_number) as total_orders FROM web_returns JOIN date_dim ON web_returns.wr_returned_date_sk = date_dim.d_date_sk WHERE wr_fee > 7.2 GROUP BY d_year, d_moy ORDER BY d_year, d_moy;
+SELECT i_category, AVG(cs_list_price) as avg_list_price FROM catalog_sales JOIN item ON catalog_sales.cs_item_sk = item.i_item_sk WHERE cs_net_paid_inc_tax < 100.41 GROUP BY i_category;

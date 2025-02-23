@@ -1,0 +1,10 @@
+SELECT c_region, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_extendedprice > 5000000 GROUP BY c_region ORDER BY num_orders DESC;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY p_category ORDER BY avg_quantity DESC;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_discount BETWEEN 5 AND 15 GROUP BY c_city ORDER BY total_revenue DESC LIMIT 10;
+SELECT s_name, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND lo_commitdate < lo_orderdate GROUP BY s_name ORDER BY num_orders DESC;
+SELECT p_brand, p_type, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE p_size IN (23, 45, 42) GROUP BY p_brand, p_type ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(DISTINCT lo_custkey) AS num_customers, SUM(lo_ordtotalprice) AS total_order_price FROM lineorder_flat GROUP BY c_mktsegment HAVING COUNT(DISTINCT lo_custkey) > 10 ORDER BY total_order_price DESC;
+SELECT c_nation, p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderpriority = 'HIGH' GROUP BY c_nation, p_category ORDER BY total_quantity DESC;
+SELECT s_region, p_brand, COUNT(DISTINCT lo_partkey) AS num_parts FROM lineorder_flat WHERE lo_shippriority = '1' GROUP BY s_region, p_brand HAVING COUNT(DISTINCT lo_partkey) > 5 ORDER BY num_parts DESC;
+SELECT c_city, p_mfgr, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE lo_quantity IN (27, 28, 35) GROUP BY c_city, p_mfgr HAVING AVG(lo_tax) > 10 ORDER BY avg_tax DESC;
+SELECT s_nation, p_color, COUNT(DISTINCT lo_suppkey) AS num_suppliers FROM lineorder_flat WHERE lo_orderdate BETWEEN 20200101 AND 20201231 GROUP BY s_nation, p_color HAVING COUNT(DISTINCT lo_suppkey) > 3 ORDER BY num_suppliers DESC;

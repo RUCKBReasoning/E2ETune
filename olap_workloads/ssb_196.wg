@@ -1,0 +1,15 @@
+SELECT s_region, COUNT(*) AS total_orders FROM lineorder JOIN supplier ON lineorder.lo_suppkey = supplier.s_suppkey GROUP BY s_region;
+SELECT c_name, SUM(lo_extendedprice * lo_discount) AS total_discounted_amount FROM lineorder JOIN customer ON lineorder.lo_custkey = customer.c_custkey GROUP BY c_name;
+SELECT p_category, AVG(lo_quantity) AS average_quantity FROM lineorder JOIN part ON lineorder.lo_partkey = part.p_partkey GROUP BY p_category;
+SELECT d_year, COUNT(*) AS total_orders FROM lineorder JOIN date_dim ON lineorder.lo_orderdate = date_dim.d_datekey WHERE d_year >= 2000 AND d_year <= 2010 GROUP BY d_year;
+SELECT s_city, SUM(lo_supplycost) AS total_supply_cost FROM lineorder JOIN supplier ON lineorder.lo_suppkey = supplier.s_suppkey WHERE s_phone = '32-151-567-1296' GROUP BY s_city;
+SELECT p_color, COUNT(*) AS total_parts FROM part WHERE p_category = 'MFGR#32' GROUP BY p_color;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder JOIN customer ON lineorder.lo_custkey = customer.c_custkey WHERE c_region = 'AMERICA' GROUP BY c_city;
+SELECT s_name, COUNT(*) AS total_orders FROM lineorder JOIN supplier ON lineorder.lo_suppkey = supplier.s_suppkey WHERE s_region = 'EUROPE' AND s_city = 'GERMANY  7' GROUP BY s_name;
+SELECT d_month, SUM(lo_extendedprice) AS total_sales FROM lineorder JOIN date_dim ON lineorder.lo_orderdate = date_dim.d_datekey WHERE d_year = 2010 GROUP BY d_month;
+SELECT p_name, SUM(lo_quantity) AS total_quantity FROM lineorder JOIN part ON lineorder.lo_partkey = part.p_partkey WHERE p_color = 'dark' AND p_size >= 10 GROUP BY p_name;
+SELECT c_mktsegment, COUNT(*) AS total_customers FROM customer WHERE c_region = 'AFRICA' GROUP BY c_mktsegment;
+SELECT d_year, SUM(lo_tax) AS total_tax FROM lineorder JOIN date_dim ON lineorder.lo_orderdate = date_dim.d_datekey WHERE d_year >= 2000 AND d_year <= 2010 AND d_holidayfl = 'Y' GROUP BY d_year;
+SELECT s_nation, COUNT(*) AS total_suppliers FROM supplier WHERE s_region = 'EUROPE' GROUP BY s_nation;
+SELECT p_brand, SUM(lo_revenue) AS total_revenue FROM lineorder JOIN part ON lineorder.lo_partkey = part.p_partkey WHERE p_category = 'MFGR#53' GROUP BY p_brand;
+SELECT c_nation, AVG(lo_discount) AS average_discount FROM lineorder JOIN customer ON lineorder.lo_custkey = customer.c_custkey WHERE c_region = 'AMERICA' GROUP BY c_nation;

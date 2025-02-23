@@ -1,0 +1,15 @@
+SELECT i_category, AVG(i_current_price) AS avg_price FROM item GROUP BY i_category;
+SELECT s_store_name, SUM(ss_sales_price) AS total_sales FROM store_sales JOIN store ON s_store_sk = ss_store_sk GROUP BY s_store_name ORDER BY total_sales DESC LIMIT 10;
+SELECT c_first_name, c_last_name, COUNT(*) AS num_orders FROM customer JOIN store_sales ON c_customer_sk = ss_customer_sk GROUP BY c_first_name, c_last_name ORDER BY num_orders DESC LIMIT 10;
+SELECT sm_type, COUNT(*) AS num_shipments FROM ship_mode JOIN web_sales ON sm_ship_mode_sk = ws_ship_mode_sk GROUP BY sm_type;
+SELECT hd_dep_count, AVG(hd_vehicle_count) AS avg_vehicle_count FROM household_demographics GROUP BY hd_dep_count;
+SELECT d_year, d_month_seq, SUM(ws_sales_price) AS total_sales FROM web_sales JOIN date_dim ON ws_sold_date_sk = d_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT w_state, SUM(inv_quantity_on_hand) AS total_inventory FROM inventory JOIN warehouse ON inv_warehouse_sk = w_warehouse_sk GROUP BY w_state;
+SELECT cc_division_name, COUNT(*) AS num_call_centers FROM call_center GROUP BY cc_division_name;
+SELECT d_year, d_month_seq, COUNT(*) AS num_orders FROM store_sales JOIN date_dim ON ss_sold_date_sk = d_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT i_category, COUNT(*) AS num_items FROM item WHERE i_current_price BETWEEN 10 AND 50 GROUP BY i_category;
+SELECT p_promo_name, SUM(cs_sales_price) AS total_sales FROM catalog_sales JOIN promotion ON cs_promo_sk = p_promo_sk GROUP BY p_promo_name ORDER BY total_sales DESC LIMIT 10;
+SELECT d_day_name, COUNT(*) AS num_orders FROM store_sales JOIN date_dim ON ss_sold_date_sk = d_date_sk WHERE d_holiday = 'Y' GROUP BY d_day_name;
+SELECT i_brand, COUNT(*) AS num_items FROM item WHERE i_manufact_id IN (SELECT i_manufact_id FROM item GROUP BY i_manufact_id HAVING COUNT(*) > 10) GROUP BY i_brand;
+SELECT cc_market_manager, SUM(cr_return_amount) AS total_returns FROM catalog_returns JOIN call_center ON cr_call_center_sk = cc_call_center_sk GROUP BY cc_market_manager ORDER BY total_returns DESC LIMIT 10;
+SELECT w_city, w_state, SUM(ws_sales_price) AS total_sales FROM web_sales JOIN warehouse ON ws_warehouse_sk = w_warehouse_sk GROUP BY w_city, w_state ORDER BY total_sales DESC LIMIT 10;

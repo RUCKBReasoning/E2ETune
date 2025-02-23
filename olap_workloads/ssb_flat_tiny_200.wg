@@ -1,0 +1,15 @@
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT p_container, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY p_container;
+SELECT c_region, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat GROUP BY c_region;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20220101 AND 20220131 GROUP BY lo_orderpriority;
+SELECT p_category, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY p_category;
+SELECT s_nation, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY s_nation;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_discount > 10 GROUP BY c_city;
+SELECT p_brand, COUNT(*) AS num_orders FROM lineorder_flat WHERE p_container = 'SM BOX' GROUP BY p_brand;
+SELECT s_name, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_commitdate BETWEEN 20220101 AND 20220131 GROUP BY s_name;
+SELECT c_nation, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE c_mktsegment = 'AUTOMOBILE' GROUP BY c_nation;
+SELECT p_type, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20220101 AND 20220131 AND p_size > 10 GROUP BY p_type;
+SELECT s_region, SUM(lo_ordtotalprice) AS total_order_price FROM lineorder_flat WHERE lo_shippriority = '1' GROUP BY s_region;
+SELECT c_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = 'HIGH' AND lo_shipmode = 'RAIL' GROUP BY c_name;
+SELECT p_mfgr, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat WHERE p_category = 'FURNITURE' GROUP BY p_mfgr;
+SELECT c_address, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_discount > 10 AND lo_orderdate BETWEEN 20220101 AND 20220131 GROUP BY c_address;

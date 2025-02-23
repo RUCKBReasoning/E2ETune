@@ -1,0 +1,11 @@
+SELECT role_type.role, COUNT(cast_info.person_id) AS num_people FROM cast_info JOIN role_type ON cast_info.role_id = role_type.id WHERE role_type.id IN (11, 12, 8) GROUP BY role_type.role;
+SELECT aka_name.name_pcode_nf, COUNT(aka_name.id) AS num_names FROM aka_name WHERE aka_name.id IN (916, 190, 168) GROUP BY aka_name.name_pcode_nf;
+SELECT aka_name.surname_pcode, COUNT(aka_name.id) AS num_surnames FROM aka_name WHERE aka_name.surname_pcode IN ('A2', 'T13', 'F12') GROUP BY aka_name.surname_pcode;
+SELECT aka_name.name_pcode_cf, COUNT(aka_name.id) AS num_name_codes FROM aka_name WHERE aka_name.name_pcode_cf IN ('P3236', 'T2', 'K3251') GROUP BY aka_name.name_pcode_cf;
+SELECT title.production_year, COUNT(title.id) AS num_movies FROM title WHERE title.kind_id = 1 GROUP BY title.production_year ORDER BY num_movies DESC;
+SELECT movie_info.info_type_id, AVG(LENGTH(movie_info.info)) AS avg_info_length FROM movie_info GROUP BY movie_info.info_type_id;
+SELECT company_name.country_code, COUNT(company_name.id) AS num_companies FROM company_name GROUP BY company_name.country_code ORDER BY num_companies DESC;
+SELECT keyword.keyword, COUNT(movie_keyword.movie_id) AS num_movies FROM keyword JOIN movie_keyword ON keyword.id = movie_keyword.keyword_id GROUP BY keyword.keyword ORDER BY num_movies DESC;
+SELECT name.gender, COUNT(name.id) AS num_names FROM name WHERE name.gender IN ('M', 'F') GROUP BY name.gender;
+SELECT movie_companies.company_type_id, COUNT(movie_companies.movie_id) AS num_movies FROM movie_companies GROUP BY movie_companies.company_type_id;
+SELECT person_info.info_type_id, COUNT(person_info.person_id) AS num_people FROM person_info GROUP BY person_info.info_type_id;

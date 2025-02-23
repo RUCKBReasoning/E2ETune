@@ -1,0 +1,18 @@
+SELECT w_state, SUM(inv_quantity_on_hand) AS total_inventory FROM warehouse JOIN inventory ON w_warehouse_sk = inv_warehouse_sk GROUP BY w_state ORDER BY total_inventory DESC;
+SELECT i_category, COUNT(*) AS num_items FROM item GROUP BY i_category HAVING COUNT(*) > 100 ORDER BY num_items DESC;
+SELECT c_customer_id, c_first_name, c_last_name, SUM(ss_net_paid) AS total_spent FROM customer JOIN store_sales ON c_customer_sk = ss_customer_sk GROUP BY c_customer_id, c_first_name, c_last_name ORDER BY total_spent DESC LIMIT 10;
+SELECT s_store_name, COUNT(sr_item_sk) AS num_returns FROM store JOIN store_returns ON s_store_sk = sr_store_sk GROUP BY s_store_name ORDER BY num_returns DESC;
+SELECT cc_city, COUNT(*) AS num_call_centers FROM call_center WHERE cc_mkt_id IN ('2', '5', '6') GROUP BY cc_city HAVING COUNT(*) > 1 ORDER BY num_call_centers DESC;
+SELECT ws_ship_mode_sk, COUNT(*) AS num_shipments FROM web_sales WHERE ws_sold_date_sk BETWEEN 2450966 AND 2452212 GROUP BY ws_ship_mode_sk ORDER BY num_shipments DESC;
+SELECT p_promo_name, SUM(cs_sales_price) AS total_sales FROM promotion JOIN catalog_sales ON p_promo_sk = cs_promo_sk GROUP BY p_promo_name ORDER BY total_sales DESC;
+SELECT d_year, d_month_seq, SUM(ss_sales_price) AS monthly_sales FROM date_dim JOIN store_sales ON d_date_sk = ss_sold_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT w_warehouse_name, SUM(inv_quantity_on_hand * i_wholesale_cost) AS total_value FROM warehouse JOIN inventory ON w_warehouse_sk = inv_warehouse_sk JOIN item ON inv_item_sk = i_item_sk GROUP BY w_warehouse_name ORDER BY total_value DESC;
+SELECT d_week_seq, SUM(ws_net_paid) AS weekly_sales FROM date_dim JOIN web_sales ON d_date_sk = ws_sold_date_sk WHERE d_year = 2001 GROUP BY d_week_seq ORDER BY weekly_sales DESC;
+SELECT r_reason_desc, COUNT(cr_item_sk) AS num_returns FROM reason JOIN catalog_returns ON r_reason_sk = cr_reason_sk GROUP BY r_reason_desc ORDER BY num_returns DESC;
+SELECT COUNT(*) AS num_orders FROM web_sales WHERE ws_ship_customer_sk = 9913 AND ws_bill_hdemo_sk = 2133;
+SELECT d_year, COUNT(DISTINCT ws_order_number) AS num_orders FROM date_dim JOIN web_sales ON d_date_sk = ws_sold_date_sk WHERE ws_ship_mode_sk = 2 GROUP BY d_year ORDER BY d_year;
+SELECT s_state, AVG(s_tax_precentage) AS avg_tax_rate FROM store GROUP BY s_state HAVING AVG(s_tax_precentage) > 5 ORDER BY avg_tax_rate DESC;
+SELECT i_category, AVG(i_current_price) AS avg_price FROM item GROUP BY i_category HAVING AVG(i_current_price) > 50 ORDER BY avg_price DESC;
+SELECT hd_demo_sk, AVG(hd_dep_count) AS avg_dep_count FROM household_demographics WHERE hd_income_band_sk BETWEEN 10 AND 20 GROUP BY hd_demo_sk ORDER BY avg_dep_count DESC;
+SELECT cc_city, SUM(cs_net_profit) AS total_profit FROM call_center JOIN catalog_sales ON cc_call_center_sk = cs_call_center_sk WHERE cc_city = 'Midway' GROUP BY cc_city;
+SELECT ws_web_page_sk, COUNT(*) AS num_orders FROM web_sales WHERE ws_sold_date_sk = 2451101 AND ws_ship_customer_sk = 79619 GROUP BY ws_web_page_sk ORDER BY num_orders DESC;

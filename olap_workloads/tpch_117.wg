@@ -1,0 +1,11 @@
+SELECT n_name, COUNT(*) AS num_customers FROM nation JOIN customer ON n_nationkey = c_nationkey GROUP BY n_name ORDER BY num_customers DESC;
+SELECT p_brand, AVG(p_retailprice) AS avg_retail_price FROM part WHERE p_size BETWEEN 17 AND 30 GROUP BY p_brand HAVING AVG(p_retailprice) > 1000;
+SELECT c_name, SUM(o_totalprice) AS total_spent FROM customer JOIN orders ON c_custkey = o_custkey WHERE c_nationkey = 2 GROUP BY c_name ORDER BY total_spent DESC LIMIT 10;
+SELECT r_name, COUNT(*) AS num_orders FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey GROUP BY r_name ORDER BY num_orders DESC;
+SELECT s_name, SUM(ps_availqty) AS total_inventory FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey WHERE s_nationkey = 13 GROUP BY s_name ORDER BY total_inventory DESC;
+SELECT p_name, COUNT(*) AS num_lineitems FROM part JOIN lineitem ON p_partkey = l_partkey WHERE p_brand = 'Brand#41' GROUP BY p_name ORDER BY num_lineitems DESC;
+SELECT o_orderpriority, COUNT(*) AS num_orders FROM orders WHERE o_orderdate BETWEEN '2021-01-01' AND '2021-12-31' GROUP BY o_orderpriority ORDER BY num_orders DESC;
+SELECT c_name, SUM(l_extendedprice * (1 - l_discount)) AS revenue FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE c_nationkey = 17 AND l_shipdate BETWEEN '2021-01-01' AND '2021-12-31' GROUP BY c_name ORDER BY revenue DESC;
+SELECT s_name, COUNT(*) AS num_parts FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey JOIN part ON ps_partkey = p_partkey WHERE p_type LIKE '%PERU%' AND s_nationkey = 6 GROUP BY s_name ORDER BY num_parts DESC;
+SELECT n_name, AVG(c_acctbal) AS avg_acct_balance FROM nation JOIN customer ON n_nationkey = c_nationkey WHERE n_name IN ('JAPAN', 'UNITED STATES', 'SAUDI ARABIA') GROUP BY n_name;
+SELECT p_name, SUM(l_quantity) AS total_quantity_sold FROM part JOIN lineitem ON p_partkey = l_partkey WHERE p_retailprice BETWEEN 900 AND 1500 GROUP BY p_name HAVING SUM(l_quantity) > 1000 ORDER BY total_quantity_sold DESC;

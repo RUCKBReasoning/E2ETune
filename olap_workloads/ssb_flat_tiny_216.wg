@@ -1,0 +1,17 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT c_mktsegment, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT c_city, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE c_region = 'ASIA' GROUP BY c_city;
+SELECT p_category, COUNT(*) AS num_products FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_name;
+SELECT c_nation, AVG(lo_revenue) AS avg_revenue FROM lineorder_flat WHERE c_mktsegment = 'FURNITURE' GROUP BY c_nation;
+SELECT p_brand, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY p_brand;
+SELECT s_nation, SUM(lo_extendedprice * lo_discount) AS discounted_revenue FROM lineorder_flat WHERE c_region = 'MIDDLE EAST' GROUP BY s_nation;
+SELECT c_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY c_name;
+SELECT p_name, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE c_mktsegment = 'HOUSEHOLD' GROUP BY p_name;
+SELECT s_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = 'HIGH' GROUP BY s_city;
+SELECT p_type, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE c_region = 'AFRICA' GROUP BY p_type;
+SELECT c_city, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY c_city;
+SELECT s_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shippriority = '1' GROUP BY s_name;
+SELECT p_container, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE s_name = 'Supplier#000001304' GROUP BY p_container;
+SELECT c_nation, AVG(lo_supplycost) AS avg_supply_cost FROM lineorder_flat WHERE lo_orderpriority = 'LOW' GROUP BY c_nation;

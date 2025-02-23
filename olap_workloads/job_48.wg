@@ -1,0 +1,18 @@
+SELECT t.title, COUNT(*) AS num_movies FROM title t JOIN movie_link ml ON t.id = ml.movie_id WHERE ml.link_type_id = 2 GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_movies DESC;
+SELECT n.name, COUNT(*) AS num_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY num_roles DESC;
+SELECT k.keyword, COUNT(*) AS num_movies FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword HAVING COUNT(*) > 100 ORDER BY num_movies DESC;
+SELECT t.title, COUNT(*) AS num_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id WHERE mc.company_type_id = 1 GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_companies DESC;
+SELECT n.name, COUNT(*) AS num_spouses FROM name n JOIN person_info pi ON n.id = pi.person_id WHERE pi.info_type_id = 69 GROUP BY n.name HAVING COUNT(*) > 1 ORDER BY num_spouses DESC;
+SELECT t.title, COUNT(*) AS num_actors FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE ci.role_id = 1 GROUP BY t.title HAVING COUNT(*) > 10 ORDER BY num_actors DESC;
+SELECT t.title, COUNT(*) AS num_episodes FROM title t WHERE t.kind_id = 7 GROUP BY t.title HAVING COUNT(*) > 100 ORDER BY num_episodes DESC;
+SELECT n.name, COUNT(*) AS num_director_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 8 GROUP BY n.name HAVING COUNT(*) > 5 ORDER BY num_director_roles DESC;
+SELECT t.title, COUNT(*) AS num_spin_offs FROM title t JOIN movie_link ml ON t.id = ml.movie_id WHERE ml.link_type_id = 15 GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_spin_offs DESC;
+SELECT t.title, COUNT(*) AS num_follows FROM title t JOIN movie_link ml ON t.id = ml.movie_id WHERE ml.link_type_id = 14 GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_follows DESC;
+SELECT t.title, COUNT(*) AS num_sound_mixes FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 73 GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_sound_mixes DESC;
+SELECT n.name, COUNT(*) AS num_pictorials FROM name n JOIN person_info pi ON n.id = pi.person_id WHERE pi.info_type_id = 52 GROUP BY n.name HAVING COUNT(*) > 1 ORDER BY num_pictorials DESC;
+SELECT t.title, COUNT(*) AS num_distributors FROM title t JOIN movie_companies mc ON t.id = mc.movie_id WHERE mc.company_type_id = 3 GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_distributors DESC;
+SELECT t.title, COUNT(*) AS num_misc_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id WHERE mc.company_type_id = 2 GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_misc_companies DESC;
+SELECT t.title, COUNT(*) AS num_producers FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE ci.role_id = 2 GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_producers DESC;
+SELECT t.title, COUNT(*) AS num_writers FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE ci.role_id = 3 GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_writers DESC;
+SELECT t.title, COUNT(*) AS num_cinematographers FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE ci.role_id = 4 GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_cinematographers DESC;
+SELECT t.title, COUNT(*) AS num_composers FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE ci.role_id = 5 GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_composers DESC;

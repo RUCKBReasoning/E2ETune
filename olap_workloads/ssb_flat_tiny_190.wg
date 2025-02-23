@@ -1,0 +1,17 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT c_nation, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY c_nation;
+SELECT p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate = '19920831' GROUP BY lo_orderpriority;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE c_nation = 'IRAQ' GROUP BY s_name;
+SELECT p_brand, COUNT(*) AS num_products FROM lineorder_flat WHERE c_region = 'AMERICA' GROUP BY p_brand;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate = '19930702' GROUP BY c_city;
+SELECT p_mfgr, COUNT(*) AS num_products FROM lineorder_flat WHERE lo_linenumber = 6 GROUP BY p_mfgr;
+SELECT c_mktsegment, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE c_nation = 'ARGENTINA' GROUP BY c_mktsegment;
+SELECT lo_shipmode, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate = '19930311' GROUP BY lo_shipmode;
+SELECT s_region, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE c_nation = 'RUSSIA' GROUP BY s_region;
+SELECT p_type, SUM(lo_ordtotalprice) AS total_price FROM lineorder_flat WHERE lo_linenumber = 2 GROUP BY p_type;
+SELECT c_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_region = 'ASIA' AND lo_orderpriority = '1-URGENT' GROUP BY c_name;
+SELECT s_city, SUM(lo_extendedprice * lo_quantity) AS total_sales FROM lineorder_flat WHERE lo_linenumber = 7 GROUP BY s_city;
+SELECT p_color, COUNT(*) AS num_products FROM lineorder_flat WHERE c_region = 'AFRICA' AND lo_orderdate = '19920831' GROUP BY p_color;
+SELECT c_address, AVG(lo_supplycost) AS avg_supply_cost FROM lineorder_flat WHERE c_nation = 'IRAQ' AND lo_linenumber = 6 GROUP BY c_address;
+SELECT p_container, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate = '19930311' AND c_nation = 'RUSSIA' GROUP BY p_container;

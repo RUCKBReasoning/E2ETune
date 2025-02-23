@@ -1,0 +1,18 @@
+SELECT COUNT(*) FROM title WHERE production_year = 2021;
+SELECT AVG(production_year) FROM title WHERE kind_id = 1;
+SELECT name, COUNT(movie_id) AS num_movies FROM name JOIN cast_info ON name.id = cast_info.person_id GROUP BY name.id ORDER BY num_movies DESC LIMIT 10;
+SELECT title, COUNT(keyword_id) AS num_keywords FROM title JOIN movie_keyword ON title.id = movie_keyword.movie_id GROUP BY title.id ORDER BY num_keywords DESC LIMIT 10;
+SELECT company_name.name, COUNT(movie_id) AS num_movies FROM company_name JOIN movie_companies ON company_name.id = movie_companies.company_id WHERE company_type_id = 1 GROUP BY company_name.id ORDER BY num_movies DESC LIMIT 10;
+SELECT kind_type.kind, COUNT(title.id) AS num_titles FROM kind_type JOIN title ON kind_type.id = title.kind_id GROUP BY kind_type.id ORDER BY num_titles DESC;
+SELECT title.title, COUNT(movie_link.linked_movie_id) AS num_links FROM title JOIN movie_link ON title.id = movie_link.movie_id GROUP BY title.id ORDER BY num_links DESC LIMIT 10;
+SELECT name.name, COUNT(person_info.info) AS num_infos FROM name JOIN person_info ON name.id = person_info.person_id WHERE person_info.info LIKE '%Belgium%' GROUP BY name.id ORDER BY num_infos DESC LIMIT 10;
+SELECT keyword.keyword, COUNT(movie_keyword.movie_id) AS num_movies FROM keyword JOIN movie_keyword ON keyword.id = movie_keyword.keyword_id GROUP BY keyword.id ORDER BY num_movies DESC LIMIT 10;
+SELECT title.title, COUNT(cast_info.person_id) AS num_actors FROM title JOIN cast_info ON title.id = cast_info.movie_id WHERE cast_info.role_id = 1 GROUP BY title.id ORDER BY num_actors DESC LIMIT 10;
+SELECT title.title, COUNT(movie_info.info) AS num_infos FROM title JOIN movie_info ON title.id = movie_info.movie_id WHERE movie_info.info_type_id = 2 GROUP BY title.id ORDER BY num_infos DESC LIMIT 10;
+SELECT name.name, COUNT(aka_name.name) AS num_aka_names FROM name JOIN aka_name ON name.id = aka_name.person_id GROUP BY name.id ORDER BY num_aka_names DESC LIMIT 10;
+SELECT title.title, COUNT(aka_title.title) AS num_aka_titles FROM title JOIN aka_title ON title.id = aka_title.movie_id GROUP BY title.id ORDER BY num_aka_titles DESC LIMIT 10;
+SELECT role_type.role, COUNT(cast_info.id) AS num_roles FROM role_type JOIN cast_info ON role_type.id = cast_info.role_id GROUP BY role_type.id ORDER BY num_roles DESC;
+SELECT title.title, COUNT(movie_companies.company_id) AS num_companies FROM title JOIN movie_companies ON title.id = movie_companies.movie_id GROUP BY title.id ORDER BY num_companies DESC LIMIT 10;
+SELECT title.title, COUNT(movie_keyword.keyword_id) AS num_keywords FROM title JOIN movie_keyword ON title.id = movie_keyword.movie_id WHERE title.production_year = 2021 GROUP BY title.id ORDER BY num_keywords DESC LIMIT 10;
+SELECT name.name, COUNT(cast_info.movie_id) AS num_movies FROM name JOIN cast_info ON name.id = cast_info.person_id WHERE cast_info.role_id = 2 GROUP BY name.id ORDER BY num_movies DESC LIMIT 10;
+SELECT title.title, AVG(movie_info.info::integer) AS avg_rating FROM title JOIN movie_info ON title.id = movie_info.movie_id WHERE movie_info.info_type_id = 101 AND title.production_year = 2021 GROUP BY title.id ORDER BY avg_rating DESC LIMIT 10;

@@ -1,0 +1,15 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT c_city, COUNT(DISTINCT lo_custkey) AS num_customers FROM lineorder_flat GROUP BY c_city;
+SELECT p_brand, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_suppkey IN (5282, 7660, 214) GROUP BY p_brand;
+SELECT s_nation, COUNT(*) AS num_orders FROM lineorder_flat WHERE p_type = 'MEDIUM BRUSHED STEEL' GROUP BY s_nation;
+SELECT lo_orderdate, SUM(lo_extendedprice) AS daily_revenue FROM lineorder_flat GROUP BY lo_orderdate ORDER BY lo_orderdate;
+SELECT c_mktsegment, COUNT(*) AS num_orders, SUM(lo_ordtotalprice) AS total_price FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT p_type, COUNT(*) AS num_products FROM lineorder_flat WHERE lo_suppkey = 214 GROUP BY p_type;
+SELECT lo_orderpriority, COUNT(*) AS num_orders, AVG(lo_discount) AS avg_discount FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT s_region, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE p_type = 'STANDARD ANODIZED COPPER' GROUP BY s_region;
+SELECT c_nation, COUNT(*) AS num_orders FROM lineorder_flat WHERE p_type = 'ECONOMY PLATED STEEL' GROUP BY c_nation;
+SELECT lo_shipmode, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 1 AND 100 GROUP BY lo_shipmode;
+SELECT p_size, COUNT(*) AS num_products FROM lineorder_flat WHERE p_category = 'BRUSHED' GROUP BY p_size;
+SELECT c_city, s_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_custkey = lo_suppkey GROUP BY c_city, s_city;

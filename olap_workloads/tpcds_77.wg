@@ -1,0 +1,11 @@
+SELECT w_state, SUM(inv_quantity_on_hand) as total_inventory FROM inventory JOIN warehouse ON inv_warehouse_sk = w_warehouse_sk WHERE inv_date_sk = 2450815 GROUP BY w_state ORDER BY total_inventory DESC;
+SELECT cp_type, SUM(cs_sales_price) as total_sales FROM catalog_sales JOIN catalog_page ON cs_catalog_page_sk = cp_catalog_page_sk WHERE cp_end_date_sk IN (2450904, 2450905, 2450934) GROUP BY cp_type;
+SELECT wp_rec_start_date, wp_rec_end_date, COUNT(*) as num_web_pages FROM web_page WHERE wp_max_ad_count IN (2, 1, 3) AND wp_rec_end_date IN ('2001-09-02', '2000-09-02', '1999-09-03') GROUP BY wp_rec_start_date, wp_rec_end_date;
+SELECT d_year, d_quarter_name, SUM(ws_sales_price) as total_sales FROM web_sales JOIN date_dim ON ws_sold_date_sk = d_date_sk WHERE d_year >= 2000 GROUP BY d_year, d_quarter_name ORDER BY d_year, d_quarter_name;
+SELECT ss_store_sk, COUNT(DISTINCT ss_customer_sk) as num_customers FROM store_sales WHERE ss_ticket_number >= 1000 GROUP BY ss_store_sk HAVING COUNT(DISTINCT ss_customer_sk) > 10 ORDER BY num_customers DESC;
+SELECT i_category, AVG(ws_net_profit) as avg_net_profit FROM web_sales JOIN item ON ws_item_sk = i_item_sk GROUP BY i_category HAVING AVG(ws_net_profit) > 1000;
+SELECT s_state, SUM(ss_ext_discount_amt) as total_discount FROM store_sales JOIN store ON ss_store_sk = s_store_sk GROUP BY s_state ORDER BY total_discount DESC;
+SELECT c_birth_country, COUNT(*) as num_customers FROM customer WHERE c_preferred_cust_flag = 'Y' GROUP BY c_birth_country HAVING COUNT(*) > 10 ORDER BY num_customers DESC;
+SELECT p_promo_name, SUM(cs_sales_price) as total_sales FROM catalog_sales JOIN promotion ON cs_promo_sk = p_promo_sk WHERE p_discount_active = 'Y' GROUP BY p_promo_name ORDER BY total_sales DESC;
+SELECT wp_type, COUNT(*) as num_web_pages FROM web_page WHERE wp_char_count > 1000 AND wp_link_count > 10 GROUP BY wp_type;
+SELECT r_reason_desc, COUNT(*) as num_returns FROM catalog_returns JOIN reason ON cr_reason_sk = r_reason_sk GROUP BY r_reason_desc HAVING COUNT(*) > 5 ORDER BY num_returns DESC;

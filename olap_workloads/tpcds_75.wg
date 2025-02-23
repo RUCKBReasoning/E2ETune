@@ -1,0 +1,10 @@
+SELECT w_state, COUNT(*) AS num_warehouses FROM warehouse GROUP BY w_state ORDER BY num_warehouses DESC;
+SELECT c_birth_country, COUNT(*) AS num_customers FROM customer GROUP BY c_birth_country ORDER BY num_customers DESC;
+SELECT i_category, AVG(i_current_price) AS avg_price FROM item GROUP BY i_category ORDER BY avg_price DESC;
+SELECT cc_name, COUNT(*) AS num_calls FROM call_center WHERE cc_company_name = 'pri' GROUP BY cc_name ORDER BY num_calls DESC;
+SELECT hd_buy_potential, COUNT(*) AS num_households FROM household_demographics GROUP BY hd_buy_potential ORDER BY num_households DESC;
+SELECT w_county, SUM(inv_quantity_on_hand) AS total_inventory FROM warehouse JOIN inventory ON w_warehouse_sk = inv_warehouse_sk WHERE w_gmt_offset = -5.00 GROUP BY w_county ORDER BY total_inventory DESC;
+SELECT s_store_id, COUNT(*) AS num_sales FROM store_sales JOIN store ON ss_store_sk = s_store_sk GROUP BY s_store_id ORDER BY num_sales DESC;
+SELECT cc_name, AVG(cc_sq_ft) AS avg_sq_ft FROM call_center WHERE cc_company = 3 GROUP BY cc_name ORDER BY avg_sq_ft DESC;
+SELECT i_category, COUNT(*) AS num_items FROM item WHERE i_manufact_id IN (SELECT i_manufact_id FROM item WHERE i_category = 'Electronics') GROUP BY i_category ORDER BY num_items DESC;
+SELECT d_year, d_month_seq, SUM(ws_net_paid) AS total_sales FROM web_sales JOIN date_dim ON ws_sold_date_sk = d_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;

@@ -1,0 +1,13 @@
+SELECT n_name, COUNT(*) AS num_customers FROM nation JOIN customer ON n_nationkey = c_nationkey GROUP BY n_name ORDER BY num_customers DESC;
+SELECT r_name, AVG(c_acctbal) AS avg_balance FROM region JOIN nation ON r_regionkey = n_regionkey JOIN customer ON n_nationkey = c_nationkey GROUP BY r_name ORDER BY avg_balance DESC;
+SELECT p_type, SUM(ps_availqty) AS total_inventory FROM part JOIN partsupp ON p_partkey = ps_partkey GROUP BY p_type ORDER BY total_inventory DESC;
+SELECT s_name, COUNT(DISTINCT l_orderkey) AS num_orders FROM supplier JOIN lineitem ON s_suppkey = l_suppkey JOIN orders ON l_orderkey = o_orderkey WHERE o_orderstatus = 'F' GROUP BY s_name ORDER BY num_orders DESC;
+SELECT c_mktsegment, SUM(l_extendedprice * (1 - l_discount)) AS revenue FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey GROUP BY c_mktsegment ORDER BY revenue DESC;
+SELECT p_brand, COUNT(*) AS num_parts, AVG(p_retailprice) AS avg_price FROM part GROUP BY p_brand HAVING COUNT(*) > 10 ORDER BY avg_price DESC;
+SELECT s_name, SUM(ps_supplycost * ps_availqty) AS total_cost FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey GROUP BY s_name ORDER BY total_cost DESC;
+SELECT r_name, COUNT(DISTINCT s_suppkey) AS num_suppliers FROM region JOIN nation ON r_regionkey = n_regionkey JOIN supplier ON n_nationkey = s_nationkey GROUP BY r_name ORDER BY num_suppliers DESC;
+SELECT o_orderpriority, COUNT(*) AS num_orders FROM orders WHERE o_orderdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY o_orderpriority ORDER BY num_orders DESC;
+SELECT n_name, COUNT(DISTINCT l_partkey) AS num_parts FROM nation JOIN supplier ON n_nationkey = s_nationkey JOIN lineitem ON s_suppkey = l_suppkey GROUP BY n_name ORDER BY num_parts DESC;
+SELECT p_container, AVG(l_quantity) AS avg_quantity FROM part JOIN lineitem ON p_partkey = l_partkey GROUP BY p_container ORDER BY avg_quantity DESC;
+SELECT c_name, SUM(l_extendedprice * (1 - l_discount)) AS total_spent FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE o_orderstatus = 'F' GROUP BY c_name ORDER BY total_spent DESC;
+SELECT s_name, COUNT(DISTINCT p_partkey) AS num_parts FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey JOIN part ON ps_partkey = p_partkey GROUP BY s_name ORDER BY num_parts DESC;

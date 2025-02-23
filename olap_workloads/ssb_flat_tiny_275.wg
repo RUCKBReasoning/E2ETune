@@ -1,0 +1,8 @@
+SELECT c_region, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19950629' GROUP BY c_region ORDER BY num_orders DESC;
+SELECT s_name, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder_flat WHERE lo_orderdate >= '19950629' AND lo_orderdate <= '19960726' AND s_name IN ('Supplier#000009097', 'Supplier#000007542', 'Supplier#000005393') GROUP BY s_name ORDER BY revenue DESC;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity, AVG(lo_extendedprice) AS avg_price, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19960726' GROUP BY p_category ORDER BY avg_quantity DESC;
+SELECT c_mktsegment, COUNT(DISTINCT lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19950629' GROUP BY c_mktsegment ORDER BY num_orders DESC;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19960726' GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT p_brand, p_type, p_size, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19960726' GROUP BY p_brand, p_type, p_size ORDER BY total_supply_cost DESC;
+SELECT s_region, p_category, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19960726' GROUP BY s_region, p_category ORDER BY num_orders DESC;
+SELECT c_city, s_city, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19960726' GROUP BY c_city, s_city ORDER BY num_orders DESC;

@@ -1,0 +1,18 @@
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_city;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, SUM(lo_extendedprice) AS total_price FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT s_city, p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY s_city, p_category;
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY c_mktsegment;
+SELECT p_brand, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_discount BETWEEN 5 AND 10 GROUP BY p_brand;
+SELECT s_nation, p_type, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY s_nation, p_type;
+SELECT c_region, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_commitdate BETWEEN 20210101 AND 20211231 GROUP BY c_region;
+SELECT p_size, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE p_container = 'SM CASE' GROUP BY p_size;
+SELECT c_city, COUNT(DISTINCT lo_orderkey) AS num_unique_orders FROM lineorder_flat WHERE c_address = 'Gpzt S,HWr' GROUP BY c_city;
+SELECT s_city, p_mfgr, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE s_city IN ('IRAN     1', 'MOZAMBIQU6', 'FRANCE   2') GROUP BY s_city, p_mfgr;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shippriority = '1' GROUP BY lo_orderpriority;
+SELECT c_nation, p_category, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY c_nation, p_category;
+SELECT s_region, p_brand, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'RAIL' AND lo_discount BETWEEN 5 AND 10 GROUP BY s_region, p_brand;
+SELECT c_city, p_type, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE c_address = 'ZfbRqat' GROUP BY c_city, p_type;
+SELECT p_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 AND lo_shipmode = 'AIR' GROUP BY p_name;
+SELECT c_mktsegment, p_category, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE lo_commitdate BETWEEN 20210101 AND 20211231 GROUP BY c_mktsegment, p_category;
+SELECT s_nation, COUNT(DISTINCT lo_orderkey) AS num_unique_orders FROM lineorder_flat WHERE lo_shippriority = '1' GROUP BY s_nation;

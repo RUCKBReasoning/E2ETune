@@ -1,0 +1,15 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT c_city, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY c_city;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT p_brand, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY p_brand;
+SELECT c_mktsegment, COUNT(*) AS num_customers FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT s_region, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_region;
+SELECT p_container, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY p_container;
+SELECT c_nation, SUM(lo_tax) AS total_tax FROM lineorder_flat GROUP BY c_nation;
+SELECT lo_shipmode, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY lo_shipmode;
+SELECT c_name, SUM(lo_ordtotalprice) AS total_spent FROM lineorder_flat WHERE c_address = 'Jl9db1VBf' GROUP BY c_name;
+SELECT s_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE s_address = 'dBQ6rQq6' GROUP BY s_name;
+SELECT p_name, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_color = 'red' GROUP BY p_name;
+SELECT c_name, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE c_phone = '18-441-252-5995' GROUP BY c_name;
+SELECT lo_orderkey, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_commitdate BETWEEN 20220101 AND 20220131 GROUP BY lo_orderkey;

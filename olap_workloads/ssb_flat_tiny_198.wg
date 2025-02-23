@@ -1,0 +1,11 @@
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY order_count DESC;
+SELECT c_region, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder_flat WHERE lo_commitdate = '19961114' GROUP BY c_region ORDER BY revenue DESC;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_commitdate = '19940609' GROUP BY s_name ORDER BY total_supply_cost DESC;
+SELECT p_mfgr, COUNT(*) AS product_count FROM lineorder_flat WHERE lo_commitdate = '19980522' GROUP BY p_mfgr ORDER BY product_count DESC;
+SELECT p_brand, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE s_name = 'Supplier#000006885' GROUP BY p_brand ORDER BY avg_price DESC;
+SELECT c_city, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE s_name = 'Supplier#000004225' AND p_mfgr = 'MFGR#3' GROUP BY c_city ORDER BY total_quantity DESC;
+SELECT c_nation, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE s_name = 'Supplier#000007426' AND p_brand = 'MFGR#5212' GROUP BY c_nation ORDER BY total_revenue DESC;
+SELECT p_category, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder_flat WHERE p_mfgr = 'MFGR#2' AND lo_shipmode = 'AIR' GROUP BY p_category ORDER BY revenue DESC;
+SELECT c_mktsegment, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE p_brand = 'MFGR#4323' AND lo_shipmode = 'RAIL' GROUP BY c_mktsegment ORDER BY avg_tax DESC;
+SELECT s_region, COUNT(*) AS order_count FROM lineorder_flat WHERE p_mfgr = 'MFGR#5' AND lo_shipmode = 'TRUCK' GROUP BY s_region ORDER BY order_count DESC;
+SELECT c_city, p_type, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_brand = 'MFGR#1536' AND lo_shipmode = 'SHIP' GROUP BY c_city, p_type ORDER BY total_quantity DESC;

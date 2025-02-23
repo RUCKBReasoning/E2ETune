@@ -1,0 +1,12 @@
+SELECT r.r_name, COUNT(*) AS num_nations FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey GROUP BY r.r_name;
+SELECT s.s_nationkey, AVG(s.s_acctbal) AS avg_acctbal FROM supplier s GROUP BY s.s_nationkey HAVING AVG(s.s_acctbal) > 1000;
+SELECT c.c_mktsegment, COUNT(*) AS num_customers FROM customer c GROUP BY c.c_mktsegment;
+SELECT o.o_orderpriority, COUNT(*) AS num_orders FROM orders o WHERE o.o_orderdate BETWEEN '1993-01-01' AND '1993-12-31' GROUP BY o.o_orderpriority;
+SELECT p.p_brand, SUM(ps.ps_availqty) AS total_avail_qty FROM part p JOIN partsupp ps ON p.p_partkey = ps.ps_partkey GROUP BY p.p_brand;
+SELECT s.s_name, SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_revenue FROM supplier s JOIN lineitem l ON s.s_suppkey = l.l_suppkey WHERE l.l_shipdate BETWEEN '1994-01-01' AND '1994-12-31' GROUP BY s.s_name ORDER BY total_revenue DESC;
+SELECT c.c_name, SUM(o.o_totalprice) AS total_spent FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey WHERE o.o_orderdate BETWEEN '1994-01-01' AND '1994-12-31' GROUP BY c.c_name ORDER BY total_spent DESC;
+SELECT r.r_name, SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_revenue FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey JOIN supplier s ON n.n_nationkey = s.s_nationkey JOIN lineitem l ON s.s_suppkey = l.l_suppkey WHERE l.l_shipdate BETWEEN '1994-01-01' AND '1994-12-31' GROUP BY r.r_name ORDER BY total_revenue DESC;
+SELECT p.p_type, AVG(p.p_retailprice) AS avg_retail_price FROM part p GROUP BY p.p_type HAVING AVG(p.p_retailprice) > 100;
+SELECT o.o_clerk, COUNT(*) AS num_orders FROM orders o WHERE o.o_orderstatus = 'F' AND o.o_orderdate BETWEEN '1993-01-01' AND '1993-12-31' GROUP BY o.o_clerk;
+SELECT c.c_name, COUNT(DISTINCT o.o_orderkey) AS num_orders FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey WHERE l.l_returnflag = 'R' GROUP BY c.c_name HAVING COUNT(DISTINCT o.o_orderkey) > 10;
+SELECT r.r_name, COUNT(DISTINCT s.s_suppkey) AS num_suppliers FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey JOIN supplier s ON n.n_nationkey = s.s_nationkey GROUP BY r.r_name HAVING COUNT(DISTINCT s.s_suppkey) > 5;

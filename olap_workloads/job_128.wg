@@ -1,0 +1,10 @@
+SELECT t.title, COUNT(*) AS total_cast FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE t.kind_id = 1 AND t.production_year BETWEEN 2000 AND 2020 GROUP BY t.title HAVING COUNT(*) > 10 ORDER BY total_cast DESC;
+SELECT n.name, COUNT(*) AS total_movies FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE n.gender = 'M' GROUP BY n.name HAVING COUNT(*) > 50 ORDER BY total_movies DESC;
+SELECT kt.kind, COUNT(*) AS total_movies FROM kind_type kt JOIN title t ON kt.id = t.kind_id GROUP BY kt.kind ORDER BY total_movies DESC;
+SELECT cn.name, COUNT(*) AS total_appearances FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id WHERE cn.surname_pcode IN ('D5236', 'V43', 'A4256') GROUP BY cn.name HAVING COUNT(*) > 5 ORDER BY total_appearances DESC;
+SELECT lt.link, COUNT(*) AS total_links FROM link_type lt JOIN movie_link ml ON lt.id = ml.link_type_id WHERE lt.link IN ('edited into', 'spoofs', 'version of') GROUP BY lt.link ORDER BY total_links DESC;
+SELECT cct.kind, COUNT(*) AS total_companies FROM comp_cast_type cct JOIN complete_cast cc ON cct.id = cc.subject_id WHERE cc.status_id IN (3, 4) AND cc.movie_id IN (1645198, 19675, 1641722) GROUP BY cct.kind ORDER BY total_companies DESC;
+SELECT AVG(total_cast) AS avg_cast_per_movie FROM (SELECT t.title, COUNT(*) AS total_cast FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE t.kind_id = 1 AND t.production_year BETWEEN 2000 AND 2020 GROUP BY t.title) AS subquery;
+SELECT t.title, COUNT(*) AS total_keywords FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id WHERE t.production_year BETWEEN 2000 AND 2020 GROUP BY t.title HAVING COUNT(*) > 10 ORDER BY total_keywords DESC;
+SELECT n.name, COUNT(*) AS total_movies_directed FROM name n JOIN cast_info ci ON n.id = ci.person_id JOIN role_type rt ON ci.role_id = rt.id WHERE rt.role = 'director' GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY total_movies_directed DESC;
+SELECT t.title, COUNT(*) AS total_companies_involved FROM title t JOIN movie_companies mc ON t.id = mc.movie_id WHERE t.kind_id = 1 AND t.production_year BETWEEN 2000 AND 2020 GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY total_companies_involved DESC;

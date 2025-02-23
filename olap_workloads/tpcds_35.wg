@@ -1,0 +1,13 @@
+SELECT hd_demo_sk, COUNT(*) AS total_customers FROM household_demographics WHERE hd_buy_potential = '5001-10000' GROUP BY hd_demo_sk HAVING COUNT(*) > 10;
+SELECT ib_income_band_sk, AVG(ib_upper_bound - ib_lower_bound) AS avg_income_band_range FROM income_band GROUP BY ib_income_band_sk;
+SELECT cs_bill_addr_sk, SUM(cs_sales_price) AS total_sales FROM catalog_sales WHERE cs_item_sk IN (4, 9, 2) GROUP BY cs_bill_addr_sk HAVING SUM(cs_sales_price) > 1000;
+SELECT w_state, SUM(inv_quantity_on_hand) AS total_inventory FROM inventory JOIN warehouse ON inv_warehouse_sk = w_warehouse_sk GROUP BY w_state;
+SELECT s_state, COUNT(*) AS num_stores FROM store GROUP BY s_state HAVING COUNT(*) > 5;
+SELECT d_year, d_month_seq, SUM(ss_sales_price) AS total_sales FROM store_sales JOIN date_dim ON ss_sold_date_sk = d_date_sk GROUP BY d_year, d_month_seq;
+SELECT i_category, AVG(i_current_price) AS avg_price FROM item GROUP BY i_category;
+SELECT c_birth_country, COUNT(*) AS num_customers FROM customer GROUP BY c_birth_country HAVING COUNT(*) > 50;
+SELECT p_promo_name, COUNT(*) AS num_orders FROM promotion JOIN catalog_sales ON p_promo_sk = cs_promo_sk GROUP BY p_promo_name HAVING COUNT(*) > 100;
+SELECT wp_type, COUNT(*) AS num_web_pages FROM web_page GROUP BY wp_type;
+SELECT cc_call_center_id, SUM(cr_return_amount) AS total_returns FROM call_center JOIN catalog_returns ON cc_call_center_sk = cr_call_center_sk GROUP BY cc_call_center_id HAVING SUM(cr_return_amount) > 1000;
+SELECT r_reason_desc, COUNT(*) AS num_returns FROM reason JOIN store_returns ON r_reason_sk = sr_reason_sk GROUP BY r_reason_desc HAVING COUNT(*) > 5;
+SELECT d_year, d_week_seq, COUNT(DISTINCT cs_order_number) AS num_orders FROM catalog_sales JOIN date_dim ON cs_sold_date_sk = d_date_sk WHERE cs_item_sk IN (4, 9, 2) GROUP BY d_year, d_week_seq HAVING COUNT(DISTINCT cs_order_number) > 10;

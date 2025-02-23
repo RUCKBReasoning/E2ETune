@@ -1,0 +1,2 @@
+SELECT c_region, p_category, SUM(lo_extendedprice * (1 - lo_discount)) AS revenue FROM lineorder_flat WHERE p_mfgr = 'MFGR#3' AND lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 GROUP BY c_region, p_category ORDER BY c_region, p_category;
+SELECT s_name, p_name, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_container IN ('MED PKG', 'SM BAG', 'SM PKG') AND s_name IN ('Supplier#000002216', 'Supplier#000006177', 'Supplier#000008769') GROUP BY s_name, p_name HAVING SUM(lo_quantity) > 1000 ORDER BY s_name, p_name;

@@ -1,0 +1,12 @@
+SELECT ca_state, COUNT(*) as num_customers FROM customer_address GROUP BY ca_state ORDER BY num_customers DESC;
+SELECT i_category, COUNT(*) as num_items FROM item GROUP BY i_category ORDER BY num_items DESC;
+SELECT w_state, SUM(w_warehouse_sq_ft) as total_warehouse_sq_ft FROM warehouse GROUP BY w_state ORDER BY total_warehouse_sq_ft DESC;
+SELECT d_year, SUM(ss_sales_price) as total_sales FROM store_sales JOIN date_dim ON ss_sold_date_sk = d_date_sk GROUP BY d_year ORDER BY d_year;
+SELECT p_promo_name, SUM(cs_sales_price) as total_sales FROM catalog_sales JOIN promotion ON cs_promo_sk = p_promo_sk WHERE p_channel_demo = 'N' GROUP BY p_promo_name ORDER BY total_sales DESC;
+SELECT ca_street_type, COUNT(*) as num_addresses FROM customer_address WHERE ca_zip = '11933' GROUP BY ca_street_type ORDER BY num_addresses DESC;
+SELECT d_year, d_month_seq, SUM(ws_ext_discount_amt) as total_discount FROM web_sales JOIN date_dim ON ws_sold_date_sk = d_date_sk WHERE ws_warehouse_sk = 5 AND ws_ship_hdemo_sk = 5362 GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT r_reason_desc, COUNT(*) as num_returns FROM store_returns JOIN reason ON sr_reason_sk = r_reason_sk WHERE sr_net_loss BETWEEN 89.58 AND 597.13 GROUP BY r_reason_desc ORDER BY num_returns DESC;
+SELECT ca_city, COUNT(*) as num_customers FROM customer_address WHERE ca_gmt_offset BETWEEN -9.00 AND -6.00 GROUP BY ca_city HAVING COUNT(*) > 10 ORDER BY num_customers DESC;
+SELECT i_manufact, COUNT(*) as num_items FROM item WHERE i_current_price BETWEEN 50 AND 150 GROUP BY i_manufact HAVING COUNT(*) > 5 ORDER BY num_items DESC;
+SELECT s_state, AVG(s_tax_precentage) as avg_tax_percentage FROM store GROUP BY s_state ORDER BY avg_tax_percentage DESC;
+SELECT w_city, COUNT(*) as num_warehouses FROM warehouse WHERE w_gmt_offset BETWEEN -8.00 AND 0 GROUP BY w_city HAVING COUNT(*) > 1 ORDER BY num_warehouses DESC;

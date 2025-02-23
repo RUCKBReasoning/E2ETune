@@ -1,0 +1,17 @@
+SELECT c_region, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_partkey IN (2514, 2507, 2511) GROUP BY p_category;
+SELECT c_mktsegment, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_quantity IN (24, 41, 9) GROUP BY c_mktsegment;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY lo_orderpriority;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE p_category = 'MFGR#11' GROUP BY s_name ORDER BY total_supply_cost DESC LIMIT 10;
+SELECT c_city, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY c_city;
+SELECT p_brand, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_discount BETWEEN 5 AND 10 GROUP BY p_brand;
+SELECT c_nation, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_commitdate BETWEEN 19940101 AND 19941231 GROUP BY c_nation;
+SELECT p_type, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE p_category = 'MFGR#43' GROUP BY p_type;
+SELECT s_region, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shippriority = '0' GROUP BY s_region;
+SELECT c_name, SUM(lo_ordtotalprice) AS total_order_price FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY c_name ORDER BY total_order_price DESC LIMIT 10;
+SELECT p_size, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE p_category = 'MFGR#15' GROUP BY p_size;
+SELECT lo_orderpriority, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY lo_orderpriority;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_shipmode = 'RAIL' GROUP BY c_city;
+SELECT p_color, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_discount BETWEEN 10 AND 15 GROUP BY p_color;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE p_category = 'MFGR#11' AND lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY s_nation;
+SELECT c_mktsegment, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_partkey IN (2514, 2507, 2511) AND lo_quantity IN (24, 41, 9) GROUP BY c_mktsegment;

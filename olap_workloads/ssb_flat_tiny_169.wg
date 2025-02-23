@@ -1,0 +1,17 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE p_category = 'MFGR#23' GROUP BY s_name ORDER BY total_supply_cost DESC;
+SELECT c_city, COUNT(*) AS num_customers FROM (SELECT DISTINCT lo_custkey, c_city FROM lineorder_flat) AS unique_customers GROUP BY c_city ORDER BY num_customers DESC;
+SELECT p_brand, COUNT(*) AS num_products FROM (SELECT DISTINCT lo_partkey, p_brand FROM lineorder_flat) AS unique_products GROUP BY p_brand ORDER BY num_products DESC;
+SELECT lo_orderdate, SUM(lo_revenue) AS daily_revenue FROM lineorder_flat GROUP BY lo_orderdate ORDER BY daily_revenue DESC;
+SELECT s_region, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE p_category = 'MFGR#51' GROUP BY s_region ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_mktsegment ORDER BY num_orders DESC;
+SELECT p_type, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY p_type ORDER BY avg_quantity DESC;
+SELECT lo_shipmode, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY lo_shipmode ORDER BY num_orders DESC;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE p_category = 'MFGR#25' GROUP BY s_nation ORDER BY total_supply_cost DESC;
+SELECT c_nation, COUNT(*) AS num_customers FROM (SELECT DISTINCT lo_custkey, c_nation FROM lineorder_flat) AS unique_customers GROUP BY c_nation ORDER BY num_customers DESC;
+SELECT p_size, COUNT(*) AS num_products FROM (SELECT DISTINCT lo_partkey, p_size FROM lineorder_flat) AS unique_products GROUP BY p_size ORDER BY num_products DESC;
+SELECT lo_orderpriority, AVG(lo_tax) AS avg_tax FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY avg_tax DESC;
+SELECT c_name, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE s_name = 'Supplier#000003320' OR s_name = 'Supplier#000002709' OR s_name = 'Supplier#000000169' GROUP BY c_name ORDER BY total_revenue DESC;
+SELECT p_container, COUNT(*) AS num_products FROM (SELECT DISTINCT lo_partkey, p_container FROM lineorder_flat) AS unique_products GROUP BY p_container ORDER BY num_products DESC;

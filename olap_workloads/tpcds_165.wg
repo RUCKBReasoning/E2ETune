@@ -1,0 +1,8 @@
+SELECT w_state, SUM(inv_quantity_on_hand) as total_inventory FROM inventory JOIN warehouse ON inv_warehouse_sk = w_warehouse_sk GROUP BY w_state ORDER BY total_inventory DESC;
+SELECT i_category, COUNT(*) as total_items FROM item WHERE i_current_price > i_wholesale_cost GROUP BY i_category ORDER BY total_items DESC;
+SELECT d_year, d_month_seq, COUNT(*) as total_sales FROM store_sales JOIN date_dim ON ss_sold_date_sk = d_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT c_birth_country, COUNT(*) as total_customers FROM customer GROUP BY c_birth_country ORDER BY total_customers DESC;
+SELECT p_channel_tv, p_channel_radio, p_channel_press, COUNT(*) as total_promotions FROM promotion WHERE p_discount_active = 'Y' GROUP BY p_channel_tv, p_channel_radio, p_channel_press;
+SELECT r_reason_desc, COUNT(*) as total_returns FROM store_returns JOIN reason ON sr_reason_sk = r_reason_sk WHERE r_reason_id IN ('AAAAAAAAMBAAAAAA', 'AAAAAAAACAAAAAAA', 'AAAAAAAACCAAAAAA') GROUP BY r_reason_desc;
+SELECT wp_creation_date_sk, COUNT(*) as total_pages FROM web_page WHERE wp_rec_start_date <= '2001-09-03' AND (wp_rec_end_date >= '2001-09-02' OR wp_rec_end_date IS NULL) GROUP BY wp_creation_date_sk HAVING COUNT(wp_image_count) >= 2;
+SELECT d_week_seq, AVG(ws_sales_price) as avg_sales_price FROM web_sales JOIN date_dim ON ws_sold_date_sk = d_date_sk WHERE ws_sales_price > ws_wholesale_cost GROUP BY d_week_seq ORDER BY d_week_seq;

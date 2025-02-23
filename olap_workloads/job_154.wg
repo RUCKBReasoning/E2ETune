@@ -1,0 +1,12 @@
+SELECT COUNT(*) FROM movie_companies WHERE company_id = 154 AND company_type_id = 1;
+SELECT movie_id, COUNT(*) AS num_companies FROM movie_companies WHERE company_type_id = 1 GROUP BY movie_id HAVING COUNT(*) > 1;
+SELECT t.title, COUNT(*) AS num_actors FROM title t JOIN cast_info c ON t.id = c.movie_id JOIN role_type r ON c.role_id = r.id WHERE r.role = 'actor' GROUP BY t.title;
+SELECT n.name, COUNT(*) AS num_movies FROM name n JOIN cast_info c ON n.id = c.person_id JOIN role_type r ON c.role_id = r.id WHERE r.role = 'producer' GROUP BY n.name;
+SELECT t.title, COUNT(*) AS num_guests FROM title t JOIN cast_info c ON t.id = c.movie_id JOIN role_type r ON c.role_id = r.id WHERE r.role = 'guest' GROUP BY t.title;
+SELECT t.title, AVG(c.nr_order) AS avg_order FROM title t JOIN cast_info c ON t.id = c.movie_id GROUP BY t.title;
+SELECT k.keyword, COUNT(*) AS num_movies FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword;
+SELECT t.title, COUNT(*) AS num_links FROM title t JOIN movie_link ml ON t.id = ml.movie_id WHERE ml.link_type_id = 8 GROUP BY t.title;
+SELECT t1.title AS movie1, t2.title AS movie2 FROM title t1 JOIN movie_link ml ON t1.id = ml.movie_id JOIN title t2 ON ml.linked_movie_id = t2.id WHERE ml.link_type_id = 1;
+SELECT t.title, COUNT(*) AS num_complete_cast FROM title t JOIN complete_cast cc ON t.id = cc.movie_id WHERE cc.status_id = 4 AND cc.subject_id = 1 GROUP BY t.title;
+SELECT t.title, COUNT(*) AS num_keyword FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id JOIN keyword k ON mk.keyword_id = k.id WHERE k.keyword LIKE 'action%' GROUP BY t.title;
+SELECT n.name, COUNT(*) AS num_movies FROM name n JOIN cast_info c ON n.id = c.person_id JOIN role_type r ON c.role_id = r.id WHERE r.role = 'actor' AND n.gender = 'M' GROUP BY n.name;

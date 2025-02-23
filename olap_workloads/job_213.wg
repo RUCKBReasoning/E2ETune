@@ -1,0 +1,2 @@
+SELECT title.id, title.title, AVG(cast_info.nr_order) as average_order FROM title JOIN cast_info ON title.id = cast_info.movie_id WHERE title.production_year >= 2000 GROUP BY title.id, title.title HAVING COUNT(cast_info.person_id) > 10 ORDER BY average_order DESC LIMIT 10;
+SELECT kind_type.kind, COUNT(title.id) as num_titles FROM kind_type JOIN title ON kind_type.id = title.kind_id GROUP BY kind_type.kind ORDER BY num_titles DESC;

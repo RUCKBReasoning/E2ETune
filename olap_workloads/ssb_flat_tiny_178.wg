@@ -1,0 +1,11 @@
+SELECT c_region, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shippriority = '0' GROUP BY c_region ORDER BY num_orders DESC;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category ORDER BY avg_price DESC;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_discount IN ('9', '7', '8') GROUP BY s_name ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY c_mktsegment ORDER BY total_revenue DESC;
+SELECT p_brand, p_size, COUNT(lo_partkey) AS num_parts FROM lineorder_flat WHERE p_mfgr = 'MFGR#1' GROUP BY p_brand, p_size ORDER BY num_parts DESC;
+SELECT s_city, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND lo_commitdate > lo_orderdate GROUP BY s_city ORDER BY num_orders DESC;
+SELECT c_nation, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder_flat GROUP BY c_nation ORDER BY revenue DESC;
+SELECT p_type, COUNT(lo_partkey) AS num_parts, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat WHERE p_color = 'red' GROUP BY p_type ORDER BY num_parts DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders, AVG(lo_ordtotalprice) AS avg_total_price FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT s_nation, p_category, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE s_name IN ('Supplier#000000846', 'Supplier#000007935', 'Supplier#000001921') GROUP BY s_nation, p_category ORDER BY total_revenue DESC;
+SELECT c_city, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY c_city ORDER BY num_orders DESC;

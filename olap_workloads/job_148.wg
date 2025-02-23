@@ -1,0 +1,4 @@
+SELECT t.title, kt.kind, COUNT(*) as num_movies FROM title t JOIN kind_type kt ON t.kind_id = kt.id GROUP BY t.title, kt.kind HAVING COUNT(*) > 1 ORDER BY num_movies DESC, t.title ASC;
+SELECT cn.name, COUNT(*) as num_characters FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id WHERE cn.name IN ('Gambler Ghoul', 'Lt. Sforza', 'Defendant #1') GROUP BY cn.name ORDER BY num_characters DESC;
+SELECT p.name, COUNT(*) as num_references FROM name p JOIN movie_link ml ON p.id = ml.movie_id JOIN link_type lt ON ml.link_type_id = lt.id WHERE lt.link = 'references' GROUP BY p.name ORDER BY num_references DESC LIMIT 10;
+SELECT n.name, COUNT(*) as num_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id JOIN role_type rt ON ci.role_id = rt.id WHERE rt.role = 'actor' OR rt.role = 'actress' GROUP BY n.name HAVING COUNT(*) > 5 ORDER BY num_roles DESC, n.name ASC LIMIT 10;

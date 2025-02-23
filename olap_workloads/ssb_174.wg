@@ -1,0 +1,9 @@
+SELECT c_region, COUNT(lo_orderkey) as order_count, AVG(lo_extendedprice) as avg_price, SUM(lo_extendedprice) as total_price FROM customer, lineorder WHERE c_custkey = lo_custkey AND lo_orderpriority = '3-MEDIUM' GROUP BY c_region;
+SELECT p_category, p_brand, SUM(lo_quantity) as total_quantity, SUM(lo_supplycost) as total_supplycost FROM part, lineorder WHERE p_partkey = lo_partkey AND p_type = 'STANDARD PLATED NICKEL' GROUP BY p_category, p_brand;
+SELECT d_year, COUNT(lo_orderkey) as order_count, SUM(lo_revenue) as total_revenue FROM date_dim, lineorder WHERE d_datekey = lo_orderdate AND d_lastdayinweekfl = '1' GROUP BY d_year;
+SELECT s_name, s_city, SUM(lo_tax) as total_tax FROM supplier, lineorder WHERE s_suppkey = lo_suppkey AND s_region = 'EUROPE' GROUP BY s_name, s_city;
+SELECT c_name, c_city, SUM(lo_ordtotalprice) as total_order_value FROM customer, lineorder WHERE c_custkey = lo_custkey AND c_mktsegment = 'AUTOMOBILE' GROUP BY c_name, c_city;
+SELECT d_year, p_category, SUM(lo_extendedprice) as total_price FROM date_dim, part, lineorder WHERE d_datekey = lo_orderdate AND p_partkey = lo_partkey AND p_category = 'MFGR#41' GROUP BY d_year, p_category;
+SELECT s_nation, COUNT(lo_orderkey) as order_count, AVG(lo_discount) as avg_discount FROM supplier, lineorder WHERE s_suppkey = lo_suppkey AND lo_orderpriority = '5-LOW' GROUP BY s_nation;
+SELECT d_month, p_brand, SUM(lo_quantity) as total_quantity, AVG(lo_supplycost) as avg_supplycost FROM date_dim, part, lineorder WHERE d_datekey = lo_orderdate AND p_partkey = lo_partkey AND p_brand = 'MFGR#443' GROUP BY d_month, p_brand;
+SELECT c_region, d_year, COUNT(lo_orderkey) as order_count, SUM(lo_revenue) as total_revenue FROM customer, date_dim, lineorder WHERE c_custkey = lo_custkey AND d_datekey = lo_orderdate AND c_region = 'AMERICA' GROUP BY c_region, d_year;

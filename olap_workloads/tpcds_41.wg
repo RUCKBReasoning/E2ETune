@@ -1,0 +1,18 @@
+SELECT i.i_item_id, SUM(ss.ss_quantity) AS total_quantity, AVG(ss.ss_sales_price) AS avg_sales_price FROM store_sales ss JOIN item i ON ss.ss_item_sk = i.i_item_sk WHERE ss.ss_sold_date_sk BETWEEN 100 AND 200 GROUP BY i.i_item_id ORDER BY total_quantity DESC LIMIT 10;
+SELECT t.t_am_pm, COUNT(*) AS total_orders FROM store_sales ss JOIN time_dim t ON ss.ss_sold_time_sk = t.t_time_sk WHERE t.t_am_pm = 'AM' GROUP BY t.t_am_pm;
+SELECT i.i_class, SUM(ss.ss_net_profit) AS total_profit FROM store_sales ss JOIN item i ON ss.ss_item_sk = i.i_item_sk GROUP BY i.i_class ORDER BY total_profit DESC LIMIT 5;
+SELECT w.w_warehouse_name, SUM(inv.inv_quantity_on_hand) AS total_inventory FROM inventory inv JOIN warehouse w ON inv.inv_warehouse_sk = w.w_warehouse_sk GROUP BY w.w_warehouse_name ORDER BY total_inventory DESC;
+SELECT ca.ca_state, COUNT(*) AS total_customers FROM customer c JOIN customer_address ca ON c.c_current_addr_sk = ca.ca_address_sk GROUP BY ca.ca_state ORDER BY total_customers DESC;
+SELECT i.i_brand, COUNT(*) AS total_sold FROM store_sales ss JOIN item i ON ss.ss_item_sk = i.i_item_sk GROUP BY i.i_brand ORDER BY total_sold DESC LIMIT 10;
+SELECT i.i_product_name, AVG(ws.ws_net_profit) AS avg_net_profit FROM web_sales ws JOIN item i ON ws.ws_item_sk = i.i_item_sk GROUP BY i.i_product_name HAVING AVG(ws.ws_net_profit) > 1000 ORDER BY avg_net_profit DESC;
+SELECT p.p_promo_name, COUNT(*) AS total_orders FROM store_sales ss JOIN promotion p ON ss.ss_promo_sk = p.p_promo_sk WHERE p.p_discount_active = 'Y' GROUP BY p.p_promo_name ORDER BY total_orders DESC;
+SELECT ca.ca_city, ca.ca_state, COUNT(*) AS total_orders FROM store_sales ss JOIN customer_address ca ON ss.ss_addr_sk = ca.ca_address_sk GROUP BY ca.ca_city, ca.ca_state ORDER BY total_orders DESC LIMIT 10;
+SELECT i.i_category, COUNT(DISTINCT i.i_item_id) AS total_items FROM item i WHERE i.i_wholesale_cost BETWEEN 10 AND 50 GROUP BY i.i_category ORDER BY total_items DESC;
+SELECT d.d_year, COUNT(*) AS total_returns FROM store_returns sr JOIN date_dim d ON sr.sr_returned_date_sk = d.d_date_sk GROUP BY d.d_year ORDER BY d.d_year;
+SELECT r.r_reason_desc, COUNT(*) AS total_returns FROM store_returns sr JOIN reason r ON sr.sr_reason_sk = r.r_reason_sk GROUP BY r.r_reason_desc ORDER BY total_returns DESC;
+SELECT d.d_week_seq, SUM(cs.cs_net_paid) AS total_revenue FROM catalog_sales cs JOIN date_dim d ON cs.cs_sold_date_sk = d.d_date_sk WHERE d.d_year = 2000 GROUP BY d.d_week_seq ORDER BY d.d_week_seq;
+SELECT ws.ws_web_site_sk, COUNT(*) AS total_orders FROM web_sales ws WHERE ws.ws_ship_date_sk BETWEEN 100 AND 200 GROUP BY ws.ws_web_site_sk ORDER BY total_orders DESC;
+SELECT i.i_manufact, COUNT(*) AS total_sold FROM catalog_sales cs JOIN item i ON cs.cs_item_sk = i.i_item_sk WHERE i.i_manufact_id IN (57, 95, 20) GROUP BY i.i_manufact ORDER BY total_sold DESC;
+SELECT i.i_item_id, SUM(cr.cr_return_quantity) AS total_returns FROM catalog_returns cr JOIN item i ON cr.cr_item_sk = i.i_item_sk WHERE i.i_wholesale_cost > 39.99 GROUP BY i.i_item_id ORDER BY total_returns DESC LIMIT 10;
+SELECT t.t_time_sk, COUNT(*) AS total_orders FROM store_sales ss JOIN time_dim t ON ss.ss_sold_time_sk = t.t_time_sk WHERE t.t_time_sk IN (618, 301, 237) GROUP BY t.t_time_sk ORDER BY total_orders DESC;
+SELECT i.i_item_id, SUM(inv.inv_quantity_on_hand) AS total_inventory FROM inventory inv JOIN item i ON inv.inv_item_sk = i.i_item_sk WHERE i.i_manager_id IN (57, 95, 20) GROUP BY i.i_item_id ORDER BY total_inventory DESC LIMIT 10;

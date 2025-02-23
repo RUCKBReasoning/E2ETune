@@ -1,0 +1,13 @@
+SELECT COUNT(*) FROM movie_info WHERE info_type_id = 4;
+SELECT AVG(production_year) FROM title WHERE series_years = '2010-2011';
+SELECT t.title, COUNT(*) AS num_movies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id JOIN company_type ct ON mc.company_type_id = ct.id WHERE ct.kind = 'production companies' GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_movies DESC;
+SELECT r.role, COUNT(*) AS num_roles FROM role_type r JOIN cast_info c ON r.id = c.role_id WHERE r.id IN (5, 9, 6) GROUP BY r.role;
+SELECT t.title, COUNT(*) AS num_keywords FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_keywords DESC;
+SELECT t.title, COUNT(*) AS num_cast_members FROM title t JOIN cast_info c ON t.id = c.movie_id WHERE t.production_year BETWEEN 2000 AND 2010 GROUP BY t.title HAVING COUNT(*) > 10 ORDER BY num_cast_members DESC;
+SELECT n.name, COUNT(*) AS num_movies FROM name n JOIN cast_info c ON n.id = c.person_id WHERE n.gender = 'M' GROUP BY n.name HAVING COUNT(*) > 5 ORDER BY num_movies DESC;
+SELECT t.title, AVG(c.nr_order) AS avg_order FROM title t JOIN cast_info c ON t.id = c.movie_id WHERE t.production_year = 2000 GROUP BY t.title HAVING AVG(c.nr_order) > 1 ORDER BY avg_order DESC;
+SELECT t.title, COUNT(*) AS num_special_effects_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id JOIN company_type ct ON mc.company_type_id = ct.id WHERE ct.kind = 'special effects companies' GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_special_effects_companies DESC;
+SELECT t.title, COUNT(*) AS num_miscellaneous_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id JOIN company_type ct ON mc.company_type_id = ct.id WHERE ct.kind = 'miscellaneous companies' GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_miscellaneous_companies DESC;
+SELECT t.title, COUNT(*) AS num_writers FROM title t JOIN cast_info c ON t.id = c.movie_id JOIN role_type r ON c.role_id = r.id WHERE r.role = 'writer' GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_writers DESC;
+SELECT t.title, COUNT(*) AS num_editors FROM title t JOIN cast_info c ON t.id = c.movie_id JOIN role_type r ON c.role_id = r.id WHERE r.role = 'editor' GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_editors DESC;
+SELECT t.title, COUNT(*) AS num_miscellaneous_crew FROM title t JOIN cast_info c ON t.id = c.movie_id JOIN role_type r ON c.role_id = r.id WHERE r.role = 'miscellaneous crew' GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_miscellaneous_crew DESC;

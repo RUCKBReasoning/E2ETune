@@ -1,0 +1,13 @@
+SELECT r.r_name, COUNT(n.n_nationkey) AS num_nations FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey GROUP BY r.r_name;
+SELECT c.c_mktsegment, AVG(c.c_acctbal) AS avg_acctbal FROM customer c GROUP BY c.c_mktsegment;
+SELECT p.p_type, SUM(ps.ps_availqty) AS total_inventory FROM part p JOIN partsupp ps ON p.p_partkey = ps.ps_partkey GROUP BY p.p_type;
+SELECT s.s_name, COUNT(DISTINCT o.o_orderkey) AS num_orders FROM supplier s JOIN lineitem l ON s.s_suppkey = l.l_suppkey JOIN orders o ON l.l_orderkey = o.o_orderkey GROUP BY s.s_name;
+SELECT o.o_orderpriority, COUNT(o.o_orderkey) AS num_orders FROM orders o WHERE o.o_orderdate BETWEEN '1993-01-01' AND '1993-12-31' GROUP BY o.o_orderpriority;
+SELECT n.n_name, SUM(l.l_extendedprice * (1 - l.l_discount)) AS revenue FROM nation n JOIN customer c ON n.n_nationkey = c.c_nationkey JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey WHERE l.l_shipdate BETWEEN '1994-01-01' AND '1994-12-31' GROUP BY n.n_name;
+SELECT p.p_brand, COUNT(DISTINCT l.l_orderkey) AS num_orders FROM part p JOIN lineitem l ON p.p_partkey = l.l_partkey WHERE l.l_shipmode = 'AIR' AND l.l_shipinstruct = 'DELIVER IN PERSON' GROUP BY p.p_brand;
+SELECT s.s_name, SUM(ps.ps_supplycost * ps.ps_availqty) AS total_cost FROM supplier s JOIN partsupp ps ON s.s_suppkey = ps.ps_suppkey GROUP BY s.s_name HAVING SUM(ps.ps_supplycost * ps.ps_availqty) > 1000000;
+SELECT c.c_name, COUNT(DISTINCT o.o_orderkey) AS num_orders FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey WHERE o.o_totalprice > (SELECT AVG(o2.o_totalprice) FROM orders o2) GROUP BY c.c_name;
+SELECT p.p_name, SUM(l.l_quantity) AS total_quantity FROM part p JOIN lineitem l ON p.p_partkey = l.l_partkey WHERE l.l_returnflag = 'R' AND l.l_linestatus = 'O' GROUP BY p.p_name;
+SELECT r.r_name, COUNT(DISTINCT l.l_orderkey) AS num_orders FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey JOIN customer c ON n.n_nationkey = c.c_nationkey JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey WHERE l.l_receiptdate BETWEEN '1996-01-01' AND '1996-12-31' GROUP BY r.r_name;
+SELECT c.c_name, SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_revenue FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey WHERE o.o_orderdate >= '1997-01-01' AND o.o_orderdate <= '1997-12-31' AND l.l_shipdate >= '1997-01-01' AND l.l_shipdate <= '1997-12-31' GROUP BY c.c_name;
+SELECT s.s_name, COUNT(DISTINCT l.l_orderkey) AS num_orders FROM supplier s JOIN lineitem l ON s.s_suppkey = l.l_suppkey WHERE l.l_commitdate < l.l_receiptdate AND l.l_receiptdate < l.l_shipdate GROUP BY s.s_name;

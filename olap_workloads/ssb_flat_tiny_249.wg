@@ -1,0 +1,14 @@
+SELECT c_region, s_region, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_nation = 'IRAQ' AND s_nation = 'EGYPT' GROUP BY c_region, s_region;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_partkey = 13214 GROUP BY p_category;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20220101 AND 20220131 GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT c_city, s_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE c_nation = 'ETHIOPIA' AND s_nation = 'IRAN' GROUP BY c_city, s_city ORDER BY total_revenue DESC;
+SELECT p_brand, p_color, COUNT(*) AS num_products FROM lineorder_flat WHERE p_category = 'ELECTRONICS' GROUP BY p_brand, p_color HAVING COUNT(*) > 10 ORDER BY num_products DESC;
+SELECT c_mktsegment, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_commitdate BETWEEN 20220101 AND 20220131 GROUP BY c_mktsegment ORDER BY total_supply_cost DESC;
+SELECT s_nation, p_type, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_partkey = 13225 AND c_nation = 'RUSSIA' GROUP BY s_nation, p_type ORDER BY total_quantity DESC;
+SELECT lo_orderpriority, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY lo_orderpriority ORDER BY avg_discount DESC;
+SELECT c_name, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE c_nation = 'IRAQ' AND lo_orderdate BETWEEN 20220101 AND 20220131 GROUP BY c_name ORDER BY total_revenue DESC;
+SELECT p_mfgr, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_partkey = 13221 AND lo_shipmode = 'RAIL' GROUP BY p_mfgr ORDER BY num_orders DESC;
+SELECT c_region, p_category, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE c_nation = 'ETHIOPIA' AND s_nation = 'BRAZIL' GROUP BY c_region, p_category ORDER BY total_price DESC;
+SELECT s_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = 'HIGH' AND lo_shipmode = 'TRUCK' GROUP BY s_name ORDER BY num_orders DESC;
+SELECT c_city, p_brand, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE c_nation = 'RUSSIA' AND s_nation = 'IRAN' GROUP BY c_city, p_brand HAVING AVG(lo_tax) > 10 ORDER BY avg_tax DESC;
+SELECT p_type, p_size, COUNT(*) AS num_products FROM lineorder_flat WHERE p_category = 'FURNITURE' GROUP BY p_type, p_size HAVING COUNT(*) > 5 ORDER BY num_products DESC;

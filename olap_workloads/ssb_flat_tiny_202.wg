@@ -1,0 +1,12 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_discount = 6 GROUP BY lo_orderpriority;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_discount = 4 GROUP BY s_nation;
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'EXPRESS' GROUP BY c_city;
+SELECT p_type, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_type IN ('LARGE ANODIZED BRASS', 'SMALL ANODIZED NICKEL', 'MEDIUM BRUSHED BRASS') GROUP BY p_type;
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY c_mktsegment;
+SELECT s_region, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_commitdate BETWEEN 19940101 AND 19941231 GROUP BY s_region;
+SELECT p_brand, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_discount = 9 AND lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY p_brand;
+SELECT c_nation, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_orderpriority = 'HIGH' GROUP BY c_nation;
+SELECT p_mfgr, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shippriority = '1' AND lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY p_mfgr;
+SELECT c_name, SUM(lo_ordtotalprice) AS total_order_price FROM lineorder_flat WHERE lo_orderpriority = 'LOW' AND lo_discount IN (6, 4, 9) GROUP BY c_name;

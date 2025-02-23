@@ -1,0 +1,12 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_tax = 3 GROUP BY p_category;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE p_brand = 'MFGR#4510' GROUP BY s_nation;
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' GROUP BY c_mktsegment;
+SELECT p_mfgr, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY p_mfgr;
+SELECT s_city, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE s_phone = '26-275-292-5975' GROUP BY s_city;
+SELECT c_nation, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY c_nation;
+SELECT p_type, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_commitdate >= 20220101 GROUP BY p_type;
+SELECT c_city, COUNT(DISTINCT lo_orderkey) AS num_unique_orders FROM lineorder_flat WHERE lo_shippriority = 'Y' GROUP BY c_city;
+SELECT p_brand, AVG(lo_ordtotalprice) AS avg_total_price FROM lineorder_flat WHERE lo_tax = 5 AND s_phone = '32-537-225-3800' GROUP BY p_brand;
+SELECT s_region, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE p_brand = 'MFGR#5124' AND lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY s_region;
+SELECT c_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '5-LOW' AND lo_shipmode = 'RAIL' GROUP BY c_name;

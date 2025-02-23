@@ -1,0 +1,11 @@
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY order_count DESC;
+SELECT c_region, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder_flat WHERE lo_commitdate >= '19920501' AND lo_commitdate <= '19931111' GROUP BY c_region ORDER BY revenue DESC;
+SELECT s_nation, COUNT(*) AS supplier_count FROM lineorder_flat WHERE s_nation IN ('BRAZIL', 'JORDAN', 'INDONESIA') GROUP BY s_nation;
+SELECT p_category, AVG(lo_supplycost) AS avg_supply_cost FROM lineorder_flat GROUP BY p_category ORDER BY avg_supply_cost DESC;
+SELECT c_mktsegment, COUNT(DISTINCT lo_orderkey) AS total_orders FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT lo_shipmode, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderdate >= '19940220' GROUP BY lo_shipmode ORDER BY total_quantity DESC;
+SELECT p_brand, COUNT(*) AS product_count FROM lineorder_flat WHERE p_size BETWEEN 1 AND 10 GROUP BY p_brand HAVING COUNT(*) > 10 ORDER BY product_count DESC;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_discount BETWEEN 5 AND 10 AND lo_quantity < 30 GROUP BY c_city ORDER BY total_revenue DESC;
+SELECT s_name, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder_flat WHERE lo_commitdate >= '19920501' AND lo_commitdate <= '19931111' AND s_nation = 'BRAZIL' GROUP BY s_name ORDER BY revenue DESC;
+SELECT p_type, COUNT(*) AS product_count FROM lineorder_flat WHERE p_container IN ('SM CASE', 'SM BOX', 'SM PACK', 'SM PKG') GROUP BY p_type ORDER BY product_count DESC;
+SELECT c_nation, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_orderdate >= '19940220' GROUP BY c_nation ORDER BY total_tax DESC;

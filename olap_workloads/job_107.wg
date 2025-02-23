@@ -1,0 +1,2 @@
+SELECT COUNT(*) FROM movie_info WHERE info_type_id = (SELECT id FROM info_type WHERE info = 'runtime') AND movie_id IN (SELECT movie_id FROM complete_cast WHERE status_id = 4);
+SELECT COUNT(*) FROM movie_info WHERE info_type_id = (SELECT id FROM info_type WHERE info = 'rating') AND CAST(info AS FLOAT) > 8.0;

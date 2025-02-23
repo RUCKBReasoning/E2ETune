@@ -1,0 +1,10 @@
+SELECT c_region, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_commitdate >= '19940624' AND lo_tax = 2 GROUP BY c_region ORDER BY num_orders DESC;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' OR lo_orderpriority = '2-HIGH' GROUP BY p_category ORDER BY avg_price DESC;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_orderdate BETWEEN '19950101' AND '19951231' GROUP BY s_nation ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(DISTINCT lo_custkey) AS num_customers FROM lineorder_flat WHERE lo_orderkey IN (6168576, 26419777, 11038337) GROUP BY c_mktsegment;
+SELECT p_brand, p_type, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_shipmode = 'REG AIR' AND lo_discount BETWEEN 5 AND 10 GROUP BY p_brand, p_type ORDER BY total_quantity DESC;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate BETWEEN '19960101' AND '19961231' AND lo_orderpriority = '5-LOW' GROUP BY c_city ORDER BY total_revenue DESC;
+SELECT s_name, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_commitdate = '19970204' AND lo_tax = 3 GROUP BY s_name ORDER BY num_orders DESC;
+SELECT p_mfgr, SUM(lo_extendedprice * (1 - lo_discount)) AS total_revenue FROM lineorder_flat WHERE lo_orderdate BETWEEN '19940101' AND '19941231' GROUP BY p_mfgr ORDER BY total_revenue DESC;
+SELECT c_nation, p_category, COUNT(DISTINCT lo_partkey) AS num_parts FROM lineorder_flat WHERE lo_shippriority = '0' GROUP BY c_nation, p_category ORDER BY num_parts DESC;
+SELECT s_region, p_container, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat WHERE lo_orderkey IN (6168576, 26419777, 11038337) GROUP BY s_region, p_container ORDER BY avg_quantity DESC;

@@ -1,0 +1,12 @@
+SELECT c_name, c_city, c_nation, SUM(lo_extendedprice * (1 - lo_discount)) AS revenue FROM lineorder_flat WHERE lo_custkey IN (92686, 69844, 88057) GROUP BY c_name, c_city, c_nation ORDER BY revenue DESC;
+SELECT p_type, COUNT(*) AS num_orders, AVG(lo_extendedprice) AS avg_price, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_type IN ('PROMO PLATED TIN', 'LARGE BRUSHED TIN', 'ECONOMY POLISHED NICKEL') GROUP BY p_type ORDER BY num_orders DESC;
+SELECT lo_orderpriority, COUNT(*) AS num_orders, SUM(lo_extendedprice) AS total_price, AVG(lo_discount) AS avg_discount FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT s_name, s_city, s_nation, SUM(lo_supplycost * lo_quantity) AS total_supply_cost FROM lineorder_flat GROUP BY s_name, s_city, s_nation ORDER BY total_supply_cost DESC;
+SELECT c_region, p_category, SUM(lo_extendedprice * (1 - lo_discount)) AS revenue FROM lineorder_flat GROUP BY c_region, p_category ORDER BY revenue DESC;
+SELECT lo_shipmode, COUNT(*) AS num_orders, SUM(lo_extendedprice) AS total_price, AVG(lo_tax) AS avg_tax FROM lineorder_flat GROUP BY lo_shipmode ORDER BY num_orders DESC;
+SELECT c_mktsegment, p_brand, COUNT(*) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat GROUP BY c_mktsegment, p_brand ORDER BY num_orders DESC;
+SELECT c_nation, p_mfgr, SUM(lo_extendedprice * (1 - lo_discount)) AS revenue FROM lineorder_flat GROUP BY c_nation, p_mfgr ORDER BY revenue DESC;
+SELECT s_region, p_container, COUNT(*) AS num_orders, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY s_region, p_container ORDER BY num_orders DESC;
+SELECT c_city, p_color, SUM(lo_extendedprice * (1 - lo_discount)) AS revenue FROM lineorder_flat GROUP BY c_city, p_color ORDER BY revenue DESC;
+SELECT lo_orderpriority, p_size, COUNT(*) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat GROUP BY lo_orderpriority, p_size ORDER BY num_orders DESC;
+SELECT s_nation, p_type, COUNT(*) AS num_orders, AVG(lo_extendedprice) AS avg_price, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_type IN ('PROMO PLATED TIN', 'LARGE BRUSHED TIN', 'ECONOMY POLISHED NICKEL') GROUP BY s_nation, p_type ORDER BY num_orders DESC;

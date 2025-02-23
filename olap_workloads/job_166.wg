@@ -1,0 +1,6 @@
+SELECT t.title, COUNT(c.id) AS cast_count FROM title AS t JOIN cast_info AS c ON t.id = c.movie_id WHERE t.kind_id = 6 GROUP BY t.title HAVING COUNT(c.id) > 10 ORDER BY COUNT(c.id) DESC;
+SELECT n.name, COUNT(ci.id) AS total_roles FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name HAVING COUNT(ci.id) > 5 ORDER BY COUNT(ci.id) DESC;
+SELECT t.title, COUNT(k.keyword_id) AS keyword_count FROM title AS t JOIN movie_keyword AS k ON t.id = k.movie_id WHERE t.kind_id = 5 AND t.production_year BETWEEN 2000 AND 2020 GROUP BY t.title HAVING COUNT(k.keyword_id) > 10 ORDER BY COUNT(k.keyword_id) DESC;
+SELECT cn.name, COUNT(ci.id) AS char_count FROM char_name AS cn JOIN cast_info AS ci ON cn.id = ci.person_role_id WHERE cn.surname_pcode = 'O6352' GROUP BY cn.name HAVING COUNT(ci.id) > 5 ORDER BY COUNT(ci.id) DESC;
+SELECT ct.kind, COUNT(mc.company_id) AS company_count FROM company_type AS ct JOIN movie_companies AS mc ON ct.id = mc.company_type_id WHERE ct.id = 1 GROUP BY ct.kind HAVING COUNT(mc.company_id) > 100 ORDER BY COUNT(mc.company_id) DESC;
+SELECT t.title, COUNT(ml.linked_movie_id) AS linked_movies_count FROM title AS t JOIN movie_link AS ml ON t.id = ml.movie_id WHERE t.kind_id = 6 AND ml.link_type_id = 1 GROUP BY t.title HAVING COUNT(ml.linked_movie_id) > 5 ORDER BY COUNT(ml.linked_movie_id) DESC;

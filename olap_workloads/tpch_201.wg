@@ -1,0 +1,14 @@
+SELECT c.c_mktsegment, COUNT(o.o_orderkey) AS total_orders FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey WHERE c.c_nationkey = 23 GROUP BY c.c_mktsegment;
+SELECT n.n_name, SUM(ps.ps_supplycost * ps.ps_availqty) AS total_inventory_value FROM nation n JOIN supplier s ON n.n_nationkey = s.s_nationkey JOIN partsupp ps ON s.s_suppkey = ps.ps_suppkey GROUP BY n.n_name;
+SELECT p.p_type, AVG(l.l_extendedprice) AS average_price FROM part p JOIN lineitem l ON p.p_partkey = l.l_partkey WHERE l.l_shipdate BETWEEN '1997-01-01' AND '1997-12-31' GROUP BY p.p_type;
+SELECT r.r_name, COUNT(DISTINCT s.s_suppkey) AS total_suppliers FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey JOIN supplier s ON n.n_nationkey = s.s_nationkey GROUP BY r.r_name;
+SELECT o.o_orderpriority, COUNT(o.o_orderkey) AS total_orders, AVG(o.o_totalprice) AS average_order_price FROM orders o WHERE o.o_orderstatus = 'F' GROUP BY o.o_orderpriority;
+SELECT c.c_name, COUNT(l.l_orderkey) AS total_lineitems, SUM(l.l_extendedprice) AS total_spent FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey GROUP BY c.c_name HAVING COUNT(l.l_orderkey) > 10;
+SELECT s.s_name, p.p_name, ps.ps_availqty FROM supplier s JOIN partsupp ps ON s.s_suppkey = ps.ps_suppkey JOIN part p ON p.p_partkey = ps.ps_partkey WHERE p.p_size BETWEEN 10 AND 20 ORDER BY ps.ps_availqty DESC LIMIT 10;
+SELECT n.n_name, COUNT(DISTINCT c.c_custkey) AS total_customers FROM nation n JOIN customer c ON n.n_nationkey = c.c_nationkey WHERE n.n_regionkey = 3 GROUP BY n.n_name;
+SELECT p.p_brand, COUNT(l.l_orderkey) AS total_orders FROM part p JOIN lineitem l ON p.p_partkey = l.l_partkey WHERE l.l_returnflag = 'R' GROUP BY p.p_brand;
+SELECT c.c_mktsegment, COUNT(DISTINCT l.l_partkey) AS total_parts_sold FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey GROUP BY c.c_mktsegment;
+SELECT r.r_name, SUM(l.l_extendedprice * l.l_discount) AS total_discounted_sales FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey JOIN customer c ON n.n_nationkey = c.c_nationkey JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey GROUP BY r.r_name;
+SELECT s.s_name, COUNT(DISTINCT l.l_orderkey) AS total_orders FROM supplier s JOIN lineitem l ON s.s_suppkey = l.l_suppkey WHERE l.l_shipmode = 'AIR' GROUP BY s.s_name;
+SELECT p.p_container, COUNT(l.l_orderkey) AS total_orders, AVG(l.l_quantity) AS average_quantity FROM part p JOIN lineitem l ON p.p_partkey = l.l_partkey GROUP BY p.p_container HAVING COUNT(l.l_orderkey) > 50;
+SELECT n.n_name, COUNT(DISTINCT o.o_orderkey) AS total_orders FROM nation n JOIN customer c ON n.n_nationkey = c.c_nationkey JOIN orders o ON c.c_custkey = o.o_custkey WHERE o.o_orderdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY n.n_name;

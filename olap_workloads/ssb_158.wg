@@ -1,0 +1,18 @@
+SELECT c_city, c_region, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder, customer WHERE lo_custkey = c_custkey AND c_city = 'MOZAMBIQU1' GROUP BY c_city, c_region ORDER BY revenue DESC;
+SELECT p_brand, p_type, SUM(lo_extendedprice) AS total_price FROM lineorder, part WHERE lo_partkey = p_partkey AND p_brand = 'MFGR#453' AND p_type = 'ECONOMY POLISHED TIN' GROUP BY p_brand, p_type ORDER BY total_price DESC;
+SELECT s_name, s_region, COUNT(*) AS num_orders FROM lineorder, supplier WHERE lo_suppkey = s_suppkey AND s_region = 'EUROPE' GROUP BY s_name, s_region ORDER BY num_orders DESC;
+SELECT d_year, d_month, SUM(lo_extendedprice) AS total_price FROM lineorder, date_dim WHERE lo_orderdate = d_datekey AND d_year = 1994 GROUP BY d_year, d_month ORDER BY total_price DESC;
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM lineorder, customer WHERE lo_custkey = c_custkey AND c_mktsegment = 'AUTOMOBILE' GROUP BY c_mktsegment;
+SELECT p_category, AVG(p_size) AS avg_size FROM part GROUP BY p_category;
+SELECT d_year, d_month, SUM(lo_extendedprice - lo_supplycost) AS profit FROM lineorder, date_dim WHERE lo_orderdate = d_datekey AND d_year = 1993 GROUP BY d_year, d_month ORDER BY profit DESC;
+SELECT c_nation, COUNT(*) AS num_customers FROM customer WHERE c_region = 'ASIA' GROUP BY c_nation;
+SELECT s_nation, AVG(lo_quantity) AS avg_quantity FROM lineorder, supplier WHERE lo_suppkey = s_suppkey AND s_region = 'AMERICA' GROUP BY s_nation;
+SELECT p_brand, COUNT(*) AS num_parts FROM part WHERE p_type = 'MEDIUM PLATED NICKEL' GROUP BY p_brand;
+SELECT d_year, d_month, COUNT(*) AS num_orders FROM lineorder, date_dim WHERE lo_orderdate = d_datekey AND d_lastdayinmonthfl = '1' GROUP BY d_year, d_month;
+SELECT c_city, c_region, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder, customer WHERE lo_custkey = c_custkey AND c_city = 'JAPAN    5' GROUP BY c_city, c_region ORDER BY revenue DESC;
+SELECT p_brand, p_type, SUM(lo_extendedprice) AS total_price FROM lineorder, part WHERE lo_partkey = p_partkey AND p_brand = 'MFGR#222' AND p_type = 'MEDIUM POLISHED NICKEL' GROUP BY p_brand, p_type ORDER BY total_price DESC;
+SELECT s_name, s_region, COUNT(*) AS num_orders FROM lineorder, supplier WHERE lo_suppkey = s_suppkey AND s_region = 'MIDDLE EAST' GROUP BY s_name, s_region ORDER BY num_orders DESC;
+SELECT d_year, d_month, SUM(lo_extendedprice) AS total_price FROM lineorder, date_dim WHERE lo_orderdate = d_datekey AND d_year = 1992 GROUP BY d_year, d_month ORDER BY total_price DESC;
+SELECT c_mktsegment, COUNT(*) AS num_orders FROM lineorder, customer WHERE lo_custkey = c_custkey AND c_mktsegment = 'HOUSEHOLD' GROUP BY c_mktsegment;
+SELECT p_category, AVG(p_size) AS avg_size FROM part WHERE p_type = 'ECONOMY POLISHED TIN' GROUP BY p_category;
+SELECT d_year, d_month, COUNT(*) AS num_orders FROM lineorder, date_dim WHERE lo_orderdate = d_datekey AND d_holidayfl = '1' GROUP BY d_year, d_month;

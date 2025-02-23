@@ -1,0 +1,12 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT lo_orderpriority, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY p_category;
+SELECT c_city, lo_shipmode, COUNT(*) AS num_shipments FROM lineorder_flat GROUP BY c_city, lo_shipmode;
+SELECT c_nation, p_brand, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY c_nation, p_brand;
+SELECT lo_orderdate, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY lo_orderdate ORDER BY lo_orderdate;
+SELECT c_mktsegment, p_type, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_mktsegment, p_type;
+SELECT s_region, p_container, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_shipmode = 'MAIL' GROUP BY s_region, p_container;
+SELECT c_nation, p_mfgr, AVG(lo_discount) AS avg_discount FROM lineorder_flat GROUP BY c_nation, p_mfgr;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_phone = '19-453-325-6457' GROUP BY lo_orderpriority;
+SELECT p_size, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'TRUCK' AND c_region = 'AMERICA' GROUP BY p_size;
+SELECT c_city, p_category, SUM(lo_extendedprice * lo_discount) AS total_discounted_price FROM lineorder_flat WHERE c_region = 'EUROPE' GROUP BY c_city, p_category;

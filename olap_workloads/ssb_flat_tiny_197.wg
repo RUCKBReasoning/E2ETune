@@ -1,0 +1,16 @@
+SELECT c_region, COUNT(lo_orderkey) AS total_orders FROM lineorder_flat WHERE lo_orderpriority = 'high' GROUP BY c_region ORDER BY total_orders DESC;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_discount > 10 GROUP BY p_category ORDER BY avg_price DESC;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_shipmode = 'air' GROUP BY s_nation ORDER BY total_supply_cost DESC;
+SELECT c_mktsegment, COUNT(lo_orderkey) AS total_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY c_mktsegment ORDER BY total_revenue DESC;
+SELECT p_brand, COUNT(lo_partkey) AS total_parts_sold FROM lineorder_flat WHERE p_name = 'cornsilk pink' GROUP BY p_brand ORDER BY total_parts_sold DESC;
+SELECT c_city, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_suppkey = 5501 GROUP BY c_city ORDER BY total_quantity DESC;
+SELECT s_name, COUNT(lo_orderkey) AS total_orders FROM lineorder_flat WHERE lo_commitdate < lo_orderdate GROUP BY s_name ORDER BY total_orders DESC;
+SELECT p_mfgr, SUM(lo_extendedprice * (1 - lo_discount)) AS total_revenue FROM lineorder_flat WHERE p_color = 'maroon burnished' GROUP BY p_mfgr ORDER BY total_revenue DESC;
+SELECT c_nation, COUNT(lo_orderkey) AS total_orders FROM lineorder_flat WHERE lo_shippriority = '1' AND lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY c_nation ORDER BY total_orders DESC;
+SELECT p_type, AVG(lo_supplycost) AS avg_supply_cost FROM lineorder_flat WHERE lo_shipmode = 'truck' GROUP BY p_type ORDER BY avg_supply_cost DESC;
+SELECT s_region, COUNT(lo_orderkey) AS total_orders FROM lineorder_flat WHERE lo_orderpriority = 'low' AND lo_shipmode = 'rail' GROUP BY s_region ORDER BY total_orders DESC;
+SELECT c_name, SUM(lo_extendedprice * (1 - lo_discount)) AS total_revenue FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 AND lo_suppkey = 5362 GROUP BY c_name ORDER BY total_revenue DESC;
+SELECT p_category, COUNT(lo_partkey) AS total_parts_sold FROM lineorder_flat WHERE p_name = 'smoke hot' AND lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY p_category ORDER BY total_parts_sold DESC;
+SELECT s_city, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_suppkey = 5294 AND lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY s_city ORDER BY total_quantity DESC;
+SELECT c_mktsegment, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE lo_orderpriority = 'medium' GROUP BY c_mktsegment ORDER BY avg_tax DESC;
+SELECT p_brand, p_size, COUNT(lo_partkey) AS total_parts_sold FROM lineorder_flat WHERE lo_shipmode = 'air' AND lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY p_brand, p_size ORDER BY total_parts_sold DESC;

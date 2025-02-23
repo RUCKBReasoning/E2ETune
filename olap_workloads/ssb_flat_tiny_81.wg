@@ -1,0 +1,14 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT c_mktsegment, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20220101 AND 20221231 GROUP BY lo_orderpriority;
+SELECT s_region, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_region;
+SELECT p_brand, COUNT(*) AS num_products FROM lineorder_flat WHERE p_category = 'MFGR#51' GROUP BY p_brand;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE c_name = 'Customer#000053890' GROUP BY c_city;
+SELECT lo_shipmode, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_commitdate BETWEEN 20220101 AND 20221231 GROUP BY lo_shipmode;
+SELECT p_type, AVG(p_size) AS avg_size FROM lineorder_flat WHERE p_category = 'MFGR#42' GROUP BY p_type;
+SELECT c_nation, SUM(lo_tax) AS total_tax FROM lineorder_flat GROUP BY c_nation;
+SELECT p_color, COUNT(*) AS num_products FROM lineorder_flat WHERE p_category = 'MFGR#52' GROUP BY p_color;
+SELECT c_region, SUM(lo_ordtotalprice) AS total_order_price FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' GROUP BY c_region;
+SELECT c_name, SUM(lo_discount) AS total_discount FROM lineorder_flat WHERE lo_orderdate BETWEEN 20220101 AND 20221231 GROUP BY c_name HAVING SUM(lo_discount) > 1000;
+SELECT p_mfgr, COUNT(*) AS num_products FROM lineorder_flat WHERE p_size BETWEEN 10 AND 20 GROUP BY p_mfgr;

@@ -1,0 +1,13 @@
+SELECT p.p_type, AVG(p.p_retailprice) as avg_retailprice FROM part p GROUP BY p.p_type;
+SELECT p.p_brand, COUNT(*) as part_count FROM part p WHERE p.p_comment LIKE 'nly regular%' GROUP BY p.p_brand;
+SELECT p.p_brand, COUNT(*) as part_count FROM part p WHERE p.p_comment LIKE 'quests. i%' GROUP BY p.p_brand;
+SELECT p.p_brand, COUNT(*) as part_count FROM part p WHERE p.p_comment LIKE 'ual requests.%' GROUP BY p.p_brand;
+SELECT l.l_returnflag, COUNT(*) as lineitem_count FROM lineitem l WHERE l.l_discount >= 0.01 AND l.l_discount <= 0.09 GROUP BY l.l_returnflag;
+SELECT o.o_orderpriority, AVG(l.l_extendedprice) as avg_extendedprice FROM orders o JOIN lineitem l ON o.o_orderkey = l.l_orderkey GROUP BY o.o_orderpriority;
+SELECT n.n_name, COUNT(DISTINCT s.s_suppkey) as supplier_count FROM nation n JOIN supplier s ON n.n_nationkey = s.s_nationkey GROUP BY n.n_name;
+SELECT r.r_name, COUNT(DISTINCT n.n_nationkey) as nation_count FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey GROUP BY r.r_name;
+SELECT p.p_type, SUM(ps.ps_availqty) as total_availqty FROM part p JOIN partsupp ps ON p.p_partkey = ps.ps_partkey GROUP BY p.p_type;
+SELECT s.s_name, SUM(ps.ps_supplycost * ps.ps_availqty) as total_supply_cost FROM supplier s JOIN partsupp ps ON s.s_suppkey = ps.ps_suppkey GROUP BY s.s_name ORDER BY total_supply_cost DESC LIMIT 10;
+SELECT c.c_mktsegment, AVG(c.c_acctbal) as avg_acctbal FROM customer c GROUP BY c.c_mktsegment;
+SELECT p.p_mfgr, COUNT(DISTINCT p.p_partkey) as part_count FROM part p GROUP BY p.p_mfgr;
+SELECT r.r_name, AVG(s.s_acctbal) as avg_acctbal FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey JOIN supplier s ON n.n_nationkey = s.s_nationkey GROUP BY r.r_name;

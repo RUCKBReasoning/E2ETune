@@ -1,0 +1,1002 @@
+{
+    "smallbank/sample_smallbank_config0.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31394,
+        0.25372,
+        0.31156
+    ],
+    "smallbank/sample_smallbank_config1.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31574,
+        0.28350000000000003,
+        0.2706
+    ],
+    "smallbank/sample_smallbank_config2.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.22428,
+        0.22664,
+        0.24845
+    ],
+    "smallbank/sample_smallbank_config3.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.07106000000000001,
+        0.07999999999999999,
+        0.07873000000000001
+    ],
+    "smallbank/sample_smallbank_config4.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.08556,
+        0.08156,
+        0.09265000000000001
+    ],
+    "smallbank/sample_smallbank_config5.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31906,
+        0.28704,
+        0.26385
+    ],
+    "smallbank/sample_smallbank_config6.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.35412,
+        0.26898,
+        0.37605000000000005
+    ],
+    "smallbank/sample_smallbank_config7.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.09991000000000001,
+        0.09051999999999999,
+        0.09928000000000001
+    ],
+    "smallbank/sample_smallbank_config8.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.29575999999999997,
+        0.31206,
+        0.34126
+    ],
+    "smallbank/sample_smallbank_config9.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.13355999999999998,
+        0.12624000000000002,
+        0.13986
+    ],
+    "smallbank/sample_smallbank_config10.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.24274,
+        0.1992,
+        0.22759999999999997
+    ],
+    "smallbank/sample_smallbank_config11.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3002,
+        0.31414,
+        0.33475
+    ],
+    "smallbank/sample_smallbank_config12.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.27592000000000005,
+        0.25682,
+        0.28664
+    ],
+    "smallbank/sample_smallbank_config13.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.30491999999999997,
+        0.30254000000000003,
+        0.34163
+    ],
+    "smallbank/sample_smallbank_config14.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3498299999999999,
+        0.25556,
+        0.38363
+    ],
+    "smallbank/sample_smallbank_config15.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.35261,
+        0.32110000000000005,
+        0.32573
+    ],
+    "smallbank/sample_smallbank_config16.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.22085,
+        0.17922,
+        0.21951
+    ],
+    "smallbank/sample_smallbank_config17.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.34064,
+        0.29757999999999996,
+        0.35082
+    ],
+    "smallbank/sample_smallbank_config18.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.34051,
+        0.31655999999999995,
+        0.33216
+    ],
+    "smallbank/sample_smallbank_config19.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.36938000000000004,
+        0.32386000000000004,
+        0.30661000000000005
+    ],
+    "smallbank/sample_smallbank_config20.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.24247999999999997,
+        0.23098000000000002,
+        0.26588
+    ],
+    "smallbank/sample_smallbank_config21.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.33019,
+        0.27468000000000004,
+        0.33446
+    ],
+    "smallbank/sample_smallbank_config22.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2383,
+        0.21058,
+        0.24051
+    ],
+    "smallbank/sample_smallbank_config23.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.32538,
+        0.29436,
+        0.34929
+    ],
+    "smallbank/sample_smallbank_config24.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31740999999999997,
+        0.30692,
+        0.34482999999999997
+    ],
+    "smallbank/sample_smallbank_config25.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.20862,
+        0.20194,
+        0.20908
+    ],
+    "smallbank/sample_smallbank_config26.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.30798,
+        0.3486,
+        0.34246000000000004
+    ],
+    "smallbank/sample_smallbank_config27.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.30084,
+        0.26684,
+        0.30160000000000003
+    ],
+    "smallbank/sample_smallbank_config28.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.20529999999999998,
+        0.1968,
+        0.20732
+    ],
+    "smallbank/sample_smallbank_config29.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.35386999999999996,
+        0.2935999999999999,
+        0.34154
+    ],
+    "smallbank/sample_smallbank_config30.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.36208,
+        0.32586000000000004,
+        0.30195
+    ],
+    "smallbank/sample_smallbank_config31.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.22648,
+        0.24056,
+        0.24235
+    ],
+    "smallbank/sample_smallbank_config32.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.326,
+        0.2848,
+        0.32838
+    ],
+    "smallbank/sample_smallbank_config33.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.17107,
+        0.1479,
+        0.15080000000000002
+    ],
+    "smallbank/sample_smallbank_config34.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.36393,
+        0.27386,
+        0.36127
+    ],
+    "smallbank/sample_smallbank_config35.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.34176999999999996,
+        0.30318000000000006,
+        0.28497
+    ],
+    "smallbank/sample_smallbank_config36.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.18896,
+        0.18216,
+        0.19843
+    ],
+    "smallbank/sample_smallbank_config37.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.34714000000000006,
+        0.31614,
+        0.30648
+    ],
+    "smallbank/sample_smallbank_config38.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.36478999999999995,
+        0.32998,
+        0.30512
+    ],
+    "smallbank/sample_smallbank_config39.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.35551000000000005,
+        0.31,
+        0.29433
+    ],
+    "smallbank/sample_smallbank_config40.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.30957,
+        0.34845999999999994,
+        0.3410500000000001
+    ],
+    "smallbank/sample_smallbank_config41.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.33730000000000004,
+        0.2779,
+        0.37382
+    ],
+    "smallbank/sample_smallbank_config42.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.34723,
+        0.2514,
+        0.38039
+    ],
+    "smallbank/sample_smallbank_config43.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.33726999999999996,
+        0.32056,
+        0.32168
+    ],
+    "smallbank/sample_smallbank_config44.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3565499999999999,
+        0.31858,
+        0.30469999999999997
+    ],
+    "smallbank/sample_smallbank_config45.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.35102,
+        0.28415999999999997,
+        0.31417000000000006
+    ],
+    "smallbank/sample_smallbank_config46.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31706999999999996,
+        0.33356,
+        0.33839
+    ],
+    "smallbank/sample_smallbank_config47.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.32448,
+        0.30814,
+        0.33670999999999995
+    ],
+    "smallbank/sample_smallbank_config48.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.30352999999999997,
+        0.32366,
+        0.35184000000000004
+    ],
+    "smallbank/sample_smallbank_config49.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.1209,
+        0.11738000000000001,
+        0.11159000000000001
+    ],
+    "smallbank/sample_smallbank_config50.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31156,
+        0.32502,
+        0.34258
+    ],
+    "smallbank/sample_smallbank_config51.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3191,
+        0.29302,
+        0.31725000000000003
+    ],
+    "smallbank/sample_smallbank_config52.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.33871,
+        0.29012000000000004,
+        0.37022
+    ],
+    "smallbank/sample_smallbank_config53.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.34929999999999994,
+        0.28152,
+        0.36836
+    ],
+    "smallbank/sample_smallbank_config54.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.34231999999999996,
+        0.28944000000000003,
+        0.29779000000000005
+    ],
+    "smallbank/sample_smallbank_config55.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2682,
+        0.24972,
+        0.27156
+    ],
+    "smallbank/sample_smallbank_config56.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.32392999999999994,
+        0.31622,
+        0.34890000000000004
+    ],
+    "smallbank/sample_smallbank_config57.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.2945,
+        0.26056,
+        0.28442
+    ],
+    "smallbank/sample_smallbank_config58.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31337000000000004,
+        0.31596,
+        0.35971
+    ],
+    "smallbank/sample_smallbank_config59.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31452,
+        0.28256000000000003,
+        0.26282
+    ],
+    "smallbank/sample_smallbank_config60.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.32988,
+        0.30658,
+        0.33277
+    ],
+    "smallbank/sample_smallbank_config61.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.07712999999999999,
+        0.08261999999999999,
+        0.08007
+    ],
+    "smallbank/sample_smallbank_config62.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.30517,
+        0.31018,
+        0.34375
+    ],
+    "smallbank/sample_smallbank_config63.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.35683,
+        0.26182,
+        0.38047
+    ],
+    "smallbank/sample_smallbank_config64.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.19463999999999998,
+        0.15338,
+        0.21142
+    ],
+    "smallbank/sample_smallbank_config65.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.33165,
+        0.29172,
+        0.37563
+    ],
+    "smallbank/sample_smallbank_config66.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.29963,
+        0.2438,
+        0.28581000000000006
+    ],
+    "smallbank/sample_smallbank_config67.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.32794999999999996,
+        0.30466000000000004,
+        0.3664
+    ],
+    "smallbank/sample_smallbank_config68.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.26688999999999996,
+        0.29578000000000004,
+        0.29653
+    ],
+    "smallbank/sample_smallbank_config69.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.28288,
+        0.25224,
+        0.27445
+    ],
+    "smallbank/sample_smallbank_config70.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.24599000000000001,
+        0.21716,
+        0.27612000000000003
+    ],
+    "smallbank/sample_smallbank_config71.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31371,
+        0.29948,
+        0.34585000000000005
+    ],
+    "smallbank/sample_smallbank_config72.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.33713000000000004,
+        0.3188,
+        0.33336
+    ],
+    "smallbank/sample_smallbank_config73.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.13083,
+        0.1071,
+        0.12171
+    ],
+    "smallbank/sample_smallbank_config74.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.18669000000000002,
+        0.20671999999999996,
+        0.20605
+    ],
+    "smallbank/sample_smallbank_config75.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.28989,
+        0.25377999999999995,
+        0.29552
+    ],
+    "smallbank/sample_smallbank_config76.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.30994,
+        0.34245999999999993,
+        0.33674
+    ],
+    "smallbank/sample_smallbank_config77.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.19894,
+        0.19206,
+        0.19863
+    ],
+    "smallbank/sample_smallbank_config78.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.35944,
+        0.29488,
+        0.33469
+    ],
+    "smallbank/sample_smallbank_config79.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.35638000000000003,
+        0.2643,
+        0.36849
+    ],
+    "smallbank/sample_smallbank_config80.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3224,
+        0.311,
+        0.36563999999999997
+    ],
+    "smallbank/sample_smallbank_config81.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.32289,
+        0.29182,
+        0.33447
+    ],
+    "smallbank/sample_smallbank_config82.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.29930999999999996,
+        0.28526,
+        0.32456
+    ],
+    "smallbank/sample_smallbank_config83.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.34436,
+        0.24796,
+        0.36672000000000005
+    ],
+    "smallbank/sample_smallbank_config84.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.31535,
+        0.3231799999999999,
+        0.34054
+    ],
+    "smallbank/sample_smallbank_config85.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.32651,
+        0.29683999999999994,
+        0.28639000000000003
+    ],
+    "smallbank/sample_smallbank_config86.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.08476,
+        0.0873,
+        0.09768
+    ],
+    "smallbank/sample_smallbank_config87.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.32099,
+        0.31854,
+        0.31981000000000004
+    ],
+    "smallbank/sample_smallbank_config88.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.30075,
+        0.30302,
+        0.34528000000000003
+    ],
+    "smallbank/sample_smallbank_config89.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.32353,
+        0.27080000000000004,
+        0.36471
+    ],
+    "smallbank/sample_smallbank_config90.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.24435,
+        0.19092000000000003,
+        0.24428000000000002
+    ],
+    "smallbank/sample_smallbank_config91.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.30204999999999993,
+        0.22772,
+        0.3194
+    ],
+    "smallbank/sample_smallbank_config92.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.35456,
+        0.25367999999999996,
+        0.39077
+    ],
+    "smallbank/sample_smallbank_config93.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.17706000000000002,
+        0.15556,
+        0.19685999999999998
+    ],
+    "smallbank/sample_smallbank_config94.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.23123999999999997,
+        0.18026,
+        0.24784
+    ],
+    "smallbank/sample_smallbank_config95.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.27865,
+        0.24244000000000002,
+        0.26829
+    ],
+    "smallbank/sample_smallbank_config96.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.36046,
+        0.30073999999999995,
+        0.33790000000000003
+    ],
+    "smallbank/sample_smallbank_config97.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3255,
+        0.29108,
+        0.35256
+    ],
+    "smallbank/sample_smallbank_config98.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.30072,
+        0.30702,
+        0.34136
+    ],
+    "smallbank/sample_smallbank_config99.xml": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.15818,
+        0.14318,
+        0.17818
+    ]
+}

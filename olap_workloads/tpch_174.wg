@@ -1,0 +1,13 @@
+SELECT r_name, COUNT(*) AS num_nations FROM nation JOIN region ON n_regionkey = r_regionkey GROUP BY r_name;
+SELECT p_type, AVG(p_size) AS avg_size FROM part GROUP BY p_type;
+SELECT c_mktsegment, SUM(o_totalprice) AS total_revenue FROM customer JOIN orders ON c_custkey = o_custkey GROUP BY c_mktsegment;
+SELECT s_name, SUM(ps_availqty) AS total_avail_qty FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey GROUP BY s_name;
+SELECT o_orderpriority, COUNT(*) AS num_orders FROM orders GROUP BY o_orderpriority;
+SELECT r_name, AVG(s_acctbal) AS avg_account_balance FROM supplier JOIN nation ON s_nationkey = n_nationkey JOIN region ON n_regionkey = r_regionkey GROUP BY r_name;
+SELECT p_brand, COUNT(*) AS num_parts FROM part WHERE p_size BETWEEN 10 AND 20 GROUP BY p_brand;
+SELECT l_returnflag, l_linestatus, COUNT(*) AS num_lineitems FROM lineitem WHERE l_shipdate BETWEEN '1998-01-01' AND '1998-12-31' GROUP BY l_returnflag, l_linestatus;
+SELECT o_orderpriority, AVG(o_totalprice) AS avg_order_price FROM orders WHERE o_orderdate BETWEEN '1998-01-01' AND '1998-12-31' GROUP BY o_orderpriority;
+SELECT r_name, COUNT(DISTINCT l_orderkey) AS num_orders FROM lineitem JOIN supplier ON l_suppkey = s_suppkey JOIN nation ON s_nationkey = n_nationkey JOIN region ON n_regionkey = r_regionkey WHERE l_shipinstruct = 'DELIVER IN PERSON' GROUP BY r_name;
+SELECT c_mktsegment, COUNT(*) AS num_customers, SUM(c_acctbal) AS total_account_balance FROM customer WHERE c_nationkey IN (SELECT n_nationkey FROM nation WHERE n_regionkey = (SELECT r_regionkey FROM region WHERE r_name = 'ASIA')) GROUP BY c_mktsegment;
+SELECT p_mfgr, SUM(ps_supplycost * ps_availqty) AS total_supply_cost FROM part JOIN partsupp ON p_partkey = ps_partkey WHERE p_size BETWEEN 10 AND 20 GROUP BY p_mfgr;
+SELECT s_name, COUNT(*) AS num_lineitems FROM lineitem JOIN supplier ON l_suppkey = s_suppkey WHERE l_commitdate BETWEEN '1998-01-01' AND '1998-12-31' AND l_comment LIKE '%packages%' GROUP BY s_name;

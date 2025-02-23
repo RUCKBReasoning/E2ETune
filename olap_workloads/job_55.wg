@@ -1,0 +1,17 @@
+SELECT COUNT(*) FROM title WHERE kind_id = 5 AND production_year >= 2000;
+SELECT COUNT(*) FROM title WHERE kind_id = 1 AND production_year >= 2000;
+SELECT COUNT(*) FROM title WHERE kind_id = 3 AND production_year >= 2000;
+SELECT AVG(production_year) FROM title WHERE kind_id = 5;
+SELECT AVG(production_year) FROM title WHERE kind_id = 1;
+SELECT AVG(production_year) FROM title WHERE kind_id = 3;
+SELECT COUNT(*) FROM movie_companies WHERE company_type_id = 1;
+SELECT COUNT(*) FROM movie_companies WHERE company_type_id = 4;
+SELECT COUNT(*) FROM movie_companies WHERE company_type_id = 3;
+SELECT COUNT(*) FROM movie_companies mc JOIN title t ON mc.movie_id = t.id WHERE t.kind_id = 5 AND mc.company_type_id = 1;
+SELECT COUNT(*) FROM movie_companies mc JOIN title t ON mc.movie_id = t.id WHERE t.kind_id = 1 AND mc.company_type_id = 1;
+SELECT COUNT(*) FROM movie_companies mc JOIN title t ON mc.movie_id = t.id WHERE t.kind_id = 3 AND mc.company_type_id = 1;
+SELECT c.name, COUNT(*) FROM movie_companies mc JOIN company_name c ON mc.company_id = c.id WHERE mc.company_type_id = 1 GROUP BY c.name ORDER BY COUNT(*) DESC LIMIT 10;
+SELECT c.name, COUNT(*) FROM movie_companies mc JOIN company_name c ON mc.company_id = c.id WHERE mc.company_type_id = 4 GROUP BY c.name ORDER BY COUNT(*) DESC LIMIT 10;
+SELECT c.name, COUNT(*) FROM movie_companies mc JOIN company_name c ON mc.company_id = c.id WHERE mc.company_type_id = 3 GROUP BY c.name ORDER BY COUNT(*) DESC LIMIT 10;
+SELECT t.title, COUNT(*) FROM movie_keyword mk JOIN title t ON mk.movie_id = t.id GROUP BY t.title ORDER BY COUNT(*) DESC LIMIT 10;
+SELECT k.keyword, COUNT(*) FROM movie_keyword mk JOIN keyword k ON mk.keyword_id = k.id GROUP BY k.keyword ORDER BY COUNT(*) DESC LIMIT 10;

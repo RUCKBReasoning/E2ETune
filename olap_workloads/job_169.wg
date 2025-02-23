@@ -1,0 +1,7 @@
+SELECT k.keyword, COUNT(mk.movie_id) AS num_movies FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id WHERE k.phonetic_code = 'B3243' GROUP BY k.keyword ORDER BY num_movies DESC;
+SELECT n.name, COUNT(ci.person_id) AS num_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE n.surname_pcode = 'A14' AND n.gender = 'm' GROUP BY n.name ORDER BY num_roles DESC;
+SELECT t.title, COUNT(mc.movie_id) AS num_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id WHERE t.production_year BETWEEN 2000 AND 2010 GROUP BY t.title ORDER BY num_companies DESC;
+SELECT kt.kind, COUNT(at.kind_id) AS num_aka_titles FROM kind_type kt JOIN aka_title at ON kt.id = at.kind_id WHERE at.production_year = 1999 GROUP BY kt.kind ORDER BY num_aka_titles DESC;
+SELECT cn.name, COUNT(cc.company_id) AS num_movies FROM company_name cn JOIN movie_companies cc ON cn.id = cc.company_id WHERE cn.country_code = 'US' AND cc.company_type_id = 1 GROUP BY cn.name ORDER BY num_movies DESC;
+SELECT it.info, AVG(mi.info_type_id) AS avg_info_type_id FROM info_type it JOIN movie_info mi ON it.id = mi.info_type_id GROUP BY it.info HAVING COUNT(mi.movie_id) > 100 ORDER BY avg_info_type_id DESC;
+SELECT rt.role, COUNT(ci.role_id) AS num_roles FROM role_type rt JOIN cast_info ci ON rt.id = ci.role_id WHERE ci.note LIKE '%(1999)%' GROUP BY rt.role ORDER BY num_roles DESC;

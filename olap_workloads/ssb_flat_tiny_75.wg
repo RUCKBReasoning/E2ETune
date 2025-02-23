@@ -1,0 +1,14 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY p_category;
+SELECT c_city, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat GROUP BY c_city;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 20220101 AND 20221231 GROUP BY lo_orderpriority;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_name;
+SELECT p_brand, COUNT(*) AS num_products FROM lineorder_flat WHERE p_color = 'red' GROUP BY p_brand;
+SELECT c_mktsegment, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_discount > 10 GROUP BY c_mktsegment;
+SELECT s_nation, AVG(lo_tax) AS avg_tax FROM lineorder_flat GROUP BY s_nation;
+SELECT c_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_ordtotalprice > 10000000 GROUP BY c_name;
+SELECT p_type, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY p_type;
+SELECT c_address, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_address IN ('bSMCmqrinDY', '0jbORrlH', '7mPjYm9unv4PFIcxwe6I') GROUP BY c_address;
+SELECT p_size, COUNT(*) AS num_products FROM lineorder_flat WHERE p_container = 'SM CASE' GROUP BY p_size;
+SELECT lo_orderpriority, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_commitdate BETWEEN 20220101 AND 20221231 GROUP BY lo_orderpriority;
+SELECT c_nation, SUM(lo_ordtotalprice) AS total_price FROM lineorder_flat WHERE lo_ordtotalprice IN (8072351, 21854123, 11285568) GROUP BY c_nation;

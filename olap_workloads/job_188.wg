@@ -1,0 +1,10 @@
+SELECT t.title, COUNT(mk.keyword_id) AS keyword_count FROM title AS t JOIN movie_keyword AS mk ON t.id = mk.movie_id GROUP BY t.title ORDER BY keyword_count DESC LIMIT 10;
+SELECT k.keyword, COUNT(mk.movie_id) AS movie_count FROM keyword AS k JOIN movie_keyword AS mk ON k.id = mk.keyword_id GROUP BY k.keyword ORDER BY movie_count DESC LIMIT 10;
+SELECT n.name, COUNT(ci.movie_id) AS movie_count FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name ORDER BY movie_count DESC LIMIT 10;
+SELECT t.title, COUNT(ml.linked_movie_id) AS linked_movie_count FROM title AS t JOIN movie_link AS ml ON t.id = ml.movie_id WHERE ml.link_type_id = 12 GROUP BY t.title ORDER BY linked_movie_count DESC LIMIT 10;
+SELECT t.title, COUNT(mc.company_id) AS company_count FROM title AS t JOIN movie_companies AS mc ON t.id = mc.movie_id WHERE mc.company_type_id = 1 GROUP BY t.title ORDER BY company_count DESC LIMIT 10;
+SELECT t.title, COUNT(ci.person_id) AS cast_count FROM title AS t JOIN cast_info AS ci ON t.id = ci.movie_id WHERE ci.role_id = 1 GROUP BY t.title ORDER BY cast_count DESC LIMIT 10;
+SELECT n.name, COUNT(ci.movie_id) AS movie_count FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id WHERE ci.role_id IN (2, 3) GROUP BY n.name ORDER BY movie_count DESC LIMIT 10;
+SELECT t.title, COUNT(mc.company_id) AS company_count FROM title AS t JOIN movie_companies AS mc ON t.id = mc.movie_id WHERE mc.company_type_id = 2 GROUP BY t.title ORDER BY company_count DESC LIMIT 10;
+SELECT t.title, COUNT(cc.movie_id) AS complete_cast_count FROM title AS t JOIN complete_cast AS cc ON t.id = cc.movie_id WHERE cc.status_id = 3 GROUP BY t.title ORDER BY complete_cast_count DESC LIMIT 10;
+SELECT t.title, COUNT(ml.linked_movie_id) AS linked_movie_count FROM title AS t JOIN movie_link AS ml ON t.id = ml.movie_id WHERE ml.link_type_id = 15 GROUP BY t.title ORDER BY linked_movie_count DESC LIMIT 10;

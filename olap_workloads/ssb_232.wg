@@ -1,0 +1,13 @@
+SELECT c_region, COUNT(*) as num_customers FROM customer GROUP BY c_region;
+SELECT s_region, AVG(s_suppkey) as avg_suppkey FROM supplier GROUP BY s_region;
+SELECT p_category, SUM(p_size) as total_size FROM part GROUP BY p_category;
+SELECT d_year, COUNT(*) as num_holidays FROM date_dim WHERE d_holidayfl = '1' GROUP BY d_year;
+SELECT c_mktsegment, COUNT(lo_orderkey) as num_orders FROM customer INNER JOIN lineorder ON customer.c_custkey = lineorder.lo_custkey GROUP BY c_mktsegment;
+SELECT s_name, SUM(lo_extendedprice) as total_revenue FROM supplier INNER JOIN lineorder ON supplier.s_suppkey = lineorder.lo_suppkey GROUP BY s_name;
+SELECT d_year, COUNT(lo_orderkey) as num_orders FROM date_dim INNER JOIN lineorder ON date_dim.d_datekey = lineorder.lo_orderdate GROUP BY d_year;
+SELECT p_brand, COUNT(lo_orderkey) as num_orders FROM part INNER JOIN lineorder ON part.p_partkey = lineorder.lo_partkey GROUP BY p_brand;
+SELECT d_year, SUM(lo_revenue) as total_revenue FROM date_dim INNER JOIN lineorder ON date_dim.d_datekey = lineorder.lo_orderdate GROUP BY d_year;
+SELECT c_region, COUNT(lo_orderkey) as num_orders FROM customer INNER JOIN lineorder ON customer.c_custkey = lineorder.lo_custkey GROUP BY c_region;
+SELECT s_region, SUM(lo_supplycost) as total_supply_cost FROM supplier INNER JOIN lineorder ON supplier.s_suppkey = lineorder.lo_suppkey GROUP BY s_region;
+SELECT lo_orderpriority, COUNT(*) as num_orders FROM lineorder GROUP BY lo_orderpriority;
+SELECT d_year, d_month, COUNT(lo_orderkey) as num_orders FROM date_dim INNER JOIN lineorder ON date_dim.d_datekey = lineorder.lo_orderdate GROUP BY d_year, d_month;

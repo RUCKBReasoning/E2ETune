@@ -1,0 +1,13 @@
+SELECT c_region, COUNT(*) as num_customers FROM customer GROUP BY c_region;
+SELECT p_category, AVG(p_size) as avg_size FROM part GROUP BY p_category;
+SELECT d_year, SUM(lo_revenue) as total_revenue FROM lineorder JOIN date_dim ON lineorder.lo_orderdate = date_dim.d_datekey WHERE d_year >= 2010 AND d_year <= 2020 GROUP BY d_year;
+SELECT s_name, COUNT(*) as num_orders FROM supplier JOIN lineorder ON supplier.s_suppkey = lineorder.lo_suppkey WHERE s_region = 'AMERICA' GROUP BY s_name;
+SELECT c_name, SUM(lo_extendedprice * lo_discount) as total_discounted_price FROM customer JOIN lineorder ON customer.c_custkey = lineorder.lo_custkey WHERE c_region = 'EUROPE' GROUP BY c_name;
+SELECT p_name, COUNT(*) as num_orders FROM part JOIN lineorder ON part.p_partkey = lineorder.lo_partkey WHERE p_container = 'SM PKG' GROUP BY p_name;
+SELECT d_month, COUNT(*) as num_orders FROM date_dim JOIN lineorder ON date_dim.d_datekey = lineorder.lo_orderdate WHERE d_year = 2020 GROUP BY d_month;
+SELECT c_city, SUM(lo_quantity) as total_quantity FROM customer JOIN lineorder ON customer.c_custkey = lineorder.lo_custkey WHERE c_phone = '12-328-794-4652' GROUP BY c_city;
+SELECT p_brand, COUNT(*) as num_orders FROM part JOIN lineorder ON part.p_partkey = lineorder.lo_partkey WHERE p_name = 'dim honeydew' GROUP BY p_brand;
+SELECT s_nation, AVG(lo_supplycost) as avg_supplycost FROM supplier JOIN lineorder ON supplier.s_suppkey = lineorder.lo_suppkey WHERE s_region = 'MIDDLE EAST' GROUP BY s_nation;
+SELECT d_dayofweek, COUNT(*) as num_orders FROM date_dim JOIN lineorder ON date_dim.d_datekey = lineorder.lo_orderdate WHERE d_month = 'January' AND d_year = 2020 GROUP BY d_dayofweek;
+SELECT lo_orderpriority, COUNT(*) as num_orders FROM lineorder WHERE lo_shipmode = 'AIR' GROUP BY lo_orderpriority;
+SELECT c_name, SUM(lo_extendedprice) as total_price FROM customer JOIN lineorder ON customer.c_custkey = lineorder.lo_custkey WHERE c_mktsegment = 'AUTOMOBILE' GROUP BY c_name HAVING SUM(lo_extendedprice) > 1000000;

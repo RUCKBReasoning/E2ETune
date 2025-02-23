@@ -1,0 +1,10 @@
+SELECT w_state, AVG(w_warehouse_sq_ft) as avg_warehouse_sq_ft FROM warehouse GROUP BY w_state ORDER BY avg_warehouse_sq_ft DESC;
+SELECT i_category, COUNT(*) as total_items FROM item GROUP BY i_category HAVING COUNT(*) > 50 ORDER BY total_items DESC;
+SELECT c_birth_year, COUNT(*) as num_customers FROM customer WHERE c_preferred_cust_flag = 'Y' GROUP BY c_birth_year ORDER BY num_customers DESC;
+SELECT r_reason_desc, COUNT(*) as num_returns FROM store_returns sr JOIN reason r ON sr.sr_reason_sk = r.r_reason_sk GROUP BY r_reason_desc ORDER BY num_returns DESC;
+SELECT p_promo_name, SUM(cs_sales_price) as total_sales FROM catalog_sales cs JOIN promotion p ON cs.cs_promo_sk = p.p_promo_sk WHERE p.p_discount_active = 'Y' GROUP BY p_promo_name ORDER BY total_sales DESC;
+SELECT ws.ws_web_site_sk, ws.ws_order_number, ws.ws_sales_price, ws.ws_net_profit FROM web_sales ws WHERE ws.ws_sales_price > (SELECT AVG(ws_sales_price) FROM web_sales) ORDER BY ws.ws_net_profit DESC LIMIT 10;
+SELECT s.s_store_name, COUNT(*) as num_sales FROM store_sales ss JOIN store s ON ss.ss_store_sk = s.s_store_sk GROUP BY s.s_store_name HAVING COUNT(*) > 1000 ORDER BY num_sales DESC;
+SELECT wp.wp_type, COUNT(*) as num_pages FROM web_page wp WHERE wp.wp_creation_date_sk BETWEEN 2450807 AND 2450813 GROUP BY wp.wp_type ORDER BY num_pages DESC;
+SELECT d.d_year, d.d_month_seq, SUM(ws.ws_net_paid) as monthly_revenue FROM web_sales ws JOIN date_dim d ON ws.ws_sold_date_sk = d.d_date_sk GROUP BY d.d_year, d.d_month_seq ORDER BY d.d_year, d.d_month_seq;
+SELECT c.c_first_name, c.c_last_name, SUM(sr.sr_net_loss) as total_loss FROM store_returns sr JOIN customer c ON sr.sr_customer_sk = c.c_customer_sk WHERE sr.sr_returned_date_sk BETWEEN 2452579 AND 2452646 GROUP BY c.c_first_name, c.c_last_name ORDER BY total_loss DESC LIMIT 10;

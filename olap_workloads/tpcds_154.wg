@@ -1,0 +1,14 @@
+SELECT i_category, AVG(i_current_price) as avg_price FROM item GROUP BY i_category ORDER BY avg_price DESC;
+SELECT s_store_name, SUM(ss_sales_price) as total_sales FROM store_sales JOIN store ON ss_store_sk = s_store_sk GROUP BY s_store_name ORDER BY total_sales DESC;
+SELECT w_warehouse_name, SUM(inv_quantity_on_hand) as total_inventory FROM inventory JOIN warehouse ON inv_warehouse_sk = w_warehouse_sk GROUP BY w_warehouse_name ORDER BY total_inventory DESC;
+SELECT p_promo_name, SUM(cs_coupon_amt) as total_coupon_amount FROM catalog_sales JOIN promotion ON cs_promo_sk = p_promo_sk GROUP BY p_promo_name ORDER BY total_coupon_amount DESC;
+SELECT d_year, d_month_seq, SUM(ws_sales_price) as total_sales FROM web_sales JOIN date_dim ON ws_sold_date_sk = d_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT sm_type, COUNT(*) as total_shipments FROM ship_mode JOIN web_sales ON sm_ship_mode_sk = ws_ship_mode_sk GROUP BY sm_type ORDER BY total_shipments DESC;
+SELECT d_day_name, COUNT(*) as total_sales FROM store_sales JOIN date_dim ON ss_sold_date_sk = d_date_sk GROUP BY d_day_name ORDER BY total_sales DESC;
+SELECT c_birth_country, COUNT(*) as total_customers FROM customer GROUP BY c_birth_country ORDER BY total_customers DESC;
+SELECT i_brand, SUM(ss_sales_price) as total_sales FROM store_sales JOIN item ON ss_item_sk = i_item_sk GROUP BY i_brand ORDER BY total_sales DESC;
+SELECT hd_buy_potential, COUNT(*) as total_households FROM household_demographics GROUP BY hd_buy_potential ORDER BY total_households DESC;
+SELECT d_year, d_month_seq, SUM(cr_return_amount) as total_returns FROM catalog_returns JOIN date_dim ON cr_returned_date_sk = d_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT r_reason_desc, COUNT(*) as total_returns FROM catalog_returns JOIN reason ON cr_reason_sk = r_reason_sk GROUP BY r_reason_desc ORDER BY total_returns DESC;
+SELECT r_reason_desc, COUNT(*) as total_returns FROM web_returns JOIN reason ON wr_reason_sk = r_reason_sk GROUP BY r_reason_desc ORDER BY total_returns DESC;
+SELECT d_year, d_month_seq, SUM(sr_return_amt) as total_returns FROM store_returns JOIN date_dim ON sr_returned_date_sk = d_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;

@@ -1,0 +1,18 @@
+SELECT c_region, COUNT(lo_orderkey) AS order_count FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, SUM(lo_extendedprice) AS total_price FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT c_city, COUNT(lo_custkey) AS customer_count FROM lineorder_flat GROUP BY c_city;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_nation;
+SELECT p_brand, COUNT(lo_partkey) AS part_count FROM lineorder_flat WHERE p_color = 'spring' GROUP BY p_brand;
+SELECT lo_orderdate, SUM(lo_revenue) AS daily_revenue FROM lineorder_flat WHERE lo_commitdate = '19941216' GROUP BY lo_orderdate;
+SELECT c_mktsegment, COUNT(lo_custkey) AS customer_count FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT p_container, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_container = 'LG PKG' GROUP BY p_container;
+SELECT s_region, COUNT(lo_suppkey) AS supplier_count FROM lineorder_flat GROUP BY s_region;
+SELECT lo_shipmode, COUNT(lo_orderkey) AS order_count FROM lineorder_flat GROUP BY lo_shipmode;
+SELECT p_type, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_type;
+SELECT c_nation, SUM(lo_tax) AS total_tax FROM lineorder_flat GROUP BY c_nation;
+SELECT p_mfgr, COUNT(lo_partkey) AS part_count FROM lineorder_flat WHERE p_color = 'cyan' GROUP BY p_mfgr;
+SELECT lo_orderdate, SUM(lo_revenue) AS daily_revenue FROM lineorder_flat WHERE lo_commitdate = '19980625' GROUP BY lo_orderdate;
+SELECT s_city, COUNT(lo_suppkey) AS supplier_count FROM lineorder_flat GROUP BY s_city;
+SELECT p_brand, COUNT(lo_partkey) AS part_count FROM lineorder_flat WHERE p_color = 'chartreuse' GROUP BY p_brand;
+SELECT lo_orderdate, SUM(lo_revenue) AS daily_revenue FROM lineorder_flat WHERE lo_commitdate = '19950512' GROUP BY lo_orderdate;

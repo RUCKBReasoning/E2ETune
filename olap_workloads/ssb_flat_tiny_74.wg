@@ -1,0 +1,12 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT c_mktsegment, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_extendedprice > 4137310 GROUP BY lo_orderpriority;
+SELECT s_nation, p_brand, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY s_nation, p_brand;
+SELECT c_city, p_type, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_quantity > 40 GROUP BY c_city, p_type;
+SELECT lo_orderdate, SUM(lo_revenue) AS daily_revenue FROM lineorder_flat WHERE lo_discount > 0 GROUP BY lo_orderdate;
+SELECT c_nation, p_category, AVG(lo_tax) AS avg_tax FROM lineorder_flat GROUP BY c_nation, p_category;
+SELECT s_region, p_mfgr, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY s_region, p_mfgr;
+SELECT lo_orderpriority, AVG(lo_ordtotalprice) AS avg_total_price FROM lineorder_flat WHERE lo_quantity < 9 GROUP BY lo_orderpriority;
+SELECT c_city, p_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_extendedprice < 202020 GROUP BY c_city, p_name;
+SELECT s_nation, p_type, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_quantity < 11 AND lo_shipmode = 'RAIL' GROUP BY s_nation, p_type;

@@ -1,0 +1,3 @@
+SELECT w_state, COUNT(*) AS num_warehouses FROM warehouse GROUP BY w_state HAVING COUNT(*) > 1 ORDER BY num_warehouses DESC;
+SELECT c_salutation, AVG(cd_purchase_estimate) AS avg_purchase_estimate FROM customer c JOIN customer_demographics cd ON c.c_current_cdemo_sk = cd.cd_demo_sk WHERE c_birth_day = 14 GROUP BY c_salutation;
+SELECT ws.ws_web_site_sk, ws.ws_item_sk, SUM(ws.ws_net_profit) AS total_net_profit FROM web_sales ws JOIN item i ON ws.ws_item_sk = i.i_item_sk WHERE i.i_category = 'Electronics' AND ws.ws_sold_date_sk BETWEEN 2452476 AND 2451056 GROUP BY ws.ws_web_site_sk, ws.ws_item_sk ORDER BY total_net_profit DESC;

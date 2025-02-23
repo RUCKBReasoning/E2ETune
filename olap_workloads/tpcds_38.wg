@@ -1,0 +1,13 @@
+SELECT d_date, COUNT(ss_ticket_number) AS total_sales FROM date_dim JOIN store_sales ON d_date_sk = ss_sold_date_sk WHERE d_moy = 12 AND d_year = 2000 GROUP BY d_date ORDER BY d_date;
+SELECT s_store_name, SUM(ss_net_profit) AS total_profit FROM store JOIN store_sales ON s_store_sk = ss_store_sk WHERE s_state = 'CA' GROUP BY s_store_name ORDER BY total_profit DESC;
+SELECT i_category, AVG(ws_sales_price) AS avg_sales_price FROM item JOIN web_sales ON i_item_sk = ws_item_sk GROUP BY i_category ORDER BY avg_sales_price DESC;
+SELECT c_first_name, c_last_name, SUM(cs_sales_price) AS total_spent FROM customer JOIN catalog_sales ON c_customer_sk = cs_bill_customer_sk WHERE c_birth_month = 12 GROUP BY c_first_name, c_last_name ORDER BY total_spent DESC LIMIT 10;
+SELECT w_warehouse_name, SUM(inv_quantity_on_hand) AS total_inventory FROM warehouse JOIN inventory ON w_warehouse_sk = inv_warehouse_sk GROUP BY w_warehouse_name ORDER BY total_inventory DESC;
+SELECT p_promo_name, COUNT(cs_order_number) AS total_orders FROM promotion JOIN catalog_sales ON p_promo_sk = cs_promo_sk WHERE p_channel_tv = 'Y' GROUP BY p_promo_name ORDER BY total_orders DESC;
+SELECT hd_income_band_sk, AVG(ss_net_profit) AS avg_profit FROM household_demographics JOIN store_sales ON hd_demo_sk = ss_hdemo_sk GROUP BY hd_income_band_sk ORDER BY avg_profit DESC;
+SELECT i_brand, SUM(sr_net_loss) AS total_loss FROM item JOIN store_returns ON i_item_sk = sr_item_sk GROUP BY i_brand ORDER BY total_loss DESC;
+SELECT t_hour, COUNT(ws_order_number) AS total_orders FROM time_dim JOIN web_sales ON t_time_sk = ws_sold_time_sk WHERE t_hour BETWEEN 9 AND 17 GROUP BY t_hour ORDER BY t_hour;
+SELECT d_week_seq, SUM(ss_ext_sales_price) AS weekly_sales FROM date_dim JOIN store_sales ON d_date_sk = ss_sold_date_sk WHERE d_year = 2000 GROUP BY d_week_seq ORDER BY weekly_sales DESC;
+SELECT r_reason_desc, COUNT(cr_order_number) AS total_returns FROM reason JOIN catalog_returns ON r_reason_sk = cr_reason_sk GROUP BY r_reason_desc ORDER BY total_returns DESC;
+SELECT wp_type, COUNT(wr_order_number) AS total_returns FROM web_page JOIN web_returns ON wp_web_page_sk = wr_web_page_sk GROUP BY wp_type ORDER BY total_returns DESC;
+SELECT cc_name, COUNT(cs_order_number) AS total_orders FROM call_center JOIN catalog_sales ON cc_call_center_sk = cs_call_center_sk WHERE cc_hours = '24x7' GROUP BY cc_name ORDER BY total_orders DESC;

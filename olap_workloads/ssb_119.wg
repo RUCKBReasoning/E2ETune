@@ -1,0 +1,18 @@
+SELECT c.c_name, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) AS revenue FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE lo.lo_orderdate >= 19940101 AND lo.lo_orderdate <= 19941231 GROUP BY c.c_name ORDER BY revenue DESC LIMIT 10;
+SELECT p.p_name, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) AS revenue FROM part p JOIN lineorder lo ON p.p_partkey = lo.lo_partkey WHERE lo.lo_orderdate >= 19940101 AND lo.lo_orderdate <= 19941231 AND p.p_name IN ('bisque cornflower', 'chartreuse floral', 'mint metallic') GROUP BY p.p_name ORDER BY revenue DESC;
+SELECT s.s_name, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) AS revenue FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE lo.lo_orderdate >= 19940101 AND lo.lo_orderdate <= 19941231 GROUP BY s.s_name ORDER BY revenue DESC LIMIT 10;
+SELECT d.d_year, d.d_month, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) AS revenue FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE lo.lo_orderpriority = '1-URGENT' GROUP BY d.d_year, d.d_month ORDER BY d.d_year, d.d_month;
+SELECT d.d_year, d.d_month, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) AS revenue FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE lo.lo_orderpriority = '5-LOW' GROUP BY d.d_year, d.d_month ORDER BY d.d_year, d.d_month;
+SELECT d.d_year, d.d_month, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) AS revenue FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE lo.lo_orderpriority = '4-NOT SPECIFIED' GROUP BY d.d_year, d.d_month ORDER BY d.d_year, d.d_month;
+SELECT p.p_category, COUNT(*) AS num_parts FROM part p GROUP BY p.p_category HAVING COUNT(*) > 100 ORDER BY num_parts DESC;
+SELECT c.c_nation, COUNT(*) AS num_customers FROM customer c GROUP BY c.c_nation HAVING COUNT(*) > 50 ORDER BY num_customers DESC;
+SELECT s.s_nation, COUNT(*) AS num_suppliers FROM supplier s GROUP BY s.s_nation HAVING COUNT(*) > 10 ORDER BY num_suppliers DESC;
+SELECT p.p_mfgr, AVG(p.p_size) AS avg_size FROM part p WHERE p.p_mfgr IN ('MFGR#4', 'MFGR#2', 'MFGR#5') GROUP BY p.p_mfgr ORDER BY avg_size DESC;
+SELECT c.c_mktsegment, SUM(lo.lo_quantity) AS total_quantity FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey GROUP BY c.c_mktsegment ORDER BY total_quantity DESC;
+SELECT s.s_region, SUM(lo.lo_supplycost) AS total_supplycost FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey GROUP BY s.s_region ORDER BY total_supplycost DESC;
+SELECT d.d_year, COUNT(*) AS num_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate GROUP BY d.d_year HAVING COUNT(*) > 1000 ORDER BY num_orders DESC;
+SELECT lo.lo_linenumber, COUNT(*) AS num_lineorders FROM lineorder lo WHERE lo.lo_linenumber IN (4, 5, 1) GROUP BY lo.lo_linenumber ORDER BY num_lineorders DESC;
+SELECT p.p_brand, COUNT(*) AS num_parts FROM part p WHERE p.p_brand LIKE 'Brand%' GROUP BY p.p_brand HAVING COUNT(*) > 50 ORDER BY num_parts DESC;
+SELECT d.d_dayofweek, COUNT(*) AS num_orders FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_weekdayfl = 'Y' GROUP BY d.d_dayofweek ORDER BY num_orders DESC;
+SELECT c.c_city, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) AS revenue FROM customer c JOIN lineorder lo ON c.c_custkey = lo.lo_custkey WHERE lo.lo_orderdate >= 19940101 AND lo.lo_orderdate <= 19941231 GROUP BY c.c_city ORDER BY revenue DESC LIMIT 10;
+SELECT s.s_city, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) AS revenue FROM supplier s JOIN lineorder lo ON s.s_suppkey = lo.lo_suppkey WHERE lo.lo_orderdate >= 19940101 AND lo.lo_orderdate <= 19941231 GROUP BY s.s_city ORDER BY revenue DESC LIMIT 10;

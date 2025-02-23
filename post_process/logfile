@@ -1,0 +1,26 @@
+2024-01-21 10:51:20.584 CST [16074] LOG:  starting PostgreSQL 12.16 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-39), 64-bit
+2024-01-21 10:51:20.585 CST [16074] LOG:  listening on IPv6 address "::1", port 5432
+2024-01-21 10:51:20.585 CST [16074] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2024-01-21 10:51:20.639 CST [16074] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2024-01-21 10:51:20.780 CST [16076] LOG:  database system was interrupted; last known up at 2024-01-20 15:40:10 CST
+2024-01-21 10:51:22.753 CST [16076] LOG:  database system was not properly shut down; automatic recovery in progress
+2024-01-21 10:51:22.773 CST [16076] LOG:  redo starts at 9/2D8720F8
+2024-01-21 10:51:22.774 CST [16076] LOG:  invalid record length at 9/2D872130: wanted 24, got 0
+2024-01-21 10:51:22.774 CST [16076] LOG:  redo done at 9/2D8720F8
+2024-01-21 10:51:22.863 CST [16074] LOG:  database system is ready to accept connections
+2024-01-21 11:23:37.838 CST [16074] LOG:  received fast shutdown request
+2024-01-21 11:23:37.857 CST [16074] LOG:  aborting any active transactions
+2024-01-21 11:23:37.857 CST [19317] FATAL:  terminating connection due to administrator command
+2024-01-21 11:23:37.858 CST [16074] LOG:  background worker "logical replication launcher" (PID 16083) exited with exit code 1
+2024-01-21 11:23:37.861 CST [16078] LOG:  shutting down
+2024-01-21 11:23:37.925 CST [16074] LOG:  database system is shut down
+2024-01-21 15:34:18.962 CST [6059] LOG:  starting PostgreSQL 12.16 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-39), 64-bit
+2024-01-21 15:34:18.973 CST [6059] LOG:  listening on IPv6 address "::1", port 5432
+2024-01-21 15:34:18.973 CST [6059] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2024-01-21 15:34:19.000 CST [6059] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2024-01-21 15:34:19.040 CST [6060] LOG:  database system was interrupted; last known up at 2024-01-20 09:41:03 CST
+2024-01-21 15:34:21.256 CST [6060] LOG:  database system was not properly shut down; automatic recovery in progress
+2024-01-21 15:34:21.262 CST [6060] LOG:  redo starts at 9/C9BA1C80
+2024-01-21 15:34:21.262 CST [6060] LOG:  invalid record length at 9/C9BA1CB8: wanted 24, got 0
+2024-01-21 15:34:21.262 CST [6060] LOG:  redo done at 9/C9BA1C80
+2024-01-21 15:34:21.287 CST [6059] LOG:  database system is ready to accept connections

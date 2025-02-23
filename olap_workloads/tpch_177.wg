@@ -1,0 +1,9 @@
+SELECT r_name, COUNT(*) AS num_nations FROM region JOIN nation ON r_regionkey = n_regionkey GROUP BY r_name;
+SELECT p_type, AVG(p_retailprice) AS avg_price FROM part WHERE p_container IN ('WRAP PACK', 'JUMBO CASE', 'MED CASE') GROUP BY p_type;
+SELECT s_name, SUM(ps_availqty) AS total_avail_qty FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey WHERE s_nationkey IN (21, 10, 13) GROUP BY s_name;
+SELECT o_orderstatus, COUNT(*) AS num_orders, AVG(o_totalprice) AS avg_totalprice FROM orders WHERE o_shippriority = 0 GROUP BY o_orderstatus;
+SELECT c_mktsegment, COUNT(*) AS num_customers, SUM(o_totalprice) AS total_spent FROM customer JOIN orders ON c_custkey = o_custkey GROUP BY c_mktsegment;
+SELECT p_mfgr, COUNT(*) AS num_parts FROM part WHERE p_mfgr IN ('Manufacturer#2', 'Manufacturer#5', 'Manufacturer#3') GROUP BY p_mfgr;
+SELECT s_name, COUNT(l_orderkey) AS num_orders FROM supplier JOIN lineitem ON s_suppkey = l_suppkey WHERE l_returnflag = 'R' GROUP BY s_name;
+SELECT c_name, COUNT(o_orderkey) AS num_orders, SUM(l_extendedprice * (1 - l_discount)) AS total_amount FROM customer JOIN orders ON c_custkey = o_custkey JOIN lineitem ON o_orderkey = l_orderkey WHERE l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY c_name;
+SELECT p_name, s_name, l_quantity, l_extendedprice, l_discount, l_shipdate FROM part JOIN lineitem ON p_partkey = l_partkey JOIN supplier ON l_suppkey = s_suppkey WHERE l_receiptdate > l_commitdate AND l_shipmode IN ('AIR', 'RAIL') ORDER BY l_shipdate DESC;

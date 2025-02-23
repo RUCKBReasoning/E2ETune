@@ -1,0 +1,8 @@
+SELECT t.title, COUNT(c.id) AS cast_count FROM cast_info c JOIN title t ON c.movie_id = t.id GROUP BY t.title ORDER BY cast_count DESC LIMIT 10;
+SELECT n.name, COUNT(c.id) AS roles_count FROM cast_info c JOIN name n ON c.person_id = n.id WHERE n.surname_pcode IN ('X', 'A13', 'A652') GROUP BY n.name ORDER BY roles_count DESC;
+SELECT k.keyword, COUNT(mk.id) AS keyword_count FROM movie_keyword mk JOIN keyword k ON mk.keyword_id = k.id WHERE k.id IN (214, 384, 187) GROUP BY k.keyword ORDER BY keyword_count DESC;
+SELECT t.title, COUNT(mk.id) AS keyword_count FROM movie_keyword mk JOIN title t ON mk.movie_id = t.id WHERE mk.movie_id IN (1044, 966, 938) GROUP BY t.title ORDER BY keyword_count DESC;
+SELECT n.name, COUNT(p.id) AS info_count FROM person_info p JOIN name n ON p.person_id = n.id WHERE p.info_type_id = 1 GROUP BY n.name ORDER BY info_count DESC LIMIT 10;
+SELECT t.title, COUNT(mc.id) AS company_count FROM movie_companies mc JOIN title t ON mc.movie_id = t.id WHERE mc.company_type_id = 1 GROUP BY t.title ORDER BY company_count DESC;
+SELECT k.kind, COUNT(t.id) AS title_count FROM title t JOIN kind_type k ON t.kind_id = k.id GROUP BY k.kind ORDER BY title_count DESC;
+SELECT t.title, COUNT(ml.id) AS link_count FROM movie_link ml JOIN title t ON ml.movie_id = t.id WHERE ml.link_type_id = 1 GROUP BY t.title ORDER BY link_count DESC;

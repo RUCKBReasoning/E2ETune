@@ -1,0 +1,14 @@
+SELECT c_region, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY c_region ORDER BY num_orders DESC;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY p_category ORDER BY avg_price DESC;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY s_nation ORDER BY total_supply_cost DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY lo_orderpriority ORDER BY num_orders DESC;
+SELECT p_brand, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY p_brand ORDER BY total_quantity DESC;
+SELECT c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY c_city ORDER BY total_revenue DESC;
+SELECT p_type, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' AND p_size IN (40, 30, 4) GROUP BY p_type ORDER BY num_orders DESC;
+SELECT s_city, SUM(lo_extendedprice * lo_discount) AS total_discounted_price FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY s_city ORDER BY total_discounted_price DESC;
+SELECT c_mktsegment, SUM(lo_ordtotalprice) AS total_order_price FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY c_mktsegment ORDER BY total_order_price DESC;
+SELECT p_name, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' AND p_name IN ('beige puff', 'orange maroon', 'mint pale') GROUP BY p_name ORDER BY total_quantity DESC;
+SELECT s_address, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' AND s_address IN ('VL4REvDatSZphjc12W,oU7', 'aUnTDY4 aH5dk8a8PTMds03', '3bJLIIuoIl') GROUP BY s_address ORDER BY num_orders DESC;
+SELECT c_nation, COUNT(lo_orderkey) AS num_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY c_nation ORDER BY num_orders DESC, total_revenue DESC;
+SELECT lo_shipmode, COUNT(lo_orderkey) AS num_orders, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY lo_shipmode ORDER BY num_orders DESC, avg_tax DESC;
+SELECT p_mfgr, COUNT(lo_orderkey) AS num_orders, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19931231' GROUP BY p_mfgr ORDER BY num_orders DESC, total_supply_cost DESC;

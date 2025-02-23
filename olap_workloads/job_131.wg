@@ -1,0 +1,15 @@
+SELECT COUNT(*) FROM title WHERE kind_id = 3;
+SELECT AVG(production_year) FROM title WHERE kind_id = 2;
+SELECT COUNT(*) FROM movie_info WHERE info_type_id = 7;
+SELECT COUNT(*) FROM char_name WHERE md5sum = '69767ef463c93a67989ae0a47642deec';
+SELECT COUNT(*) FROM char_name WHERE id = 79555;
+SELECT COUNT(*) FROM char_name WHERE surname_pcode = 'J';
+SELECT COUNT(*) FROM aka_title WHERE kind_id = 3 AND movie_id = 1697350;
+SELECT COUNT(*) FROM aka_title WHERE kind_id = 2 AND movie_id = 503137;
+SELECT COUNT(*) FROM aka_title WHERE kind_id = 7 AND movie_id = 1662747;
+SELECT COUNT(*) FROM movie_info WHERE movie_id IN (SELECT movie_id FROM aka_title WHERE kind_id = 3);
+SELECT COUNT(*) FROM movie_info WHERE movie_id IN (SELECT movie_id FROM aka_title WHERE kind_id = 2);
+SELECT COUNT(*) FROM movie_info WHERE movie_id IN (SELECT movie_id FROM aka_title WHERE kind_id = 7);
+SELECT COUNT(*) FROM movie_keyword WHERE movie_id IN (SELECT movie_id FROM title WHERE kind_id = 7);
+SELECT COUNT(*) FROM movie_companies WHERE movie_id IN (SELECT movie_id FROM title WHERE kind_id = 7);
+SELECT COUNT(*) FROM cast_info WHERE movie_id IN (SELECT movie_id FROM title WHERE kind_id = 7);

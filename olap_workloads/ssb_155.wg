@@ -1,0 +1,2 @@
+SELECT d.d_year, d.d_month, COUNT(lo.lo_orderkey) as total_orders, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) as revenue FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_holidayfl = '1' GROUP BY d.d_year, d.d_month ORDER BY d.d_year, d.d_month;
+SELECT d.d_year, d.d_month, COUNT(lo.lo_orderkey) as total_orders, SUM(lo.lo_extendedprice * (1 - lo.lo_discount)) as revenue FROM date_dim d JOIN lineorder lo ON d.d_datekey = lo.lo_orderdate WHERE d.d_weekdayfl = '1' GROUP BY d.d_year, d.d_month ORDER BY d.d_year, d.d_month;

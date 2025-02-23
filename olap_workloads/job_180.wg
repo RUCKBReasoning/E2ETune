@@ -1,0 +1,14 @@
+SELECT t.title, COUNT(*) AS num_movies FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 4 AND mi.info = 'English' GROUP BY t.title ORDER BY num_movies DESC;
+SELECT n.name, COUNT(*) AS num_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY num_roles DESC;
+SELECT k.keyword, COUNT(*) AS num_movies FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword HAVING COUNT(*) > 5 ORDER BY num_movies DESC;
+SELECT c.name, COUNT(*) AS num_companies FROM company_name c JOIN movie_companies mc ON c.id = mc.company_id WHERE mc.company_type_id = 1 GROUP BY c.name HAVING COUNT(*) > 10 ORDER BY num_companies DESC;
+SELECT t.title, COUNT(*) AS num_episodes FROM title t WHERE t.kind_id = 7 GROUP BY t.title HAVING COUNT(*) > 50 ORDER BY num_episodes DESC;
+SELECT n.name, COUNT(*) AS num_movies FROM name n JOIN cast_info ci ON n.id = ci.person_id JOIN title t ON ci.movie_id = t.id WHERE t.kind_id = 1 AND ci.role_id = 1 GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY num_movies DESC;
+SELECT t.title, COUNT(*) AS num_cast_members FROM title t JOIN cast_info ci ON t.id = ci.movie_id WHERE ci.role_id = 1 GROUP BY t.title HAVING COUNT(*) > 20 ORDER BY num_cast_members DESC;
+SELECT t.title, COUNT(*) AS num_keywords FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id JOIN keyword k ON mk.keyword_id = k.id GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_keywords DESC;
+SELECT n.name, COUNT(*) AS num_director_credits FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 8 GROUP BY n.name HAVING COUNT(*) > 5 ORDER BY num_director_credits DESC;
+SELECT t.title, COUNT(*) AS num_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id WHERE mc.company_type_id = 1 GROUP BY t.title HAVING COUNT(*) > 5 ORDER BY num_companies DESC;
+SELECT t.title, mi.info AS genre, COUNT(*) AS num_movies FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 3 GROUP BY t.title, mi.info HAVING COUNT(*) > 10 ORDER BY num_movies DESC;
+SELECT t.title, mi.info AS rating, COUNT(*) AS num_movies FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 101 GROUP BY t.title, mi.info HAVING COUNT(*) > 5 ORDER BY num_movies DESC;
+SELECT t.title, mi.info AS plot, COUNT(*) AS num_movies FROM title t JOIN movie_info mi ON t.id = mi.movie_id WHERE mi.info_type_id = 98 GROUP BY t.title, mi.info HAVING COUNT(*) > 5 ORDER BY num_movies DESC;
+SELECT n.name, pi.info AS birth_date, COUNT(*) AS num_birth_dates FROM name n JOIN person_info pi ON n.id = pi.person_id WHERE pi.info_type_id = 21 GROUP BY n.name, pi.info HAVING COUNT(*) > 1 ORDER BY num_birth_dates DESC;

@@ -1,0 +1,7 @@
+SELECT n_name, COUNT(o_orderkey) AS num_orders FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey WHERE n_regionkey = 1 GROUP BY n_name ORDER BY num_orders DESC;
+SELECT p_brand, p_type, SUM(l_quantity) AS total_quantity FROM part JOIN lineitem ON p_partkey = l_partkey WHERE p_size IN (1, 10, 19) AND l_shipdate BETWEEN '2020-01-01' AND '2020-12-31' GROUP BY p_brand, p_type ORDER BY total_quantity DESC;
+SELECT c_mktsegment, AVG(o_totalprice) AS avg_order_price FROM customer JOIN orders ON c_custkey = o_custkey WHERE c_mktsegment IN ('FURNITURE', 'HOUSEHOLD', 'BUILDING') GROUP BY c_mktsegment ORDER BY avg_order_price DESC;
+SELECT s_name, SUM(ps_availqty) AS total_avail_qty FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey WHERE ps_supplycost > 500 AND s_nationkey IN (9, 18, 10) GROUP BY s_name ORDER BY total_avail_qty DESC;
+SELECT r_name, COUNT(s_suppkey) AS num_suppliers FROM region JOIN nation ON r_regionkey = n_regionkey JOIN supplier ON n_nationkey = s_nationkey GROUP BY r_name ORDER BY num_suppliers DESC;
+SELECT o_orderpriority, COUNT(l_orderkey) AS num_lineitems, AVG(l_extendedprice) AS avg_price FROM orders JOIN lineitem ON o_orderkey = l_orderkey WHERE o_orderdate BETWEEN '2020-01-01' AND '2020-12-31' GROUP BY o_orderpriority ORDER BY num_lineitems DESC;
+SELECT p_name, COUNT(DISTINCT l_suppkey) AS num_suppliers FROM part JOIN lineitem ON p_partkey = l_partkey WHERE p_brand IN ('Brand#21', 'Brand#42', 'Brand#44') AND l_shipmode = 'AIR' GROUP BY p_name ORDER BY num_suppliers DESC;

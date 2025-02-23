@@ -1,0 +1,12 @@
+SELECT t.title, COUNT(*) AS num_movies FROM title AS t JOIN movie_keyword AS mk ON t.id = mk.movie_id WHERE mk.keyword_id IN (SELECT id FROM keyword WHERE keyword LIKE 'action%') GROUP BY t.title ORDER BY num_movies DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS num_roles FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id WHERE ci.role_id IN (SELECT id FROM role_type WHERE role LIKE 'actor' OR role LIKE 'actress') GROUP BY n.name ORDER BY num_roles DESC LIMIT 10;
+SELECT kt.kind, COUNT(*) AS num_movies FROM kind_type AS kt JOIN title AS t ON kt.id = t.kind_id GROUP BY kt.kind ORDER BY num_movies DESC;
+SELECT lt.link, COUNT(*) AS num_links FROM link_type AS lt JOIN movie_link AS ml ON lt.id = ml.link_type_id WHERE ml.linked_movie_id IN ('227144', '2323856', '1197102') GROUP BY lt.link ORDER BY num_links DESC;
+SELECT cn.name, COUNT(*) AS num_characters FROM char_name AS cn JOIN cast_info AS ci ON cn.id = ci.person_role_id WHERE cn.surname_pcode IN ('C63', 'M252', 'W5361') GROUP BY cn.name ORDER BY num_characters DESC LIMIT 10;
+SELECT t.production_year, AVG(ci.nr_order) AS avg_order FROM title AS t JOIN cast_info AS ci ON t.id = ci.movie_id GROUP BY t.production_year ORDER BY avg_order DESC LIMIT 10;
+SELECT n.name, COUNT(DISTINCT ci.movie_id) AS num_movies FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id WHERE ci.role_id IN (SELECT id FROM role_type WHERE role LIKE 'director') GROUP BY n.name ORDER BY num_movies DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_references FROM title AS t JOIN movie_link AS ml ON t.id = ml.movie_id WHERE ml.link_type_id IN (SELECT id FROM link_type WHERE link LIKE 'referenced in') GROUP BY t.title ORDER BY num_references DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS num_keywords FROM title AS t JOIN movie_keyword AS mk ON t.id = mk.movie_id GROUP BY t.title ORDER BY num_keywords DESC LIMIT 10;
+SELECT cn.name, COUNT(*) AS num_appearances FROM char_name AS cn JOIN cast_info AS ci ON cn.id = ci.person_role_id WHERE cn.md5sum IN ('8ce26e37c4ad1775d4b6791b9a7994fd', 'db78a64c73ad9b50d9fe5aaf471a982f', 'bc04be203a821ede0dc3128fb4932300') GROUP BY cn.name ORDER BY num_appearances DESC;
+SELECT it.info, COUNT(*) AS num_movies FROM info_type AS it JOIN movie_info AS mi ON it.id = mi.info_type_id GROUP BY it.info ORDER BY num_movies DESC;
+SELECT t.title, SUM(mi.info::integer) AS total_votes FROM title AS t JOIN movie_info AS mi ON t.id = mi.movie_id WHERE mi.info_type_id IN (SELECT id FROM info_type WHERE info LIKE 'votes') GROUP BY t.title ORDER BY total_votes DESC LIMIT 10;

@@ -1,0 +1,17 @@
+SELECT c.c_nationkey, COUNT(*) AS num_customers FROM customer c GROUP BY c.c_nationkey;
+SELECT r.r_name, SUM(s.s_acctbal) AS total_balance FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey JOIN supplier s ON n.n_nationkey = s.s_nationkey GROUP BY r.r_name;
+SELECT p.p_type, AVG(p.p_retailprice) AS average_price FROM part p GROUP BY p.p_type;
+SELECT c.c_mktsegment, COUNT(o.o_orderkey) AS num_orders FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey GROUP BY c.c_mktsegment;
+SELECT s.s_name, SUM(ps.ps_supplycost * ps.ps_availqty) AS total_value FROM supplier s JOIN partsupp ps ON s.s_suppkey = ps.ps_suppkey GROUP BY s.s_name;
+SELECT o.o_orderpriority, COUNT(*) AS num_orders FROM orders o WHERE o.o_orderdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY o.o_orderpriority;
+SELECT c.c_name, SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_revenue FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey WHERE l.l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY c.c_name;
+SELECT s.s_name, COUNT(DISTINCT l.l_orderkey) AS num_orders FROM supplier s JOIN lineitem l ON s.s_suppkey = l.l_suppkey WHERE l.l_shipmode = 'RAIL' GROUP BY s.s_name;
+SELECT p.p_brand, COUNT(*) AS num_parts FROM part p WHERE p.p_size BETWEEN 10 AND 20 GROUP BY p.p_brand;
+SELECT n.n_name, COUNT(DISTINCT l.l_orderkey) AS num_orders FROM nation n JOIN supplier s ON n.n_nationkey = s.s_nationkey JOIN lineitem l ON s.s_suppkey = l.l_suppkey WHERE l.l_shipinstruct = 'COLLECT COD' GROUP BY n.n_name;
+SELECT c.c_name, SUM(l.l_extendedprice * (1 - l.l_discount) * (1 + l.l_tax)) AS total_revenue FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey JOIN lineitem l ON o.o_orderkey = l.l_orderkey WHERE l.l_returnflag = 'R' GROUP BY c.c_name;
+SELECT p.p_name, SUM(ps.ps_availqty * l.l_quantity) AS total_quantity FROM part p JOIN partsupp ps ON p.p_partkey = ps.ps_partkey JOIN lineitem l ON ps.ps_partkey = l.l_partkey GROUP BY p.p_name;
+SELECT r.r_name, COUNT(DISTINCT c.c_custkey) AS num_customers FROM region r JOIN nation n ON r.r_regionkey = n.n_regionkey JOIN customer c ON n.n_nationkey = c.c_nationkey GROUP BY r.r_name;
+SELECT n.n_name, SUM(o.o_totalprice) AS total_sales FROM nation n JOIN customer c ON n.n_nationkey = c.c_nationkey JOIN orders o ON c.c_custkey = o.o_custkey WHERE o.o_orderstatus = 'F' GROUP BY n.n_name;
+SELECT p.p_container, AVG(l.l_extendedprice) AS average_price FROM part p JOIN lineitem l ON p.p_partkey = l.l_partkey GROUP BY p.p_container;
+SELECT c.c_name, COUNT(*) AS num_orders FROM customer c JOIN orders o ON c.c_custkey = o.o_custkey WHERE o.o_orderdate BETWEEN '1995-01-01' AND '1995-12-31' AND o.o_orderpriority = '2-HIGH' GROUP BY c.c_name;
+SELECT s.s_name, COUNT(DISTINCT l.l_orderkey) AS num_orders FROM supplier s JOIN lineitem l ON s.s_suppkey = l.l_suppkey WHERE l.l_receiptdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY s.s_name;

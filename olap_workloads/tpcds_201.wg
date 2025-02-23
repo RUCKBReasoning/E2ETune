@@ -1,0 +1,10 @@
+SELECT ca_state, COUNT(*) as num_customers FROM customer_address GROUP BY ca_state ORDER BY num_customers DESC;
+SELECT i_category, SUM(ss_sales_price) as total_sales FROM store_sales JOIN item ON ss_item_sk = i_item_sk GROUP BY i_category ORDER BY total_sales DESC;
+SELECT wp_url, COUNT(*) as num_visits FROM web_sales JOIN web_page ON ws_web_page_sk = wp_web_page_sk WHERE wp_rec_start_date = '1997-09-03' AND wp_max_ad_count = '0' GROUP BY wp_url ORDER BY num_visits DESC;
+SELECT hd_income_band_sk, AVG(sr_return_amt_inc_tax) as avg_return_amt FROM store_returns JOIN household_demographics ON sr_cdemo_sk = hd_demo_sk WHERE sr_reason_sk = '15' AND hd_dep_count = '5' GROUP BY hd_income_band_sk ORDER BY avg_return_amt DESC;
+SELECT w_state, SUM(inv_quantity_on_hand) as total_inventory FROM inventory JOIN warehouse ON inv_warehouse_sk = w_warehouse_sk GROUP BY w_state ORDER BY total_inventory DESC;
+SELECT s_store_name, COUNT(*) as num_returns FROM store_returns JOIN store ON sr_store_sk = s_store_sk WHERE sr_return_tax > 10 GROUP BY s_store_name ORDER BY num_returns DESC;
+SELECT p_promo_name, COUNT(*) as num_sales FROM catalog_sales JOIN promotion ON cs_promo_sk = p_promo_sk WHERE p_channel_tv = '1' GROUP BY p_promo_name ORDER BY num_sales DESC;
+SELECT web_company_name, SUM(ws_net_paid) as total_revenue FROM web_sales JOIN web_site ON ws_web_site_sk = web_site_sk WHERE web_country = 'United States' GROUP BY web_company_name ORDER BY total_revenue DESC;
+SELECT ca_city, COUNT(*) as num_customers FROM customer JOIN customer_address ON c_current_addr_sk = ca_address_sk WHERE ca_county = 'Los Angeles' GROUP BY ca_city ORDER BY num_customers DESC;
+SELECT d_year, COUNT(*) as num_orders FROM web_sales JOIN date_dim ON ws_sold_date_sk = d_date_sk WHERE d_current_year = '1' GROUP BY d_year ORDER BY num_orders DESC;

@@ -1,0 +1,6 @@
+SELECT i_category, SUM(ss_sales_price) AS total_revenue FROM store_sales INNER JOIN item ON store_sales.ss_item_sk = item.i_item_sk GROUP BY i_category ORDER BY total_revenue DESC;
+SELECT p_promo_name, COUNT(cs_order_number) AS total_orders, SUM(cs_sales_price) AS total_sales FROM catalog_sales INNER JOIN promotion ON catalog_sales.cs_promo_sk = promotion.p_promo_sk GROUP BY p_promo_name ORDER BY total_sales DESC;
+SELECT wp_type, COUNT(wr_order_number) AS total_returns FROM web_returns INNER JOIN web_page ON web_returns.wr_web_page_sk = web_page.wp_web_page_sk GROUP BY wp_type ORDER BY total_returns DESC;
+SELECT i_brand, SUM(inv_quantity_on_hand) AS total_inventory FROM inventory INNER JOIN item ON inventory.inv_item_sk = item.i_item_sk GROUP BY i_brand ORDER BY total_inventory DESC;
+SELECT cc_call_center_id, COUNT(cr_order_number) AS total_returns FROM catalog_returns INNER JOIN call_center ON catalog_returns.cr_call_center_sk = call_center.cc_call_center_sk GROUP BY cc_call_center_id ORDER BY total_returns DESC;
+SELECT d_day_name, COUNT(ss_ticket_number) AS total_sales FROM store_sales INNER JOIN date_dim ON store_sales.ss_sold_date_sk = date_dim.d_date_sk GROUP BY d_day_name ORDER BY total_sales DESC;

@@ -1,0 +1,11 @@
+SELECT c_city, c_region, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 GROUP BY c_city, c_region ORDER BY revenue DESC;
+SELECT s_name, s_nation, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 AND p_container IN ('SM JAR', 'JUMBO DRUM', 'MED JAR') GROUP BY s_name, s_nation ORDER BY total_revenue DESC;
+SELECT p_category, p_brand, AVG(lo_quantity) AS avg_quantity, AVG(lo_extendedprice) AS avg_price, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 GROUP BY p_category, p_brand ORDER BY avg_quantity DESC, avg_price DESC;
+SELECT c_mktsegment, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 AND lo_partkey IN (11356, 11345, 11355) GROUP BY c_mktsegment ORDER BY total_revenue DESC;
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 GROUP BY lo_orderpriority ORDER BY order_count DESC;
+SELECT s_name, s_nation, COUNT(*) AS order_count FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 AND lo_commitdate IN (19970830, 19970811, 19970601) GROUP BY s_name, s_nation ORDER BY order_count DESC;
+SELECT p_type, p_size, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 GROUP BY p_type, p_size ORDER BY total_supply_cost DESC;
+SELECT c_name, c_nation, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 GROUP BY c_name, c_nation ORDER BY total_tax DESC;
+SELECT lo_shipmode, COUNT(*) AS order_count FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 GROUP BY lo_shipmode ORDER BY order_count DESC;
+SELECT p_mfgr, COUNT(*) AS product_count FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 GROUP BY p_mfgr ORDER BY product_count DESC;
+SELECT s_region, p_category, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate >= 19940101 AND lo_orderdate <= 19941231 GROUP BY s_region, p_category ORDER BY total_revenue DESC;

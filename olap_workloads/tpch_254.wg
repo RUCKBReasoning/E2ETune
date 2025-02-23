@@ -1,0 +1,5 @@
+SELECT n_name, COUNT(o_orderkey) AS total_orders FROM nation JOIN customer ON n_nationkey = c_nationkey JOIN orders ON c_custkey = o_custkey GROUP BY n_name ORDER BY total_orders DESC;
+SELECT s_name, SUM(ps_availqty * ps_supplycost) AS total_inventory_value FROM supplier JOIN partsupp ON s_suppkey = ps_suppkey WHERE s_acctbal > 5000 GROUP BY s_name HAVING SUM(ps_availqty * ps_supplycost) > 100000 ORDER BY total_inventory_value DESC;
+SELECT p_brand, ROUND(AVG(p_retailprice), 2) AS avg_retail_price FROM part WHERE p_size BETWEEN 10 AND 20 GROUP BY p_brand HAVING COUNT(p_partkey) > 5 ORDER BY avg_retail_price DESC;
+SELECT o_orderpriority, COUNT(o_orderkey) AS order_count, AVG(o_totalprice) AS avg_order_price FROM orders WHERE o_orderdate BETWEEN '2020-01-01' AND '2020-12-31' GROUP BY o_orderpriority ORDER BY order_count DESC;
+SELECT s_name, p_name, l_extendedprice - (l_extendedprice * l_discount) AS net_price FROM supplier JOIN lineitem ON s_suppkey = l_suppkey JOIN part ON l_partkey = p_partkey WHERE l_shipdate BETWEEN '2020-01-01' AND '2020-12-31' AND l_discount > 0.1 ORDER BY net_price DESC LIMIT 10;

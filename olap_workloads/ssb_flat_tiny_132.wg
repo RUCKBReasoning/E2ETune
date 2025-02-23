@@ -1,0 +1,14 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY p_category;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_commitdate >= '19921122' AND lo_commitdate <= '19970824' GROUP BY lo_orderpriority;
+SELECT c_city, SUM(lo_extendedprice) AS total_revenue FROM lineorder_flat WHERE lo_orderkey IN (3658053, 11475201, 25203107) GROUP BY c_city;
+SELECT s_nation, COUNT(*) AS num_suppliers FROM lineorder_flat GROUP BY s_nation HAVING COUNT(*) > 10;
+SELECT p_brand, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_commitdate = '19960926' GROUP BY p_brand;
+SELECT c_mktsegment, AVG(lo_ordtotalprice) AS avg_order_price FROM lineorder_flat WHERE c_address IN ('PjBbVmS', 'GP9b0z8C0Mb7', 'epPafEab5yduqSXN') GROUP BY c_mktsegment;
+SELECT p_type, COUNT(*) AS num_products FROM lineorder_flat WHERE p_size BETWEEN 10 AND 20 GROUP BY p_type;
+SELECT lo_shipmode, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_orderdate >= '19930101' AND lo_orderdate <= '19951231' GROUP BY lo_shipmode;
+SELECT c_nation, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_discount BETWEEN 5 AND 10 GROUP BY c_nation;
+SELECT s_region, AVG(lo_supplycost) AS avg_supply_cost FROM lineorder_flat WHERE lo_orderkey IN (3658053, 11475201, 25203107) GROUP BY s_region;
+SELECT p_mfgr, COUNT(*) AS num_products FROM lineorder_flat WHERE p_color IN ('red', 'blue', 'green') GROUP BY p_mfgr;
+SELECT c_city, SUM(lo_extendedprice * (1 - lo_discount)) AS total_discounted_price FROM lineorder_flat WHERE lo_orderkey IN (3658053, 11475201, 25203107) GROUP BY c_city;
+SELECT p_category, SUM(lo_quantity) AS total_quantity, AVG(lo_quantity) AS avg_quantity, MIN(lo_quantity) AS min_quantity, MAX(lo_quantity) AS max_quantity FROM lineorder_flat GROUP BY p_category;

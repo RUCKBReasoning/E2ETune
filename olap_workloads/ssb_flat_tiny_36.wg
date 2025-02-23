@@ -1,0 +1,16 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '2-HIGH' GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE c_mktsegment = 'MACHINERY' GROUP BY p_category;
+SELECT c_city, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE p_name = 'burnished blush' GROUP BY c_city;
+SELECT s_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '5-LOW' AND c_region = 'AFRICA' GROUP BY s_name;
+SELECT p_mfgr, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE c_mktsegment = 'AUTOMOBILE' GROUP BY p_mfgr;
+SELECT c_nation, AVG(lo_revenue) AS avg_revenue FROM lineorder_flat WHERE p_name = 'rose blue' GROUP BY c_nation;
+SELECT lo_orderdate, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '4-NOT SPECIFIED' AND c_region = 'AMERICA' GROUP BY lo_orderdate;
+SELECT p_brand, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE c_mktsegment = 'FURNITURE' GROUP BY p_brand;
+SELECT s_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE p_name = 'purple cornsilk' AND c_region = 'EUROPE' GROUP BY s_city;
+SELECT lo_orderdate, SUM(lo_extendedprice) AS total_price, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE lo_orderpriority = '2-HIGH' AND c_mktsegment = 'MACHINERY' GROUP BY lo_orderdate;
+SELECT c_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderpriority = '5-LOW' AND p_category = 'MACHINERY' GROUP BY c_name;
+SELECT p_type, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat WHERE c_mktsegment = 'AUTOMOBILE' AND c_region = 'AFRICA' GROUP BY p_type;
+SELECT s_nation, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderpriority = '4-NOT SPECIFIED' AND p_name = 'burnished blush' GROUP BY s_nation;
+SELECT lo_shipmode, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_mktsegment = 'FURNITURE' AND p_category = 'AUTOMOBILE' GROUP BY lo_shipmode;
+SELECT c_address, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_orderpriority = '2-HIGH' AND p_name = 'rose blue' GROUP BY c_address;
+SELECT p_container, AVG(lo_supplycost) AS avg_supply_cost FROM lineorder_flat WHERE c_mktsegment = 'MACHINERY' AND c_region = 'EUROPE' GROUP BY p_container;

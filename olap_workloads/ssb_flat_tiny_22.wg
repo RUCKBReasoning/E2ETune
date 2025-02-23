@@ -1,0 +1,10 @@
+SELECT c_nation, COUNT(lo_orderkey) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_orderdate >= '19940101' AND lo_orderdate <= '19941231' GROUP BY c_nation ORDER BY total_price DESC;
+SELECT p_category, p_brand, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_orderdate >= '19950101' AND lo_orderdate <= '19951231' AND c_nation = 'SAUDI ARABIA' GROUP BY p_category, p_brand ORDER BY total_quantity DESC;
+SELECT c_nation, p_color, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE lo_orderkey IN (25959105, 4012578, 19326917) GROUP BY c_nation, p_color ORDER BY avg_discount DESC;
+SELECT c_region, p_category, COUNT(DISTINCT lo_custkey) AS num_customers FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' OR lo_orderpriority = '2-HIGH' GROUP BY c_region, p_category ORDER BY num_customers DESC;
+SELECT s_name, s_city, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_commitdate >= '19960101' AND lo_commitdate <= '19961231' AND p_mfgr = 'MFGR#1' GROUP BY s_name, s_city ORDER BY total_supply_cost DESC;
+SELECT c_city, p_type, COUNT(lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND p_size BETWEEN 1 AND 10 GROUP BY c_city, p_type ORDER BY num_orders DESC;
+SELECT s_nation, p_container, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate >= '19970101' AND lo_orderdate <= '19971231' AND c_mktsegment = 'AUTOMOBILE' GROUP BY s_nation, p_container ORDER BY total_revenue DESC;
+SELECT c_name, c_address, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_discount >= 5 AND lo_discount <= 10 AND p_color = 'pale' GROUP BY c_name, c_address ORDER BY total_tax DESC;
+SELECT p_name, p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_orderdate >= '19980101' AND lo_orderdate <= '19981231' AND c_nation = 'MOZAMBIQUE' AND p_color = 'plum' GROUP BY p_name, p_category ORDER BY avg_price DESC;
+SELECT c_nation, s_region, COUNT(lo_linenumber) AS num_lines FROM lineorder_flat WHERE lo_shippriority = '0' AND p_brand = 'Brand#11' GROUP BY c_nation, s_region ORDER BY num_lines DESC;

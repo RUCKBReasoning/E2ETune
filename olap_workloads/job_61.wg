@@ -1,0 +1,14 @@
+SELECT t.title, COUNT(*) AS num_movies FROM title AS t JOIN movie_link AS ml ON t.id = ml.movie_id WHERE ml.link_type_id = 17 GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_movies DESC;
+SELECT n.name, COUNT(*) AS num_roles FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY num_roles DESC;
+SELECT kt.kind, COUNT(*) AS num_movies FROM kind_type AS kt JOIN title AS t ON kt.id = t.kind_id GROUP BY kt.kind HAVING COUNT(*) > 1000 ORDER BY num_movies DESC;
+SELECT k.keyword, COUNT(*) AS num_movies FROM keyword AS k JOIN movie_keyword AS mk ON k.id = mk.keyword_id GROUP BY k.keyword HAVING COUNT(*) > 50 ORDER BY num_movies DESC;
+SELECT lt.link, COUNT(*) AS num_links FROM link_type AS lt JOIN movie_link AS ml ON lt.id = ml.link_type_id WHERE ml.linked_movie_id = 848623 GROUP BY lt.link HAVING COUNT(*) > 1 ORDER BY num_links DESC;
+SELECT t.title, COUNT(*) AS num_cast_members FROM title AS t JOIN cast_info AS ci ON t.id = ci.movie_id WHERE ci.role_id = 1 GROUP BY t.title HAVING COUNT(*) > 10 ORDER BY num_cast_members DESC;
+SELECT n.name, COUNT(*) AS num_movies FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id JOIN title AS t ON ci.movie_id = t.id WHERE t.production_year > 2000 GROUP BY n.name HAVING COUNT(*) > 5 ORDER BY num_movies DESC;
+SELECT t.title, COUNT(*) AS num_keywords FROM title AS t JOIN movie_keyword AS mk ON t.id = mk.movie_id JOIN keyword AS k ON mk.keyword_id = k.id WHERE k.keyword = 'apparition' GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_keywords DESC;
+SELECT n.name, COUNT(*) AS num_movies FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id JOIN title AS t ON ci.movie_id = t.id WHERE t.production_year BETWEEN 1970 AND 1980 GROUP BY n.name HAVING COUNT(*) > 3 ORDER BY num_movies DESC;
+SELECT t.title, COUNT(*) AS num_companies FROM title AS t JOIN movie_companies AS mc ON t.id = mc.movie_id JOIN company_name AS cn ON mc.company_id = cn.id WHERE cn.country_code = 'US' GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_companies DESC;
+SELECT n.name, COUNT(*) AS num_movies FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id JOIN title AS t ON ci.movie_id = t.id WHERE t.kind_id = 1 AND ci.role_id = 1 GROUP BY n.name HAVING COUNT(*) > 5 ORDER BY num_movies DESC;
+SELECT t.title, COUNT(*) AS num_links FROM title AS t JOIN movie_link AS ml ON t.id = ml.movie_id WHERE ml.link_type_id IN (5, 15, 17) GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY num_links DESC;
+SELECT n.name, COUNT(*) AS num_movies FROM name AS n JOIN cast_info AS ci ON n.id = ci.person_id JOIN title AS t ON ci.movie_id = t.id WHERE t.production_year < 2000 AND ci.role_id = 1 GROUP BY n.name HAVING COUNT(*) > 10 ORDER BY num_movies DESC;
+SELECT t.title, COUNT(*) AS num_cast_members FROM title AS t JOIN cast_info AS ci ON t.id = ci.movie_id WHERE ci.role_id = 1 AND ci.nr_order < 5 GROUP BY t.title HAVING COUNT(*) > 3 ORDER BY num_cast_members DESC;

@@ -1,0 +1,5 @@
+SELECT c_region, COUNT(*) AS num_orders, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_orderkey IN (7793760, 25617665, 6277510) GROUP BY c_region;
+SELECT p_category, AVG(lo_quantity) AS avg_quantity, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_extendedprice BETWEEN 1109358 AND 7915956 GROUP BY p_category;
+SELECT c_mktsegment, COUNT(DISTINCT lo_custkey) AS num_customers, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE c_address IN ('BQ5aTn1,2ya81PY', 'ONz3OPnNHGE', 'CTyYazz2kDli8') GROUP BY c_mktsegment;
+SELECT p_brand, p_type, COUNT(*) AS num_orders, SUM(lo_extendedprice * (1 - lo_discount)) AS total_discounted_price FROM lineorder_flat WHERE lo_orderpriority = 'HIGH' GROUP BY p_brand, p_type;
+SELECT c_name, c_city, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_shipmode = 'AIR' AND c_region = 'EUROPE' GROUP BY c_name, c_city HAVING SUM(lo_revenue) > 1000000 ORDER BY total_revenue DESC;

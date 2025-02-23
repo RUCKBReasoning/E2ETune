@@ -1,0 +1,15 @@
+SELECT s.s_region, COUNT(*) AS num_orders FROM lineorder lo JOIN supplier s ON lo.lo_suppkey = s.s_suppkey WHERE s.s_region IN ('AFRICA', 'ASIA', 'EUROPE') GROUP BY s.s_region;
+SELECT c.c_nation, AVG(lo.lo_extendedprice) AS avg_price FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey WHERE c.c_nation IN ('KENYA', 'UNITED KINGDOM', 'IRAQ') GROUP BY c.c_nation;
+SELECT d.d_year, SUM(lo.lo_quantity) AS total_quantity FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey WHERE d.d_year BETWEEN 1995 AND 2000 GROUP BY d.d_year ORDER BY d.d_year;
+SELECT p.p_category, COUNT(*) AS num_parts FROM lineorder lo JOIN part p ON lo.lo_partkey = p.p_partkey WHERE p.p_size BETWEEN 10 AND 50 GROUP BY p.p_category;
+SELECT c.c_mktsegment, SUM(lo.lo_revenue) AS total_revenue FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey GROUP BY c.c_mktsegment;
+SELECT s.s_name, SUM(lo.lo_supplycost) AS total_supply_cost FROM lineorder lo JOIN supplier s ON lo.lo_suppkey = s.s_suppkey WHERE s.s_suppkey IN (659, 603, 752) GROUP BY s.s_name;
+SELECT d.d_month, COUNT(*) AS num_orders FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey WHERE d.d_year = 1998 GROUP BY d.d_month;
+SELECT p.p_brand, AVG(lo.lo_discount) AS avg_discount FROM lineorder lo JOIN part p ON lo.lo_partkey = p.p_partkey GROUP BY p.p_brand;
+SELECT c.c_name, SUM(lo.lo_ordtotalprice) AS total_order_price FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey WHERE c.c_name IN ('Customer#000336109', 'Customer#000336288', 'Customer#000336894') GROUP BY c.c_name;
+SELECT d.d_dayofweek, COUNT(*) AS num_orders FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey WHERE d.d_weekdayfl = 'Y' GROUP BY d.d_dayofweek;
+SELECT s.s_nation, COUNT(*) AS num_orders FROM lineorder lo JOIN supplier s ON lo.lo_suppkey = s.s_suppkey WHERE s.s_nation IN ('KENYA', 'UNITED KINGDOM', 'IRAQ') GROUP BY s.s_nation;
+SELECT p.p_type, SUM(lo.lo_quantity) AS total_quantity FROM lineorder lo JOIN part p ON lo.lo_partkey = p.p_partkey GROUP BY p.p_type;
+SELECT c.c_city, AVG(lo.lo_tax) AS avg_tax FROM lineorder lo JOIN customer c ON lo.lo_custkey = c.c_custkey WHERE c.c_phone IN ('32-648-300-6504', '16-469-830-7129', '32-365-766-5378') GROUP BY c.c_city;
+SELECT d.d_sellingseason, COUNT(*) AS num_orders FROM lineorder lo JOIN date_dim d ON lo.lo_orderdate = d.d_datekey GROUP BY d.d_sellingseason;
+SELECT lo.lo_orderpriority, COUNT(*) AS num_orders FROM lineorder lo WHERE lo.lo_shipmode IN ('AIR', 'RAIL', 'SHIP') GROUP BY lo.lo_orderpriority;

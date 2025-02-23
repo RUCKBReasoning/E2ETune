@@ -1,0 +1,2 @@
+SELECT c_region, p_category, SUM(lo_extendedprice * (1 - lo_discount)) AS revenue FROM lineorder_flat WHERE lo_supplycost IN (64089, 64389, 64269) AND lo_quantity IN (8, 13, 34) GROUP BY c_region, p_category ORDER BY c_region, p_category;
+SELECT lo_orderpriority, COUNT(*) AS order_count, AVG(lo_ordtotalprice) AS avg_order_price FROM lineorder_flat WHERE lo_orderdate >= '19940101' AND lo_orderdate <= '19941231' GROUP BY lo_orderpriority ORDER BY lo_orderpriority;

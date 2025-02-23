@@ -1,0 +1,10 @@
+SELECT c_region, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_discount = 5 GROUP BY c_region ORDER BY num_orders DESC;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_discount = 10 AND s_phone = '31-502-487-1552' GROUP BY p_category ORDER BY avg_price DESC;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_discount = 2 AND p_size = 35 GROUP BY s_nation ORDER BY total_supply_cost DESC;
+SELECT c_city, COUNT(DISTINCT lo_custkey) AS num_customers FROM lineorder_flat WHERE lo_discount = 5 AND s_phone = '33-718-738-1191' GROUP BY c_city ORDER BY num_customers DESC;
+SELECT p_brand, COUNT(DISTINCT lo_partkey) AS num_parts FROM lineorder_flat WHERE lo_discount = 10 AND p_size = 26 GROUP BY p_brand ORDER BY num_parts DESC;
+SELECT c_mktsegment, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_discount = 2 AND s_phone = '32-533-796-5446' GROUP BY c_mktsegment ORDER BY total_revenue DESC;
+SELECT lo_orderpriority, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat WHERE lo_discount = 5 AND p_size = 23 GROUP BY lo_orderpriority ORDER BY avg_quantity DESC;
+SELECT s_city, COUNT(DISTINCT lo_suppkey) AS num_suppliers FROM lineorder_flat WHERE lo_discount = 10 AND p_size = 35 GROUP BY s_city ORDER BY num_suppliers DESC;
+SELECT p_type, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE lo_discount = 2 AND s_phone = '31-502-487-1552' GROUP BY p_type ORDER BY total_price DESC;
+SELECT c_nation, COUNT(DISTINCT lo_orderkey) AS num_orders FROM lineorder_flat WHERE lo_discount = 5 AND p_size = 26 GROUP BY c_nation ORDER BY num_orders DESC;

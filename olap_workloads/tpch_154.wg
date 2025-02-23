@@ -1,0 +1,18 @@
+SELECT n_name, COUNT(*) FROM nation GROUP BY n_name;
+SELECT r_name, AVG(p_retailprice) FROM region INNER JOIN nation ON region.r_regionkey = nation.n_regionkey INNER JOIN supplier ON nation.n_nationkey = supplier.s_nationkey INNER JOIN partsupp ON supplier.s_suppkey = partsupp.ps_suppkey INNER JOIN part ON partsupp.ps_partkey = part.p_partkey GROUP BY r_name;
+SELECT c_name, SUM(o_totalprice) FROM customer INNER JOIN orders ON customer.c_custkey = orders.o_custkey WHERE c_nationkey = 20 GROUP BY c_name;
+SELECT p_type, COUNT(*) FROM part WHERE p_size BETWEEN 10 AND 20 GROUP BY p_type;
+SELECT s_name, SUM(ps_supplycost * ps_availqty) as total_cost FROM supplier INNER JOIN partsupp ON supplier.s_suppkey = partsupp.ps_suppkey GROUP BY s_name ORDER BY total_cost DESC;
+SELECT o_orderpriority, COUNT(*) FROM orders WHERE o_orderdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY o_orderpriority;
+SELECT c_mktsegment, AVG(c_acctbal) FROM customer GROUP BY c_mktsegment;
+SELECT n_name, COUNT(*) FROM nation WHERE n_comment LIKE '%unusual%' GROUP BY n_name;
+SELECT c_name, SUM(l_extendedprice * (1 - l_discount)) as revenue FROM customer INNER JOIN orders ON customer.c_custkey = orders.o_custkey INNER JOIN lineitem ON orders.o_orderkey = lineitem.l_orderkey WHERE c_address LIKE '%WGL9tub%' GROUP BY c_name;
+SELECT p_brand, SUM(l_quantity) FROM part INNER JOIN lineitem ON part.p_partkey = lineitem.l_partkey WHERE l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY p_brand;
+SELECT s_name, COUNT(*) FROM supplier INNER JOIN partsupp ON supplier.s_suppkey = partsupp.ps_suppkey WHERE ps_comment LIKE '%pending%' GROUP BY s_name;
+SELECT c_name, COUNT(*) FROM customer INNER JOIN orders ON customer.c_custkey = orders.o_custkey WHERE o_orderstatus = 'F' GROUP BY c_name;
+SELECT n_name, SUM(l_extendedprice * (1 - l_discount)) as revenue FROM nation INNER JOIN customer ON nation.n_nationkey = customer.c_nationkey INNER JOIN orders ON customer.c_custkey = orders.o_custkey INNER JOIN lineitem ON orders.o_orderkey = lineitem.l_orderkey WHERE n_name = 'PERU' AND l_shipdate BETWEEN '1995-01-01' AND '1995-12-31' GROUP BY n_name;
+SELECT p_name, SUM(l_quantity) FROM part INNER JOIN lineitem ON part.p_partkey = lineitem.l_partkey WHERE p_container = 'SM BOX' GROUP BY p_name;
+SELECT r_name, COUNT(*) FROM region INNER JOIN nation ON region.r_regionkey = nation.n_regionkey INNER JOIN customer ON nation.n_nationkey = customer.c_nationkey WHERE c_acctbal > 5000 GROUP BY r_name;
+SELECT s_name, SUM(l_extendedprice * (1 - l_discount)) as total_revenue FROM supplier INNER JOIN lineitem ON supplier.s_suppkey = lineitem.l_suppkey WHERE l_shipmode = 'AIR' GROUP BY s_name;
+SELECT c_name, SUM(l_extendedprice * (1 - l_discount)) as revenue FROM customer INNER JOIN orders ON customer.c_custkey = orders.o_custkey INNER JOIN lineitem ON orders.o_orderkey = lineitem.l_orderkey WHERE c_custkey = 531 AND l_returnflag = 'R' GROUP BY c_name;
+SELECT n_name, COUNT(*) FROM nation INNER JOIN customer ON nation.n_nationkey = customer.c_nationkey INNER JOIN orders ON customer.c_custkey = orders.o_custkey WHERE o_orderpriority = '1-URGENT' GROUP BY n_name;

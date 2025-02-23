@@ -1,0 +1,16 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT c_mktsegment, AVG(lo_revenue) AS avg_revenue FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_region = 'EUROPE' GROUP BY lo_orderpriority;
+SELECT p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE c_region = 'ASIA' GROUP BY p_category;
+SELECT s_nation, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_partkey = 8802 GROUP BY s_nation;
+SELECT lo_orderdate, SUM(lo_extendedprice) AS total_extendedprice FROM lineorder_flat WHERE c_mktsegment = 'FURNITURE' GROUP BY lo_orderdate;
+SELECT p_brand, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_revenue >= 477157 AND lo_revenue <= 2263956 GROUP BY p_brand;
+SELECT s_city, AVG(lo_supplycost) AS avg_supplycost FROM lineorder_flat WHERE c_region = 'AMERICA' GROUP BY s_city;
+SELECT c_nation, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_partkey = 8815 GROUP BY c_nation;
+SELECT p_type, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_mktsegment = 'BUILDING' AND lo_revenue >= 2263956 GROUP BY p_type;
+SELECT lo_shipmode, SUM(lo_ordtotalprice) AS total_price FROM lineorder_flat WHERE c_region = 'EUROPE' AND lo_partkey = 8804 GROUP BY lo_shipmode;
+SELECT c_city, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_mktsegment = 'MACHINERY' AND lo_revenue <= 2848203 GROUP BY c_city;
+SELECT p_mfgr, AVG(lo_discount) AS avg_discount FROM lineorder_flat WHERE c_region = 'ASIA' AND lo_partkey = 8802 GROUP BY p_mfgr;
+SELECT s_name, COUNT(*) AS num_orders FROM lineorder_flat WHERE c_mktsegment = 'FURNITURE' AND lo_revenue >= 477157 AND lo_revenue <= 2263956 GROUP BY s_name;
+SELECT p_size, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE c_region = 'AMERICA' AND lo_partkey = 8815 GROUP BY p_size;
+SELECT lo_orderpriority, AVG(lo_extendedprice) AS avg_extendedprice FROM lineorder_flat WHERE c_mktsegment = 'BUILDING' AND lo_revenue >= 2263956 GROUP BY lo_orderpriority;

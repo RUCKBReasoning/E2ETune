@@ -1,0 +1,14 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT s_nation, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_supplycost IN (98803, 98623, 99043) GROUP BY s_nation;
+SELECT c_mktsegment, COUNT(*) AS num_customers FROM (SELECT DISTINCT lo_custkey, c_mktsegment FROM lineorder_flat) AS unique_customers GROUP BY c_mktsegment;
+SELECT p_brand, p_size, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY p_brand, p_size ORDER BY p_brand, p_size;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY lo_orderpriority;
+SELECT s_city, COUNT(*) AS num_suppliers FROM (SELECT DISTINCT lo_suppkey, s_city FROM lineorder_flat) AS unique_suppliers GROUP BY s_city;
+SELECT c_nation, p_mfgr, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_nation, p_mfgr;
+SELECT lo_shipmode, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_commitdate >= lo_orderdate GROUP BY lo_shipmode;
+SELECT p_container, SUM(lo_extendedprice * lo_discount) AS revenue FROM lineorder_flat GROUP BY p_container;
+SELECT s_address, COUNT(*) AS num_orders FROM lineorder_flat WHERE s_address IN ('r0iQN3uLb6wNyA', 'SjBBywnFm6Q 3gE', 'IH5bV4oy5RIPw6DH') GROUP BY s_address;
+SELECT c_city, p_type, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_city, p_type;
+SELECT c_name, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate BETWEEN 1 AND 365 GROUP BY c_name;
+SELECT s_name, SUM(lo_tax) AS total_tax FROM lineorder_flat WHERE lo_orderdate BETWEEN 1 AND 365 GROUP BY s_name;

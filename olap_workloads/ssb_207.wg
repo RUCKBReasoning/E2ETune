@@ -1,0 +1,15 @@
+SELECT c_region, COUNT(*) AS total_customers FROM customer GROUP BY c_region;
+SELECT s_region, AVG(lo_revenue) AS avg_revenue FROM lineorder JOIN supplier ON lo_suppkey = s_suppkey GROUP BY s_region;
+SELECT d_year, SUM(lo_extendedprice) AS total_extendedprice FROM lineorder JOIN date_dim ON lo_orderdate = d_datekey WHERE d_year IN (1992, 1993, 1994) GROUP BY d_year;
+SELECT c_nation, COUNT(*) AS total_orders FROM lineorder JOIN customer ON lo_custkey = c_custkey WHERE c_nation IN ('ARGENTINA', 'RUSSIA', 'ROMANIA') GROUP BY c_nation;
+SELECT p_category, SUM(lo_quantity) AS total_quantity FROM lineorder JOIN part ON lo_partkey = p_partkey GROUP BY p_category;
+SELECT d_month, SUM(lo_revenue) AS total_revenue FROM lineorder JOIN date_dim ON lo_orderdate = d_datekey WHERE d_month IN ('Augest', 'September', 'January') GROUP BY d_month;
+SELECT c_city, COUNT(*) AS total_orders FROM lineorder JOIN customer ON lo_custkey = c_custkey WHERE c_city IN ('JAPAN    3', 'CHINA    2', 'ETHIOPIA 7') GROUP BY c_city;
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder GROUP BY lo_orderpriority;
+SELECT s_name, SUM(lo_supplycost) AS total_supplycost FROM lineorder JOIN supplier ON lo_suppkey = s_suppkey WHERE s_name IN ('Supplier#000000256', 'Supplier#000000659', 'Supplier#000000862') GROUP BY s_name;
+SELECT d_year, COUNT(*) AS total_holidays FROM date_dim WHERE d_holidayfl = '1' GROUP BY d_year;
+SELECT c_mktsegment, AVG(lo_discount) AS avg_discount FROM lineorder JOIN customer ON lo_custkey = c_custkey GROUP BY c_mktsegment;
+SELECT p_brand, COUNT(*) AS total_orders FROM lineorder JOIN part ON lo_partkey = p_partkey GROUP BY p_brand;
+SELECT s_city, SUM(lo_extendedprice * lo_discount) AS total_discounted_price FROM lineorder JOIN supplier ON lo_suppkey = s_suppkey WHERE s_city IN ('PERU     1', 'KENYA    0', 'PERU     4') GROUP BY s_city;
+SELECT d_year, COUNT(*) AS total_weekdays FROM date_dim WHERE d_weekdayfl = '1' GROUP BY d_year;
+SELECT c_region, SUM(lo_extendedprice) AS total_extendedprice FROM lineorder JOIN customer ON lo_custkey = c_custkey WHERE c_region IN ('AMERICA', 'MIDDLE EAST', 'EUROPE') GROUP BY c_region;

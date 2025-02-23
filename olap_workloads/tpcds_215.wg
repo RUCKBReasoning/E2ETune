@@ -1,0 +1,12 @@
+SELECT ca_state, AVG(ca_gmt_offset) AS avg_gmt_offset FROM customer_address GROUP BY ca_state HAVING COUNT(ca_address_sk) > 10 ORDER BY avg_gmt_offset DESC;
+SELECT i_category, COUNT(i_item_sk) AS item_count FROM item WHERE i_current_price BETWEEN 50 AND 150 GROUP BY i_category ORDER BY item_count DESC;
+SELECT s_store_name, SUM(ss_sales_price) AS total_sales FROM store_sales ss JOIN store s ON ss.ss_store_sk = s.s_store_sk GROUP BY s_store_name ORDER BY total_sales DESC LIMIT 10;
+SELECT cp_type, COUNT(cp_catalog_page_sk) AS page_count FROM catalog_page WHERE cp_catalog_page_id IN ('AAAAAAAABCBAAAAA', 'AAAAAAAAEIDAAAAA', 'AAAAAAAAOHDAAAAA') GROUP BY cp_type;
+SELECT sm_type, sm_carrier, COUNT(*) AS ship_count FROM ship_mode WHERE sm_code IN ('AIR', 'SEA', 'BIKE') AND sm_carrier IN ('DIAMOND', 'BARIAN', 'GREAT EASTERN') GROUP BY sm_type, sm_carrier ORDER BY ship_count DESC;
+SELECT SUM(inv_quantity_on_hand) AS total_inventory FROM inventory WHERE inv_warehouse_sk IN (SELECT w_warehouse_sk FROM warehouse WHERE w_state = 'CA');
+SELECT d_year, d_month_seq, COUNT(*) AS num_orders FROM date_dim d JOIN store_sales ss ON d.d_date_sk = ss.ss_sold_date_sk GROUP BY d_year, d_month_seq ORDER BY d_year, d_month_seq;
+SELECT w_state, AVG(w_warehouse_sq_ft) AS avg_warehouse_sq_ft FROM warehouse GROUP BY w_state HAVING COUNT(w_warehouse_sk) > 5 ORDER BY avg_warehouse_sq_ft DESC;
+SELECT c_birth_year, COUNT(*) AS num_customers FROM customer WHERE c_preferred_cust_flag = 'Y' GROUP BY c_birth_year ORDER BY num_customers DESC;
+SELECT p_promo_name, COUNT(cs_order_number) AS num_orders FROM promotion p JOIN catalog_sales cs ON p.p_promo_sk = cs.cs_promo_sk WHERE p_discount_active = 'Y' GROUP BY p_promo_name ORDER BY num_orders DESC LIMIT 10;
+SELECT cr_returning_cdemo_sk, COUNT(*) AS num_returns FROM catalog_returns WHERE cr_net_loss BETWEEN 100 AND 1000 AND cr_return_amt_inc_tax BETWEEN 100 AND 500 GROUP BY cr_returning_cdemo_sk HAVING COUNT(*) > 5 ORDER BY num_returns DESC;
+SELECT wp_type, COUNT(wp_web_page_sk) AS page_count FROM web_page WHERE wp_creation_date_sk IN (SELECT d_date_sk FROM date_dim WHERE d_year = 2000) GROUP BY wp_type HAVING COUNT(wp_web_page_sk) > 10 ORDER BY page_count DESC;

@@ -1,0 +1,15 @@
+SELECT c_region, COUNT(*) AS num_orders FROM lineorder_flat GROUP BY c_region;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY p_category;
+SELECT c_mktsegment, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY c_mktsegment;
+SELECT lo_orderpriority, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY lo_orderpriority;
+SELECT s_nation, p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY s_nation, p_category;
+SELECT c_city, p_brand, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_discount BETWEEN 5 AND 10 GROUP BY c_city, p_brand;
+SELECT c_name, SUM(lo_extendedprice * (1 - lo_discount)) AS revenue FROM lineorder_flat WHERE c_name IN ('Customer#000051250', 'Customer#000127063', 'Customer#000128105') GROUP BY c_name;
+SELECT p_mfgr, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_supplycost IN (112918, 112858, 112978) GROUP BY p_mfgr;
+SELECT s_region, p_type, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY s_region, p_type;
+SELECT c_nation, p_container, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY c_nation, p_container;
+SELECT c_city, p_size, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_commitdate BETWEEN 19940101 AND 19941231 GROUP BY c_city, p_size;
+SELECT s_city, p_color, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_shippriority = '1' GROUP BY s_city, p_color;
+SELECT c_region, p_brand, SUM(lo_extendedprice * (1 - lo_discount)) AS revenue FROM lineorder_flat WHERE lo_orderdate BETWEEN 19940101 AND 19941231 GROUP BY c_region, p_brand;
+SELECT s_nation, p_category, COUNT(*) AS num_orders FROM lineorder_flat WHERE lo_tax BETWEEN 5 AND 10 GROUP BY s_nation, p_category;
+SELECT c_mktsegment, p_type, AVG(lo_supplycost) AS avg_supplycost FROM lineorder_flat GROUP BY c_mktsegment, p_type;

@@ -1,0 +1,14 @@
+SELECT name.name, COUNT(movie_id) as movie_count FROM cast_info JOIN name ON cast_info.person_id = name.id GROUP BY name.name ORDER BY movie_count DESC LIMIT 10;
+SELECT title.title, COUNT(keyword_id) as keyword_count FROM movie_keyword JOIN title ON movie_keyword.movie_id = title.id GROUP BY title.title ORDER BY keyword_count DESC LIMIT 10;
+SELECT company_name.name, COUNT(movie_id) as movie_count FROM movie_companies JOIN company_name ON movie_companies.company_id = company_name.id WHERE company_type_id = 2 GROUP BY company_name.name ORDER BY movie_count DESC LIMIT 10;
+SELECT kind_type.kind, COUNT(title.id) as title_count FROM title JOIN kind_type ON title.kind_id = kind_type.id GROUP BY kind_type.kind ORDER BY title_count DESC;
+SELECT AVG(production_year) as average_production_year FROM title WHERE kind_id = 1;
+SELECT company_name.name, COUNT(movie_id) as movie_count FROM movie_companies JOIN company_name ON movie_companies.company_id = company_name.id WHERE company_type_id = 3 GROUP BY company_name.name ORDER BY movie_count DESC LIMIT 10;
+SELECT title.title, COUNT(movie_link.linked_movie_id) as linked_movie_count FROM movie_link JOIN title ON movie_link.movie_id = title.id GROUP BY title.title ORDER BY linked_movie_count DESC LIMIT 10;
+SELECT name.name, COUNT(person_info.id) as person_info_count FROM person_info JOIN name ON person_info.person_id = name.id GROUP BY name.name ORDER BY person_info_count DESC LIMIT 10;
+SELECT keyword.keyword, COUNT(movie_id) as movie_count FROM movie_keyword JOIN keyword ON movie_keyword.keyword_id = keyword.id GROUP BY keyword.keyword ORDER BY movie_count DESC LIMIT 10;
+SELECT title.title, COUNT(movie_info.id) as movie_info_count FROM movie_info JOIN title ON movie_info.movie_id = title.id GROUP BY title.title ORDER BY movie_info_count DESC LIMIT 10;
+SELECT name.name, COUNT(aka_name.id) as aka_name_count FROM aka_name JOIN name ON aka_name.person_id = name.id GROUP BY name.name ORDER BY aka_name_count DESC LIMIT 10;
+SELECT title.title, COUNT(cast_info.id) as cast_count FROM cast_info JOIN title ON cast_info.movie_id = title.id GROUP BY title.title ORDER BY cast_count DESC LIMIT 10;
+SELECT title.title, COUNT(movie_keyword.keyword_id) as keyword_count FROM movie_keyword JOIN title ON movie_keyword.movie_id = title.id WHERE title.production_year >= 2000 AND title.production_year <= 2010 GROUP BY title.title ORDER BY keyword_count DESC LIMIT 10;
+SELECT title.title, COUNT(movie_info.id) as movie_info_count FROM movie_info JOIN title ON movie_info.movie_id = title.id WHERE movie_info.info_type_id = 1 GROUP BY title.title ORDER BY movie_info_count DESC LIMIT 10;

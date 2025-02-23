@@ -1,0 +1,5 @@
+SELECT t.title, COUNT(c.id) AS cast_count FROM title t JOIN cast_info c ON t.id = c.movie_id WHERE t.kind_id = 2 GROUP BY t.title HAVING COUNT(c.id) > 10 ORDER BY cast_count DESC LIMIT 10;
+SELECT n.name, COUNT(c.id) AS crew_count FROM name n JOIN cast_info c ON n.id = c.person_id WHERE c.role_id = 1 GROUP BY n.name HAVING COUNT(c.id) > 5 ORDER BY crew_count DESC LIMIT 10;
+SELECT k.keyword, COUNT(mk.id) AS keyword_count FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword HAVING COUNT(mk.id) > 10 ORDER BY keyword_count DESC LIMIT 10;
+SELECT cn.name, COUNT(ci.id) AS char_count FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id WHERE ci.role_id = 2 GROUP BY cn.name HAVING COUNT(ci.id) > 5 ORDER BY char_count DESC LIMIT 10;
+SELECT ct.kind, COUNT(mc.id) AS company_count FROM company_type ct JOIN movie_companies mc ON ct.id = mc.company_type_id GROUP BY ct.kind HAVING COUNT(mc.id) > 10 ORDER BY company_count DESC LIMIT 10;

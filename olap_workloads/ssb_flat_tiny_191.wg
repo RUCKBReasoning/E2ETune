@@ -1,0 +1,14 @@
+SELECT c_region, COUNT(lo_orderkey) AS total_orders FROM lineorder_flat WHERE lo_orderpriority = '1-URGENT' GROUP BY c_region ORDER BY total_orders DESC;
+SELECT p_category, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_shipmode = 'AIR' GROUP BY p_category;
+SELECT s_name, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat WHERE lo_commitdate BETWEEN 20210101 AND 20211231 GROUP BY s_name ORDER BY total_supply_cost DESC LIMIT 10;
+SELECT c_mktsegment, COUNT(lo_orderkey) AS total_orders, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE lo_orderdate >= 20220101 GROUP BY c_mktsegment;
+SELECT p_type, p_category, COUNT(lo_partkey) AS total_parts FROM lineorder_flat WHERE p_name = 'spring drab' GROUP BY p_type, p_category ORDER BY total_parts DESC;
+SELECT c_city, SUM(lo_quantity) AS total_quantity FROM lineorder_flat WHERE lo_discount >= 10 AND lo_discount <= 20 GROUP BY c_city ORDER BY total_quantity DESC;
+SELECT s_nation, AVG(lo_tax) AS avg_tax FROM lineorder_flat WHERE lo_shippriority = 'Y' GROUP BY s_nation;
+SELECT p_brand, COUNT(lo_partkey) AS total_parts FROM lineorder_flat WHERE p_color = 'black floral' AND p_type = 'SMALL BRUSHED NICKEL' GROUP BY p_brand;
+SELECT c_nation, COUNT(lo_custkey) AS total_customers, SUM(lo_ordtotalprice) AS total_order_price FROM lineorder_flat WHERE p_category = 'MFGR#42' GROUP BY c_nation ORDER BY total_order_price DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS total_orders, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat WHERE lo_orderdate BETWEEN 20210101 AND 20211231 GROUP BY lo_orderpriority;
+SELECT s_city, COUNT(lo_suppkey) AS total_suppliers FROM lineorder_flat WHERE p_type = 'PROMO BURNISHED BRASS' AND lo_shipmode = 'RAIL' GROUP BY s_city;
+SELECT c_region, COUNT(lo_custkey) AS total_customers, SUM(lo_revenue) AS total_revenue FROM lineorder_flat WHERE p_name = 'goldenrod spring' GROUP BY c_region ORDER BY total_revenue DESC;
+SELECT lo_orderpriority, COUNT(lo_orderkey) AS total_orders, AVG(lo_supplycost) AS avg_supply_cost FROM lineorder_flat WHERE lo_commitdate >= 20220101 GROUP BY lo_orderpriority;
+SELECT p_size, COUNT(lo_partkey) AS total_parts FROM lineorder_flat WHERE p_category = 'MFGR#31' AND p_type = 'LARGE BRUSHED BRASS' GROUP BY p_size;

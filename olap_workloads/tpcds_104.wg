@@ -1,0 +1,17 @@
+SELECT d_year, i_category, SUM(ss_sales_price) as sales FROM store_sales, date_dim, item WHERE store_sales.ss_sold_date_sk = date_dim.d_date_sk AND store_sales.ss_item_sk = item.i_item_sk AND d_year BETWEEN 2000 AND 2005 GROUP BY d_year, i_category ORDER BY d_year, i_category;
+SELECT w_state, SUM(inv_quantity_on_hand) as total_inventory FROM warehouse, inventory WHERE warehouse.w_warehouse_sk = inventory.inv_warehouse_sk GROUP BY w_state ORDER BY w_state;
+SELECT s_store_name, SUM(ss_net_profit) as total_profit FROM store_sales, store WHERE store_sales.ss_store_sk = store.s_store_sk GROUP BY s_store_name ORDER BY total_profit DESC LIMIT 10;
+SELECT i_item_id, i_item_desc, COUNT(*) as num_orders FROM catalog_sales, item WHERE catalog_sales.cs_item_sk = item.i_item_sk GROUP BY i_item_id, i_item_desc ORDER BY num_orders DESC LIMIT 10;
+SELECT t_hour, COUNT(*) as num_orders FROM web_sales, time_dim WHERE web_sales.ws_sold_time_sk = time_dim.t_time_sk AND t_hour >= 8 AND t_hour <= 20 GROUP BY t_hour ORDER BY t_hour;
+SELECT d_week_seq, SUM(ss_sales_price) as weekly_sales FROM store_sales, date_dim WHERE store_sales.ss_sold_date_sk = date_dim.d_date_sk GROUP BY d_week_seq ORDER BY d_week_seq;
+SELECT i_brand, i_category, AVG(ws_sales_price - ws_wholesale_cost) as avg_margin FROM web_sales, item WHERE web_sales.ws_item_sk = item.i_item_sk GROUP BY i_brand, i_category ORDER BY i_brand, i_category;
+SELECT s_state, COUNT(*) as num_stores FROM store GROUP BY s_state ORDER BY num_stores DESC;
+SELECT p_promo_name, SUM(cs_coupon_amt) as total_coupon_amount FROM catalog_sales, promotion WHERE catalog_sales.cs_promo_sk = promotion.p_promo_sk GROUP BY p_promo_name ORDER BY total_coupon_amount DESC LIMIT 10;
+SELECT wp_type, COUNT(*) as num_pages FROM web_page WHERE wp_max_ad_count >= 3 GROUP BY wp_type ORDER BY num_pages DESC;
+SELECT d_year, COUNT(*) as num_orders FROM catalog_sales, date_dim WHERE catalog_sales.cs_sold_date_sk = date_dim.d_date_sk AND d_year BETWEEN 2000 AND 2005 GROUP BY d_year ORDER BY d_year;
+SELECT i_manufact, SUM(cs_sales_price) as total_sales FROM catalog_sales, item WHERE catalog_sales.cs_item_sk = item.i_item_sk GROUP BY i_manufact ORDER BY total_sales DESC LIMIT 10;
+SELECT d_month_seq, SUM(ws_net_profit) as monthly_profit FROM web_sales, date_dim WHERE web_sales.ws_sold_date_sk = date_dim.d_date_sk GROUP BY d_month_seq ORDER BY d_month_seq;
+SELECT c_customer_id, c_first_name, c_last_name, SUM(ss_net_paid) as total_spent FROM store_sales, customer WHERE store_sales.ss_customer_sk = customer.c_customer_sk GROUP BY c_customer_id, c_first_name, c_last_name ORDER BY total_spent DESC LIMIT 10;
+SELECT hd_buy_potential, COUNT(*) as num_customers FROM household_demographics GROUP BY hd_buy_potential ORDER BY num_customers DESC;
+SELECT i_item_id, i_item_desc, COUNT(*) as num_returns FROM store_returns, item WHERE store_returns.sr_item_sk = item.i_item_sk GROUP BY i_item_id, i_item_desc ORDER BY num_returns DESC LIMIT 10;
+SELECT d_year, COUNT(*) as num_returns FROM web_returns, date_dim WHERE web_returns.wr_returned_date_sk = date_dim.d_date_sk AND d_year BETWEEN 2000 AND 2005 GROUP BY d_year ORDER BY d_year;

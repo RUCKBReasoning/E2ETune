@@ -1,0 +1,18 @@
+SELECT COUNT(*) FROM movie_keyword WHERE keyword_id IN (1884, 9485, 16689);
+SELECT movie_id, COUNT(keyword_id) AS keyword_count FROM movie_keyword WHERE keyword_id IN (1884, 9485, 16689) GROUP BY movie_id;
+SELECT keyword, COUNT(movie_id) AS movie_count FROM keyword JOIN movie_keyword ON keyword.id = movie_keyword.keyword_id WHERE keyword_id IN (1884, 9485, 16689) GROUP BY keyword;
+SELECT movie_id, title, COUNT(keyword_id) AS keyword_count FROM movie_keyword JOIN title ON movie_keyword.movie_id = title.id WHERE keyword_id IN (1884, 9485, 16689) GROUP BY movie_id, title;
+SELECT movie_id, title, AVG(nr_order) AS avg_nr_order FROM cast_info JOIN title ON cast_info.movie_id = title.id WHERE movie_id IN (2028, 1417, 1549) GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT person_id) AS actor_count FROM cast_info JOIN title ON cast_info.movie_id = title.id WHERE movie_id IN (2028, 1417, 1549) GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT company_id) AS company_count FROM movie_companies JOIN title ON movie_companies.movie_id = title.id WHERE movie_id IN (2028, 1417, 1549) GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT keyword_id) AS keyword_count FROM movie_keyword JOIN title ON movie_keyword.movie_id = title.id WHERE movie_id IN (2028, 1417, 1549) GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT linked_movie_id) AS linked_movie_count FROM movie_link JOIN title ON movie_link.movie_id = title.id WHERE movie_id IN (2028, 1417, 1549) GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT info_type_id) AS info_type_count FROM movie_info JOIN title ON movie_info.movie_id = title.id WHERE movie_id IN (2028, 1417, 1549) GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT person_id) AS actor_count FROM cast_info JOIN title ON cast_info.movie_id = title.id WHERE role_id = 1 GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT person_id) AS director_count FROM cast_info JOIN title ON cast_info.movie_id = title.id WHERE role_id = 2 GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT person_id) AS producer_count FROM cast_info JOIN title ON cast_info.movie_id = title.id WHERE role_id = 3 GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT person_id) AS composer_count FROM cast_info JOIN title ON cast_info.movie_id = title.id WHERE role_id = 4 GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT person_id) AS writer_count FROM cast_info JOIN title ON cast_info.movie_id = title.id WHERE role_id = 5 GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT person_id) AS cinematographer_count FROM cast_info JOIN title ON cast_info.movie_id = title.id WHERE role_id = 6 GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT person_id) AS editor_count FROM cast_info JOIN title ON cast_info.movie_id = title.id WHERE role_id = 7 GROUP BY movie_id, title;
+SELECT movie_id, title, COUNT(DISTINCT person_id) AS production_designer_count FROM cast_info JOIN title ON cast_info.movie_id = title.id WHERE role_id = 8 GROUP BY movie_id, title;

@@ -1,0 +1,7 @@
+SELECT i_category, SUM(ws_sales_price) AS total_sales FROM web_sales JOIN item ON ws_item_sk = i_item_sk WHERE ws_sold_date_sk BETWEEN 2451911 AND 2451941 GROUP BY i_category ORDER BY total_sales DESC;
+SELECT t_shift, COUNT(*) AS total_returns FROM store_returns JOIN time_dim ON sr_return_time_sk = t_time_sk WHERE t_shift = 'third' AND t_hour = 0 GROUP BY t_shift;
+SELECT sm_carrier, COUNT(*) AS total_shipments FROM web_sales JOIN ship_mode ON ws_ship_mode_sk = sm_ship_mode_sk WHERE sm_contract IN ('Ek', '2mM8l', '5FKNB0j8aaqTB') GROUP BY sm_carrier;
+SELECT web_county, SUM(ws_net_paid) AS total_revenue FROM web_sales JOIN web_site ON ws_web_site_sk = web_site_sk WHERE web_county = 'Williamson County' GROUP BY web_county;
+SELECT wr_returning_hdemo_sk, COUNT(*) AS total_returns FROM web_returns WHERE wr_web_page_sk IN (58, 59, 41) AND wr_returning_hdemo_sk IN (6724, 6681, 3710) GROUP BY wr_returning_hdemo_sk;
+SELECT i_category, AVG(inv_quantity_on_hand) AS avg_inventory FROM inventory JOIN item ON inv_item_sk = i_item_sk GROUP BY i_category ORDER BY avg_inventory DESC;
+SELECT p_channel_dmail, p_channel_email, p_channel_catalog, p_channel_tv, p_channel_radio, p_channel_press, p_channel_event, p_channel_demo, COUNT(*) AS total_promotions FROM promotion WHERE p_discount_active = 'Y' GROUP BY p_channel_dmail, p_channel_email, p_channel_catalog, p_channel_tv, p_channel_radio, p_channel_press, p_channel_event, p_channel_demo;

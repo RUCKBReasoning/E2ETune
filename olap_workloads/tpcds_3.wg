@@ -1,0 +1,17 @@
+SELECT COUNT(*) FROM store_sales WHERE ss_customer_sk IN (91303, 74579, 60807) AND ss_store_sk IN (1, 4, 2);
+SELECT AVG(ss_ext_sales_price) FROM store_sales WHERE ss_item_sk IN (5810, 11250, 463);
+SELECT sr_reason_sk, COUNT(*) FROM store_returns WHERE sr_cdemo_sk IN (576261, 495090, 608295) GROUP BY sr_reason_sk;
+SELECT i_category, SUM(inv_quantity_on_hand) FROM inventory inv JOIN item i ON inv.inv_item_sk = i.i_item_sk GROUP BY i_category;
+SELECT d_year, d_month_seq, COUNT(*) FROM store_sales ss JOIN date_dim d ON ss.ss_sold_date_sk = d.d_date_sk WHERE ss.ss_customer_sk IN (91303, 74579, 60807) GROUP BY d_year, d_month_seq;
+SELECT d_year, d_month_seq, SUM(ws_net_paid) FROM web_sales ws JOIN date_dim d ON ws.ws_sold_date_sk = d.d_date_sk WHERE ws.ws_item_sk IN (14542, 3328, 3530) GROUP BY d_year, d_month_seq;
+SELECT d_year, d_month_seq, COUNT(*) FROM catalog_sales cs JOIN date_dim d ON cs.cs_sold_date_sk = d.d_date_sk WHERE cs.cs_item_sk IN (5810, 11250, 463) GROUP BY d_year, d_month_seq;
+SELECT d_year, d_month_seq, COUNT(*) FROM store_returns sr JOIN date_dim d ON sr.sr_returned_date_sk = d.d_date_sk WHERE sr.sr_cdemo_sk IN (576261, 495090, 608295) GROUP BY d_year, d_month_seq;
+SELECT d_year, d_month_seq, COUNT(*) FROM web_returns wr JOIN date_dim d ON wr.wr_returned_date_sk = d.d_date_sk WHERE wr.wr_reason_sk IN (12, 28, 6) GROUP BY d_year, d_month_seq;
+SELECT i.i_item_sk, i.i_category, COUNT(*) FROM store_sales ss JOIN item i ON ss.ss_item_sk = i.i_item_sk WHERE ss.ss_store_sk IN (1, 4, 2) GROUP BY i.i_item_sk, i.i_category;
+SELECT i.i_item_sk, i.i_category, COUNT(*) FROM web_sales ws JOIN item i ON ws.ws_item_sk = i.i_item_sk WHERE ws.ws_web_page_sk IN (31, 1, 35) GROUP BY i.i_item_sk, i.i_category;
+SELECT i.i_item_sk, i.i_category, COUNT(*) FROM catalog_sales cs JOIN item i ON cs.cs_item_sk = i.i_item_sk WHERE cs.cs_catalog_page_sk IN (31, 1, 35) GROUP BY i.i_item_sk, i.i_category;
+SELECT i.i_item_sk, i.i_category, SUM(inv_quantity_on_hand) FROM inventory inv JOIN item i ON inv.inv_item_sk = i.i_item_sk WHERE i.i_item_sk IN (14542, 3328, 3530) GROUP BY i.i_item_sk, i.i_category;
+SELECT d_year, d_month_seq, SUM(ss_ext_sales_price) FROM store_sales ss JOIN date_dim d ON ss.ss_sold_date_sk = d.d_date_sk WHERE ss.ss_ext_sales_price IN (717.09, 162.45, 830.96) GROUP BY d_year, d_month_seq;
+SELECT d_year, d_month_seq, COUNT(*) FROM store_sales ss JOIN date_dim d ON ss.ss_sold_date_sk = d.d_date_sk WHERE ss.ss_ticket_number IN (1, 4, 2) GROUP BY d_year, d_month_seq;
+SELECT d_year, d_month_seq, COUNT(*) FROM web_sales ws JOIN date_dim d ON ws.ws_sold_date_sk = d.d_date_sk WHERE ws.ws_web_page_sk IN (31, 1, 35) GROUP BY d_year, d_month_seq;
+SELECT d_year, d_month_seq, COUNT(*) FROM catalog_sales cs JOIN date_dim d ON cs.cs_sold_date_sk = d.d_date_sk WHERE cs.cs_catalog_page_sk IN (31, 1, 35) GROUP BY d_year, d_month_seq;

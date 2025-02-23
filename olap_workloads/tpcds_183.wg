@@ -1,0 +1,18 @@
+SELECT COUNT(*) FROM store_sales WHERE ss_coupon_amt > 100;
+SELECT i_category, AVG(ws_sales_price) as avg_sales_price FROM web_sales JOIN item ON ws_item_sk = i_item_sk GROUP BY i_category;
+SELECT s_state, COUNT(DISTINCT s_store_sk) as store_count FROM store GROUP BY s_state;
+SELECT w_state, AVG(w_warehouse_sq_ft) as avg_warehouse_sq_ft FROM warehouse GROUP BY w_state;
+SELECT r_reason_desc, COUNT(*) as return_count FROM store_returns JOIN reason ON sr_reason_sk = r_reason_sk GROUP BY r_reason_desc;
+SELECT p_promo_name, COUNT(cs_order_number) as order_count FROM catalog_sales JOIN promotion ON cs_promo_sk = p_promo_sk WHERE p_channel_dmail = 'Y' GROUP BY p_promo_name;
+SELECT i_category, COUNT(*) as item_count FROM item WHERE i_current_price BETWEEN 10 AND 100 GROUP BY i_category;
+SELECT c_birth_year, COUNT(*) as customer_count FROM customer WHERE c_preferred_cust_flag = 'Y' GROUP BY c_birth_year;
+SELECT t_shift, SUM(ss_sales_price * ss_quantity) as total_sales FROM store_sales JOIN time_dim ON ss_sold_time_sk = t_time_sk GROUP BY t_shift;
+SELECT w_state, SUM(inv_quantity_on_hand) as total_inventory FROM inventory JOIN warehouse ON inv_warehouse_sk = w_warehouse_sk GROUP BY w_state;
+SELECT ca_country, COUNT(*) as address_count FROM customer_address WHERE ca_location_type = 'residential' GROUP BY ca_country;
+SELECT d_year, d_month_seq, SUM(ws_sales_price * ws_quantity) as monthly_sales FROM web_sales JOIN date_dim ON ws_sold_date_sk = d_date_sk GROUP BY d_year, d_month_seq;
+SELECT hd_buy_potential, COUNT(*) as household_count FROM household_demographics WHERE hd_vehicle_count > 2 GROUP BY hd_buy_potential;
+SELECT i_brand, COUNT(*) as item_count FROM item WHERE i_manufact_id = 100 GROUP BY i_brand;
+SELECT s_state, COUNT(*) as store_count FROM store WHERE s_tax_precentage > 5 GROUP BY s_state;
+SELECT i_category, SUM(ws_net_profit) as total_profit FROM web_sales JOIN item ON ws_item_sk = i_item_sk WHERE ws_ship_mode_sk = 1 GROUP BY i_category;
+SELECT p_promo_name, SUM(cs_net_profit) as total_profit FROM catalog_sales JOIN promotion ON cs_promo_sk = p_promo_sk WHERE p_channel_demo = 'N' GROUP BY p_promo_name;
+SELECT i_category, COUNT(DISTINCT i_item_sk) as item_count FROM item WHERE i_size = 'large' GROUP BY i_category;

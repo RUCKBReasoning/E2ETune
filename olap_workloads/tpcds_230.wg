@@ -1,0 +1,2 @@
+SELECT w_state, SUM(inv_quantity_on_hand) as total_inventory FROM inventory JOIN warehouse ON inv_warehouse_sk = w_warehouse_sk GROUP BY w_state ORDER BY total_inventory DESC;
+SELECT c_birth_year, COUNT(*) as customer_count FROM customer WHERE c_preferred_cust_flag = 'Y' GROUP BY c_birth_year ORDER BY customer_count DESC;

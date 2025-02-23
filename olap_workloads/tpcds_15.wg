@@ -1,0 +1,17 @@
+SELECT s.s_city, COUNT(*) AS store_count FROM store s GROUP BY s.s_city;
+SELECT s.s_manager, AVG(s.s_floor_space) AS avg_floor_space FROM store s WHERE s.s_city = 'Midway' GROUP BY s.s_manager;
+SELECT s.s_manager, SUM(ss.ss_sales_price) AS total_sales FROM store_sales ss JOIN store s ON ss.ss_store_sk = s.s_store_sk WHERE s.s_city = 'Fairview' GROUP BY s.s_manager;
+SELECT s.s_manager, COUNT(*) AS store_count FROM store s WHERE s.s_hours = '8AM-12AM' GROUP BY s.s_manager HAVING COUNT(*) > 1;
+SELECT COUNT(*) AS total_promotions FROM promotion p WHERE p.p_discount_active = 'N' AND p.p_channel_dmail = 'Y';
+SELECT i.i_item_id, SUM(inv.inv_quantity_on_hand) AS total_quantity FROM inventory inv JOIN item i ON inv.inv_item_sk = i.i_item_sk GROUP BY i.i_item_id HAVING SUM(inv.inv_quantity_on_hand) > 1000;
+SELECT d.d_date, COUNT(*) AS total_sales FROM store_sales ss JOIN date_dim d ON ss.ss_sold_date_sk = d.d_date_sk WHERE d.d_date BETWEEN '2023-01-01' AND '2023-12-31' GROUP BY d.d_date;
+SELECT w.w_warehouse_name, SUM(inv.inv_quantity_on_hand) AS total_quantity FROM inventory inv JOIN warehouse w ON inv.inv_warehouse_sk = w.w_warehouse_sk GROUP BY w.w_warehouse_name;
+SELECT p.p_promo_name, COUNT(*) AS total_sales FROM store_sales ss JOIN promotion p ON ss.ss_promo_sk = p.p_promo_sk WHERE p.p_start_date_sk BETWEEN 2450802 AND 2450728 GROUP BY p.p_promo_name;
+SELECT c.c_first_name, c.c_last_name, SUM(cs.cs_sales_price) AS total_sales FROM catalog_sales cs JOIN customer c ON cs.cs_bill_customer_sk = c.c_customer_sk GROUP BY c.c_first_name, c.c_last_name HAVING SUM(cs.cs_sales_price) > 10000;
+SELECT w.w_warehouse_name, COUNT(*) AS total_shipments FROM web_sales ws JOIN warehouse w ON ws.ws_warehouse_sk = w.w_warehouse_sk GROUP BY w.w_warehouse_name;
+SELECT d.d_date, COUNT(*) AS total_returns FROM store_returns sr JOIN date_dim d ON sr.sr_returned_date_sk = d.d_date_sk WHERE d.d_date BETWEEN '2023-01-01' AND '2023-12-31' GROUP BY d.d_date;
+SELECT d.d_date, COUNT(*) AS total_returns FROM catalog_returns cr JOIN date_dim d ON cr.cr_returned_date_sk = d.d_date_sk WHERE d.d_date BETWEEN '2023-01-01' AND '2023-12-31' GROUP BY d.d_date;
+SELECT d.d_date, COUNT(*) AS total_returns FROM web_returns wr JOIN date_dim d ON wr.wr_returned_date_sk = d.d_date_sk WHERE d.d_date BETWEEN '2023-01-01' AND '2023-12-31' GROUP BY d.d_date;
+SELECT i.i_item_id, COUNT(*) AS total_sales FROM store_sales ss JOIN item i ON ss.ss_item_sk = i.i_item_sk GROUP BY i.i_item_id HAVING COUNT(*) > 100;
+SELECT i.i_item_id, COUNT(*) AS total_sales FROM catalog_sales cs JOIN item i ON cs.cs_item_sk = i.i_item_sk GROUP BY i.i_item_id HAVING COUNT(*) > 100;
+SELECT i.i_item_id, COUNT(*) AS total_sales FROM web_sales ws JOIN item i ON ws.ws_item_sk = i.i_item_sk GROUP BY i.i_item_id HAVING COUNT(*) > 100;

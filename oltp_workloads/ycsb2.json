@@ -1,0 +1,702 @@
+{
+    "ycsb/sample_ycsb_config0.xml": [
+        21,
+        18,
+        5,
+        1,
+        4
+    ],
+    "ycsb/sample_ycsb_config1.xml": [
+        0,
+        2,
+        0,
+        1,
+        97
+    ],
+    "ycsb/sample_ycsb_config2.xml": [
+        2,
+        59,
+        8,
+        0,
+        1
+    ],
+    "ycsb/sample_ycsb_config3.xml": [
+        16,
+        39,
+        0,
+        32,
+        12
+    ],
+    "ycsb/sample_ycsb_config4.xml": [
+        1,
+        2,
+        24,
+        2,
+        32
+    ],
+    "ycsb/sample_ycsb_config5.xml": [
+        73,
+        1,
+        10,
+        11,
+        2
+    ],
+    "ycsb/sample_ycsb_config6.xml": [
+        1,
+        1,
+        2,
+        10,
+        81
+    ],
+    "ycsb/sample_ycsb_config7.xml": [
+        2,
+        74,
+        13,
+        10,
+        0
+    ],
+    "ycsb/sample_ycsb_config8.xml": [
+        17,
+        2,
+        2,
+        1,
+        38
+    ],
+    "ycsb/sample_ycsb_config9.xml": [
+        51,
+        10,
+        2,
+        1,
+        16
+    ],
+    "ycsb/sample_ycsb_config10.xml": [
+        94,
+        0,
+        1,
+        2,
+        2
+    ],
+    "ycsb/sample_ycsb_config11.xml": [
+        15,
+        1,
+        16,
+        34,
+        11
+    ],
+    "ycsb/sample_ycsb_config12.xml": [
+        0,
+        0,
+        4,
+        1,
+        92
+    ],
+    "ycsb/sample_ycsb_config13.xml": [
+        18,
+        59,
+        4,
+        1,
+        18
+    ],
+    "ycsb/sample_ycsb_config14.xml": [
+        3,
+        6,
+        16,
+        9,
+        43
+    ],
+    "ycsb/sample_ycsb_config15.xml": [
+        47,
+        14,
+        2,
+        21,
+        15
+    ],
+    "ycsb/sample_ycsb_config16.xml": [
+        2,
+        13,
+        11,
+        12,
+        1
+    ],
+    "ycsb/sample_ycsb_config17.xml": [
+        14,
+        0,
+        8,
+        39,
+        11
+    ],
+    "ycsb/sample_ycsb_config18.xml": [
+        4,
+        32,
+        1,
+        1,
+        62
+    ],
+    "ycsb/sample_ycsb_config19.xml": [
+        3,
+        0,
+        28,
+        5,
+        29
+    ],
+    "ycsb/sample_ycsb_config20.xml": [
+        25,
+        18,
+        25,
+        22,
+        10
+    ],
+    "ycsb/sample_ycsb_config21.xml": [
+        89,
+        0,
+        2,
+        2,
+        7
+    ],
+    "ycsb/sample_ycsb_config22.xml": [
+        0,
+        36,
+        6,
+        4,
+        4
+    ],
+    "ycsb/sample_ycsb_config23.xml": [
+        20,
+        1,
+        58,
+        17,
+        4
+    ],
+    "ycsb/sample_ycsb_config24.xml": [
+        4,
+        31,
+        34,
+        4,
+        17
+    ],
+    "ycsb/sample_ycsb_config25.xml": [
+        1,
+        39,
+        16,
+        0,
+        9
+    ],
+    "ycsb/sample_ycsb_config26.xml": [
+        2,
+        0,
+        43,
+        8,
+        7
+    ],
+    "ycsb/sample_ycsb_config27.xml": [
+        23,
+        1,
+        1,
+        9,
+        2
+    ],
+    "ycsb/sample_ycsb_config28.xml": [
+        0,
+        1,
+        0,
+        81,
+        17
+    ],
+    "ycsb/sample_ycsb_config29.xml": [
+        67,
+        11,
+        4,
+        14,
+        4
+    ],
+    "ycsb/sample_ycsb_config30.xml": [
+        4,
+        3,
+        14,
+        2,
+        6
+    ],
+    "ycsb/sample_ycsb_config31.xml": [
+        9,
+        6,
+        46,
+        33,
+        3
+    ],
+    "ycsb/sample_ycsb_config32.xml": [
+        3,
+        6,
+        23,
+        7,
+        59
+    ],
+    "ycsb/sample_ycsb_config33.xml": [
+        15,
+        40,
+        13,
+        0,
+        4
+    ],
+    "ycsb/sample_ycsb_config34.xml": [
+        3,
+        0,
+        3,
+        84,
+        1
+    ],
+    "ycsb/sample_ycsb_config35.xml": [
+        5,
+        12,
+        25,
+        2,
+        39
+    ],
+    "ycsb/sample_ycsb_config36.xml": [
+        8,
+        15,
+        28,
+        45,
+        0
+    ],
+    "ycsb/sample_ycsb_config37.xml": [
+        72,
+        5,
+        5,
+        4,
+        1
+    ],
+    "ycsb/sample_ycsb_config38.xml": [
+        0,
+        31,
+        2,
+        12,
+        1
+    ],
+    "ycsb/sample_ycsb_config39.xml": [
+        0,
+        1,
+        0,
+        46,
+        0
+    ],
+    "ycsb/sample_ycsb_config40.xml": [
+        18,
+        5,
+        3,
+        24,
+        40
+    ],
+    "ycsb/sample_ycsb_config41.xml": [
+        47,
+        6,
+        0,
+        1,
+        3
+    ],
+    "ycsb/sample_ycsb_config42.xml": [
+        0,
+        0,
+        16,
+        1,
+        2
+    ],
+    "ycsb/sample_ycsb_config43.xml": [
+        55,
+        3,
+        6,
+        5,
+        29
+    ],
+    "ycsb/sample_ycsb_config44.xml": [
+        27,
+        0,
+        49,
+        1,
+        2
+    ],
+    "ycsb/sample_ycsb_config45.xml": [
+        7,
+        0,
+        5,
+        35,
+        15
+    ],
+    "ycsb/sample_ycsb_config46.xml": [
+        55,
+        8,
+        36,
+        0,
+        0
+    ],
+    "ycsb/sample_ycsb_config47.xml": [
+        6,
+        2,
+        10,
+        0,
+        1
+    ],
+    "ycsb/sample_ycsb_config48.xml": [
+        26,
+        1,
+        3,
+        1,
+        28
+    ],
+    "ycsb/sample_ycsb_config49.xml": [
+        72,
+        9,
+        3,
+        1,
+        9
+    ],
+    "ycsb/sample_ycsb_config50.xml": [
+        5,
+        37,
+        11,
+        13,
+        19
+    ],
+    "ycsb/sample_ycsb_config51.xml": [
+        6,
+        8,
+        2,
+        22,
+        52
+    ],
+    "ycsb/sample_ycsb_config52.xml": [
+        2,
+        0,
+        4,
+        7,
+        33
+    ],
+    "ycsb/sample_ycsb_config53.xml": [
+        0,
+        0,
+        1,
+        86,
+        0
+    ],
+    "ycsb/sample_ycsb_config54.xml": [
+        9,
+        74,
+        14,
+        1,
+        2
+    ],
+    "ycsb/sample_ycsb_config55.xml": [
+        0,
+        39,
+        39,
+        19,
+        2
+    ],
+    "ycsb/sample_ycsb_config56.xml": [
+        6,
+        60,
+        2,
+        9,
+        1
+    ],
+    "ycsb/sample_ycsb_config57.xml": [
+        46,
+        2,
+        7,
+        5,
+        14
+    ],
+    "ycsb/sample_ycsb_config58.xml": [
+        2,
+        44,
+        3,
+        0,
+        51
+    ],
+    "ycsb/sample_ycsb_config59.xml": [
+        1,
+        14,
+        9,
+        16,
+        1
+    ],
+    "ycsb/sample_ycsb_config60.xml": [
+        1,
+        98,
+        1,
+        0,
+        0
+    ],
+    "ycsb/sample_ycsb_config61.xml": [
+        27,
+        5,
+        28,
+        5,
+        8
+    ],
+    "ycsb/sample_ycsb_config62.xml": [
+        5,
+        23,
+        10,
+        24,
+        24
+    ],
+    "ycsb/sample_ycsb_config63.xml": [
+        42,
+        17,
+        2,
+        0,
+        12
+    ],
+    "ycsb/sample_ycsb_config64.xml": [
+        18,
+        8,
+        0,
+        2,
+        3
+    ],
+    "ycsb/sample_ycsb_config65.xml": [
+        33,
+        16,
+        8,
+        7,
+        8
+    ],
+    "ycsb/sample_ycsb_config66.xml": [
+        13,
+        24,
+        1,
+        47,
+        9
+    ],
+    "ycsb/sample_ycsb_config67.xml": [
+        15,
+        4,
+        32,
+        7,
+        0
+    ],
+    "ycsb/sample_ycsb_config68.xml": [
+        3,
+        2,
+        8,
+        19,
+        10
+    ],
+    "ycsb/sample_ycsb_config69.xml": [
+        1,
+        4,
+        4,
+        78,
+        12
+    ],
+    "ycsb/sample_ycsb_config70.xml": [
+        24,
+        2,
+        0,
+        17,
+        2
+    ],
+    "ycsb/sample_ycsb_config71.xml": [
+        12,
+        13,
+        60,
+        5,
+        4
+    ],
+    "ycsb/sample_ycsb_config72.xml": [
+        7,
+        22,
+        20,
+        5,
+        26
+    ],
+    "ycsb/sample_ycsb_config73.xml": [
+        0,
+        87,
+        1,
+        1,
+        11
+    ],
+    "ycsb/sample_ycsb_config74.xml": [
+        12,
+        53,
+        7,
+        2,
+        26
+    ],
+    "ycsb/sample_ycsb_config75.xml": [
+        1,
+        44,
+        6,
+        10,
+        4
+    ],
+    "ycsb/sample_ycsb_config76.xml": [
+        2,
+        3,
+        0,
+        1,
+        94
+    ],
+    "ycsb/sample_ycsb_config77.xml": [
+        1,
+        62,
+        0,
+        0,
+        7
+    ],
+    "ycsb/sample_ycsb_config78.xml": [
+        83,
+        1,
+        5,
+        2,
+        1
+    ],
+    "ycsb/sample_ycsb_config79.xml": [
+        92,
+        1,
+        0,
+        5,
+        2
+    ],
+    "ycsb/sample_ycsb_config80.xml": [
+        5,
+        9,
+        14,
+        9,
+        55
+    ],
+    "ycsb/sample_ycsb_config81.xml": [
+        7,
+        12,
+        4,
+        41,
+        30
+    ],
+    "ycsb/sample_ycsb_config82.xml": [
+        0,
+        10,
+        1,
+        75,
+        14
+    ],
+    "ycsb/sample_ycsb_config83.xml": [
+        4,
+        4,
+        69,
+        10,
+        11
+    ],
+    "ycsb/sample_ycsb_config84.xml": [
+        1,
+        24,
+        2,
+        71,
+        0
+    ],
+    "ycsb/sample_ycsb_config85.xml": [
+        0,
+        9,
+        36,
+        3,
+        35
+    ],
+    "ycsb/sample_ycsb_config86.xml": [
+        7,
+        0,
+        0,
+        75,
+        6
+    ],
+    "ycsb/sample_ycsb_config87.xml": [
+        20,
+        5,
+        19,
+        25,
+        24
+    ],
+    "ycsb/sample_ycsb_config88.xml": [
+        0,
+        19,
+        29,
+        45,
+        2
+    ],
+    "ycsb/sample_ycsb_config89.xml": [
+        23,
+        65,
+        2,
+        1,
+        5
+    ],
+    "ycsb/sample_ycsb_config90.xml": [
+        29,
+        9,
+        19,
+        36,
+        1
+    ],
+    "ycsb/sample_ycsb_config91.xml": [
+        7,
+        17,
+        3,
+        61,
+        7
+    ],
+    "ycsb/sample_ycsb_config92.xml": [
+        10,
+        20,
+        26,
+        22,
+        2
+    ],
+    "ycsb/sample_ycsb_config93.xml": [
+        6,
+        18,
+        7,
+        39,
+        23
+    ],
+    "ycsb/sample_ycsb_config94.xml": [
+        45,
+        2,
+        39,
+        2,
+        3
+    ],
+    "ycsb/sample_ycsb_config95.xml": [
+        4,
+        90,
+        0,
+        0,
+        4
+    ],
+    "ycsb/sample_ycsb_config96.xml": [
+        4,
+        0,
+        0,
+        10,
+        15
+    ],
+    "ycsb/sample_ycsb_config97.xml": [
+        84,
+        0,
+        1,
+        15,
+        0
+    ],
+    "ycsb/sample_ycsb_config98.xml": [
+        1,
+        52,
+        4,
+        2,
+        41
+    ],
+    "ycsb/sample_ycsb_config99.xml": [
+        9,
+        62,
+        0,
+        18,
+        8
+    ]
+}

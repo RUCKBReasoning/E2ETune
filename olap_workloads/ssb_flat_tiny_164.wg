@@ -1,0 +1,18 @@
+SELECT lo_orderpriority, COUNT(*) AS order_count FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY order_count DESC;
+SELECT c_city, AVG(lo_extendedprice) AS avg_price FROM lineorder_flat GROUP BY c_city ORDER BY avg_price DESC;
+SELECT p_category, SUM(lo_quantity) AS total_quantity FROM lineorder_flat GROUP BY p_category ORDER BY total_quantity DESC;
+SELECT s_nation, COUNT(*) AS supplier_count FROM lineorder_flat WHERE s_nation IN ('ARGENTINA', 'FRANCE', 'EGYPT') GROUP BY s_nation;
+SELECT lo_orderdate, SUM(lo_revenue) AS daily_revenue FROM lineorder_flat GROUP BY lo_orderdate ORDER BY daily_revenue DESC;
+SELECT p_brand, COUNT(*) AS product_count FROM lineorder_flat GROUP BY p_brand HAVING COUNT(*) > 1000 ORDER BY product_count DESC;
+SELECT c_mktsegment, SUM(lo_supplycost) AS total_supply_cost FROM lineorder_flat GROUP BY c_mktsegment ORDER BY total_supply_cost DESC;
+SELECT s_region, AVG(lo_discount) AS avg_discount FROM lineorder_flat GROUP BY s_region ORDER BY avg_discount DESC;
+SELECT p_type, SUM(lo_tax) AS total_tax FROM lineorder_flat GROUP BY p_type ORDER BY total_tax DESC;
+SELECT c_nation, COUNT(DISTINCT lo_custkey) AS unique_customer_count FROM lineorder_flat GROUP BY c_nation ORDER BY unique_customer_count DESC;
+SELECT lo_shipmode, COUNT(*) AS order_count FROM lineorder_flat WHERE lo_ordtotalprice IN (34059519, 16374843, 20864543) GROUP BY lo_shipmode;
+SELECT p_size, COUNT(*) AS product_count FROM lineorder_flat GROUP BY p_size HAVING COUNT(*) > 500 ORDER BY product_count DESC;
+SELECT c_address, SUM(lo_extendedprice) AS total_price FROM lineorder_flat WHERE c_address IN ('NA JPEp,aNV', 'rPnC3SA7wo54FEq1S', 'WA3dy8KsFia4s') GROUP BY c_address;
+SELECT lo_orderpriority, AVG(lo_quantity) AS avg_quantity FROM lineorder_flat GROUP BY lo_orderpriority ORDER BY avg_quantity DESC;
+SELECT s_city, COUNT(*) AS supplier_count FROM lineorder_flat GROUP BY s_city HAVING COUNT(*) > 100 ORDER BY supplier_count DESC;
+SELECT p_mfgr, SUM(lo_revenue) AS total_revenue FROM lineorder_flat GROUP BY p_mfgr ORDER BY total_revenue DESC;
+SELECT lo_orderdate, COUNT(DISTINCT lo_orderkey) AS unique_order_count FROM lineorder_flat GROUP BY lo_orderdate ORDER BY unique_order_count DESC;
+SELECT c_region, AVG(lo_supplycost) AS avg_supply_cost FROM lineorder_flat GROUP BY c_region ORDER BY avg_supply_cost DESC;

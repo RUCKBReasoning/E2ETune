@@ -1,0 +1,18 @@
+SELECT t.title, COUNT(*) AS total_movies FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY total_movies DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS total_roles FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 1 GROUP BY n.name HAVING COUNT(*) > 1 ORDER BY total_roles DESC LIMIT 10;
+SELECT kt.kind, COUNT(*) AS total_titles FROM kind_type kt JOIN title t ON kt.id = t.kind_id GROUP BY kt.kind ORDER BY total_titles DESC;
+SELECT cn.name, COUNT(*) AS total_characters FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id WHERE ci.role_id = 2 GROUP BY cn.name HAVING COUNT(*) > 1 ORDER BY total_characters DESC LIMIT 10;
+SELECT k.keyword, COUNT(*) AS total_movies FROM keyword k JOIN movie_keyword mk ON k.id = mk.keyword_id GROUP BY k.keyword HAVING COUNT(*) > 1 ORDER BY total_movies DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS total_cast FROM title t JOIN cast_info ci ON t.id = ci.movie_id GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY total_cast DESC LIMIT 10;
+SELECT comp.kind, COUNT(*) AS total_companies FROM comp_cast_type comp JOIN complete_cast cc ON comp.id = cc.subject_id GROUP BY comp.kind ORDER BY total_companies DESC;
+SELECT t.title, COUNT(*) AS total_links FROM title t JOIN movie_link ml ON t.id = ml.movie_id GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY total_links DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS total_movies FROM name n JOIN movie_info_idx mi ON n.id = mi.movie_id WHERE mi.info_type_id = 1 GROUP BY n.name HAVING COUNT(*) > 1 ORDER BY total_movies DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS total_keywords FROM title t JOIN movie_keyword mk ON t.id = mk.movie_id GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY total_keywords DESC LIMIT 10;
+SELECT cn.name, COUNT(*) AS total_appearances FROM char_name cn JOIN cast_info ci ON cn.id = ci.person_role_id WHERE ci.role_id = 2 AND cn.name_pcode_nf = 'M262' GROUP BY cn.name HAVING COUNT(*) > 1 ORDER BY total_appearances DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS total_movies FROM name n JOIN cast_info ci ON n.id = ci.person_id WHERE ci.role_id = 1 AND n.surname_pcode = 'G652' GROUP BY n.name HAVING COUNT(*) > 1 ORDER BY total_movies DESC LIMIT 10;
+SELECT t.title, SUM(ci.nr_order) AS total_orders FROM title t JOIN cast_info ci ON t.id = ci.movie_id GROUP BY t.title HAVING SUM(ci.nr_order) > 1 ORDER BY total_orders DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS total_movies FROM name n JOIN movie_companies mc ON n.id = mc.movie_id WHERE mc.company_type_id = 1 GROUP BY n.name HAVING COUNT(*) > 1 ORDER BY total_movies DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS total_companies FROM title t JOIN movie_companies mc ON t.id = mc.movie_id GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY total_companies DESC LIMIT 10;
+SELECT cn.name, COUNT(*) AS total_movies FROM char_name cn JOIN movie_info mi ON cn.id = mi.movie_id WHERE mi.info_type_id = 1 AND cn.md5sum = 'd8080156b5ae7d6c221229c1c36fcba6' GROUP BY cn.name HAVING COUNT(*) > 1 ORDER BY total_movies DESC LIMIT 10;
+SELECT t.title, COUNT(*) AS total_info FROM title t JOIN movie_info mi ON t.id = mi.movie_id GROUP BY t.title HAVING COUNT(*) > 1 ORDER BY total_info DESC LIMIT 10;
+SELECT n.name, COUNT(*) AS total_person_info FROM name n JOIN person_info pi ON n.id = pi.person_id GROUP BY n.name HAVING COUNT(*) > 1 ORDER BY total_person_info DESC LIMIT 10;
