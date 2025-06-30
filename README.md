@@ -158,3 +158,20 @@ Then run the `model_output_test.py` to evaluate the configurations recommended b
 python model_output_test.py --host localhost --datapath /your/DB/data/path
 ```
 
+## Load the Open-source Fine-tuned Model
+
+We've open-sourced our fine-tuned model weights. You can easily load and use this model directly with the `transformers` library:
+
+```python
+from transformers import AutoModel, AutoTokenizer
+
+model_name = "springhxm/E2ETune"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModel.from_pretrained(model_name)
+
+# example
+inputs = tokenizer("You are an expert in database, you are to optimize the parameters of database...", return_tensors="pt")
+outputs = model(**inputs)
+```
+
+For more model details, please see https://huggingface.co/springhxm/E2ETune.
