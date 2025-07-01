@@ -7,14 +7,9 @@ import json
 import Database
 import utils
 from config import parse_config
-from knob_ranking.shap_final import knob_selection
-from knowledge_transfer.mapping import mapping, get_best_config
-from knowledge_transfer.update_knowledge import update_knowledge
 import stress_testing_tool
 from tuner import tuner
-from knowledge_transfer.get_feature import get_feature
-from knob_config import parse_knob_config
-from workload_select import test_surrogate_result
+from knob_config.parse_knob_config import get_knobs
 
 import argparse
 
@@ -26,6 +21,64 @@ import argparse
 #     all_result = []
 #     repeat = 5
 #     for i in range(repeat):
+
+default = [16.0, 3.0, 200.0, 2048.0, 4096.0, 0.1, 50.0, 600.0, 2.0, -1.0, 0.2, 50.0, 0.0, 2000.0, 64.0, 100.0, 2.0, 0.5, 32.0, 900.0, 0.0, 5.0, 0.1, 1000.0, 100.0, 16384.0, 1.0, 8.0, 5.0, 0.0, 0.0, 0.0, 12.0, 8.0, 16384.0, 128.0, -1.0, 0.0, 200.0, 20.0, 1.0, 10.0, 200.0, 65536.0]
+
+
+def test_surrogate_result(key, args, config):
+    olap = False
+    if args['benchmark_config']['workload_path'].startswith('SuperWG'):
+        olap = True
+        args['benchmark_config']['tool'] = 'dwg'
+    else:
+        olap = False
+        benchmark = args['benchmark_config']['workload_path'].split('/')[0]
+        args['benchmark_config']['tool'] = benchmark
+        args['benchmark_config']['config_path'] = args['benchmark_config']['workload_path']
+        args['database_config']['database'] = 'benchbase'
+    database = Database(args, 'knob_config/knob_config.json')
+    logger = utils.get_logger(args['tuning_config']['log_path'])
+    sample = args['tuning_config']['finetune_sample']
+    stt = stress_testing_tool(args, database, logger, sample)
+    knobs_detail = get_knobs('knob_config/knob_config.json')
+    print(f'test workload {key}')
+
+    cur_point = config
+    point = {}
+    default_point = {}
+    for index, knob in enumerate(knobs_detail):
+        # point[knob] = float(cur_point[index])
+        default_point[knob] = float(default[index])
+    point = config
+    repeat = 3
+    best_test = []
+    default_test = []
+    for j in range(repeat):
+        y = stt.test_config(default_point)
+        default_test.append(y)
+    inner = database.fetch_inner_metric()
+    for j in range(repeat):
+        y = stt.test_config(point)
+        best_test.append(y)
+    
+        # with open(f'all_workload_test{cmd.workload}.txt', 'a') as w:
+        #     w.write("step {}: performance: {}\n".format(j, y))
+    
+    # if max(best_test) > max(default_test):
+    if olap:
+        with open(f'record/olap_surrogate_record.jsonl', 'a') as w:
+            # strs = json.dumps({'workload': key, 'inner': inner, 'default_tps': [float(i) for i in default_test], \
+            #             'best_tps': [float(i) for i in best_test], 'best_config': point, \
+            #             'delta': (max(best_test) - max(default_test))})
+            strs = json.dumps({'workload': key, 'inner': inner, 'best_config': point, 'best': best_test, 'default': default_test})
+            w.write(strs + '\n')
+    else:
+        with open(f'record/oltp_surrogate_record.jsonl', 'a') as w:
+            # strs = json.dumps({'workload': key, 'inner': inner, 'default_tps': [float(i) for i in default_test], \
+            #             'best_tps': [float(i) for i in best_test], 'best_config': point, \
+            #             'delta': (max(best_test) - max(default_test))})
+            strs = json.dumps({'workload': key, 'inner': inner, 'best_config': point, 'best': best_test, 'default': default_test})
+            w.write(strs + '\n')
 
 def tune(workload, host, args):
     begin_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())

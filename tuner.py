@@ -15,11 +15,10 @@ import jsonlines
 import random
 # tjk add
 from Database import Database
-from HEBO.hebo.design_space.design_space import DesignSpace
-from HEBO.hebo.optimizers.hebo import HEBO
+# from HEBO.hebo.design_space.design_space import DesignSpace
+# from HEBO.hebo.optimizers.hebo import HEBO
 from Vectorlib import VectorLibrary
 from stress_testing_tool import stress_testing_tool
-from hord_problem import Problem
 from poap.controller import BasicWorkerThread, ThreadController
 from pySOT.experimental_design import LatinHypercube
 from pySOT import strategy, surrogate
